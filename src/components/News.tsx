@@ -77,7 +77,7 @@ const News = () => {
           {newsItems.map((item, index) => (
             <article
               key={item.id}
-              className={`group bg-background rounded-lg overflow-hidden transition-all duration-300 hover:scale-[1.02] animate-fade-in-up ${
+              className={`group bg-background rounded-lg overflow-hidden transition-all duration-300 hover:scale-[1.02] hover-lift border border-transparent hover:border-primary/30 animate-fade-in-up ${
                 item.featured ? "lg:row-span-1" : ""
               }`}
               style={{ animationDelay: `${index * 100}ms` }}
