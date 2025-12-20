@@ -85,7 +85,7 @@ const Team = () => {
           {players.map((player, index) => (
             <div
               key={player.id}
-              className="group relative bg-gradient-card rounded-lg overflow-hidden transition-all duration-300 hover:scale-[1.03] animate-fade-in-up"
+              className="group relative bg-gradient-card rounded-lg overflow-hidden transition-all duration-300 hover:scale-[1.03] hover-lift border border-transparent hover:border-primary/30 animate-fade-in-up"
               style={{ animationDelay: `${index * 100}ms` }}
             >
               {/* Player Number Watermark */}

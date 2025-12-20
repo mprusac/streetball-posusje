@@ -1,4 +1,5 @@
 import { useCountUp } from "@/hooks/useCountUp";
+import { Trophy, Medal, Users, Star } from "lucide-react";
 
 interface StatItem {
   value: number;
@@ -24,20 +25,28 @@ const categories = [
 
 const achievements = [
   {
-    title: "PRVACI",
-    description: "Osvojen naslov prvaka Prve lige 2021. godine i promocija u Premier ligu BiH.",
+    title: "Prvaci Prve lige 2021",
+    subtitle: "Promocija u Premier ligu BiH",
+    description: "Osvojen naslov prvaka Prve lige 2021. godine",
+    icon: Trophy,
   },
   {
-    title: "DRŽAVNI NIVO",
-    description: "Višestruko sudjelovanje u turnirima i natjecanjima na razini BiH i Hrvatske.",
+    title: "Državna natjecanja",
+    subtitle: "BiH & Hrvatska",
+    description: "Višestruko sudjelovanje u turnirima na razini BiH i Hrvatske",
+    icon: Medal,
   },
   {
-    title: "REPREZENTACIJA",
-    description: "Više igrača pozvano za reprezentacije U16 i U18 Bosne i Hercegovine.",
+    title: "Reprezentativci",
+    subtitle: "U16 & U18 BiH",
+    description: "Više igrača pozvano za reprezentacije BiH",
+    icon: Star,
   },
   {
-    title: "ZAJEDNICA",
-    description: "Klub koji gradi pozitivne sportske vrijednosti u lokalnoj zajednici.",
+    title: "Zajednica",
+    subtitle: "Sportske vrijednosti",
+    description: "Klub koji gradi pozitivne vrijednosti u lokalnoj zajednici",
+    icon: Users,
   },
 ];
 
@@ -47,10 +56,10 @@ const StatCounter = ({ stat, index }: { stat: StatItem; index: number }) => {
   return (
     <div
       ref={elementRef}
-      className="text-center animate-fade-in-up"
+      className="text-center group animate-fade-in-up"
       style={{ animationDelay: `${index * 150}ms` }}
     >
-      <div className="stat-number">
+      <div className="stat-number group-hover:text-primary/80 transition-colors duration-300">
         {count}
         {stat.suffix}
       </div>
@@ -61,7 +70,7 @@ const StatCounter = ({ stat, index }: { stat: StatItem; index: number }) => {
 
 const About = () => {
   return (
-    <section id="o-klubu" className="py-20 bg-background">
+    <section id="o-klubu" className="py-20 bg-background overflow-hidden">
       {/* Stats */}
       <div className="container mx-auto px-4 mb-20">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto">
@@ -105,36 +114,61 @@ const About = () => {
             {categories.map((category, index) => (
               <div
                 key={category}
-                className="bg-secondary/50 border border-border rounded-lg px-6 py-4 text-center text-sm font-medium text-foreground hover:border-primary transition-colors animate-fade-in-up"
+                className="group bg-secondary/50 border border-border rounded-lg px-6 py-4 text-center text-sm font-medium text-foreground hover:border-primary hover:bg-primary/10 transition-all duration-300 animate-fade-in-up cursor-default"
                 style={{ animationDelay: `${index * 100}ms` }}
               >
-                {category}
+                <span className="group-hover:text-primary transition-colors duration-300">
+                  {category}
+                </span>
               </div>
             ))}
           </div>
         </div>
 
-        {/* Achievements */}
+        {/* Achievements - Vertical Timeline Style */}
         <div className="mb-20">
           <h3 className="text-2xl font-display text-foreground mb-8 uppercase tracking-wider">
             Postignuća
           </h3>
-          <div className="grid md:grid-cols-2 gap-6 max-w-4xl">
-            {achievements.map((achievement, index) => (
-              <div
-                key={achievement.title}
-                className="animate-fade-in-up"
-                style={{ animationDelay: `${index * 100}ms` }}
-              >
-                <h4 className="text-primary font-semibold mb-2">{achievement.title}</h4>
-                <p className="text-muted-foreground text-sm">{achievement.description}</p>
-              </div>
-            ))}
+          <div className="max-w-2xl space-y-4">
+            {achievements.map((achievement, index) => {
+              const IconComponent = achievement.icon;
+              return (
+                <div
+                  key={achievement.title}
+                  className="group relative flex items-start gap-4 p-5 rounded-xl bg-secondary/30 border border-border hover:border-primary/50 hover:bg-secondary/50 transition-all duration-300 animate-fade-in-up"
+                  style={{ animationDelay: `${index * 100}ms` }}
+                >
+                  {/* Icon */}
+                  <div className="flex-shrink-0 w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center group-hover:bg-primary/30 group-hover:scale-110 transition-all duration-300">
+                    <IconComponent className="w-6 h-6 text-primary" />
+                  </div>
+                  
+                  {/* Content */}
+                  <div className="flex-1 min-w-0">
+                    <div className="flex items-center gap-2 mb-1">
+                      <h4 className="font-display text-xl text-foreground tracking-wide">
+                        {achievement.title}
+                      </h4>
+                      {index === 0 && (
+                        <span className="text-lg">🏆</span>
+                      )}
+                    </div>
+                    <p className="text-primary font-medium text-sm mb-1">
+                      {achievement.subtitle}
+                    </p>
+                    <p className="text-muted-foreground text-sm">
+                      {achievement.description}
+                    </p>
+                  </div>
+                </div>
+              );
+            })}
           </div>
         </div>
 
         {/* Vision */}
-        <div className="bg-secondary/30 border-l-4 border-primary rounded-r-lg p-8 max-w-4xl">
+        <div className="group bg-secondary/30 border border-border hover:border-primary/50 rounded-xl p-8 max-w-4xl transition-all duration-300">
           <h3 className="text-2xl font-display mb-4">
             <span className="text-foreground">NAŠA </span>
             <span className="text-primary">VIZIJA</span>

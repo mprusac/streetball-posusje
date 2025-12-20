@@ -60,7 +60,7 @@ const Results = () => {
               href={match.sofaScoreLink}
               target="_blank"
               rel="noopener noreferrer"
-              className={`group bg-card hover:bg-secondary/50 rounded-lg p-6 transition-all duration-300 hover:scale-[1.02] animate-fade-in-up`}
+              className={`group bg-card hover:bg-secondary/50 rounded-lg p-6 transition-all duration-300 hover:scale-[1.02] hover:border-primary/50 border border-transparent animate-fade-in-up hover-glow`}
               style={{ animationDelay: `${index * 100}ms` }}
             >
               <div className="flex items-center justify-between">

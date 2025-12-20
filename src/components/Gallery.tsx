@@ -29,7 +29,7 @@ const Gallery = () => {
           {images.map((image, index) => (
             <div
               key={image.id}
-              className={`group relative overflow-hidden rounded-lg animate-fade-in-up ${
+              className={`group relative overflow-hidden rounded-lg animate-fade-in-up hover-lift ${
                 index === 0 || index === 4 ? "row-span-2" : ""
               }`}
               style={{ animationDelay: `${index * 100}ms` }}
@@ -40,7 +40,12 @@ const Gallery = () => {
                 className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                 style={{ minHeight: index === 0 || index === 4 ? "400px" : "200px" }}
               />
-              <div className="absolute inset-0 bg-background/0 group-hover:bg-background/40 transition-colors duration-300" />
+              <div className="absolute inset-0 bg-primary/0 group-hover:bg-primary/20 transition-colors duration-300" />
+              <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <span className="text-foreground font-display text-lg tracking-wider bg-background/80 px-4 py-2 rounded-lg">
+                  {image.alt}
+                </span>
+              </div>
             </div>
           ))}
         </div>
