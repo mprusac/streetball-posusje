@@ -142,32 +142,35 @@ const Team = () => {
           </span>
         </div>
 
-        <div className="relative max-w-7xl mx-auto">
-          {/* Scroll Buttons */}
+        <div className="relative max-w-[1400px] mx-auto px-16">
+          {/* Scroll Buttons - Outside boxes with yellow background */}
           <button
             onClick={() => scroll("left")}
-            className="absolute -left-4 top-1/2 -translate-y-1/2 z-10 w-12 h-12 rounded-full bg-secondary/80 backdrop-blur-sm border border-border flex items-center justify-center text-foreground hover:text-primary hover:border-primary transition-all duration-300"
+            className="absolute left-0 top-1/2 -translate-y-1/2 z-10 w-12 h-12 rounded-full bg-primary flex items-center justify-center text-primary-foreground hover:bg-primary/90 hover:scale-110 transition-all duration-300 shadow-lg"
           >
             <ChevronLeft size={24} />
           </button>
           <button
             onClick={() => scroll("right")}
-            className="absolute -right-4 top-1/2 -translate-y-1/2 z-10 w-12 h-12 rounded-full bg-secondary/80 backdrop-blur-sm border border-border flex items-center justify-center text-foreground hover:text-primary hover:border-primary transition-all duration-300"
+            className="absolute right-0 top-1/2 -translate-y-1/2 z-10 w-12 h-12 rounded-full bg-primary flex items-center justify-center text-primary-foreground hover:bg-primary/90 hover:scale-110 transition-all duration-300 shadow-lg"
           >
             <ChevronRight size={24} />
           </button>
 
-          {/* Scrollable Container */}
+          {/* Scrollable Container - Shows exactly 5 */}
           <div
             ref={scrollRef}
-            className="flex gap-6 overflow-x-auto scrollbar-hide scroll-smooth pb-4"
-            style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
+            className="flex gap-5 overflow-x-auto scrollbar-hide scroll-smooth pb-4"
+            style={{ scrollbarWidth: "none", msOverflowStyle: "none", scrollSnapType: "x mandatory" }}
           >
             {players.map((player, index) => (
               <div
                 key={player.id}
-                className="group flex-shrink-0 w-[260px] relative bg-gradient-card rounded-lg overflow-hidden transition-all duration-300 hover:scale-[1.03] hover-lift border border-transparent hover:border-primary/30"
+                className="group flex-shrink-0 relative bg-gradient-card rounded-lg overflow-hidden transition-all duration-300 hover:scale-[1.03] hover-lift border border-transparent hover:border-primary/30"
                 style={{
+                  width: 'calc((100% - 5rem) / 5)',
+                  minWidth: '220px',
+                  scrollSnapAlign: 'start',
                   opacity: isVisible ? 1 : 0,
                   transform: isVisible ? "translateX(0)" : "translateX(30px)",
                   transition: `all 0.5s ease ${index * 0.05}s`,

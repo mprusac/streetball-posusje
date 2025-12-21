@@ -123,26 +123,26 @@ const Results = () => {
           <span className="section-title-gold">UTAKMICE</span>
         </h2>
 
-        <div className="relative max-w-6xl mx-auto">
-          {/* Scroll Buttons */}
+        <div className="relative max-w-[1000px] mx-auto px-16">
+          {/* Scroll Buttons - Outside boxes with yellow background */}
           <button
             onClick={() => scroll("left")}
-            className="absolute -left-4 top-1/2 -translate-y-1/2 z-10 w-12 h-12 rounded-full bg-secondary/80 backdrop-blur-sm border border-border flex items-center justify-center text-foreground hover:text-primary hover:border-primary transition-all duration-300"
+            className="absolute left-0 top-1/2 -translate-y-1/2 z-10 w-12 h-12 rounded-full bg-primary flex items-center justify-center text-primary-foreground hover:bg-primary/90 hover:scale-110 transition-all duration-300 shadow-lg"
           >
             <ChevronLeft size={24} />
           </button>
           <button
             onClick={() => scroll("right")}
-            className="absolute -right-4 top-1/2 -translate-y-1/2 z-10 w-12 h-12 rounded-full bg-secondary/80 backdrop-blur-sm border border-border flex items-center justify-center text-foreground hover:text-primary hover:border-primary transition-all duration-300"
+            className="absolute right-0 top-1/2 -translate-y-1/2 z-10 w-12 h-12 rounded-full bg-primary flex items-center justify-center text-primary-foreground hover:bg-primary/90 hover:scale-110 transition-all duration-300 shadow-lg"
           >
             <ChevronRight size={24} />
           </button>
 
-          {/* Scrollable Container */}
+          {/* Scrollable Container - Shows exactly 3 */}
           <div
             ref={scrollRef}
             className="flex gap-4 overflow-x-auto scrollbar-hide scroll-smooth pb-4"
-            style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
+            style={{ scrollbarWidth: "none", msOverflowStyle: "none", scrollSnapType: "x mandatory" }}
           >
             {results.map((match, index) => (
               <a
@@ -150,8 +150,11 @@ const Results = () => {
                 href={match.sofaScoreLink}
                 target="_blank"
                 rel="noopener noreferrer"
-                className={`group flex-shrink-0 w-80 bg-card hover:bg-secondary/50 rounded-lg p-5 transition-all duration-300 hover:scale-[1.02] hover:border-primary/50 border border-transparent hover-glow`}
+                className={`group flex-shrink-0 bg-card hover:bg-secondary/50 rounded-lg p-5 transition-all duration-300 hover:scale-[1.02] hover:border-primary/50 border border-transparent hover-glow`}
                 style={{ 
+                  width: 'calc((100% - 2rem) / 3)',
+                  minWidth: '280px',
+                  scrollSnapAlign: 'start',
                   animationDelay: `${index * 100}ms`,
                   opacity: isVisible ? 1 : 0,
                   transform: isVisible ? "translateX(0)" : "translateX(30px)",

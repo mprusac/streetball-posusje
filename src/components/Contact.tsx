@@ -51,11 +51,11 @@ const Contact = () => {
           Želite postati dio naše obitelji ili imate pitanja? Javite nam se!
         </p>
 
-        <div className="grid lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
+        <div className="grid lg:grid-cols-2 gap-8 max-w-6xl mx-auto items-stretch">
           {/* Contact Form */}
-          <div className="animate-fade-in-up">
-            <div className="bg-secondary/30 border border-border rounded-2xl p-8 hover:border-primary/30 transition-all duration-300">
-              <form onSubmit={handleSubmit} className="space-y-6">
+          <div className="animate-fade-in-up h-full">
+            <div className="bg-secondary/30 border border-border rounded-2xl p-8 hover:border-primary/30 transition-all duration-300 h-full flex flex-col">
+              <form onSubmit={handleSubmit} className="space-y-5 flex-1 flex flex-col">
                 <div className="grid sm:grid-cols-2 gap-4">
                   <div className="group">
                     <label
@@ -114,7 +114,7 @@ const Contact = () => {
                   />
                 </div>
 
-                <div className="group">
+                <div className="group flex-1">
                   <label
                     htmlFor="message"
                     className="block text-sm font-medium text-foreground mb-2 group-focus-within:text-primary transition-colors"
@@ -128,8 +128,8 @@ const Contact = () => {
                     value={formData.message}
                     onChange={handleChange}
                     placeholder="Vaša poruka..."
-                    rows={5}
-                    className="bg-background/50 border-border focus:border-primary focus:ring-primary/20 resize-none transition-all duration-300"
+                    rows={4}
+                    className="bg-background/50 border-border focus:border-primary focus:ring-primary/20 resize-none transition-all duration-300 h-full min-h-[120px]"
                   />
                 </div>
 
@@ -156,63 +156,57 @@ const Contact = () => {
           </div>
 
           {/* Contact Info & Map */}
-          <div className="space-y-6 animate-fade-in-up delay-200">
-            {/* Contact Details */}
-            <div className="space-y-4">
-              <div className="group flex items-start gap-4 p-4 rounded-xl bg-secondary/30 border border-border hover:border-primary/30 hover:bg-secondary/40 transition-all duration-300 cursor-default">
-                <div className="p-3 bg-primary/20 rounded-lg group-hover:bg-primary/30 group-hover:scale-110 transition-all duration-300">
-                  <MapPin className="text-primary" size={24} />
-                </div>
-                <div>
-                  <h4 className="font-display text-lg text-foreground mb-1 tracking-wide">Adresa</h4>
-                  <p className="text-muted-foreground text-sm">
-                    Ulica Fra Grge Martića bb
-                    <br />
-                    88240 Posušje, Bosna i Hercegovina
-                    <br />
-                    Gradska sportska dvorana Posušje
-                  </p>
-                </div>
+          <div className="flex flex-col gap-4 animate-fade-in-up delay-200 h-full">
+            {/* Contact Details - 4 items */}
+            <div className="group flex items-center gap-4 p-4 rounded-xl bg-secondary/30 border border-border hover:border-primary/30 hover:bg-secondary/40 transition-all duration-300 cursor-default flex-1">
+              <div className="p-3 bg-primary/20 rounded-lg group-hover:bg-primary/30 group-hover:scale-110 transition-all duration-300">
+                <MapPin className="text-primary" size={22} />
               </div>
-
-              <div className="group flex items-start gap-4 p-4 rounded-xl bg-secondary/30 border border-border hover:border-primary/30 hover:bg-secondary/40 transition-all duration-300">
-                <div className="p-3 bg-primary/20 rounded-lg group-hover:bg-primary/30 group-hover:scale-110 transition-all duration-300">
-                  <Mail className="text-primary" size={24} />
-                </div>
-                <div>
-                  <h4 className="font-display text-lg text-foreground mb-1 tracking-wide">Email</h4>
-                  <a
-                    href="mailto:kkposusje@gmail.com"
-                    className="text-muted-foreground text-sm hover:text-primary transition-colors"
-                  >
-                    kkposusje@gmail.com
-                  </a>
-                </div>
+              <div>
+                <h4 className="font-display text-base text-foreground mb-0.5 tracking-wide">Adresa</h4>
+                <p className="text-muted-foreground text-sm">
+                  Ulica Fra Grge Martića bb, 88240 Posušje
+                </p>
               </div>
+            </div>
 
-              <div className="group flex items-start gap-4 p-4 rounded-xl bg-secondary/30 border border-border hover:border-primary/30 hover:bg-secondary/40 transition-all duration-300">
-                <div className="p-3 bg-primary/20 rounded-lg group-hover:bg-primary/30 group-hover:scale-110 transition-all duration-300">
-                  <Phone className="text-primary" size={24} />
-                </div>
-                <div>
-                  <h4 className="font-display text-lg text-foreground mb-1 tracking-wide">Telefon</h4>
-                  <a
-                    href="tel:+38763123456"
-                    className="text-muted-foreground text-sm hover:text-primary transition-colors"
-                  >
-                    +387 63 123 456
-                  </a>
-                </div>
+            <div className="group flex items-center gap-4 p-4 rounded-xl bg-secondary/30 border border-border hover:border-primary/30 hover:bg-secondary/40 transition-all duration-300 flex-1">
+              <div className="p-3 bg-primary/20 rounded-lg group-hover:bg-primary/30 group-hover:scale-110 transition-all duration-300">
+                <Mail className="text-primary" size={22} />
+              </div>
+              <div>
+                <h4 className="font-display text-base text-foreground mb-0.5 tracking-wide">Email</h4>
+                <a
+                  href="mailto:kkposusje@gmail.com"
+                  className="text-muted-foreground text-sm hover:text-primary transition-colors"
+                >
+                  kkposusje@gmail.com
+                </a>
+              </div>
+            </div>
+
+            <div className="group flex items-center gap-4 p-4 rounded-xl bg-secondary/30 border border-border hover:border-primary/30 hover:bg-secondary/40 transition-all duration-300 flex-1">
+              <div className="p-3 bg-primary/20 rounded-lg group-hover:bg-primary/30 group-hover:scale-110 transition-all duration-300">
+                <Phone className="text-primary" size={22} />
+              </div>
+              <div>
+                <h4 className="font-display text-base text-foreground mb-0.5 tracking-wide">Telefon</h4>
+                <a
+                  href="tel:+38763123456"
+                  className="text-muted-foreground text-sm hover:text-primary transition-colors"
+                >
+                  +387 63 123 456
+                </a>
               </div>
             </div>
 
             {/* Map */}
-            <div className="rounded-2xl overflow-hidden h-64 bg-secondary border border-border hover:border-primary/30 transition-all duration-300">
+            <div className="rounded-xl overflow-hidden bg-secondary border border-border hover:border-primary/30 transition-all duration-300 flex-[2]">
               <iframe
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d11604.894831087447!2d17.318!3d43.467!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x134b1c3a0b0b0001%3A0x1000!2sPosušje%2C%20Bosnia%20and%20Herzegovina!5e0!3m2!1sen!2sus!4v1700000000000!5m2!1sen!2sus"
                 width="100%"
                 height="100%"
-                style={{ border: 0 }}
+                style={{ border: 0, minHeight: '150px' }}
                 allowFullScreen
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"

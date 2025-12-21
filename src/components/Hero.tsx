@@ -17,12 +17,13 @@ const Hero = () => {
       id="pocetna"
       className="relative min-h-screen flex items-center justify-center overflow-hidden"
     >
-      {/* Parallax Background Image */}
+      {/* Parallax Background Image - Full Width */}
       <div
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat will-change-transform"
+        className="absolute inset-0 w-screen left-1/2 -translate-x-1/2 bg-cover bg-center bg-no-repeat will-change-transform"
         style={{ 
           backgroundImage: `url(${teamPhoto})`,
           transform: `translateY(${scrollY * 0.5}px) scale(1.1)`,
+          minWidth: '100vw',
         }}
       >
         {/* Gradient Overlay */}
