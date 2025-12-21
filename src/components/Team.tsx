@@ -1,9 +1,9 @@
 import { useRef } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
-import player1 from "@/assets/player-1.jpg";
-import player2 from "@/assets/player-rados.png";
-import player3 from "@/assets/player-3.jpg";
+import playerIan from "@/assets/player-ian.png";
+import playerRados from "@/assets/player-rados.png";
+import playerRamljak from "@/assets/player-ramljak.png";
 import player4 from "@/assets/player-4.jpg";
 import player5 from "@/assets/player-5.jpg";
 
@@ -27,7 +27,7 @@ const players: Player[] = [
     name: "Ian Krishnan",
     position: "Guard-Forward",
     number: "07",
-    image: player1,
+    image: playerIan,
     stats: { ppg: 11.4, rpg: 2.9, apg: 1.3, mpg: "28:03" },
   },
   {
@@ -35,7 +35,7 @@ const players: Player[] = [
     name: "Radoš Vuković",
     position: "Guard-Forward",
     number: "11",
-    image: player2,
+    image: playerRados,
     stats: { ppg: 8.5, rpg: 3.1, apg: 2.1, mpg: "29:40" },
   },
   {
@@ -43,7 +43,7 @@ const players: Player[] = [
     name: "Josip Ramljak",
     position: "Guard",
     number: "23",
-    image: player3,
+    image: playerRamljak,
     stats: { ppg: 5.9, rpg: 1.7, apg: 1.8, mpg: "20:45" },
   },
   {
@@ -67,7 +67,7 @@ const players: Player[] = [
     name: "Luka Marić",
     position: "Point Guard",
     number: "03",
-    image: player1,
+    image: playerIan,
     stats: { ppg: 7.2, rpg: 1.5, apg: 4.8, mpg: "25:12" },
   },
   {
@@ -75,7 +75,7 @@ const players: Player[] = [
     name: "Petar Babić",
     position: "Shooting Guard",
     number: "21",
-    image: player2,
+    image: playerRados,
     stats: { ppg: 9.1, rpg: 2.3, apg: 1.9, mpg: "26:30" },
   },
   {
@@ -83,7 +83,7 @@ const players: Player[] = [
     name: "Marko Jurić",
     position: "Power Forward",
     number: "32",
-    image: player3,
+    image: playerRamljak,
     stats: { ppg: 6.4, rpg: 5.2, apg: 0.9, mpg: "22:15" },
   },
   {
@@ -185,7 +185,7 @@ const Team = () => {
                     src={player.image}
                     alt={player.name}
                     className={`w-full h-full object-cover transition-transform duration-500 group-hover:scale-110 ${
-                      player.image === player2 ? "object-top scale-125 -translate-y-4" : "object-top"
+                      player.image === playerRados ? "object-top scale-125 -translate-y-4" : "object-top"
                     }`}
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent" />
