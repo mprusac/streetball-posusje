@@ -57,30 +57,28 @@ const Navbar = () => {
 
           {/* Desktop Navigation */}
           <div className="hidden lg:flex items-center gap-8">
-            {navLinks.map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
-                className={`nav-link relative font-display text-xl tracking-widest transition-all duration-300 py-2 ${
-                  activeSection === link.href.slice(1)
-                    ? "text-primary"
-                    : "text-foreground hover:text-primary"
-                }`}
-              >
-                <span className="relative">
+            {navLinks.map((link) => {
+              const isActive = activeSection === link.href.slice(1);
+              return (
+                <a
+                  key={link.href}
+                  href={link.href}
+                  className={`group relative font-display text-xl tracking-widest transition-all duration-300 py-2 ${
+                    isActive
+                      ? "text-primary"
+                      : "text-foreground hover:text-primary"
+                  }`}
+                >
                   {link.label}
-                  {/* Underline animation */}
+                  {/* Single underline - only shows on hover when not active, always shows when active */}
                   <span 
-                    className={`absolute left-0 -bottom-1 h-0.5 bg-primary transition-all duration-300 ${
-                      activeSection === link.href.slice(1) 
-                        ? "w-full" 
-                        : "w-0 group-hover:w-full"
+                    className={`absolute left-0 -bottom-1 h-0.5 bg-primary transition-all duration-300 ease-out ${
+                      isActive ? "w-full" : "w-0 group-hover:w-full"
                     }`}
-                    style={{ width: activeSection === link.href.slice(1) ? '100%' : undefined }}
                   />
-                </span>
-              </a>
-            ))}
+                </a>
+              );
+            })}
           </div>
 
           {/* Mobile Menu Button */}

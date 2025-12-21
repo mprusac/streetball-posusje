@@ -205,20 +205,25 @@ const About = () => {
             visVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
           }`}
         >
-          <div className="group bg-secondary/30 border border-border hover:border-primary/50 rounded-xl p-8 transition-all duration-300 text-center">
-            <h3 className="text-2xl font-display mb-4">
+          <div className="relative group rounded-xl p-8 transition-all duration-300 text-center overflow-hidden" style={{
+            background: 'linear-gradient(135deg, hsl(0 0% 12%) 0%, hsl(0 0% 8%) 100%)',
+          }}>
+            {/* Gradient border */}
+            <div className="absolute inset-0 rounded-xl p-[2px] bg-gradient-to-r from-primary/60 via-primary/20 to-primary/60 -z-10" />
+            <div className="absolute inset-[2px] rounded-[10px] bg-gradient-to-br from-secondary/80 to-background -z-10" />
+            
+            <h3 className="text-3xl md:text-4xl font-display mb-6 tracking-wide">
               <span className="text-foreground">NAŠA </span>
               <span className="text-primary">VIZIJA</span>
             </h3>
-            <p className="text-muted-foreground max-w-2xl mx-auto">
-              Izgraditi snažnu bazu mladih sportaša i promovirati košarku kao pozitivan
-              temelj za zajednicu. KK Posušje teži postati prepoznati klub u regiji kroz
-              razvoj mladih, sportske vrijednosti i profesionalnost – uz kontinuirano
-              ulaganje u infrastrukturu i trenerski kadar te postati{" "}
-              <span className="text-primary font-semibold">
-                košarkaški centar Zapadne Hercegovine
-              </span>
-              .
+            <p className="text-muted-foreground max-w-3xl mx-auto leading-relaxed text-base md:text-lg">
+              Temeljna ideja osnivača kluba je kvalitetan rad s djecom i mladima, doprinos afirmaciji vrijednosti kao što su odgovornost, asertivnost i timski rad.
+            </p>
+            <p className="text-muted-foreground max-w-3xl mx-auto leading-relaxed text-base md:text-lg mt-4">
+              Kroz kontinuirano ulaganje u razvoj djece, stručan trenerski kadar i akvizicije mladih igrača iz Hercegovine i regije želimo stvoriti bazen talenata i postati{" "}
+              <span className="text-primary font-bold">
+                košarkaški centar južnog Balkana
+              </span>.
             </p>
           </div>
         </div>
