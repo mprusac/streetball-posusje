@@ -7,6 +7,7 @@ import playerRamljak from "@/assets/player-ramljak.png";
 import player4 from "@/assets/player-4.jpg";
 import player5 from "@/assets/player-5.jpg";
 import playerKovac from "@/assets/player-kovac.png";
+import playerDerek from "@/assets/player-derek.png";
 
 interface Player {
   id: number;
@@ -56,7 +57,7 @@ const players: Player[] = [
     name: "Mirko Đerek",
     position: "Center",
     number: "13",
-    image: player5,
+    image: playerDerek,
     sofascoreLink: "https://www.sofascore.com/basketball/player/mirko-derek/1578853",
     stats: { ppg: 8.3, rpg: 4.5, apg: 2.0, mpg: "" },
   },
@@ -246,7 +247,9 @@ const Team = () => {
                   <img
                     src={player.image}
                     alt={player.name}
-                    className={`w-full h-full object-cover transition-transform duration-500 group-hover:scale-110 object-top ${
+                    className={`w-full h-full object-cover transition-transform duration-500 group-hover:scale-110 ${
+                      player.image === playerDerek ? "object-[center_15%]" : "object-top"
+                    } ${
                       player.image === playerRados ? "sepia-[0.15] saturate-[1.1] brightness-105" : 
                       player.image === playerRamljak ? "sepia-[0.15] saturate-[1.1] brightness-105" :
                       ""
