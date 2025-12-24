@@ -11,6 +11,7 @@ import playerDerek from "@/assets/player-derek.png";
 import playerBegic from "@/assets/player-begic.png";
 import playerProtrka from "@/assets/player-protrka.png";
 import playerBasic from "@/assets/player-basic.png";
+import playerPavkovic from "@/assets/player-pavkovic.png";
 
 interface Player {
   id: number;
@@ -85,8 +86,8 @@ const players: Player[] = [
     id: 7,
     name: "Josip Pavković",
     position: "Guard",
-    number: "08",
-    image: playerRados,
+    number: "12",
+    image: playerPavkovic,
     stats: { ppg: 3.7, rpg: 3.0, apg: 0, mpg: "" },
   },
   {
@@ -254,7 +255,8 @@ const Team = () => {
                       player.image === playerDerek ? "object-[center_15%]" : 
                       player.image === playerBegic ? "object-[center_8%]" : 
                       player.image === playerProtrka ? "object-[center_8%]" : 
-                      player.image === playerBasic ? "object-[center_12%]" : "object-top"
+                      player.image === playerBasic ? "object-[center_12%]" : 
+                      player.image === playerPavkovic ? "object-[center_10%]" : "object-top"
                     } ${
                       player.image === playerRados ? "sepia-[0.15] saturate-[1.1] brightness-105" : 
                       player.image === playerRamljak ? "sepia-[0.15] saturate-[1.1] brightness-105" :
