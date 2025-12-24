@@ -1,4 +1,4 @@
-import { ExternalLink, ChevronLeft, ChevronRight } from "lucide-react";
+import { ExternalLink, ChevronLeft, ChevronRight, Youtube } from "lucide-react";
 import { useRef } from "react";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 
@@ -21,6 +21,7 @@ interface MatchResult {
   awayScore: number;
   isHome: boolean;
   sofaScoreLink: string;
+  youtubeLink?: string;
 }
 
 // Logo mapping
@@ -50,6 +51,7 @@ const results: MatchResult[] = [
     awayScore: 81,
     isHome: false,
     sofaScoreLink: "https://www.sofascore.com/basketball/match/hkk-ljubuski-kk-posusje/TEidsOiOi#id:15014496",
+    youtubeLink: "https://www.youtube.com/live/X2TcwA2sgH0?si=qE7iKg4f61kOe0Ap",
   },
   {
     id: 2,
@@ -70,6 +72,7 @@ const results: MatchResult[] = [
     awayScore: 56,
     isHome: false,
     sofaScoreLink: "https://www.sofascore.com/basketball/match/hkk-grude-kk-posusje/TEidsMiOi#id:15014486",
+    youtubeLink: "https://www.youtube.com/live/1PvUKvtkBkQ?si=he8SIzhogLNQcjw3",
   },
   {
     id: 4,
@@ -80,6 +83,7 @@ const results: MatchResult[] = [
     awayScore: 77,
     isHome: true,
     sofaScoreLink: "https://www.sofascore.com/basketball/match/hkk-rama-kk-posusje/TEidsNiOi#id:15014481",
+    youtubeLink: "https://www.youtube.com/live/7k5R_SHgrEE?si=GGB5YTpvDl_TG0Bt",
   },
   {
     id: 5,
@@ -90,6 +94,7 @@ const results: MatchResult[] = [
     awayScore: 72,
     isHome: true,
     sofaScoreLink: "https://www.sofascore.com/basketball/match/hkk-siroki-ii-kk-posusje/TEidsJiOi#id:15014461",
+    youtubeLink: "https://www.youtube.com/live/M4P4ciZs5Cw?si=jP7sKatpeSwoIt46",
   },
   {
     id: 6,
@@ -194,7 +199,19 @@ const Results = () => {
                 >
                   {/* Header with date and link */}
                   <div className="flex items-center justify-between mb-5">
-                    <div className="w-14" /> {/* Spacer for alignment */}
+                    <div className="w-14 flex justify-center">
+                      {match.youtubeLink && (
+                        <a
+                          href={match.youtubeLink}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          onClick={(e) => e.stopPropagation()}
+                          className="text-muted-foreground hover:text-red-500 transition-colors"
+                        >
+                          <Youtube size={16} />
+                        </a>
+                      )}
+                    </div>
                     <span className="text-xs font-medium text-muted-foreground bg-background/50 px-3 py-1 rounded-full">
                       {match.date}
                     </span>
