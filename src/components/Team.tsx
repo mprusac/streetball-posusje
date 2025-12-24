@@ -249,7 +249,8 @@ const Team = () => {
                     src={player.image}
                     alt={player.name}
                     className={`w-full h-full object-cover transition-transform duration-500 group-hover:scale-110 ${
-                      player.image === playerDerek ? "object-[center_15%]" : "object-top"
+                      player.image === playerDerek ? "object-[center_15%]" : 
+                      player.image === playerBegic ? "object-[center_8%]" : "object-top"
                     } ${
                       player.image === playerRados ? "sepia-[0.15] saturate-[1.1] brightness-105" : 
                       player.image === playerRamljak ? "sepia-[0.15] saturate-[1.1] brightness-105" :
