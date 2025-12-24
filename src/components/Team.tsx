@@ -8,6 +8,7 @@ import player4 from "@/assets/player-4.jpg";
 import player5 from "@/assets/player-5.jpg";
 import playerKovac from "@/assets/player-kovac.png";
 import playerDerek from "@/assets/player-derek.png";
+import playerBegic from "@/assets/player-begic.png";
 
 interface Player {
   id: number;
@@ -39,7 +40,7 @@ const players: Player[] = [
     name: "Ante Begić",
     position: "Forward",
     number: "14",
-    image: player4,
+    image: playerBegic,
     sofascoreLink: "https://www.sofascore.com/basketball/player/ante-begic/2046150",
     stats: { ppg: 16.7, rpg: 7.0, apg: 3.8, mpg: "" },
   },
