@@ -80,6 +80,7 @@ const players: Player[] = [
     position: "Guard",
     number: "08",
     image: playerBasic,
+    sofascoreLink: "https://www.sofascore.com/basketball/player/luka-basic/1965464",
     stats: { ppg: 3.8, rpg: 2.8, apg: 0, mpg: "" },
   },
   {
@@ -88,6 +89,7 @@ const players: Player[] = [
     position: "Guard",
     number: "12",
     image: playerPavkovic,
+    sofascoreLink: "https://www.sofascore.com/basketball/player/josip-pavkovic/1845527",
     stats: { ppg: 3.7, rpg: 3.0, apg: 0, mpg: "" },
   },
   {
