@@ -9,6 +9,7 @@ import player5 from "@/assets/player-5.jpg";
 import playerKovac from "@/assets/player-kovac.png";
 import playerDerek from "@/assets/player-derek.png";
 import playerBegic from "@/assets/player-begic.png";
+import playerProtrka from "@/assets/player-protrka.png";
 
 interface Player {
   id: number;
@@ -67,7 +68,7 @@ const players: Player[] = [
     name: "Marko Protrka",
     position: "Center",
     number: "17",
-    image: player5,
+    image: playerProtrka,
     sofascoreLink: "https://www.sofascore.com/basketball/player/marko-protrka/1578855",
     stats: { ppg: 6.3, rpg: 5.7, apg: 0, mpg: "" },
   },
