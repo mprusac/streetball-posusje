@@ -1,4 +1,4 @@
-import { Facebook, Instagram, Youtube, Twitter } from "lucide-react";
+import { Facebook, Instagram, Youtube } from "lucide-react";
 import logo from "@/assets/logo.png";
 
 const footerLinks = [
@@ -9,10 +9,9 @@ const footerLinks = [
 ];
 
 const socialLinks = [
-  { icon: Facebook, href: "https://facebook.com", label: "Facebook" },
-  { icon: Instagram, href: "https://instagram.com", label: "Instagram" },
+  { icon: Facebook, href: "https://www.facebook.com/kosarkaposusje", label: "Facebook" },
+  { icon: Instagram, href: "https://www.instagram.com/kkposusje/", label: "Instagram" },
   { icon: Youtube, href: "https://youtube.com", label: "YouTube" },
-  { icon: Twitter, href: "https://twitter.com", label: "Twitter" },
 ];
 
 const Footer = () => {
