@@ -97,15 +97,17 @@ const players: Player[] = [
     name: "David Dragoja",
     position: "Guard",
     number: "10",
-    image: playerIan,
+    image: "",
+    sofascoreLink: "https://www.sofascore.com/basketball/player/david-dragoja/2078664",
     stats: { ppg: 0, rpg: 0, apg: 0, mpg: "" },
   },
   {
     id: 9,
-    name: "Stipe Beslić",
+    name: "Stipe Bešlić",
     position: "Guard",
     number: "12",
-    image: player4,
+    image: "",
+    sofascoreLink: "https://www.sofascore.com/basketball/player/stipe-beslic/2339336",
     stats: { ppg: 0, rpg: 0, apg: 0, mpg: "" },
   },
   {
@@ -113,7 +115,8 @@ const players: Player[] = [
     name: "Luka Ramljak",
     position: "Guard",
     number: "15",
-    image: playerRamljak,
+    image: "",
+    sofascoreLink: "https://www.sofascore.com/basketball/player/luka-ramljak/2364289",
     stats: { ppg: 0, rpg: 0, apg: 0, mpg: "" },
   },
   {
@@ -121,16 +124,17 @@ const players: Player[] = [
     name: "Jakov Ramljak",
     position: "Guard",
     number: "16",
-    image: playerRados,
+    image: "",
+    sofascoreLink: "https://www.sofascore.com/basketball/player/jakov-ramljak/1578854",
     stats: { ppg: 0, rpg: 0, apg: 0, mpg: "" },
   },
-  // Dodatni igrači koje je korisnik naveo
   {
     id: 12,
     name: "Ivan Ramljak",
     position: "Guard",
     number: "01",
-    image: playerRamljak,
+    image: "",
+    sofascoreLink: "https://www.sofascore.com/basketball/player/ivan-ramljak/2339345",
     stats: { ppg: 0, rpg: 0, apg: 0, mpg: "" },
   },
   {
@@ -138,7 +142,8 @@ const players: Player[] = [
     name: "Marko Petrović",
     position: "Forward",
     number: "02",
-    image: playerRados,
+    image: "",
+    sofascoreLink: "https://www.sofascore.com/basketball/player/marko-petrovic/2358568",
     stats: { ppg: 0, rpg: 0, apg: 0, mpg: "" },
   },
   {
@@ -146,7 +151,8 @@ const players: Player[] = [
     name: "Ante Pišković",
     position: "Guard",
     number: "03",
-    image: playerIan,
+    image: "",
+    sofascoreLink: "https://www.sofascore.com/basketball/player/ante-piskovic/2364287",
     stats: { ppg: 0, rpg: 0, apg: 0, mpg: "" },
   },
   {
@@ -154,7 +160,7 @@ const players: Player[] = [
     name: "Ante Ramljak",
     position: "Guard",
     number: "14",
-    image: playerRamljak,
+    image: "",
     sofascoreLink: "https://www.sofascore.com/basketball/player/ante-ramljak/2339280",
     stats: { ppg: 0, rpg: 0, apg: 0, mpg: "" },
   },
@@ -250,23 +256,41 @@ const Team = () => {
 
                 {/* Player Image */}
                 <div className="relative h-64 overflow-hidden">
-                  <img
-                    src={player.image}
-                    alt={player.name}
-                    className={`w-full h-full object-cover transition-transform duration-500 group-hover:scale-110 ${
-                      player.image === playerDerek ? "object-[center_15%]" : 
-                      player.image === playerBegic ? "object-[center_8%]" : 
-                      player.image === playerProtrka ? "object-[center_8%]" : 
-                      player.image === playerBasic ? "object-[center_12%]" : 
-                      player.image === playerPavkovic ? "object-[center_10%]" : 
-                      player.image === playerKovac ? "object-[center_5%]" : 
-                      player.name === "Josip Ramljak" ? "object-top scale-115" : "object-top"
-                    } ${
-                      player.image === playerRados ? "sepia-[0.15] saturate-[1.1] brightness-105" : 
-                      player.image === playerRamljak ? "sepia-[0.15] saturate-[1.1] brightness-105" :
-                      ""
-                    }`}
-                  />
+                  {player.image ? (
+                    <img
+                      src={player.image}
+                      alt={player.name}
+                      className={`w-full h-full object-cover transition-transform duration-500 group-hover:scale-110 ${
+                        player.image === playerDerek ? "object-[center_15%]" : 
+                        player.image === playerBegic ? "object-[center_8%]" : 
+                        player.image === playerProtrka ? "object-[center_8%]" : 
+                        player.image === playerBasic ? "object-[center_12%]" : 
+                        player.image === playerPavkovic ? "object-[center_10%]" : 
+                        player.image === playerKovac ? "object-[center_5%]" : 
+                        player.name === "Josip Ramljak" ? "object-top scale-115" : "object-top"
+                      } ${
+                        player.image === playerRados ? "sepia-[0.15] saturate-[1.1] brightness-105" : 
+                        player.image === playerRamljak ? "sepia-[0.15] saturate-[1.1] brightness-105" :
+                        ""
+                      }`}
+                    />
+                  ) : (
+                    <div className="w-full h-full bg-gradient-to-b from-secondary/80 to-secondary flex items-center justify-center relative">
+                      {/* Silhouette */}
+                      <svg 
+                        viewBox="0 0 100 120" 
+                        className="w-32 h-40 text-muted-foreground/40"
+                        fill="currentColor"
+                      >
+                        {/* Head */}
+                        <circle cx="50" cy="25" r="18" />
+                        {/* Body */}
+                        <ellipse cx="50" cy="75" rx="28" ry="35" />
+                        {/* Shoulders */}
+                        <ellipse cx="50" cy="50" rx="35" ry="12" />
+                      </svg>
+                    </div>
+                  )}
                   <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent" />
                 </div>
 
@@ -278,10 +302,6 @@ const Team = () => {
                   <h3 className="text-xl font-display text-foreground mt-1">
                     {player.name}
                   </h3>
-
-                  <p className="text-sm text-muted-foreground mt-2 line-clamp-2">
-                    Ključni igrač naše ekipe koji doprinosi svakoj utakmici.
-                  </p>
 
                   {/* Stats */}
                   <div className="mt-4 flex flex-wrap gap-2">
