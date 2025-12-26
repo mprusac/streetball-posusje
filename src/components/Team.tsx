@@ -20,6 +20,7 @@ interface Player {
   number: string;
   image: string;
   sofascoreLink?: string;
+  description?: string;
   stats: {
     ppg: number;
     rpg: number;
@@ -36,6 +37,7 @@ const players: Player[] = [
     number: "09",
     image: playerKovac,
     sofascoreLink: "https://www.sofascore.com/basketball/player/ante-kovac/1578849",
+    description: "Klupsko dijete i najbolji strijelac momčadi koji svojim iskustvom i eksplozivnim nastupima predvodi ekipu.",
     stats: { ppg: 22.2, rpg: 5.5, apg: 2.0, mpg: "" },
   },
   {
@@ -45,6 +47,7 @@ const players: Player[] = [
     number: "14",
     image: playerBegic,
     sofascoreLink: "https://www.sofascore.com/basketball/player/ante-begic/2046150",
+    description: "Iskusni Posušanin i pouzdano krilo, sposoban preuzeti odgovornost i zabijati u ključnim trenucima.",
     stats: { ppg: 16.7, rpg: 7.0, apg: 3.8, mpg: "" },
   },
   {
@@ -54,6 +57,7 @@ const players: Player[] = [
     number: "04",
     image: playerRamljak,
     sofascoreLink: "https://www.sofascore.com/basketball/player/josip-ramljak/1578845",
+    description: "Energični krilni igrač i jedan od nositelja igre, svestran i često najefikasniji na terenu.",
     stats: { ppg: 16.0, rpg: 6.2, apg: 6.3, mpg: "" },
   },
   {
@@ -63,6 +67,7 @@ const players: Player[] = [
     number: "13",
     image: playerDerek,
     sofascoreLink: "https://www.sofascore.com/basketball/player/mirko-derek/1578853",
+    description: "Veteran pod obručima i vođa na terenu koji pouzdano pokriva poziciju centra te donosi sigurnost pod košem.",
     stats: { ppg: 8.3, rpg: 4.5, apg: 2.0, mpg: "" },
   },
   {
@@ -72,6 +77,7 @@ const players: Player[] = [
     number: "17",
     image: playerProtrka,
     sofascoreLink: "https://www.sofascore.com/basketball/player/marko-protrka/1578855",
+    description: "Mladi centar svijetle budućnosti koji već prikazuje zrelost na parketu, jedan od najvećih klupskih talenata.",
     stats: { ppg: 6.3, rpg: 5.7, apg: 0, mpg: "" },
   },
   {
@@ -81,6 +87,7 @@ const players: Player[] = [
     number: "08",
     image: playerBasic,
     sofascoreLink: "https://www.sofascore.com/basketball/player/luka-basic/1965464",
+    description: "Talentirani 18-godišnjak posuškog omladinskog pogona koji vrijedno gradi put prema seniorskoj košarci.",
     stats: { ppg: 3.8, rpg: 2.8, apg: 0, mpg: "" },
   },
   {
@@ -303,24 +310,30 @@ const Team = () => {
                     {player.name}
                   </h3>
 
-                  {/* Stats */}
-                  <div className="mt-4 flex flex-wrap gap-2">
-                    {player.stats.ppg >= 1 && (
-                      <span className="px-2 py-1 bg-primary/20 text-primary text-xs rounded">
-                        {player.stats.ppg} PPG
-                      </span>
-                    )}
-                    {player.stats.rpg >= 1 && (
-                      <span className="px-2 py-1 bg-primary/20 text-primary text-xs rounded">
-                        {player.stats.rpg} RPG
-                      </span>
-                    )}
-                    {player.stats.apg >= 1 && (
-                      <span className="px-2 py-1 bg-primary/20 text-primary text-xs rounded">
-                        {player.stats.apg} APG
-                      </span>
-                    )}
-                  </div>
+                  {/* Description or Stats */}
+                  {player.description ? (
+                    <p className="mt-3 text-xs text-muted-foreground leading-relaxed line-clamp-3">
+                      {player.description}
+                    </p>
+                  ) : (
+                    <div className="mt-4 flex flex-wrap gap-2">
+                      {player.stats.ppg >= 1 && (
+                        <span className="px-2 py-1 bg-primary/20 text-primary text-xs rounded">
+                          {player.stats.ppg} PPG
+                        </span>
+                      )}
+                      {player.stats.rpg >= 1 && (
+                        <span className="px-2 py-1 bg-primary/20 text-primary text-xs rounded">
+                          {player.stats.rpg} RPG
+                        </span>
+                      )}
+                      {player.stats.apg >= 1 && (
+                        <span className="px-2 py-1 bg-primary/20 text-primary text-xs rounded">
+                          {player.stats.apg} APG
+                        </span>
+                      )}
+                    </div>
+                  )}
 
                   {/* Hover yellow line animation */}
                   <div className="absolute bottom-0 left-0 w-full h-0.5 bg-primary scale-x-0 origin-left transition-transform duration-300 group-hover:scale-x-100" />
