@@ -46,7 +46,7 @@ const players: Player[] = [
     id: 2,
     name: "Ante Begić",
     position: "Forward",
-    number: "14",
+    number: "13",
     image: playerBegic,
     sofascoreLink: "https://www.sofascore.com/basketball/player/ante-begic/2046150",
     description: "Iskusni Posušanin i pouzdano krilo koji preuzima odgovornost i zabija kad je najpotrebnije.",
@@ -76,7 +76,7 @@ const players: Player[] = [
     id: 5,
     name: "Marko Protrka",
     position: "Center",
-    number: "17",
+    number: "18",
     image: playerProtrka,
     sofascoreLink: "https://www.sofascore.com/basketball/player/marko-protrka/1578855",
     description: "Mladi centar svijetle budućnosti koji već prikazuje zrelost na parketu, veliki klupski talent.",
@@ -106,7 +106,7 @@ const players: Player[] = [
     id: 8,
     name: "David Dragoja",
     position: "Guard",
-    number: "10",
+    number: "06",
     image: "",
     sofascoreLink: "https://www.sofascore.com/basketball/player/david-dragoja/2078664",
     description: "18-godišnji krilni igrač koji stječe seniorsko iskustvo, ističe se trudom i potencijalom za prvi tim.",
@@ -116,7 +116,7 @@ const players: Player[] = [
     id: 9,
     name: "Stipe Bešlić",
     position: "Guard",
-    number: "12",
+    number: "05",
     image: "",
     sofascoreLink: "https://www.sofascore.com/basketball/player/stipe-beslic/2339336",
     description: "Mladi igrač iz juniorskog pogona, odlikuje ga velika želja za napretkom i požrtvovnost za tim.",
@@ -126,7 +126,7 @@ const players: Player[] = [
     id: 10,
     name: "Luka Ramljak",
     position: "Guard",
-    number: "15",
+    number: "10",
     image: "",
     sofascoreLink: "https://www.sofascore.com/basketball/player/luka-ramljak/2364289",
     description: "16-godišnji bek šuter i posuški talent s pozivom u kadetsku reprezentaciju BiH.",
@@ -136,7 +136,7 @@ const players: Player[] = [
     id: 11,
     name: "Jakov Ramljak",
     position: "Guard",
-    number: "16",
+    number: "07",
     image: "",
     sofascoreLink: "https://www.sofascore.com/basketball/player/jakov-ramljak/1578854",
     description: "Mladi bek koji marljivo gradi svoju ulogu u ekipi, borben na parketu i sve zapaženiji u rotaciji.",
@@ -146,7 +146,7 @@ const players: Player[] = [
     id: 12,
     name: "Ivan Ramljak",
     position: "Guard",
-    number: "01",
+    number: "15",
     image: "",
     sofascoreLink: "https://www.sofascore.com/basketball/player/ivan-ramljak/2339345",
     description: "Najiskusnije ime u sastavu, povratnik iz europskih liga koji pridonosi znanjem i autoritetom.",
@@ -156,7 +156,7 @@ const players: Player[] = [
     id: 13,
     name: "Marko Petrović",
     position: "Forward",
-    number: "02",
+    number: "14",
     image: "",
     sofascoreLink: "https://www.sofascore.com/basketball/player/marko-petrovic/2358568",
     description: "Kadetski reprezentativac BiH i brzi bek koji pokazuje zrelost i snalažljivost na terenu.",
@@ -166,7 +166,7 @@ const players: Player[] = [
     id: 14,
     name: "Ante Pišković",
     position: "Guard",
-    number: "03",
+    number: "15",
     image: "",
     sofascoreLink: "https://www.sofascore.com/basketball/player/ante-piskovic/2364287",
     description: "Produkt Posušja, mladi razigravač koji unosi energiju s klupe te sazrijeva u seniorskoj konkurenciji.",
@@ -222,42 +222,39 @@ const Team = () => {
           </span>
         </div>
 
-        <div className="relative max-w-[1400px] mx-auto px-16">
-          {/* Scroll Buttons - Outside boxes with yellow background */}
+        <div className="relative max-w-[1400px] mx-auto px-4 md:px-16">
+          {/* Scroll Buttons - Hidden on mobile, visible on desktop */}
           <button
             onClick={() => scroll("left")}
-            className="absolute left-0 top-1/2 -translate-y-1/2 z-10 w-12 h-12 rounded-full bg-primary flex items-center justify-center text-primary-foreground hover:bg-primary/90 hover:scale-110 transition-all duration-300 shadow-lg"
+            className="hidden md:flex absolute left-0 top-1/2 -translate-y-1/2 z-10 w-12 h-12 rounded-full bg-primary items-center justify-center text-primary-foreground hover:bg-primary/90 hover:scale-110 transition-all duration-300 shadow-lg"
           >
             <ChevronLeft size={24} />
           </button>
           <button
             onClick={() => scroll("right")}
-            className="absolute right-0 top-1/2 -translate-y-1/2 z-10 w-12 h-12 rounded-full bg-primary flex items-center justify-center text-primary-foreground hover:bg-primary/90 hover:scale-110 transition-all duration-300 shadow-lg"
+            className="hidden md:flex absolute right-0 top-1/2 -translate-y-1/2 z-10 w-12 h-12 rounded-full bg-primary items-center justify-center text-primary-foreground hover:bg-primary/90 hover:scale-110 transition-all duration-300 shadow-lg"
           >
             <ChevronRight size={24} />
           </button>
 
-          {/* Scrollable Container - Shows exactly 5 */}
+          {/* Scrollable Container - Responsive grid */}
           <div
             ref={scrollRef}
-            className="flex gap-5 overflow-x-auto scrollbar-hide scroll-smooth pb-4"
-            style={{ scrollbarWidth: "none", msOverflowStyle: "none", scrollSnapType: "x mandatory" }}
+            className="flex gap-3 md:gap-5 overflow-x-auto scrollbar-hide scroll-smooth pb-4 snap-x snap-mandatory"
+            style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
           >
             {players.map((player, index) => (
               <div
                 key={player.id}
-                className="group flex-shrink-0 relative bg-gradient-card rounded-lg overflow-hidden transition-all duration-300 hover:scale-[1.03] hover-lift border border-transparent hover:border-primary/30"
+                className="group flex-shrink-0 relative bg-gradient-card rounded-lg overflow-hidden transition-all duration-300 md:hover:scale-[1.03] hover-lift border border-transparent hover:border-primary/30 w-[160px] sm:w-[180px] md:w-[calc((100%-5rem)/5)] md:min-w-[220px] snap-start"
                 style={{
-                  width: 'calc((100% - 5rem) / 5)',
-                  minWidth: '220px',
-                  scrollSnapAlign: 'start',
                   opacity: isVisible ? 1 : 0,
                   transform: isVisible ? "translateX(0)" : "translateX(30px)",
                   transition: `all 0.5s ease ${index * 0.05}s`,
                 }}
               >
-                {/* Player Number Watermark */}
-                <span className="player-number font-display">{player.number}</span>
+                {/* Player Number Watermark - Always visible */}
+                <span className="player-number font-display opacity-20">{player.number}</span>
 
                 {/* SofaScore Link */}
                 {player.sofascoreLink && (
@@ -265,15 +262,16 @@ const Team = () => {
                     href={player.sofascoreLink}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="absolute top-3 right-3 z-20 w-8 h-8 rounded-full bg-primary flex items-center justify-center text-primary-foreground hover:bg-primary/80 hover:scale-110 transition-all duration-300 shadow-lg"
+                    className="absolute top-2 right-2 md:top-3 md:right-3 z-20 w-6 h-6 md:w-8 md:h-8 rounded-full bg-primary flex items-center justify-center text-primary-foreground hover:bg-primary/80 hover:scale-110 transition-all duration-300 shadow-lg"
                     title="Pogledaj na SofaScore"
                   >
-                    <ExternalLink size={16} />
+                    <ExternalLink size={14} className="md:hidden" />
+                    <ExternalLink size={16} className="hidden md:block" />
                   </a>
                 )}
 
                 {/* Player Image */}
-                <div className="relative h-64 overflow-hidden">
+                <div className="relative h-48 md:h-64 overflow-hidden">
                   {player.image ? (
                     <img
                       src={player.image}
@@ -314,41 +312,41 @@ const Team = () => {
                 </div>
 
                 {/* Player Info */}
-                <div className="p-4 relative z-10">
-                  <span className="text-xs uppercase tracking-wider text-primary">
+                <div className="p-3 md:p-4 relative z-10">
+                  <span className="text-[10px] md:text-xs uppercase tracking-wider text-primary">
                     {player.position}
                   </span>
-                  <h3 className="text-xl font-display text-foreground mt-1">
+                  <h3 className="text-base md:text-xl font-display text-foreground mt-1">
                     {player.name}
                   </h3>
 
-                  {/* Description */}
+                  {/* Description - Hidden on mobile */}
                   {player.description && (
-                    <p className="mt-3 text-xs text-muted-foreground leading-relaxed line-clamp-3">
+                    <p className="hidden md:block mt-3 text-xs text-muted-foreground leading-relaxed line-clamp-3">
                       {player.description}
                     </p>
                   )}
 
                   {/* Stats */}
                   {(player.stats.ppg >= 1 || player.stats.rpg >= 1 || player.stats.apg >= 1 || (player.stats.bpg && player.stats.bpg >= 1)) && (
-                    <div className={`flex gap-2 ${player.description ? 'mt-2' : 'mt-4'}`}>
+                    <div className={`flex flex-wrap gap-1 md:gap-2 ${player.description ? 'md:mt-2' : 'md:mt-4'} mt-2`}>
                       {player.stats.ppg >= 1 && (
-                        <span className="px-2 py-1 bg-primary/20 text-primary text-xs rounded whitespace-nowrap">
+                        <span className="px-1.5 md:px-2 py-0.5 md:py-1 bg-primary/20 text-primary text-[10px] md:text-xs rounded whitespace-nowrap">
                           {player.stats.ppg} PPG
                         </span>
                       )}
                       {player.stats.rpg >= 1 && (
-                        <span className="px-2 py-1 bg-primary/20 text-primary text-xs rounded whitespace-nowrap">
+                        <span className="px-1.5 md:px-2 py-0.5 md:py-1 bg-primary/20 text-primary text-[10px] md:text-xs rounded whitespace-nowrap">
                           {player.stats.rpg} RPG
                         </span>
                       )}
                       {player.stats.apg >= 1 && (
-                        <span className="px-2 py-1 bg-primary/20 text-primary text-xs rounded whitespace-nowrap">
+                        <span className="px-1.5 md:px-2 py-0.5 md:py-1 bg-primary/20 text-primary text-[10px] md:text-xs rounded whitespace-nowrap">
                           {player.stats.apg} APG
                         </span>
                       )}
                       {player.stats.bpg && player.stats.bpg >= 1 && (
-                        <span className="px-2 py-1 bg-primary/20 text-primary text-xs rounded whitespace-nowrap">
+                        <span className="px-1.5 md:px-2 py-0.5 md:py-1 bg-primary/20 text-primary text-[10px] md:text-xs rounded whitespace-nowrap">
                           {player.stats.bpg} BPG
                         </span>
                       )}
