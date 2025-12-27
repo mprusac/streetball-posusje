@@ -25,6 +25,7 @@ interface Player {
     ppg: number;
     rpg: number;
     apg: number;
+    bpg?: number;
     mpg: string;
   };
 }
@@ -78,7 +79,7 @@ const players: Player[] = [
     image: playerProtrka,
     sofascoreLink: "https://www.sofascore.com/basketball/player/marko-protrka/1578855",
     description: "Mladi centar svijetle budućnosti koji već prikazuje zrelost na parketu, veliki klupski talent.",
-    stats: { ppg: 7, rpg: 6, apg: 1, mpg: "" },
+    stats: { ppg: 7, rpg: 6, apg: 0, bpg: 1, mpg: "" },
   },
   {
     id: 6,
@@ -327,7 +328,7 @@ const Team = () => {
                   )}
 
                   {/* Stats */}
-                  {(player.stats.ppg >= 1 || player.stats.rpg >= 1 || player.stats.apg >= 1) && (
+                  {(player.stats.ppg >= 1 || player.stats.rpg >= 1 || player.stats.apg >= 1 || (player.stats.bpg && player.stats.bpg >= 1)) && (
                     <div className={`flex gap-2 ${player.description ? 'mt-2' : 'mt-4'}`}>
                       {player.stats.ppg >= 1 && (
                         <span className="px-2 py-1 bg-primary/20 text-primary text-xs rounded whitespace-nowrap">
@@ -342,6 +343,11 @@ const Team = () => {
                       {player.stats.apg >= 1 && (
                         <span className="px-2 py-1 bg-primary/20 text-primary text-xs rounded whitespace-nowrap">
                           {player.stats.apg} APG
+                        </span>
+                      )}
+                      {player.stats.bpg && player.stats.bpg >= 1 && (
+                        <span className="px-2 py-1 bg-primary/20 text-primary text-xs rounded whitespace-nowrap">
+                          {player.stats.bpg} BPG
                         </span>
                       )}
                     </div>
