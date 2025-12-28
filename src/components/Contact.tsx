@@ -55,7 +55,7 @@ const Contact = () => {
           {/* Contact Form */}
           <div className="animate-fade-in-up h-full">
             <div className="bg-secondary/30 border border-border rounded-xl md:rounded-2xl p-5 md:p-8 hover:border-primary/30 transition-all duration-300 h-full flex flex-col">
-              <form onSubmit={handleSubmit} className="space-y-4 md:space-y-5 flex-1 flex flex-col">
+              <form onSubmit={handleSubmit} className="space-y-4 md:space-y-5 flex-1 flex flex-col gap-4">
                 <div className="grid sm:grid-cols-2 gap-3 md:gap-4">
                   <div className="group">
                     <label
@@ -114,7 +114,7 @@ const Contact = () => {
                   />
                 </div>
 
-                <div className="group flex-1">
+                <div className="group">
                   <label
                     htmlFor="message"
                     className="block text-sm font-medium text-foreground mb-2 group-focus-within:text-primary transition-colors"
@@ -129,7 +129,7 @@ const Contact = () => {
                     onChange={handleChange}
                     placeholder="Vaša poruka..."
                     rows={4}
-                    className="bg-background/50 border-border focus:border-primary focus:ring-primary/20 resize-none transition-all duration-300 h-full min-h-[120px]"
+                    className="bg-background/50 border-border focus:border-primary focus:ring-primary/20 resize-none transition-all duration-300 min-h-[120px]"
                   />
                 </div>
 
