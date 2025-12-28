@@ -11,17 +11,22 @@ interface StatItem {
 const stats: StatItem[] = [
   { value: 1975, label: "GODINA OSNUTKA" },
   { value: 150, suffix: "+", label: "AKTIVNIH ČLANOVA" },
-  { value: 6, label: "UZRASNE KATEGORIJE" },
+  { value: 8, label: "UZRASNE KATEGORIJE" },
   { value: 50, label: "GODINA POSTOJANJA" },
 ];
 
-const categories = [
-  "Minibasket U10",
-  "Škola košarke U12",
-  "Mlađi kadeti U14",
-  "Kadeti U16",
-  "Juniori U18",
-  "Seniorska ekipa",
+const maleCategories = [
+  "Predkadeti",
+  "Kadeti",
+  "Juniori",
+  "Seniori",
+];
+
+const femaleCategories = [
+  "Mlađe kadetkinje",
+  "Kadetkinje",
+  "Juniorke",
+  "Seniorke",
 ];
 
 const achievements = [
@@ -132,11 +137,8 @@ const About = () => {
             <p className="text-muted-foreground mb-4 leading-relaxed">
               Klub njeguje više od <span className="text-primary font-semibold">pet desetljeća tradicije</span> rada s mladima i okuplja igrače iz cijele regije.
             </p>
-            <p className="text-muted-foreground mb-4 leading-relaxed">
-              Kroz sustavan rad u omladinskim kategorijama i disciplinirane treninge razvijamo temelje za seniorski tim.
-            </p>
             <p className="text-muted-foreground leading-relaxed">
-              Intenzivnim trudom gradimo <span className="text-primary font-semibold">zajedništvo, odgovornost i timski duh</span> kroz svaki trening. Zajedno težimo stvaranju novih sportskih uspjeha i pozitivnih vrijednosti u lokalnoj zajednici.
+              Kroz sustavan rad u omladinskim kategorijama i disciplinirane treninge razvijamo temelje za seniorski tim. Intenzivnim trudom gradimo <span className="text-primary font-semibold">zajedništvo, odgovornost i timski duh</span> kroz svaki trening. Zajedno težimo stvaranju novih sportskih uspjeha i pozitivnih vrijednosti u lokalnoj zajednici.
             </p>
           </div>
         </div>
@@ -151,22 +153,54 @@ const About = () => {
           <h3 className="text-2xl font-display text-foreground mb-8 uppercase tracking-wider text-center">
             Kategorije
           </h3>
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-            {categories.map((category, index) => (
-              <div
-                key={category}
-                className="group bg-secondary/50 border border-border rounded-lg px-6 py-4 text-center text-sm font-medium text-foreground hover:border-primary hover:bg-primary/10 transition-all duration-300 cursor-default"
-                style={{ 
-                  opacity: catVisible ? 1 : 0,
-                  transform: catVisible ? "translateY(0)" : "translateY(20px)",
-                  transition: `all 0.5s ease ${index * 0.1}s`
-                }}
-              >
-                <span className="group-hover:text-primary transition-colors duration-300">
-                  {category}
-                </span>
-              </div>
-            ))}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {/* Muške kategorije */}
+            <div className="space-y-3">
+              <h4 className="text-sm font-semibold text-primary uppercase tracking-widest text-center mb-4 flex items-center justify-center gap-2">
+                <span className="w-8 h-px bg-primary/50"></span>
+                Muški
+                <span className="w-8 h-px bg-primary/50"></span>
+              </h4>
+              {maleCategories.map((category, index) => (
+                <div
+                  key={category}
+                  className="group bg-gradient-to-r from-secondary/60 to-secondary/30 border border-border rounded-lg px-6 py-4 text-center font-medium text-foreground hover:border-primary hover:from-primary/20 hover:to-primary/10 transition-all duration-300 cursor-default"
+                  style={{ 
+                    opacity: catVisible ? 1 : 0,
+                    transform: catVisible ? "translateY(0)" : "translateY(20px)",
+                    transition: `all 0.5s ease ${index * 0.1}s`
+                  }}
+                >
+                  <span className="group-hover:text-primary transition-colors duration-300">
+                    {category}
+                  </span>
+                </div>
+              ))}
+            </div>
+            
+            {/* Ženske kategorije */}
+            <div className="space-y-3">
+              <h4 className="text-sm font-semibold text-primary uppercase tracking-widest text-center mb-4 flex items-center justify-center gap-2">
+                <span className="w-8 h-px bg-primary/50"></span>
+                Ženske
+                <span className="w-8 h-px bg-primary/50"></span>
+              </h4>
+              {femaleCategories.map((category, index) => (
+                <div
+                  key={category}
+                  className="group bg-gradient-to-r from-secondary/60 to-secondary/30 border border-border rounded-lg px-6 py-4 text-center font-medium text-foreground hover:border-primary hover:from-primary/20 hover:to-primary/10 transition-all duration-300 cursor-default"
+                  style={{ 
+                    opacity: catVisible ? 1 : 0,
+                    transform: catVisible ? "translateY(0)" : "translateY(20px)",
+                    transition: `all 0.5s ease ${(index + 4) * 0.1}s`
+                  }}
+                >
+                  <span className="group-hover:text-primary transition-colors duration-300">
+                    {category}
+                  </span>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
 
@@ -240,7 +274,7 @@ const About = () => {
               <span className="text-primary">VIZIJA</span>
             </h3>
             <p className="text-muted-foreground max-w-3xl mx-auto leading-relaxed text-base md:text-lg relative z-10">
-              Naša vizija temelji se na kontinuiranom razvoju mladih talenata kroz sustavan i kvalitetan rad. Naglašavamo vrijednosti kao što su odgovornost, disciplina i timski duh u svakom aspektu klupskih aktivnosti. Cilj nam je stvoriti okruženje u kojem svaki mladi igrač može napredovati u vrhunskog sportaša i odgovornu osobu. Kroz ulaganja u stručni trenažni kadar, infrastrukturu i partnersku suradnju, nastojimo učvrstiti <span className="text-primary font-bold">HKK Posušje kao košarkaški centar BiH</span> i simbol sportskih uspjeha i pozitivnih životnih vrijednosti.
+              Naša vizija temelji se na kontinuiranom razvoju mladih talenata kroz sustavan i kvalitetan rad. Naglašavamo vrijednosti kao što su <span className="text-primary font-bold">odgovornost, disciplina i timski duh</span> u svakom aspektu klupskih aktivnosti. Cilj nam je stvoriti okruženje u kojem svaki mladi igrač može napredovati u vrhunskog sportaša i odgovornu osobu. Kroz ulaganja u stručni trenažni kadar, infrastrukturu i partnersku suradnju, nastojimo učvrstiti <span className="text-primary font-bold">HKK Posušje kao košarkaški centar BiH</span> i simbol sportskih uspjeha i pozitivnih životnih vrijednosti.
             </p>
           </div>
         </div>
