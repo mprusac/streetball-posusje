@@ -158,7 +158,7 @@ const About = () => {
           <div className="mb-8">
             <h4 className="text-sm font-semibold text-primary uppercase tracking-widest text-center mb-4 flex items-center justify-center gap-2">
               <span className="w-8 h-px bg-primary/50"></span>
-              Muške selekcije
+              Muške
               <span className="w-8 h-px bg-primary/50"></span>
             </h4>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
@@ -184,7 +184,7 @@ const About = () => {
           <div>
             <h4 className="text-sm font-semibold text-primary uppercase tracking-widest text-center mb-4 flex items-center justify-center gap-2">
               <span className="w-8 h-px bg-primary/50"></span>
-              Ženske selekcije
+              Ženske
               <span className="w-8 h-px bg-primary/50"></span>
             </h4>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
