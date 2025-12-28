@@ -104,20 +104,15 @@ const About = () => {
           </h2>
 
           <div className="gold-border-left mb-16 text-center md:text-left mx-auto" style={{ maxWidth: "800px" }}>
-            <p className="text-muted-foreground mb-4">
-              <span className="text-primary font-semibold">HKK POSUŠJE</span> je ponosni
-              košarkaški klub iz srca Zapadne Hercegovine, s tradicijom dugom preko pet
-              desetljeća. Osnovan{" "}
-              <span className="text-primary font-semibold">1975. godine</span>, klub okuplja
-              dječake i mlade muškarce iz cijele regije, razvijajući ih od omladinskih
-              kategorija do seniorskog tima koji se natječe u{" "}
-              <span className="text-primary font-semibold">Premier ligi BiH</span>.
+            <p className="text-lg md:text-xl text-muted-foreground mb-6 leading-relaxed">
+              <span className="text-primary font-bold">HKK Posušje</span> je hrvatski košarkaški klub iz grada Posušja, osnovan{" "}
+              <span className="text-primary font-semibold">1975. godine</span>.
             </p>
-            <p className="text-muted-foreground">
-              U <span className="text-primary font-semibold">50 godina postojanja</span>,
-              klub je okupio preko{" "}
-              <span className="text-primary font-semibold">150 aktivnih članova</span> te se
-              posvetio razvoju mladih talenata, promicanju zajedništva i sportskog duha.
+            <p className="text-muted-foreground mb-4 leading-relaxed">
+              Klub njeguje više od <span className="text-primary font-semibold">pet desetljeća tradicije</span> rada s mladima i okuplja igrače iz cijele regije. Kroz sustavan rad u omladinskim kategorijama i disciplinirane treninge razvijamo temelje za seniorski tim.
+            </p>
+            <p className="text-muted-foreground leading-relaxed">
+              Kroz intenzivan trud gradimo <span className="text-primary font-semibold">zajedništvo, odgovornost i timski duh</span> kroz svaki trening. Zajedno težimo stvaranju novih sportskih uspjeha i pozitivnih vrijednosti u lokalnoj zajednici.
             </p>
           </div>
         </div>
