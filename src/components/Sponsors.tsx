@@ -94,11 +94,11 @@ const Sponsors = () => {
               className="w-full p-6 flex items-center justify-between transition-all duration-300"
             >
               <div>
-                <h3 className="text-xl font-display text-left">
+                <h3 className="text-2xl md:text-3xl font-display text-left">
                   <span className="text-foreground">POSTANI </span>
                   <span className="text-primary">SPONZOR</span>
                 </h3>
-                <p className="text-muted-foreground text-sm text-left">
+                <p className="text-muted-foreground text-base text-left mt-1">
                   Pogledaj sponzorske pakete i podrži klub
                 </p>
               </div>
