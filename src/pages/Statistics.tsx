@@ -333,7 +333,7 @@ const Statistics = () => {
                   >
                     <ChevronLeft size={14} />
                   </button>
-                  <h3 className="font-display text-sm text-foreground">Utakmice</h3>
+                  <h3 className="font-display text-base text-foreground">Utakmice</h3>
                   <button 
                     onClick={() => setMatchPage(p => Math.min(totalPages - 1, p + 1))}
                     disabled={matchPage >= totalPages - 1}
@@ -344,7 +344,6 @@ const Statistics = () => {
                 </div>
               </div>
 
-
               <div className="divide-y divide-border/20">
                 {displayedMatches.map((match) => {
                   const result = getMatchResult(match);
@@ -352,25 +351,25 @@ const Statistics = () => {
                   const awayLogo = getTeamLogo(match.awayTeam);
                   
                   const matchContent = (
-                    <div className={`p-3 hover:bg-secondary/50 transition-all duration-200 ${!match.isUpcoming ? 'cursor-pointer hover:shadow-md' : ''}`}>
+                    <div className={`px-2 py-1.5 hover:bg-secondary/50 transition-all duration-200 ${!match.isUpcoming ? 'cursor-pointer hover:shadow-md' : ''}`}>
                       <div className="flex items-center justify-between">
                         <div className="flex-1">
-                          <div className="flex items-center gap-2 text-[10px] text-muted-foreground mb-1.5">
+                          <div className="flex items-center gap-2 text-xs text-muted-foreground mb-1">
                             <span>{match.date}</span>
                             {match.time && <span>{match.time}</span>}
                             {!match.isUpcoming && <span className="text-muted-foreground/60">FT</span>}
                           </div>
                           
                           {/* Home Team */}
-                          <div className="flex items-center justify-between mb-1">
+                          <div className="flex items-center justify-between mb-0.5">
                             <div className="flex items-center gap-1.5">
                               {homeLogo && <img src={homeLogo} alt="" className="w-4 h-4 object-contain" />}
-                              <span className={`text-xs ${match.homeTeam.includes("Posušje") ? "text-primary font-medium" : "text-foreground"}`}>
+                              <span className={`text-sm font-medium ${match.homeTeam.includes("Posušje") ? "text-primary" : "text-foreground"}`}>
                                 {match.homeTeam}
                               </span>
                             </div>
                             {!match.isUpcoming && (
-                              <span className={`text-xs font-medium ${match.homeScore! > match.awayScore! ? "text-foreground" : "text-muted-foreground"}`}>
+                              <span className={`text-sm font-bold ${match.homeScore! > match.awayScore! ? "text-foreground" : "text-muted-foreground"}`}>
                                 {match.homeScore}
                               </span>
                             )}
@@ -380,12 +379,12 @@ const Statistics = () => {
                           <div className="flex items-center justify-between">
                             <div className="flex items-center gap-1.5">
                               {awayLogo && <img src={awayLogo} alt="" className="w-4 h-4 object-contain" />}
-                              <span className={`text-xs ${match.awayTeam.includes("Posušje") ? "text-primary font-medium" : "text-foreground"}`}>
+                              <span className={`text-sm font-medium ${match.awayTeam.includes("Posušje") ? "text-primary" : "text-foreground"}`}>
                                 {match.awayTeam}
                               </span>
                             </div>
                             {!match.isUpcoming && (
-                              <span className={`text-xs font-medium ${match.awayScore! > match.homeScore! ? "text-foreground" : "text-muted-foreground"}`}>
+                              <span className={`text-sm font-bold ${match.awayScore! > match.homeScore! ? "text-foreground" : "text-muted-foreground"}`}>
                                 {match.awayScore}
                               </span>
                             )}
