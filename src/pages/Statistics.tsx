@@ -39,6 +39,10 @@ import playerBegic from "@/assets/player-begic.png";
 import playerPavkovic from "@/assets/player-pavkovic-new.png";
 import playerBasicLuka from "@/assets/player-basic-luka.png";
 
+// Import flag images
+import flagBih from "@/assets/flags/bih-flag.png";
+import flagCro from "@/assets/flags/cro-flag.png";
+
 // Logo mapping
 const teamLogos: Record<string, string> = {
   "HKK Grude": logoGrude,
@@ -160,23 +164,30 @@ const womenStandings: WomenStanding[] = [
   { position: 4, team: "HŽKK Tomislav", points: 1 },
 ];
 
-// Players roster - from Team.tsx
+// Players roster - from Team.tsx with updated info from SofaScore
 const players: Player[] = [
-  { number: "09", name: "Ante Kovač", position: "Krilo", nationality: "BIH", height: "190 cm", dateOfBirth: "30.05.2001", age: 24, image: playerKovac, sofascoreLink: "https://www.sofascore.com/player/ante-kovac/1112283" },
-  { number: "13", name: "Ante Begić", position: "Krilo", nationality: "BIH", height: "205 cm", image: playerBegic, sofascoreLink: "https://www.sofascore.com/player/ante-begic/1230556" },
   { number: "04", name: "Josip Ramljak", position: "Bek", nationality: "BIH", height: "190 cm", dateOfBirth: "18.08.2000", age: 25, image: playerRamljak, sofascoreLink: "https://www.sofascore.com/player/josip-ramljak/1112282" },
+  { number: "05", name: "Gabrijel Biško", position: "Bek", nationality: "BIH", height: "192 cm", dateOfBirth: "01.01.2003", age: 22, sofascoreLink: "https://www.sofascore.com/player/gabrijel-bisko/1278286" },
+  { number: "14", name: "Ante Ramljak", position: "Bek", nationality: "HRV", height: "189 cm", sofascoreLink: "https://www.sofascore.com/player/ante-ramljak/1278281" },
+  { number: "06", name: "Dominik Jukić", position: "Bek", nationality: "BIH", dateOfBirth: "25.07.1994", age: 31, sofascoreLink: "https://www.sofascore.com/player/dominik-jukic/1278284" },
+  { number: "11", name: "Triston Matthews", position: "Bek", nationality: "CAN", height: "195 cm", dateOfBirth: "16.09.1998", age: 27, sofascoreLink: "https://www.sofascore.com/player/triston-matthews/1278285" },
+  { number: "13", name: "Nemanja Simović", position: "Bek", nationality: "SRB", height: "192 cm", dateOfBirth: "19.11.1995", age: 30, sofascoreLink: "https://www.sofascore.com/player/nemanja-simovic/1278287" },
+  { number: "03", name: "Ian Krishnan", position: "Bek/Krilo", nationality: "USA", height: "187 cm", dateOfBirth: "16.11.1998", age: 27, sofascoreLink: "https://www.sofascore.com/player/ian-krishnan/1278283" },
+  { number: "17", name: "Marko Protrka", position: "Centar", nationality: "BIH", dateOfBirth: "21.01.2007", age: 18, image: playerProtrka, sofascoreLink: "https://www.sofascore.com/player/marko-protrka/1278282" },
   { number: "13", name: "Mirko Đerek", position: "Centar", nationality: "HRV", dateOfBirth: "25.06.1990", age: 35, image: playerDerek, sofascoreLink: "https://www.sofascore.com/player/mirko-derek/242918" },
-  { number: "18", name: "Marko Protrka", position: "Centar", nationality: "BIH", dateOfBirth: "21.01.2007", age: 18, image: playerProtrka, sofascoreLink: "https://www.sofascore.com/player/marko-protrka/1278282" },
-  { number: "08", name: "Luka Bašić", position: "Bek", nationality: "BIH", height: "198 cm", image: playerBasicLuka, sofascoreLink: "https://www.sofascore.com/player/luka-basic/1230554" },
-  { number: "12", name: "Josip Pavković", position: "Krilo", nationality: "BIH", height: "201 cm", image: playerPavkovic, sofascoreLink: "https://www.sofascore.com/player/josip-pavkovic/1175655" },
+  { number: "09", name: "Ante Kovač", position: "Krilo", nationality: "BIH", height: "190 cm", dateOfBirth: "30.05.2001", age: 24, image: playerKovac, sofascoreLink: "https://www.sofascore.com/player/ante-kovac/1112283" },
   { number: "06", name: "David Dragoja", position: "Bek", nationality: "BIH", dateOfBirth: "05.09.2007", age: 18, sofascoreLink: "https://www.sofascore.com/player/david-dragoja/1278284" },
-  { number: "05", name: "Stipe Bešlić", position: "Bek", nationality: "BIH", sofascoreLink: "https://www.sofascore.com/player/stipe-beslic/1278286" },
-  { number: "10", name: "Luka Ramljak", position: "Bek", nationality: "BIH", sofascoreLink: "https://www.sofascore.com/player/luka-ramljak/1278285" },
-  { number: "07", name: "Jakov Ramljak", position: "Bek", nationality: "BIH", sofascoreLink: "https://www.sofascore.com/player/jakov-ramljak/1230558" },
-  { number: "15", name: "Ivan Ramljak", position: "Bek", nationality: "BIH", sofascoreLink: "https://www.sofascore.com/player/ivan-ramljak/1278287" },
-  { number: "14", name: "Marko Petrović", position: "Krilo", nationality: "BIH", sofascoreLink: "https://www.sofascore.com/player/marko-petrovic/1278283" },
-  { number: "15", name: "Ante Pišković", position: "Bek", nationality: "BIH", sofascoreLink: "https://www.sofascore.com/player/ante-piskovic/1278288" },
-  { number: "14", name: "Ante Ramljak", position: "Bek", nationality: "BIH", height: "189 cm", sofascoreLink: "https://www.sofascore.com/player/ante-ramljak/1278281" },
+  { number: "62", name: "Toni Ćutuk", position: "Krilo", nationality: "BIH", height: "201 cm", dateOfBirth: "23.08.1999", age: 26, sofascoreLink: "https://www.sofascore.com/player/toni-cutuk/1175655" },
+  { number: "14", name: "Ante Begić", position: "Krilo", nationality: "BIH", height: "197 cm", dateOfBirth: "08.09.1995", age: 30, image: playerBegic, sofascoreLink: "https://www.sofascore.com/player/ante-begic/1230556" },
+  { number: "10", name: "Luka Ramljak", position: "Bek", nationality: "HRV", sofascoreLink: "https://www.sofascore.com/player/luka-ramljak/1278285" },
+  { number: "08", name: "Luka Bašić", position: "Bek", nationality: "BIH", dateOfBirth: "15.07.2007", age: 18, image: playerBasicLuka, sofascoreLink: "https://www.sofascore.com/player/luka-basic/1230554" },
+  { number: "12", name: "Marko Ramljak", position: "Bek", nationality: "BIH", dateOfBirth: "19.10.2009", age: 16, sofascoreLink: "https://www.sofascore.com/player/marko-ramljak/1230558" },
+  { number: "05", name: "Stipe Bešlić", position: "Bek", nationality: "HRV", sofascoreLink: "https://www.sofascore.com/player/stipe-beslic/1278286" },
+  { number: "14", name: "Marko Petrović", position: "Krilo", nationality: "-", sofascoreLink: "https://www.sofascore.com/player/marko-petrovic/1278283" },
+  { number: "05", name: "Ante Bešlić", position: "Bek", nationality: "HRV", sofascoreLink: "https://www.sofascore.com/player/ante-beslic/1278288" },
+  { number: "15", name: "Ante Pišković", position: "Bek", nationality: "HRV", sofascoreLink: "https://www.sofascore.com/player/ante-piskovic/1278288" },
+  { number: "06", name: "Darryl Anthony Owens II", position: "Krilo", nationality: "USA", dateOfBirth: "04.06.1997", age: 28, sofascoreLink: "https://www.sofascore.com/player/darryl-owens/1278284" },
+  { number: "15", name: "Ivan Ramljak", position: "Bek", nationality: "HRV", sofascoreLink: "https://www.sofascore.com/player/ivan-ramljak/1278287" },
 ];
 
 // Top players data
@@ -233,6 +244,12 @@ const Statistics = () => {
     return posusjeScore! > opponentScore! ? "W" : "L";
   };
 
+  const getFlagImage = (nationality: string) => {
+    if (nationality === "BIH") return flagBih;
+    if (nationality === "HRV" || nationality === "CRO") return flagCro;
+    return null;
+  };
+
   const getFlagEmoji = (nationality: string) => {
     const flags: Record<string, string> = {
       "BIH": "🇧🇦",
@@ -282,7 +299,7 @@ const Statistics = () => {
           <div className="lg:col-span-3 space-y-5">
             {/* Recent Form */}
             <div className="bg-secondary/30 rounded-xl p-3 border border-border/30 hover:border-primary/30 hover:shadow-lg hover:shadow-primary/5 transition-all duration-300">
-              <h3 className="font-display text-base text-foreground mb-3">Nedavna forma</h3>
+              <h3 className="font-display text-base text-foreground mb-3 text-center">Nedavna forma</h3>
               
               {/* Dynamic text - changes on hover */}
               <p className="text-[10px] text-muted-foreground text-center mb-2 h-4 transition-all duration-200">
@@ -323,7 +340,7 @@ const Statistics = () => {
             </div>
 
             {/* Games */}
-            <div className="bg-secondary/30 rounded-xl border border-border/30 hover:border-primary/30 hover:shadow-lg hover:shadow-primary/5 transition-all duration-300">
+            <div className="bg-secondary/30 rounded-xl border border-border/30 hover:border-primary/30 hover:shadow-lg hover:shadow-primary/5 transition-all duration-300 -mt-1">
               <div className="p-2 border-b border-border/30">
                 <div className="flex items-center justify-between">
                   <button 
@@ -404,9 +421,7 @@ const Statistics = () => {
                     </div>
                   );
                   
-                  return match.isUpcoming ? (
-                    <div key={match.id}>{matchContent}</div>
-                  ) : (
+                  return match.sofascoreLink ? (
                     <a 
                       key={match.id} 
                       href={match.sofascoreLink} 
@@ -416,6 +431,8 @@ const Statistics = () => {
                     >
                       {matchContent}
                     </a>
+                  ) : (
+                    <div key={match.id}>{matchContent}</div>
                   );
                 })}
               </div>
@@ -479,9 +496,9 @@ const Statistics = () => {
                           >
                             <TableCell className="text-center font-bold text-sm">{team.position}</TableCell>
                             <TableCell>
-                              <div className="flex items-center gap-1.5">
+                              <div className="flex items-center gap-2">
                                 {getTeamLogo(team.team) && (
-                                  <img src={getTeamLogo(team.team)!} alt="" className="w-5 h-5 object-contain" />
+                                  <img src={getTeamLogo(team.team)!} alt="" className="w-7 h-7 object-contain" />
                                 )}
                                 <span className={`text-sm font-bold ${team.team === "KK Posušje" ? "text-primary" : ""}`}>
                                   {team.team}
@@ -530,9 +547,9 @@ const Statistics = () => {
                           >
                             <TableCell className="text-center font-bold text-sm">{team.position}</TableCell>
                             <TableCell>
-                              <div className="flex items-center gap-1.5">
+                              <div className="flex items-center gap-2">
                                 {getTeamLogo(team.team) && (
-                                  <img src={getTeamLogo(team.team)!} alt="" className="w-5 h-5 object-contain" />
+                                  <img src={getTeamLogo(team.team)!} alt="" className="w-7 h-7 object-contain" />
                                 )}
                                 <span className={`text-sm font-bold ${team.team.includes("Posušje") ? "text-primary" : ""}`}>
                                   {team.team}
@@ -650,10 +667,10 @@ const Statistics = () => {
                 <div className="bg-secondary/30 rounded-xl border border-border/30 overflow-hidden hover:border-primary/30 hover:shadow-xl hover:shadow-primary/5 transition-all duration-300">
                   {/* Sub-tabs */}
                   <div className="p-3 border-b border-border/30">
-                    <div className="flex gap-2">
+                    <div className="flex gap-2 justify-center">
                       <button
                         onClick={() => setActivePlayersTab("squad")}
-                        className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-all duration-200 hover:scale-105 ${
+                        className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 hover:scale-105 ${
                           activePlayersTab === "squad" 
                             ? "bg-primary text-primary-foreground shadow-lg shadow-primary/20" 
                             : "bg-background/30 text-muted-foreground hover:text-foreground hover:bg-background/50"
@@ -663,7 +680,7 @@ const Statistics = () => {
                       </button>
                       <button
                         onClick={() => setActivePlayersTab("top")}
-                        className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-all duration-200 hover:scale-105 ${
+                        className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 hover:scale-105 ${
                           activePlayersTab === "top" 
                             ? "bg-primary text-primary-foreground shadow-lg shadow-primary/20" 
                             : "bg-background/30 text-muted-foreground hover:text-foreground hover:bg-background/50"
@@ -678,58 +695,64 @@ const Statistics = () => {
                     <Table>
                       <TableHeader>
                         <TableRow className="hover:bg-transparent border-border/30">
-                          <TableHead className="w-12 text-center text-sm font-bold">Broj</TableHead>
-                          <TableHead className="w-12 text-sm font-bold"></TableHead>
-                          <TableHead className="text-sm font-bold">Igrač</TableHead>
-                          <TableHead className="text-center text-sm font-bold">Nacionalnost</TableHead>
-                          <TableHead className="text-center text-sm font-bold">Visina</TableHead>
-                          <TableHead className="text-center text-sm font-bold">Datum rođenja</TableHead>
-                          <TableHead className="text-center text-sm font-bold">Dob</TableHead>
+                          <TableHead className="w-14 text-center text-base font-bold">Broj</TableHead>
+                          <TableHead className="w-14 text-base font-bold"></TableHead>
+                          <TableHead className="text-base font-bold">Igrač</TableHead>
+                          <TableHead className="text-center text-base font-bold">Nacionalnost</TableHead>
+                          <TableHead className="text-center text-base font-bold">Visina</TableHead>
+                          <TableHead className="text-center text-base font-bold">Datum rođenja</TableHead>
+                          <TableHead className="text-center text-base font-bold">Dob</TableHead>
                         </TableRow>
                       </TableHeader>
                       <TableBody>
                         {players.map((player, index) => (
                           <TableRow key={index} className="hover:bg-secondary/50 border-border/20 transition-all duration-200 hover:shadow-md group">
-                            <TableCell className="font-bold text-primary text-center text-sm">{player.number}</TableCell>
+                            <TableCell className="font-bold text-primary text-center text-base">{player.number}</TableCell>
                             <TableCell>
                               {player.sofascoreLink ? (
                                 <a 
                                   href={player.sofascoreLink} 
                                   target="_blank" 
                                   rel="noopener noreferrer"
-                                  className="flex items-center justify-center w-6 h-6 rounded-full bg-primary/20 text-primary hover:bg-primary hover:text-primary-foreground transition-all duration-200 hover:scale-110"
+                                  className="flex items-center justify-center w-7 h-7 rounded-full bg-primary/20 text-primary hover:bg-primary hover:text-primary-foreground transition-all duration-200 hover:scale-110"
                                   title="Pogledaj na SofaScore"
                                 >
-                                  <ExternalLink size={12} />
+                                  <ExternalLink size={14} />
                                 </a>
                               ) : (
-                                <div className="w-6 h-6" />
+                                <div className="w-7 h-7" />
                               )}
                             </TableCell>
                             <TableCell>
-                              <div className="flex items-center gap-2">
-                                <div className="w-8 h-8 rounded-full bg-secondary overflow-hidden group-hover:ring-2 group-hover:ring-primary/30 transition-all duration-200">
+                              <div className="flex items-center gap-3">
+                                <div className="w-10 h-10 rounded-full bg-secondary overflow-hidden group-hover:ring-2 group-hover:ring-primary/30 transition-all duration-200">
                                   {player.image ? (
                                     <img src={player.image} alt={player.name} className="w-full h-full object-cover object-top" />
                                   ) : (
-                                    <div className="w-full h-full bg-muted flex items-center justify-center text-muted-foreground text-[10px]">
+                                    <div className="w-full h-full bg-muted flex items-center justify-center text-muted-foreground text-xs">
                                       {player.name.charAt(0)}
                                     </div>
                                   )}
                                 </div>
                                 <div>
-                                  <p className="font-bold text-sm">{player.name}</p>
-                                  <p className="text-xs text-primary font-medium">{player.position}</p>
+                                  <p className="font-bold text-base">{player.name}</p>
+                                  <p className="text-sm text-primary font-medium">{player.position}</p>
                                 </div>
                               </div>
                             </TableCell>
                             <TableCell className="text-center">
-                              <span className="text-sm mr-0.5">{getFlagEmoji(player.nationality)}</span>
-                              <span className="text-sm font-bold">{player.nationality}</span>
+                              <div className="flex items-center justify-center gap-1.5">
+                                {getFlagImage(player.nationality) ? (
+                                  <img src={getFlagImage(player.nationality)!} alt={player.nationality} className="w-5 h-5 rounded-full object-cover" />
+                                ) : (
+                                  <span className="text-base">{getFlagEmoji(player.nationality)}</span>
+                                )}
+                                <span className="text-base font-bold">{player.nationality}</span>
+                              </div>
                             </TableCell>
-                            <TableCell className="text-center text-muted-foreground text-sm font-bold">{player.height || "-"}</TableCell>
-                            <TableCell className="text-center text-muted-foreground text-sm font-bold">{player.dateOfBirth || "-"}</TableCell>
-                            <TableCell className="text-center text-muted-foreground text-sm font-bold">{player.age ? `${player.age} god.` : "-"}</TableCell>
+                            <TableCell className="text-center text-muted-foreground text-base font-bold">{player.height || "-"}</TableCell>
+                            <TableCell className="text-center text-muted-foreground text-base font-bold">{player.dateOfBirth || "-"}</TableCell>
+                            <TableCell className="text-center text-muted-foreground text-base font-bold">{player.age ? `${player.age} god.` : "-"}</TableCell>
                           </TableRow>
                         ))}
                       </TableBody>
