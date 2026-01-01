@@ -9,12 +9,12 @@ import action5 from "@/assets/action-5.png";
 import action6 from "@/assets/action-6.png";
 
 const images = [
-  { id: 1, src: action1, orientation: "horizontal" },
-  { id: 2, src: action2, orientation: "vertical" },
-  { id: 3, src: action3, orientation: "horizontal" },
-  { id: 4, src: action4, orientation: "vertical" },
-  { id: 5, src: action5, orientation: "vertical" },
-  { id: 6, src: action6, orientation: "horizontal" },
+  { id: 1, src: action1, title: "Juniori na Telemach Sarajevo Cupu" },
+  { id: 2, src: action2, title: "Prodor mladog Davida Dragoje" },
+  { id: 3, src: action3, title: "Mladi centar Marko Protrka" },
+  { id: 4, src: action4, title: "Timeout" },
+  { id: 5, src: action5, title: "Iskusni Mirko Đerek" },
+  { id: 6, src: action6, title: "Prvi tim" },
 ];
 
 const Gallery = () => {
@@ -54,89 +54,104 @@ const Gallery = () => {
           <span className="section-title-gold">AKCIJI</span>
         </h2>
 
-        {/* Compact Bento Grid */}
-        <div className="grid grid-cols-3 md:grid-cols-4 gap-2 md:gap-3 max-w-4xl mx-auto" style={{ gridAutoRows: "120px" }}>
-          {/* Horizontal - spans 2 cols */}
+        {/* Bento Grid Layout */}
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-4 max-w-5xl mx-auto">
+          {/* Row 1: Tall left, Square middle, Wide right */}
           <div 
-            className="col-span-2 row-span-1 group relative overflow-hidden rounded-lg cursor-pointer animate-fade-in-up hover-lift"
-            onClick={() => openLightbox(0)}
-          >
-            <img
-              src={action1}
-              alt="Akcija 1"
-              className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-            />
-            <div className="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-          </div>
-          
-          {/* Vertical - spans 2 rows */}
-          <div 
-            className="col-span-1 row-span-2 group relative overflow-hidden rounded-lg cursor-pointer animate-fade-in-up hover-lift"
-            style={{ animationDelay: "100ms" }}
+            className="row-span-2 group relative overflow-hidden rounded-xl cursor-pointer animate-fade-in-up hover-lift aspect-[3/4]"
             onClick={() => openLightbox(1)}
           >
             <img
               src={action2}
-              alt="Akcija 2"
+              alt={images[1].title}
               className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
             />
-            <div className="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+            <div className="absolute bottom-0 left-0 right-0 p-4 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+              <span className="text-primary font-bold text-sm uppercase tracking-wider drop-shadow-lg">{images[1].title}</span>
+            </div>
           </div>
 
-          {/* Vertical - spans 2 rows */}
           <div 
-            className="col-span-1 row-span-2 group relative overflow-hidden rounded-lg cursor-pointer animate-fade-in-up hover-lift"
-            style={{ animationDelay: "150ms" }}
-            onClick={() => openLightbox(3)}
+            className="group relative overflow-hidden rounded-xl cursor-pointer animate-fade-in-up hover-lift aspect-square"
+            style={{ animationDelay: "100ms" }}
+            onClick={() => openLightbox(4)}
           >
             <img
-              src={action4}
-              alt="Akcija 4"
+              src={action5}
+              alt={images[4].title}
               className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
             />
-            <div className="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+            <div className="absolute bottom-0 left-0 right-0 p-4 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+              <span className="text-primary font-bold text-sm uppercase tracking-wider drop-shadow-lg">{images[4].title}</span>
+            </div>
           </div>
 
-          {/* Horizontal */}
           <div 
-            className="col-span-2 row-span-1 group relative overflow-hidden rounded-lg cursor-pointer animate-fade-in-up hover-lift"
+            className="group relative overflow-hidden rounded-xl cursor-pointer animate-fade-in-up hover-lift aspect-[4/3]"
+            style={{ animationDelay: "150ms" }}
+            onClick={() => openLightbox(0)}
+          >
+            <img
+              src={action1}
+              alt={images[0].title}
+              className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+            <div className="absolute bottom-0 left-0 right-0 p-4 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+              <span className="text-primary font-bold text-sm uppercase tracking-wider drop-shadow-lg">{images[0].title}</span>
+            </div>
+          </div>
+
+          {/* Row 2: Square middle (continues tall left), Wide right bottom */}
+          <div 
+            className="group relative overflow-hidden rounded-xl cursor-pointer animate-fade-in-up hover-lift aspect-square"
             style={{ animationDelay: "200ms" }}
             onClick={() => openLightbox(2)}
           >
             <img
               src={action3}
-              alt="Akcija 3"
+              alt={images[2].title}
               className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
             />
-            <div className="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+            <div className="absolute bottom-0 left-0 right-0 p-4 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+              <span className="text-primary font-bold text-sm uppercase tracking-wider drop-shadow-lg">{images[2].title}</span>
+            </div>
           </div>
 
-          {/* Vertical */}
           <div 
-            className="col-span-1 row-span-2 group relative overflow-hidden rounded-lg cursor-pointer animate-fade-in-up hover-lift"
+            className="group relative overflow-hidden rounded-xl cursor-pointer animate-fade-in-up hover-lift aspect-[4/3]"
             style={{ animationDelay: "250ms" }}
-            onClick={() => openLightbox(4)}
+            onClick={() => openLightbox(3)}
           >
             <img
-              src={action5}
-              alt="Akcija 5"
+              src={action4}
+              alt={images[3].title}
               className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
             />
-            <div className="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+            <div className="absolute bottom-0 left-0 right-0 p-4 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+              <span className="text-primary font-bold text-sm uppercase tracking-wider drop-shadow-lg">{images[3].title}</span>
+            </div>
           </div>
 
-          {/* Horizontal - spans 3 cols */}
+          {/* Row 3: Wide bottom spanning 2 cols + Tall right */}
           <div 
-            className="col-span-3 row-span-1 group relative overflow-hidden rounded-lg cursor-pointer animate-fade-in-up hover-lift"
+            className="col-span-2 group relative overflow-hidden rounded-xl cursor-pointer animate-fade-in-up hover-lift aspect-[2/1]"
             style={{ animationDelay: "300ms" }}
             onClick={() => openLightbox(5)}
           >
             <img
               src={action6}
-              alt="Akcija 6"
+              alt={images[5].title}
               className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
             />
-            <div className="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+            <div className="absolute bottom-0 left-0 right-0 p-4 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+              <span className="text-primary font-bold text-sm uppercase tracking-wider drop-shadow-lg">{images[5].title}</span>
+            </div>
           </div>
         </div>
 
