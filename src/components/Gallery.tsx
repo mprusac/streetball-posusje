@@ -10,12 +10,12 @@ import action5 from "@/assets/action-5.png";
 import action6 from "@/assets/action-6.png";
 
 const images = [
-  { id: 1, src: action2, title: "Prodor mladog Davida Dragoje", objectPosition: "center center" },
-  { id: 2, src: action5, title: "Iskusni Mirko Đerek", objectPosition: "center" },
+  { id: 1, src: action2, title: "Timeout", objectPosition: "center center" },
+  { id: 2, src: action5, title: "Mladi centar Marko Protrka", objectPosition: "center" },
   { id: 3, src: action1, title: "Juniori na Telemach Sarajevo Cupu", objectPosition: "center" },
-  { id: 4, src: action3, title: "Mladi centar Marko Protrka", objectPosition: "center" },
-  { id: 5, src: action6, title: "Akcija na utakmici", objectPosition: "center" },
-  { id: 6, src: action4, title: "Timeout", objectPosition: "center top" },
+  { id: 4, src: action3, title: "Prodor mladog Davida Dragoje", objectPosition: "center" },
+  { id: 5, src: action6, title: "Iskusni Mirko Đerek", objectPosition: "center" },
+  { id: 6, src: action4, title: "Prvi tim", objectPosition: "center top" },
 ];
 
 const Gallery = () => {
@@ -95,24 +95,24 @@ const Gallery = () => {
           <span className="section-title-gold">AKCIJI</span>
         </h2>
 
-        {/* Bento Grid Layout - 3 columns */}
-        <div className="grid grid-cols-3 gap-2 md:gap-3 max-w-3xl mx-auto" style={{ gridAutoRows: "70px" }}>
-          {/* Left column - Prodor (3 rows = 60%) */}
+        {/* Bento Grid Layout - 3 columns, 20% larger */}
+        <div className="grid grid-cols-3 gap-2 md:gap-4 max-w-4xl mx-auto" style={{ gridAutoRows: "84px" }}>
+          {/* Left column - Timeout (3 rows = 60%) */}
           <GalleryItem index={0} className="row-span-3" />
           
-          {/* Middle top - Iskusni Mirko (2.5 rows) */}
-          <GalleryItem index={1} className="row-span-2" style={{ animationDelay: "50ms" }} />
+          {/* Middle top - Mladi centar (2.5 rows = 50%) */}
+          <GalleryItem index={1} className="row-span-3" style={{ animationDelay: "50ms" }} />
           
           {/* Right top - Juniori (2 rows = 40%) */}
           <GalleryItem index={2} className="row-span-2" style={{ animationDelay: "100ms" }} />
           
-          {/* Middle - Mladi centar Marko (2.5 rows) */}
-          <GalleryItem index={3} className="row-span-2" style={{ animationDelay: "150ms" }} />
+          {/* Middle bottom - Prodor (2.5 rows = 50%) */}
+          <GalleryItem index={3} className="row-span-3" style={{ animationDelay: "150ms" }} />
           
-          {/* Right - Akcija (3 rows = 60%) */}
+          {/* Right - Iskusni Mirko (3 rows = 60%) */}
           <GalleryItem index={4} className="row-span-3" style={{ animationDelay: "200ms" }} />
           
-          {/* Bottom left - Timeout (2 rows = 40%) */}
+          {/* Bottom left - Prvi tim (2 rows = 40%) */}
           <GalleryItem index={5} className="row-span-2" style={{ animationDelay: "250ms" }} />
         </div>
 
