@@ -96,24 +96,24 @@ const Gallery = () => {
         </h2>
 
         {/* Bento Grid Layout - 3 columns */}
-        <div className="grid grid-cols-3 gap-2 md:gap-3 max-w-3xl mx-auto" style={{ gridAutoRows: "80px" }}>
-          {/* Left column - Prodor (3 rows) */}
+        <div className="grid grid-cols-3 gap-2 md:gap-3 max-w-3xl mx-auto" style={{ gridAutoRows: "70px" }}>
+          {/* Left column - Prodor (3 rows = 60%) */}
           <GalleryItem index={0} className="row-span-3" />
           
-          {/* Middle top - Iskusni Mirko (2 rows) */}
+          {/* Middle top - Iskusni Mirko (2.5 rows) */}
           <GalleryItem index={1} className="row-span-2" style={{ animationDelay: "50ms" }} />
           
-          {/* Right top - Juniori (2 rows) */}
+          {/* Right top - Juniori (2 rows = 40%) */}
           <GalleryItem index={2} className="row-span-2" style={{ animationDelay: "100ms" }} />
           
-          {/* Middle - Mladi centar Marko (2 rows) */}
+          {/* Middle - Mladi centar Marko (2.5 rows) */}
           <GalleryItem index={3} className="row-span-2" style={{ animationDelay: "150ms" }} />
           
-          {/* Right - Akcija (2 rows) */}
-          <GalleryItem index={4} className="row-span-2" style={{ animationDelay: "200ms" }} />
+          {/* Right - Akcija (3 rows = 60%) */}
+          <GalleryItem index={4} className="row-span-3" style={{ animationDelay: "200ms" }} />
           
-          {/* Bottom left - Timeout (1 row) */}
-          <GalleryItem index={5} className="row-span-1" style={{ animationDelay: "250ms" }} />
+          {/* Bottom left - Timeout (2 rows = 40%) */}
+          <GalleryItem index={5} className="row-span-2" style={{ animationDelay: "250ms" }} />
         </div>
 
         <div className="text-center mt-10">
