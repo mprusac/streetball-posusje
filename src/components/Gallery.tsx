@@ -12,10 +12,10 @@ import action6 from "@/assets/action-6.png";
 const images = [
   { id: 1, src: action2, title: "Timeout", objectPosition: "center center" },
   { id: 2, src: action5, title: "Mladi centar Marko Protrka", objectPosition: "center" },
-  { id: 3, src: action1, title: "Juniori na Telemach Sarajevo Cupu", objectPosition: "center" },
-  { id: 4, src: action3, title: "Prodor mladog Davida Dragoje", objectPosition: "center" },
+  { id: 3, src: action1, title: "Juniori na Sarajevo Cupu", objectPosition: "center" },
+  { id: 4, src: action3, title: "Prodor Davida Dragoje", objectPosition: "center" },
   { id: 5, src: action6, title: "Iskusni Mirko Đerek", objectPosition: "center" },
-  { id: 6, src: action4, title: "Prvi tim", objectPosition: "center top" },
+  { id: 6, src: action4, title: "Izlazak na teren", objectPosition: "center top" },
 ];
 
 const Gallery = () => {

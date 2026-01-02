@@ -8,7 +8,7 @@ const navLinks = [
   { href: "/statistika", label: "Statistika", isRoute: true },
   { href: "#vijesti", label: "Vijesti" },
   { href: "#tim", label: "Tim" },
-  { href: "#galerija", label: "Galerija" },
+  { href: "/galerija", label: "Galerija", isRoute: true },
   { href: "#kontakt", label: "Kontakt" },
 ];
 
