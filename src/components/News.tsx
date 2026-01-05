@@ -90,10 +90,12 @@ const News = () => {
         </div>
 
         {/* Sve vijesti button */}
-        <div className="text-center mt-10">
-          <Link to="/vijesti" className="inline-flex items-center gap-2 px-6 py-3 bg-primary text-primary-foreground rounded-full font-medium hover:bg-primary/90 hover:gap-3 transition-all duration-300 shadow-lg hover:shadow-xl">
+        <div className="flex justify-center mt-10">
+          <Link 
+            to="/vijesti"
+            className="px-8 py-3 rounded-xl bg-primary/20 border border-primary text-primary font-display text-lg tracking-wider hover:bg-primary hover:text-primary-foreground transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-primary/30"
+          >
             Sve vijesti
-            <ArrowRight size={18} />
           </Link>
         </div>
       </div>

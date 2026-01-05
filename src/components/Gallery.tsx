@@ -117,15 +117,12 @@ const Gallery = () => {
           <GalleryItem index={5} className="row-span-3" style={{ animationDelay: "250ms" }} />
         </div>
 
-        <div className="text-center mt-10">
-          <Link to="/galerija">
-            <Button
-              variant="outline"
-              size="lg"
-              className="border-primary text-primary hover:bg-primary hover:text-primary-foreground uppercase tracking-wider"
-            >
-              Sva galerija
-            </Button>
+        <div className="flex justify-center mt-10">
+          <Link 
+            to="/galerija"
+            className="px-8 py-3 rounded-xl bg-primary/20 border border-primary text-primary font-display text-lg tracking-wider hover:bg-primary hover:text-primary-foreground transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-primary/30"
+          >
+            Sva galerija
           </Link>
         </div>
       </div>
