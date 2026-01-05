@@ -1,0 +1,171 @@
+import { useState, useEffect } from "react";
+import { Link, useParams, useNavigate } from "react-router-dom";
+import { ArrowLeft, Calendar, Trophy, Users, Megaphone, Newspaper, ArrowRight } from "lucide-react";
+import { motion } from "framer-motion";
+import Footer from "@/components/Footer";
+import news1 from "@/assets/news-1.jpg";
+import news2 from "@/assets/news-2.jpg";
+import news3 from "@/assets/news-3.jpg";
+
+interface NewsItem {
+  id: number;
+  title: string;
+  excerpt: string;
+  content: string;
+  date: string;
+  category: "utakmica" | "transfer" | "najava" | "klub";
+  image: string;
+}
+
+const allNews: NewsItem[] = [
+  { id: 1, title: "HKK Posušje pobijedio HKK Grude na domaćem terenu", excerpt: "HKK Posušje ostvario je uvjerljivu pobjedu protiv HKK Grude rezultatom 85:72. Ian Krishnan predvodio je ekipu s 24 poena...", content: "HKK Posušje ostvario je uvjerljivu pobjedu protiv HKK Grude rezultatom 85:72. Ian Krishnan predvodio je ekipu s 24 poena i bio ključni igrač utakmice.\n\nKošarkaši HKK Posušja upisali su pobjedu u 4. kolu Premijer lige Herceg Bosne. U utakmici u kojoj je obrana bila na visokoj razini, domaćini su iskoristili sve ponuđene prilike.\n\nMostarci su od početka nametnuli svoj tempo igre, što je rezultiralo vodstvom od 15 poena već na poluvremenu. Unatoč pokušajima gostiju da se vrate u utakmicu, domaćini su kontrolirali rezultat do kraja.", date: "14. 12. 2024.", category: "utakmica", image: news1 },
+  { id: 2, title: "Pobjeda protiv KK Čapljina u gostima", excerpt: "Naši igrači ostvarili su važnu pobjedu na gostovanju kod KK Čapljina rezultatom 82:78...", content: "Naši igrači ostvarili su važnu pobjedu na gostovanju kod KK Čapljina rezultatom 82:78.\n\nBila je to napeta utakmica u kojoj su gosti morali dati sve od sebe za pobjedu. Ključni trenutak bio je u zadnjoj četvrtini kada je naš tim uspješno obranio vodstvo.\n\nOva pobjeda značajna je za plasman u doigravanju.", date: "07. 12. 2024.", category: "utakmica", image: news2 },
+  { id: 3, title: "Poraz od HKK Mostar u napetoj utakmici", excerpt: "Unatoč velikom trudu, HKK Posušje izgubio je od HKK Mostar rezultatom 68:75...", content: "Unatoč velikom trudu, HKK Posušje izgubio je od HKK Mostar rezultatom 68:75.\n\nUtakmica je bila izjednačena do samog kraja, ali su gosti uspjeli iskoristiti nekoliko ključnih grešaka domaćina u završnici susreta.", date: "30. 11. 2024.", category: "utakmica", image: news3 },
+  { id: 4, title: "Uvjerljiva pobjeda nad KK Livno", excerpt: "Dominantna igra naše ekipe donijela je pobjedu 88:65 protiv KK Livno...", content: "Dominantna igra naše ekipe donijela je pobjedu 88:65 protiv KK Livno. Cijela momčad je pridonijela pobjedi s odličnom timskom igrom.", date: "16. 11. 2024.", category: "utakmica", image: news1 },
+  { id: 5, title: "Novo pojačanje stiglo u HKK Posušje", excerpt: "HKK Posušje s ponosom objavljuje dolazak novog igrača koji će pojačati našu seniorsku ekipu za ostatak sezone...", content: "HKK Posušje s ponosom objavljuje dolazak novog igrača koji će pojačati našu seniorsku ekipu za ostatak sezone.\n\nNovi igrač donosi iskustvo i kvalitetu koja će dodatno podići razinu igre naše momčadi.", date: "10. 12. 2024.", category: "transfer", image: news2 },
+  { id: 6, title: "Marko Perić potpisao ugovor", excerpt: "Talentirani mladi igrač Marko Perić potpisao je profesionalni ugovor s našim klubom...", content: "Talentirani mladi igrač Marko Perić potpisao je profesionalni ugovor s našim klubom. Očekujemo da će biti važan dio naše budućnosti.", date: "05. 12. 2024.", category: "transfer", image: news3 },
+  { id: 7, title: "Povratak Ante Kovača nakon ozljede", excerpt: "S veseljem objavljujemo povratak Ante Kovača koji je uspješno završio rehabilitaciju...", content: "S veseljem objavljujemo povratak Ante Kovača koji je uspješno završio rehabilitaciju i spreman je za nastupe.", date: "28. 11. 2024.", category: "transfer", image: news1 },
+  { id: 8, title: "Novi pomoćni trener u stručnom stožeru", excerpt: "Ivan Petrović priključio se našem stručnom stožeru kao pomoćni trener...", content: "Ivan Petrović priključio se našem stručnom stožeru kao pomoćni trener. Donosi bogato iskustvo i nova znanja.", date: "20. 11. 2024.", category: "transfer", image: news2 },
+  { id: 9, title: "Posušje dočekuje Čapljinu u sljedećem kolu", excerpt: "Nakon pobjede na gostovanju, naši momci dočekuju ekipu Čapljine u važnoj utakmici za plasman...", content: "Nakon pobjede na gostovanju, naši momci dočekuju ekipu Čapljine u važnoj utakmici za plasman. Pozivamo sve navijače da dođu i podrže ekipu!", date: "08. 12. 2024.", category: "najava", image: news3 },
+  { id: 10, title: "Derbi protiv HKK Mostar u subotu", excerpt: "Očekuje nas uzbudljiv derbi protiv HKK Mostar u Gradskoj sportskoj dvorani...", content: "Očekuje nas uzbudljiv derbi protiv HKK Mostar u Gradskoj sportskoj dvorani. Ulaznice su dostupne na blagajni dvorane.", date: "01. 12. 2024.", category: "najava", image: news1 },
+  { id: 11, title: "Božićni turnir mladih kategorija", excerpt: "Najavljujemo tradicionalni božićni turnir za mlade kategorije koji će se održati...", content: "Najavljujemo tradicionalni božićni turnir za mlade kategorije. Turnir će okupiti mlade talente iz cijele regije.", date: "15. 12. 2024.", category: "najava", image: news2 },
+  { id: 12, title: "Gostovanje kod KK Široki", excerpt: "Naša ekipa putuje na gostovanje kod KK Široki u susret 12. kola lige...", content: "Naša ekipa putuje na gostovanje kod KK Široki u susret 12. kola lige. Očekujemo zahtjevnu utakmicu protiv kvalitetnog protivnika.", date: "22. 11. 2024.", category: "najava", image: news3 },
+  { id: 13, title: "Završeni radovi na dvorani", excerpt: "S ponosom objavljujemo završetak renovacije Gradske sportske dvorane Posušje...", content: "S ponosom objavljujemo završetak renovacije Gradske sportske dvorane Posušje. Nova dvorana nudi modernije uvjete za igrače i navijače.", date: "12. 12. 2024.", category: "klub", image: news1 },
+  { id: 14, title: "Novi sponzorski ugovor s Vokel d.o.o.", excerpt: "HKK Posušje potpisao je novi višegodišnji sponzorski ugovor s tvrtkom Vokel d.o.o...", content: "HKK Posušje potpisao je novi višegodišnji sponzorski ugovor s tvrtkom Vokel d.o.o. Zahvaljujemo na podršci!", date: "03. 12. 2024.", category: "klub", image: news2 },
+  { id: 15, title: "Upisi u školu košarke", excerpt: "Otvoreni su upisi u školu košarke za dječake rođene 2014-2018. godine...", content: "Otvoreni su upisi u školu košarke za dječake rođene 2014-2018. godine. Za više informacija kontaktirajte nas.", date: "25. 11. 2024.", category: "klub", image: news3 },
+  { id: 16, title: "Godišnja skupština kluba", excerpt: "Održana je godišnja skupština HKK Posušje na kojoj je usvojen plan za sljedeću sezonu...", content: "Održana je godišnja skupština HKK Posušje na kojoj je usvojen plan za sljedeću sezonu i donesene važne odluke za budućnost kluba.", date: "18. 11. 2024.", category: "klub", image: news1 },
+];
+
+const categories = [
+  { id: "sve", label: "Sve", icon: Newspaper },
+  { id: "utakmica", label: "Utakmice", icon: Trophy },
+  { id: "transfer", label: "Transferi", icon: Users },
+  { id: "najava", label: "Najave", icon: Megaphone },
+  { id: "klub", label: "Klub", icon: Newspaper },
+] as const;
+
+const getCategoryLabel = (cat: string) => {
+  const found = categories.find(c => c.id === cat);
+  return found?.label || cat;
+};
+
+const ArticleDetail = ({ article }: { article: NewsItem }) => {
+  const navigate = useNavigate();
+  
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+  return (
+    <div className="min-h-screen bg-background">
+      <div className="pt-8 pb-16">
+        <div className="container mx-auto px-4 max-w-4xl">
+          <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.3 }}>
+            <button onClick={() => navigate("/vijesti")} className="inline-flex items-center gap-3 text-primary hover:text-primary/80 transition-colors mb-8 text-lg">
+              <ArrowLeft className="w-6 h-6" />
+              <span className="font-display tracking-wider text-xl">Nazad na vijesti</span>
+            </button>
+          </motion.div>
+
+          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
+            <span className="inline-block px-3 py-1 bg-primary text-primary-foreground text-sm rounded mb-4">{getCategoryLabel(article.category)}</span>
+            <h1 className="font-display text-3xl md:text-4xl lg:text-5xl text-primary mb-4">{article.title}</h1>
+            <div className="flex items-center gap-2 text-muted-foreground mb-8">
+              <Calendar size={16} />
+              <span>{article.date}</span>
+              <span className="mx-2">•</span>
+              <span>{getCategoryLabel(article.category)}</span>
+            </div>
+            
+            <div className="relative aspect-video overflow-hidden rounded-lg mb-8">
+              <img src={article.image} alt={article.title} className="w-full h-full object-cover" />
+            </div>
+
+            <div className="prose prose-invert max-w-none">
+              {article.content.split('\n\n').map((paragraph, i) => (
+                <p key={i} className="text-foreground/90 text-lg leading-relaxed mb-4">{paragraph}</p>
+              ))}
+            </div>
+          </motion.div>
+        </div>
+      </div>
+      <Footer />
+    </div>
+  );
+};
+
+const NewsPage = () => {
+  const { articleId } = useParams();
+  const [activeCategory, setActiveCategory] = useState<string>("sve");
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+  if (articleId) {
+    const article = allNews.find(n => n.id === parseInt(articleId));
+    if (article) return <ArticleDetail article={article} />;
+  }
+
+  const filteredNews = activeCategory === "sve" ? allNews : allNews.filter(item => item.category === activeCategory);
+
+  return (
+    <div className="min-h-screen bg-background">
+      <div className="pt-8 pb-16">
+        <div className="container mx-auto px-4">
+          <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.3 }}>
+            <Link to="/" className="inline-flex items-center gap-3 text-primary hover:text-primary/80 transition-colors mb-8 text-lg">
+              <ArrowLeft className="w-6 h-6" />
+              <span className="font-display tracking-wider text-xl">Nazad</span>
+            </Link>
+          </motion.div>
+
+          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }} className="text-center mb-12">
+            <h1 className="font-display text-5xl md:text-6xl lg:text-7xl mb-4">
+              <span className="text-white">NAJNOVIJE </span>
+              <span className="text-primary">VIJESTI</span>
+            </h1>
+            <p className="text-muted-foreground text-lg">Ostani u toku sa svim događanjima iz kluba</p>
+          </motion.div>
+
+          <div className="flex flex-wrap justify-center gap-2 md:gap-3 mb-12">
+            {categories.map((category) => {
+              const IconComponent = category.icon;
+              return (
+                <button key={category.id} onClick={() => setActiveCategory(category.id)} className={`flex items-center gap-2 px-4 md:px-6 py-2 md:py-3 rounded-full text-sm md:text-base font-medium transition-all duration-300 ${activeCategory === category.id ? "bg-primary text-primary-foreground" : "bg-secondary/50 text-foreground hover:bg-secondary hover:text-primary"}`}>
+                  <IconComponent size={18} />
+                  {category.label}
+                </button>
+              );
+            })}
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+            {filteredNews.map((item, index) => (
+              <motion.article key={item.id} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4, delay: index * 0.05 }} className="group bg-secondary/30 rounded-lg overflow-hidden border border-border/30 hover:border-primary/30 transition-all duration-300">
+                <div className="relative h-48 overflow-hidden">
+                  <img src={item.image} alt={item.title} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
+                  <span className="absolute top-3 left-3 px-2 py-1 bg-primary/90 text-primary-foreground text-xs rounded">{getCategoryLabel(item.category)}</span>
+                </div>
+                <div className="p-5">
+                  <div className="flex items-center gap-2 text-muted-foreground text-sm mb-3">
+                    <Calendar size={14} />
+                    {item.date}
+                  </div>
+                  <h3 className="text-lg font-bold text-foreground mb-3 line-clamp-2 group-hover:text-primary transition-colors">{item.title}</h3>
+                  <p className="text-muted-foreground text-sm mb-4 line-clamp-3">{item.excerpt}</p>
+                  <Link to={`/vijesti/${item.id}`} className="inline-flex items-center gap-2 text-primary text-sm font-medium hover:gap-3 transition-all">
+                    Pročitaj više <ArrowRight size={16} />
+                  </Link>
+                </div>
+              </motion.article>
+            ))}
+          </div>
+        </div>
+      </div>
+      <Footer />
+    </div>
+  );
+};
+
+export default NewsPage;

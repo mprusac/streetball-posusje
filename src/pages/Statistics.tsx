@@ -355,7 +355,9 @@ const Statistics = () => {
               <div>
                 <h1 className="font-display text-lg text-foreground leading-none">KK Posušje</h1>
                 <div className="flex items-end gap-1 pb-0.5">
-                  <img src={logoKSHB} alt="KSHB" className="w-3 h-3 object-contain" />
+                  <a href="https://www.kshb.ba/" target="_blank" rel="noopener noreferrer" className="hover:opacity-80 transition-opacity">
+                    <img src={logoKSHB} alt="KSHB" className="w-3 h-3 object-contain" />
+                  </a>
                   <p className="text-[10px] text-muted-foreground leading-none">Liga KSHB</p>
                 </div>
               </div>
@@ -542,7 +544,9 @@ const Statistics = () => {
                 <div className="bg-secondary/30 rounded-xl border border-border/30 overflow-hidden hover:border-primary/30 hover:shadow-xl hover:shadow-primary/5 transition-all duration-300">
                   <div className="p-3 border-b border-border/30">
                     <div className="flex items-center gap-2">
-                      <img src={logoKSHB} alt="" className="w-5 h-5 object-contain" />
+                      <a href="https://www.kshb.ba/" target="_blank" rel="noopener noreferrer" className="hover:opacity-80 transition-opacity">
+                        <img src={logoKSHB} alt="" className="w-5 h-5 object-contain" />
+                      </a>
                       <span className="text-xs text-foreground">Liga Košarkaškog saveza Herceg Bosne</span>
                       <span className="text-[10px] text-muted-foreground bg-background/50 px-1.5 py-0.5 rounded">25/26</span>
                       <Select value={leagueCategory} onValueChange={(v) => setLeagueCategory(v as "seniori" | "seniorke")}>

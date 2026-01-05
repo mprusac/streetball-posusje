@@ -1,5 +1,6 @@
-import { Calendar, ArrowRight, Trophy, Users, Megaphone, Newspaper, ChevronLeft, ChevronRight } from "lucide-react";
-import { useRef, useState } from "react";
+import { Calendar, ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
+import { useRef } from "react";
+import { Link } from "react-router-dom";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 import news1 from "@/assets/news-1.jpg";
 import news2 from "@/assets/news-2.jpg";
@@ -15,153 +16,17 @@ interface NewsItem {
 }
 
 const allNews: NewsItem[] = [
-  // Utakmica category
-  {
-    id: 1,
-    title: "HKK Posušje pobijedio HKK Grude na domaćem terenu",
-    excerpt: "HKK Posušje ostvario je uvjerljivu pobjedu protiv HKK Grude rezultatom 85:72. Ian Krishnan predvodio je ekipu s 24 poena...",
-    date: "14. 12. 2024.",
-    category: "utakmica",
-    image: news1,
-  },
-  {
-    id: 2,
-    title: "Pobjeda protiv KK Čapljina u gostima",
-    excerpt: "Naši igrači ostvarili su važnu pobjedu na gostovanju kod KK Čapljina rezultatom 82:78...",
-    date: "07. 12. 2024.",
-    category: "utakmica",
-    image: news2,
-  },
-  {
-    id: 3,
-    title: "Poraz od HKK Mostar u napetoj utakmici",
-    excerpt: "Unatoč velikom trudu, HKK Posušje izgubio je od HKK Mostar rezultatom 68:75...",
-    date: "30. 11. 2024.",
-    category: "utakmica",
-    image: news3,
-  },
-  {
-    id: 4,
-    title: "Uvjerljiva pobjeda nad KK Livno",
-    excerpt: "Dominantna igra naše ekipe donijela je pobjedu 88:65 protiv KK Livno...",
-    date: "16. 11. 2024.",
-    category: "utakmica",
-    image: news1,
-  },
-  // Transfer category
-  {
-    id: 5,
-    title: "Novo pojačanje stiglo u HKK Posušje",
-    excerpt: "HKK Posušje s ponosom objavljuje dolazak novog igrača koji će pojačati našu seniorsku ekipu za ostatak sezone...",
-    date: "10. 12. 2024.",
-    category: "transfer",
-    image: news2,
-  },
-  {
-    id: 6,
-    title: "Marko Perić potpisao ugovor",
-    excerpt: "Talentirani mladi igrač Marko Perić potpisao je profesionalni ugovor s našim klubom...",
-    date: "05. 12. 2024.",
-    category: "transfer",
-    image: news3,
-  },
-  {
-    id: 7,
-    title: "Povratak Ante Kovača nakon ozljede",
-    excerpt: "S veseljem objavljujemo povratak Ante Kovača koji je uspješno završio rehabilitaciju...",
-    date: "28. 11. 2024.",
-    category: "transfer",
-    image: news1,
-  },
-  {
-    id: 8,
-    title: "Novi pomoćni trener u stručnom stožeru",
-    excerpt: "Ivan Petrović priključio se našem stručnom stožeru kao pomoćni trener...",
-    date: "20. 11. 2024.",
-    category: "transfer",
-    image: news2,
-  },
-  // Najava category
-  {
-    id: 9,
-    title: "Posušje dočekuje Čapljinu u sljedećem kolu",
-    excerpt: "Nakon pobjede na gostovanju, naši momci dočekuju ekipu Čapljine u važnoj utakmici za plasman...",
-    date: "08. 12. 2024.",
-    category: "najava",
-    image: news3,
-  },
-  {
-    id: 10,
-    title: "Derbi protiv HKK Mostar u subotu",
-    excerpt: "Očekuje nas uzbudljiv derbi protiv HKK Mostar u Gradskoj sportskoj dvorani...",
-    date: "01. 12. 2024.",
-    category: "najava",
-    image: news1,
-  },
-  {
-    id: 11,
-    title: "Božićni turnir mladih kategorija",
-    excerpt: "Najavljujemo tradicionalni božićni turnir za mlade kategorije koji će se održati...",
-    date: "15. 12. 2024.",
-    category: "najava",
-    image: news2,
-  },
-  {
-    id: 12,
-    title: "Gostovanje kod KK Široki",
-    excerpt: "Naša ekipa putuje na gostovanje kod KK Široki u susret 12. kola lige...",
-    date: "22. 11. 2024.",
-    category: "najava",
-    image: news3,
-  },
-  // Klub category
-  {
-    id: 13,
-    title: "Završeni radovi na dvorani",
-    excerpt: "S ponosom objavljujemo završetak renovacije Gradske sportske dvorane Posušje...",
-    date: "12. 12. 2024.",
-    category: "klub",
-    image: news1,
-  },
-  {
-    id: 14,
-    title: "Novi sponzorski ugovor s Vokel d.o.o.",
-    excerpt: "HKK Posušje potpisao je novi višegodišnji sponzorski ugovor s tvrtkom Vokel d.o.o...",
-    date: "03. 12. 2024.",
-    category: "klub",
-    image: news2,
-  },
-  {
-    id: 15,
-    title: "Upisi u školu košarke",
-    excerpt: "Otvoreni su upisi u školu košarke za dječake rođene 2014-2018. godine...",
-    date: "25. 11. 2024.",
-    category: "klub",
-    image: news3,
-  },
-  {
-    id: 16,
-    title: "Godišnja skupština kluba",
-    excerpt: "Održana je godišnja skupština HKK Posušje na kojoj je usvojen plan za sljedeću sezonu...",
-    date: "18. 11. 2024.",
-    category: "klub",
-    image: news1,
-  },
+  { id: 1, title: "HKK Posušje pobijedio HKK Grude na domaćem terenu", excerpt: "HKK Posušje ostvario je uvjerljivu pobjedu protiv HKK Grude rezultatom 85:72. Ian Krishnan predvodio je ekipu s 24 poena...", date: "14. 12. 2024.", category: "utakmica", image: news1 },
+  { id: 2, title: "Pobjeda protiv KK Čapljina u gostima", excerpt: "Naši igrači ostvarili su važnu pobjedu na gostovanju kod KK Čapljina rezultatom 82:78...", date: "07. 12. 2024.", category: "utakmica", image: news2 },
+  { id: 3, title: "Poraz od HKK Mostar u napetoj utakmici", excerpt: "Unatoč velikom trudu, HKK Posušje izgubio je od HKK Mostar rezultatom 68:75...", date: "30. 11. 2024.", category: "utakmica", image: news3 },
+  { id: 5, title: "Novo pojačanje stiglo u HKK Posušje", excerpt: "HKK Posušje s ponosom objavljuje dolazak novog igrača koji će pojačati našu seniorsku ekipu za ostatak sezone...", date: "10. 12. 2024.", category: "transfer", image: news2 },
+  { id: 9, title: "Posušje dočekuje Čapljinu u sljedećem kolu", excerpt: "Nakon pobjede na gostovanju, naši momci dočekuju ekipu Čapljine u važnoj utakmici za plasman...", date: "08. 12. 2024.", category: "najava", image: news3 },
+  { id: 13, title: "Završeni radovi na dvorani", excerpt: "S ponosom objavljujemo završetak renovacije Gradske sportske dvorane Posušje...", date: "12. 12. 2024.", category: "klub", image: news1 },
 ];
 
-const categories = [
-  { id: "utakmica", label: "Utakmice", icon: Trophy },
-  { id: "transfer", label: "Transferi", icon: Users },
-  { id: "najava", label: "Najave", icon: Megaphone },
-  { id: "klub", label: "Klub", icon: Newspaper },
-] as const;
-
 const News = () => {
-  const [activeCategory, setActiveCategory] = useState<string>("utakmica");
   const scrollRef = useRef<HTMLDivElement>(null);
   const { elementRef, isVisible } = useScrollReveal();
-
-  const filteredNews = allNews.filter((item) => item.category === activeCategory);
 
   const scroll = (direction: "left" | "right") => {
     if (scrollRef.current) {
@@ -186,103 +51,50 @@ const News = () => {
           <span className="section-title-gold">VIJESTI</span>
         </h2>
 
-        <p className="text-muted-foreground text-center mb-8">
+        <p className="text-muted-foreground text-center mb-12">
           Prati sve aktualnosti i novosti iz kluba
         </p>
 
-        {/* Category Tabs */}
-        <div className="flex flex-wrap justify-center gap-2 md:gap-3 mb-8 md:mb-12 px-2">
-          {categories.map((category) => {
-            const IconComponent = category.icon;
-            return (
-              <button
-                key={category.id}
-                onClick={() => setActiveCategory(category.id)}
-                className={`flex items-center gap-1.5 md:gap-2 px-3 md:px-6 py-2 md:py-3 rounded-full text-sm md:text-base font-medium transition-all duration-300 ${
-                  activeCategory === category.id
-                    ? "bg-primary text-primary-foreground"
-                    : "bg-secondary/50 text-foreground hover:bg-secondary hover:text-primary"
-                }`}
-              >
-                <IconComponent size={16} className="md:hidden" />
-                <IconComponent size={18} className="hidden md:block" />
-                {category.label}
-              </button>
-            );
-          })}
-        </div>
-
         {/* News Slider */}
         <div className="relative max-w-[1100px] mx-auto px-4 md:px-16">
-          {/* Scroll Buttons - Hidden on mobile */}
-          <button
-            onClick={() => scroll("left")}
-            className="hidden md:flex absolute left-0 top-1/2 -translate-y-1/2 z-10 w-12 h-12 rounded-full bg-primary items-center justify-center text-primary-foreground hover:bg-primary/90 hover:scale-110 transition-all duration-300 shadow-lg"
-          >
+          <button onClick={() => scroll("left")} className="hidden md:flex absolute left-0 top-1/2 -translate-y-1/2 z-10 w-12 h-12 rounded-full bg-primary items-center justify-center text-primary-foreground hover:bg-primary/90 hover:scale-110 transition-all duration-300 shadow-lg">
             <ChevronLeft size={24} />
           </button>
-          <button
-            onClick={() => scroll("right")}
-            className="hidden md:flex absolute right-0 top-1/2 -translate-y-1/2 z-10 w-12 h-12 rounded-full bg-primary items-center justify-center text-primary-foreground hover:bg-primary/90 hover:scale-110 transition-all duration-300 shadow-lg"
-          >
+          <button onClick={() => scroll("right")} className="hidden md:flex absolute right-0 top-1/2 -translate-y-1/2 z-10 w-12 h-12 rounded-full bg-primary items-center justify-center text-primary-foreground hover:bg-primary/90 hover:scale-110 transition-all duration-300 shadow-lg">
             <ChevronRight size={24} />
           </button>
 
-          {/* Scrollable Container */}
-          <div
-            ref={scrollRef}
-            className="flex gap-3 md:gap-6 overflow-x-auto scrollbar-hide scroll-smooth pb-4 snap-x snap-mandatory"
-            style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
-          >
-            {filteredNews.map((item, index) => (
-              <article
-                key={item.id}
-                className="group flex-shrink-0 bg-background rounded-lg overflow-hidden transition-all duration-300 hover:scale-[1.02] hover-lift border border-transparent hover:border-primary/30 snap-start"
-                style={{
-                  width: 'calc((100% - 3rem) / 3)',
-                  minWidth: '260px',
-                  opacity: isVisible ? 1 : 0,
-                  transform: isVisible ? "translateX(0)" : "translateX(30px)",
-                  transition: `all 0.5s ease ${index * 0.1}s`,
-                }}
-              >
-                {/* Image */}
+          <div ref={scrollRef} className="flex gap-3 md:gap-6 overflow-x-auto scrollbar-hide scroll-smooth pb-4 snap-x snap-mandatory" style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}>
+            {allNews.map((item, index) => (
+              <article key={item.id} className="group flex-shrink-0 bg-background rounded-lg overflow-hidden transition-all duration-300 hover:scale-[1.02] hover-lift border border-transparent hover:border-primary/30 snap-start" style={{ width: 'calc((100% - 3rem) / 3)', minWidth: '260px', opacity: isVisible ? 1 : 0, transform: isVisible ? "translateX(0)" : "translateX(30px)", transition: `all 0.5s ease ${index * 0.1}s` }}>
                 <div className="relative h-36 md:h-48 overflow-hidden">
-                  <img
-                    src={item.image}
-                    alt={item.title}
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                  />
+                  <img src={item.image} alt={item.title} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
                 </div>
-
-                {/* Content */}
                 <div className="p-4 md:p-6">
                   <div className="flex items-center gap-2 text-muted-foreground text-xs md:text-sm mb-2 md:mb-3">
                     <Calendar size={12} className="md:hidden" />
                     <Calendar size={14} className="hidden md:block" />
                     {item.date}
                   </div>
-
-                  <h3 className="text-base md:text-lg font-bold text-foreground mb-2 md:mb-3 line-clamp-2 group-hover:text-primary transition-colors">
-                    {item.title}
-                  </h3>
-
-                  <p className="text-muted-foreground text-xs md:text-sm mb-3 md:mb-4 line-clamp-2 md:line-clamp-3">
-                    {item.excerpt}
-                  </p>
-
-                  <a
-                    href="#"
-                    className="inline-flex items-center gap-2 text-primary text-xs md:text-sm font-medium hover:gap-3 transition-all"
-                  >
+                  <h3 className="text-base md:text-lg font-bold text-foreground mb-2 md:mb-3 line-clamp-2 group-hover:text-primary transition-colors">{item.title}</h3>
+                  <p className="text-muted-foreground text-xs md:text-sm mb-3 md:mb-4 line-clamp-2 md:line-clamp-3">{item.excerpt}</p>
+                  <Link to={`/vijesti/${item.id}`} className="inline-flex items-center gap-2 text-primary text-xs md:text-sm font-medium hover:gap-3 transition-all">
                     Pročitaj više
                     <ArrowRight size={14} className="md:hidden" />
                     <ArrowRight size={16} className="hidden md:block" />
-                  </a>
+                  </Link>
                 </div>
               </article>
             ))}
           </div>
+        </div>
+
+        {/* Sve vijesti button */}
+        <div className="text-center mt-10">
+          <Link to="/vijesti" className="inline-flex items-center gap-2 px-6 py-3 bg-primary text-primary-foreground rounded-full font-medium hover:bg-primary/90 hover:gap-3 transition-all duration-300 shadow-lg hover:shadow-xl">
+            Sve vijesti
+            <ArrowRight size={18} />
+          </Link>
         </div>
       </div>
     </section>
