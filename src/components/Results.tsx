@@ -1,5 +1,5 @@
 import { ExternalLink, ChevronLeft, ChevronRight, Youtube } from "lucide-react";
-import { useRef } from "react";
+import { useRef, useState, useEffect } from "react";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 
 // Import team logos
@@ -121,10 +121,18 @@ const results: MatchResult[] = [
 const Results = () => {
   const scrollRef = useRef<HTMLDivElement>(null);
   const { elementRef, isVisible } = useScrollReveal();
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth < 768);
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   const scroll = (direction: "left" | "right") => {
     if (scrollRef.current) {
-      const scrollAmount = 340;
+      const scrollAmount = isMobile ? 300 : 340;
       scrollRef.current.scrollBy({
         left: direction === "left" ? -scrollAmount : scrollAmount,
         behavior: "smooth",
@@ -149,25 +157,27 @@ const Results = () => {
           <span className="section-title-gold">UTAKMICE</span>
         </h2>
 
-        <div className="relative max-w-[1200px] mx-auto px-4 md:px-20">
-          {/* Scroll Buttons - Hidden on mobile */}
+        <div className="relative max-w-[1200px] mx-auto px-12 md:px-20">
+          {/* Scroll Buttons - Visible on all devices */}
           <button
             onClick={() => scroll("left")}
-            className="hidden md:flex absolute left-0 top-1/2 -translate-y-1/2 z-10 w-12 h-12 rounded-full bg-primary items-center justify-center text-primary-foreground hover:bg-primary/90 hover:scale-110 transition-all duration-300 shadow-lg"
+            className="flex absolute -left-2 md:left-0 top-1/2 -translate-y-1/2 z-10 w-10 h-10 md:w-12 md:h-12 rounded-full bg-primary items-center justify-center text-primary-foreground hover:bg-primary/90 hover:scale-110 transition-all duration-300 shadow-lg"
           >
-            <ChevronLeft size={24} />
+            <ChevronLeft size={20} className="md:hidden" />
+            <ChevronLeft size={24} className="hidden md:block" />
           </button>
           <button
             onClick={() => scroll("right")}
-            className="hidden md:flex absolute right-0 top-1/2 -translate-y-1/2 z-10 w-12 h-12 rounded-full bg-primary items-center justify-center text-primary-foreground hover:bg-primary/90 hover:scale-110 transition-all duration-300 shadow-lg"
+            className="flex absolute -right-2 md:right-0 top-1/2 -translate-y-1/2 z-10 w-10 h-10 md:w-12 md:h-12 rounded-full bg-primary items-center justify-center text-primary-foreground hover:bg-primary/90 hover:scale-110 transition-all duration-300 shadow-lg"
           >
-            <ChevronRight size={24} />
+            <ChevronRight size={20} className="md:hidden" />
+            <ChevronRight size={24} className="hidden md:block" />
           </button>
 
           {/* Scrollable Container */}
           <div
             ref={scrollRef}
-            className="flex gap-3 md:gap-5 overflow-x-auto scrollbar-hide scroll-smooth pb-4 px-1 snap-x snap-mandatory"
+            className="flex gap-3 md:gap-5 overflow-x-auto scrollbar-hide scroll-smooth pb-4 px-1 snap-x snap-mandatory justify-center md:justify-start"
             style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
           >
             {results.map((match, index) => {
@@ -182,14 +192,15 @@ const Results = () => {
                   href={match.sofaScoreLink}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={`group flex-shrink-0 rounded-xl md:rounded-2xl p-4 md:p-6 transition-all duration-300 hover:scale-[1.02] hover:-translate-y-1 border backdrop-blur-sm shadow-lg hover:shadow-xl snap-start ${
+                  className={`group flex-shrink-0 rounded-xl md:rounded-2xl p-4 md:p-6 transition-all duration-300 hover:scale-[1.02] hover:-translate-y-1 border backdrop-blur-sm shadow-lg hover:shadow-xl snap-center md:snap-start ${
                     isWin 
                       ? "bg-gradient-to-br from-secondary/80 via-secondary/60 to-primary/10 border-primary/30 hover:border-primary/60" 
                       : "bg-gradient-to-br from-secondary/80 via-secondary/60 to-red-500/10 border-red-500/20 hover:border-red-500/40"
                   }`}
                   style={{ 
-                    width: 'calc((100% - 2.5rem) / 3)',
-                    minWidth: '260px',
+                    width: isMobile ? '85%' : 'calc((100% - 2.5rem) / 3)',
+                    minWidth: isMobile ? '280px' : '260px',
+                    maxWidth: isMobile ? '320px' : 'none',
                     animationDelay: `${index * 100}ms`,
                     opacity: isVisible ? 1 : 0,
                     transform: isVisible ? "translateX(0)" : "translateX(30px)",

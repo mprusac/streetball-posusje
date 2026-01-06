@@ -5,11 +5,19 @@ import { useEffect, useState } from "react";
 
 const Hero = () => {
   const [scrollY, setScrollY] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => setScrollY(window.scrollY);
+    const handleResize = () => setIsMobile(window.innerWidth < 768);
+    
+    handleResize();
     window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("resize", handleResize);
+    };
   }, []);
 
   return (
@@ -23,7 +31,7 @@ const Hero = () => {
         style={{ 
           backgroundImage: `url(${teamPhoto})`,
           backgroundPosition: 'center center',
-          backgroundSize: '140%',
+          backgroundSize: isMobile ? 'cover' : '140%',
           backgroundRepeat: 'no-repeat',
           transform: `translateY(${scrollY * 0.3}px)`,
         }}

@@ -1,5 +1,5 @@
 import { Calendar, ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
-import { useRef } from "react";
+import { useRef, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 import news1 from "@/assets/news-1.jpg";
@@ -27,10 +27,18 @@ const allNews: NewsItem[] = [
 const News = () => {
   const scrollRef = useRef<HTMLDivElement>(null);
   const { elementRef, isVisible } = useScrollReveal();
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth < 768);
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   const scroll = (direction: "left" | "right") => {
     if (scrollRef.current) {
-      const scrollAmount = 380;
+      const scrollAmount = isMobile ? 300 : 380;
       scrollRef.current.scrollBy({
         left: direction === "left" ? -scrollAmount : scrollAmount,
         behavior: "smooth",
@@ -56,17 +64,19 @@ const News = () => {
         </p>
 
         {/* News Slider */}
-        <div className="relative max-w-[1100px] mx-auto px-4 md:px-16">
-          <button onClick={() => scroll("left")} className="hidden md:flex absolute left-0 top-1/2 -translate-y-1/2 z-10 w-12 h-12 rounded-full bg-primary items-center justify-center text-primary-foreground hover:bg-primary/90 hover:scale-110 transition-all duration-300 shadow-lg">
-            <ChevronLeft size={24} />
+        <div className="relative max-w-[1100px] mx-auto px-12 md:px-16">
+          <button onClick={() => scroll("left")} className="flex absolute -left-2 md:left-0 top-1/2 -translate-y-1/2 z-10 w-10 h-10 md:w-12 md:h-12 rounded-full bg-primary items-center justify-center text-primary-foreground hover:bg-primary/90 hover:scale-110 transition-all duration-300 shadow-lg">
+            <ChevronLeft size={20} className="md:hidden" />
+            <ChevronLeft size={24} className="hidden md:block" />
           </button>
-          <button onClick={() => scroll("right")} className="hidden md:flex absolute right-0 top-1/2 -translate-y-1/2 z-10 w-12 h-12 rounded-full bg-primary items-center justify-center text-primary-foreground hover:bg-primary/90 hover:scale-110 transition-all duration-300 shadow-lg">
-            <ChevronRight size={24} />
+          <button onClick={() => scroll("right")} className="flex absolute -right-2 md:right-0 top-1/2 -translate-y-1/2 z-10 w-10 h-10 md:w-12 md:h-12 rounded-full bg-primary items-center justify-center text-primary-foreground hover:bg-primary/90 hover:scale-110 transition-all duration-300 shadow-lg">
+            <ChevronRight size={20} className="md:hidden" />
+            <ChevronRight size={24} className="hidden md:block" />
           </button>
 
-          <div ref={scrollRef} className="flex gap-3 md:gap-6 overflow-x-auto scrollbar-hide scroll-smooth pb-4 snap-x snap-mandatory" style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}>
+          <div ref={scrollRef} className="flex gap-3 md:gap-6 overflow-x-auto scrollbar-hide scroll-smooth pb-4 snap-x snap-mandatory justify-center md:justify-start" style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}>
             {allNews.map((item, index) => (
-              <article key={item.id} className="group flex-shrink-0 bg-background rounded-lg overflow-hidden transition-all duration-300 hover:scale-[1.02] hover-lift border border-transparent hover:border-primary/30 snap-start" style={{ width: 'calc((100% - 3rem) / 3)', minWidth: '260px', opacity: isVisible ? 1 : 0, transform: isVisible ? "translateX(0)" : "translateX(30px)", transition: `all 0.5s ease ${index * 0.1}s` }}>
+              <article key={item.id} className="group flex-shrink-0 bg-background rounded-lg overflow-hidden transition-all duration-300 hover:scale-[1.02] hover-lift border border-transparent hover:border-primary/30 snap-center md:snap-start" style={{ width: isMobile ? '85%' : 'calc((100% - 3rem) / 3)', minWidth: isMobile ? '280px' : '260px', maxWidth: isMobile ? '320px' : 'none', opacity: isVisible ? 1 : 0, transform: isVisible ? "translateX(0)" : "translateX(30px)", transition: `all 0.5s ease ${index * 0.1}s` }}>
                 <div className="relative h-36 md:h-48 overflow-hidden">
                   <img src={item.image} alt={item.title} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
                 </div>

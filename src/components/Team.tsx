@@ -222,19 +222,21 @@ const Team = () => {
           </span>
         </div>
 
-        <div className="relative max-w-[1400px] mx-auto px-4 md:px-16">
-          {/* Scroll Buttons - Hidden on mobile, visible on desktop */}
+        <div className="relative max-w-[1400px] mx-auto px-12 md:px-16">
+          {/* Scroll Buttons - Visible on all devices */}
           <button
             onClick={() => scroll("left")}
-            className="hidden md:flex absolute left-0 top-1/2 -translate-y-1/2 z-10 w-12 h-12 rounded-full bg-primary items-center justify-center text-primary-foreground hover:bg-primary/90 hover:scale-110 transition-all duration-300 shadow-lg"
+            className="flex absolute -left-2 md:left-0 top-1/2 -translate-y-1/2 z-10 w-10 h-10 md:w-12 md:h-12 rounded-full bg-primary items-center justify-center text-primary-foreground hover:bg-primary/90 hover:scale-110 transition-all duration-300 shadow-lg"
           >
-            <ChevronLeft size={24} />
+            <ChevronLeft size={20} className="md:hidden" />
+            <ChevronLeft size={24} className="hidden md:block" />
           </button>
           <button
             onClick={() => scroll("right")}
-            className="hidden md:flex absolute right-0 top-1/2 -translate-y-1/2 z-10 w-12 h-12 rounded-full bg-primary items-center justify-center text-primary-foreground hover:bg-primary/90 hover:scale-110 transition-all duration-300 shadow-lg"
+            className="flex absolute -right-2 md:right-0 top-1/2 -translate-y-1/2 z-10 w-10 h-10 md:w-12 md:h-12 rounded-full bg-primary items-center justify-center text-primary-foreground hover:bg-primary/90 hover:scale-110 transition-all duration-300 shadow-lg"
           >
-            <ChevronRight size={24} />
+            <ChevronRight size={20} className="md:hidden" />
+            <ChevronRight size={24} className="hidden md:block" />
           </button>
 
           {/* Scrollable Container - Responsive grid */}
