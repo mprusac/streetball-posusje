@@ -90,11 +90,11 @@ const StatCounter = ({ stat, index }: { stat: StatItem; index: number }) => {
       className="text-center group animate-fade-in-up"
       style={{ animationDelay: `${index * 150}ms` }}
     >
-      <div className="stat-number group-hover:text-primary/80 transition-colors duration-300">
+      <div className="stat-number text-3xl md:text-5xl group-hover:text-primary/80 transition-colors duration-300">
         {count}
         {stat.suffix}
       </div>
-      <div className="stat-label">{stat.label}</div>
+      <div className="stat-label text-xs md:text-sm">{stat.label}</div>
     </div>
   );
 };
@@ -108,8 +108,8 @@ const About = () => {
   return (
     <section id="o-klubu" className="py-20 overflow-hidden">
       {/* Stats */}
-      <div className="container mx-auto px-4 mb-20">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto">
+      <div className="container mx-auto px-4 mb-12 md:mb-20">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8 max-w-4xl mx-auto">
           {stats.map((stat, index) => (
             <StatCounter key={stat.label} stat={stat} index={index} />
           ))}
@@ -210,20 +210,20 @@ const About = () => {
         {/* Achievements - Vertical Timeline Style */}
         <div 
           ref={achRef}
-          className={`mb-20 w-full flex flex-col items-center transition-all duration-700 ${
+          className={`mb-12 md:mb-20 w-full flex flex-col items-center transition-all duration-700 ${
             achVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
           }`}
         >
-          <h3 className="text-3xl md:text-4xl font-display text-foreground mb-8 uppercase tracking-wider text-center">
+          <h3 className="text-2xl md:text-4xl font-display text-foreground mb-6 md:mb-8 uppercase tracking-wider text-center">
             Postignuća
           </h3>
-          <div className="space-y-4 max-w-2xl w-full">
+          <div className="space-y-3 md:space-y-4 max-w-2xl w-full">
             {achievements.map((achievement, index) => {
               const IconComponent = achievement.icon;
               return (
                 <div
                   key={achievement.title}
-                  className="group relative flex items-start gap-4 p-5 rounded-xl bg-secondary/30 border border-border hover:border-primary/50 hover:bg-secondary/50 transition-all duration-300"
+                  className="group relative flex items-start gap-3 md:gap-4 p-3 md:p-5 rounded-xl bg-secondary/30 border border-border hover:border-primary/50 hover:bg-secondary/50 transition-all duration-300"
                   style={{ 
                     opacity: achVisible ? 1 : 0,
                     transform: achVisible ? "translateX(0)" : "translateX(-30px)",
@@ -231,22 +231,22 @@ const About = () => {
                   }}
                 >
                   {/* Icon */}
-                  <div className="flex-shrink-0 w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center group-hover:bg-primary/30 group-hover:scale-110 transition-all duration-300">
-                    <IconComponent className="w-6 h-6 text-primary" />
+                  <div className="flex-shrink-0 w-10 h-10 md:w-12 md:h-12 rounded-full bg-primary/20 flex items-center justify-center group-hover:bg-primary/30 group-hover:scale-110 transition-all duration-300">
+                    <IconComponent className="w-5 h-5 md:w-6 md:h-6 text-primary" />
                   </div>
                   
                   {/* Content */}
                   <div className="flex-1 min-w-0">
                     <div className="flex items-center gap-2 mb-1">
-                      <h4 className="font-display text-xl text-foreground tracking-wide">
+                      <h4 className="font-display text-base md:text-xl text-foreground tracking-wide leading-tight">
                         {achievement.title}
                       </h4>
-                      <span className="text-lg">{achievement.emoji}</span>
+                      <span className="text-base md:text-lg">{achievement.emoji}</span>
                     </div>
-                    <p className="text-primary font-medium text-sm mb-1">
+                    <p className="text-primary font-medium text-xs md:text-sm mb-1">
                       {achievement.subtitle}
                     </p>
-                    <p className="text-muted-foreground text-sm">
+                    <p className="text-muted-foreground text-xs md:text-sm">
                       {achievement.description}
                     </p>
                   </div>
@@ -264,19 +264,19 @@ const About = () => {
           }`}
         >
           <div 
-            className="relative group rounded-3xl p-10 transition-all duration-300 text-center overflow-hidden border-2 border-primary"
+            className="relative group rounded-2xl md:rounded-3xl p-6 md:p-10 transition-all duration-300 text-center overflow-hidden border-2 border-primary"
             style={{
               background: 'linear-gradient(135deg, hsl(0 0% 5%) 0%, hsl(45 100% 51% / 0.1) 50%, hsl(0 0% 8%) 100%)',
             }}
           >
             {/* Subtle glow effect */}
-            <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-primary/5 via-transparent to-primary/10 pointer-events-none" />
+            <div className="absolute inset-0 rounded-2xl md:rounded-3xl bg-gradient-to-br from-primary/5 via-transparent to-primary/10 pointer-events-none" />
             
-            <h3 className="text-3xl md:text-4xl font-display mb-6 tracking-wide relative z-10">
+            <h3 className="text-2xl md:text-4xl font-display mb-4 md:mb-6 tracking-wide relative z-10">
               <span className="text-foreground">NAŠA </span>
               <span className="text-primary">VIZIJA</span>
             </h3>
-            <p className="text-muted-foreground max-w-3xl mx-auto leading-relaxed text-base md:text-lg relative z-10">
+            <p className="text-muted-foreground max-w-3xl mx-auto leading-relaxed text-sm md:text-lg relative z-10">
               Naša vizija temelji se na kontinuiranom razvoju mladih talenata kroz sustavan i kvalitetan rad. Naglašavamo vrijednosti kao što su <span className="text-primary font-bold">odgovornost, disciplina i timski duh</span> u svakom aspektu klupskih aktivnosti. Cilj nam je stvoriti okruženje u kojem svaki mladi igrač može napredovati u vrhunskog sportaša i odgovornu osobu. Kroz ulaganja u stručni trenažni kadar, infrastrukturu i partnersku suradnju, nastojimo učvrstiti <span className="text-primary font-bold">HKK Posušje kao košarkaški centar BiH</span> i simbol sportskih uspjeha i pozitivnih životnih vrijednosti.
             </p>
           </div>

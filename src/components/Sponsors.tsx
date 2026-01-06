@@ -55,26 +55,26 @@ const Sponsors = () => {
   const [isExpanded, setIsExpanded] = useState(false);
 
   return (
-    <section className="py-20">
+    <section className="py-12 md:py-20">
       <div className="container mx-auto px-4">
-        <h2 className="section-title text-center mb-4">
-          <span className="section-title-white">NAŠI </span>
-          <span className="section-title-gold">SPONZORI</span>
+        <h2 className="section-title text-center mb-3 md:mb-4">
+          <span className="section-title-white text-2xl md:text-4xl">NAŠI </span>
+          <span className="section-title-gold text-2xl md:text-4xl">SPONZORI</span>
         </h2>
 
-        <p className="text-muted-foreground text-center mb-16 max-w-2xl mx-auto">
+        <p className="text-muted-foreground text-center mb-8 md:mb-16 max-w-2xl mx-auto text-sm md:text-base">
           Naši partneri koji podržavaju razvoj kluba i omogućavaju ostvarivanje naših ciljeva
         </p>
 
         {/* Sponsor Logos */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto mb-16">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-6 max-w-4xl mx-auto mb-8 md:mb-16">
           {sponsors.map((sponsor, index) => (
             <div
               key={sponsor.name}
-              className="bg-secondary/50 border border-border rounded-lg p-8 flex items-center justify-center hover:border-primary transition-colors animate-fade-in-up"
+              className="bg-secondary/50 border border-border rounded-lg p-4 md:p-8 flex items-center justify-center hover:border-primary transition-colors animate-fade-in-up"
               style={{ animationDelay: `${index * 100}ms` }}
             >
-              <span className="text-foreground font-semibold text-center">
+              <span className="text-foreground font-semibold text-center text-sm md:text-base">
                 {sponsor.name}
               </span>
             </div>
@@ -108,13 +108,13 @@ const Sponsors = () => {
             </button>
 
             {/* Expandable Content */}
-            <div
+          <div
               className={`overflow-hidden transition-all duration-500 ${
-                isExpanded ? "max-h-[800px]" : "max-h-0"
+                isExpanded ? "max-h-[1200px]" : "max-h-0"
               }`}
             >
-              <div className="p-6 pt-4">
-                <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-6 mt-4">
+              <div className="p-4 md:p-6 pt-2 md:pt-4">
+                <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-3 md:gap-6 mb-4 md:mb-6 mt-2 md:mt-4">
                   {sponsorTiers.map((tier, index) => {
                     const shadowColor = tier.name === "GENERALNO" 
                       ? "hover:[box-shadow:0_0_25px_8px_hsl(48,96%,53%,0.35)]" 
@@ -127,19 +127,19 @@ const Sponsors = () => {
                     return (
                       <div
                         key={tier.name}
-                        className={`group bg-secondary/40 border border-border rounded-lg p-6 animate-fade-in-up transition-all duration-300 hover:scale-[1.03] hover:border-primary/50 ${shadowColor}`}
+                        className={`group bg-secondary/40 border border-border rounded-lg p-3 md:p-6 animate-fade-in-up transition-all duration-300 hover:scale-[1.03] hover:border-primary/50 ${shadowColor}`}
                         style={{ animationDelay: `${index * 100}ms` }}
                       >
-                        <div className={`${tier.color} mb-3 transition-transform duration-300 group-hover:scale-110`}>{tier.icon}</div>
-                        <h4 className={`font-semibold ${tier.color} transition-colors duration-300`}>{tier.name}</h4>
-                        <p className="text-primary text-lg font-display mt-1">{tier.price}</p>
-                        <ul className="mt-4 space-y-2">
+                        <div className={`${tier.color} mb-2 md:mb-3 transition-transform duration-300 group-hover:scale-110`}>{tier.icon}</div>
+                        <h4 className={`font-semibold text-xs md:text-base ${tier.color} transition-colors duration-300`}>{tier.name}</h4>
+                        <p className="text-primary text-sm md:text-lg font-display mt-1">{tier.price}</p>
+                        <ul className="mt-2 md:mt-4 space-y-1 md:space-y-2">
                           {tier.benefits.map((benefit) => (
                             <li
                               key={benefit}
-                              className="text-muted-foreground text-sm flex items-start gap-2"
+                              className="text-muted-foreground text-xs md:text-sm flex items-start gap-1 md:gap-2"
                             >
-                              <span className="text-primary mt-1">•</span>
+                              <span className="text-primary mt-0.5 md:mt-1">•</span>
                               {benefit}
                             </li>
                           ))}
@@ -150,12 +150,12 @@ const Sponsors = () => {
                 </div>
 
                 {/* Payment Info - Inside expandable */}
-                <div className="bg-background/50 border border-border rounded-lg p-6">
-                  <h4 className="font-display text-lg mb-4">
+                <div className="bg-background/50 border border-border rounded-lg p-4 md:p-6">
+                  <h4 className="font-display text-base md:text-lg mb-3 md:mb-4">
                     <span className="text-foreground">PODACI ZA </span>
                     <span className="text-primary">PLAĆANJE</span>
                   </h4>
-                  <div className="grid md:grid-cols-3 gap-6 text-sm">
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-3 md:gap-6 text-xs md:text-sm">
                     <div>
                       <span className="text-muted-foreground block mb-1">PRIMATELJ</span>
                       <span className="text-foreground">Košarkaški Klub Posušje</span>
