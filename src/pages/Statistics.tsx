@@ -377,7 +377,7 @@ const Statistics = () => {
           <div className="lg:col-span-3 flex flex-col gap-3 order-2 lg:order-1">
             {/* Recent Form */}
             <div className="bg-secondary/30 rounded-xl p-2 border border-border/30 hover:border-primary/30 hover:shadow-lg hover:shadow-primary/5 transition-all duration-300">
-              <h3 className="font-display text-base text-foreground mb-1 text-center">Nedavna forma</h3>
+              <h3 className="font-display text-lg text-foreground mb-1 text-center">Nedavna forma</h3>
               
               {/* Dynamic text - changes on hover */}
               <p className="text-[10px] text-muted-foreground text-center mb-1 h-4 transition-all duration-200">
