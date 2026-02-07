@@ -545,17 +545,17 @@ const Statistics = () => {
                   <div className="p-3 border-b border-border/30">
                     <div className="flex items-center gap-2">
                       <a href="https://www.kshb.ba/" target="_blank" rel="noopener noreferrer" className="hover:opacity-80 transition-opacity">
-                        <img src={logoKSHB} alt="" className="w-5 h-5 object-contain" />
+                        <img src={logoKSHB} alt="" className="w-5 h-5 md:w-6 md:h-6 object-contain" />
                       </a>
-                      <span className="text-xs text-foreground">Liga Košarkaškog saveza Herceg Bosne</span>
-                      <span className="text-[10px] text-muted-foreground bg-background/50 px-1.5 py-0.5 rounded">25/26</span>
+                      <span className="text-sm md:text-base text-foreground">Liga Košarkaškog saveza Herceg Bosne</span>
+                      <span className="text-xs md:text-sm text-muted-foreground bg-background/50 px-2 py-0.5 rounded">25/26</span>
                       <Select value={leagueCategory} onValueChange={(v) => setLeagueCategory(v as "seniori" | "seniorke")}>
-                        <SelectTrigger className="w-24 h-7 text-xs bg-background/50 border-border/30 ml-1">
+                        <SelectTrigger className="w-24 md:w-28 h-7 md:h-8 text-sm md:text-base bg-background/50 border-border/30 ml-1">
                           <SelectValue />
                         </SelectTrigger>
                         <SelectContent className="bg-secondary border-border/50">
-                          <SelectItem value="seniori">Seniori</SelectItem>
-                          <SelectItem value="seniorke">Seniorke</SelectItem>
+                          <SelectItem value="seniori" className="text-sm md:text-base">Seniori</SelectItem>
+                          <SelectItem value="seniorke" className="text-sm md:text-base">Seniorke</SelectItem>
                         </SelectContent>
                       </Select>
                     </div>
