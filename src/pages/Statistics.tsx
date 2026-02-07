@@ -729,7 +729,7 @@ const Statistics = () => {
                         ))}
                       </div>
 
-                      <h4 className="font-display text-sm md:text-base text-center mb-3">Obrana</h4>
+                      <h4 className="font-display text-base md:text-lg text-center mb-3">Obrana</h4>
                       <div className="space-y-1.5">
                         {[
                           { label: "Blokade", value: "14", rank: 5 },
