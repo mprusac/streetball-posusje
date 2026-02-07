@@ -710,7 +710,7 @@ const Statistics = () => {
 
                     {/* Defense & Rebounds */}
                     <div className="hover:scale-[1.02] transition-transform duration-300">
-                      <h4 className="font-display text-sm md:text-base text-center mb-3">Skokovi (po utakmici)</h4>
+                      <h4 className="font-display text-base md:text-lg text-center mb-3">Skokovi (po utakmici)</h4>
                       <div className="space-y-1.5 mb-5">
                         {[
                           { label: "Napadački", value: "28", rank: 4 },
