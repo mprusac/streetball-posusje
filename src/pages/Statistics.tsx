@@ -427,7 +427,7 @@ const Statistics = () => {
                 >
                   <ChevronLeft size={14} className="text-primary" />
                 </button>
-                <h3 className="font-display text-base text-foreground text-center">Utakmice</h3>
+                <h3 className="font-display text-lg text-foreground text-center">Utakmice</h3>
                 <button 
                   onClick={() => setMatchPage(p => Math.min(totalMatchPages - 1, p + 1))}
                   disabled={matchPage >= totalMatchPages - 1}
