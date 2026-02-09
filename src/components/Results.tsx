@@ -310,6 +310,15 @@ const Results = () => {
                       </span>
                     </div>
 
+                    {/* Competition label below score */}
+                    {match.competition && (
+                      <div className="flex justify-center mt-2">
+                        <span className="text-[8px] md:text-[10px] font-bold text-primary bg-primary/10 px-2 py-0.5 rounded-full">
+                          {match.competition}
+                        </span>
+                      </div>
+                    )}
+
                     {/* Away Team */}
                     <div className="flex-1 flex flex-col items-center">
                       <div className="w-10 h-10 md:w-14 md:h-14 rounded-full bg-background/60 flex items-center justify-center p-1.5 md:p-2 border border-border/50 overflow-hidden">
