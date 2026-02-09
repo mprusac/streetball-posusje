@@ -1,4 +1,4 @@
-import { Calendar, ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
+import { Calendar, ArrowRight, ChevronLeft, ChevronRight, Trophy, Users, Megaphone, Newspaper } from "lucide-react";
 import { useRef, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
@@ -14,6 +14,13 @@ interface NewsItem {
   category: "utakmica" | "transfer" | "najava" | "klub";
   image: string;
 }
+
+const categoryConfig: Record<string, { label: string; icon: typeof Trophy }> = {
+  utakmica: { label: "Utakmice", icon: Trophy },
+  transfer: { label: "Transferi", icon: Users },
+  najava: { label: "Najave", icon: Megaphone },
+  klub: { label: "Klub", icon: Newspaper },
+};
 
 const allNews: NewsItem[] = [
   { id: 1, title: "HKK Posušje pobijedio HKK Grude na domaćem terenu", excerpt: "HKK Posušje ostvario je uvjerljivu pobjedu protiv HKK Grude rezultatom 85:72. Ian Krishnan predvodio je ekipu s 24 poena...", date: "14. 12. 2024.", category: "utakmica", image: news1 },
