@@ -402,8 +402,10 @@ const Statistics = () => {
                     <img src={game.logo} alt={game.opponent} className={`object-contain w-full h-full ${
                       game.opponent.includes("Široki") || game.opponent.includes("Grude")
                         ? "scale-[1.6]" 
-                        : game.opponent.includes("Rama") || game.opponent.includes("Ljubuš") || game.opponent.includes("Čapljina") || game.opponent === "Čapljina"
+                        : game.opponent.includes("Rama") || game.opponent.includes("Ljubuš")
                           ? "scale-[1.3]"
+                        : game.opponent.includes("Čapljina") || game.opponent === "Čapljina"
+                          ? "scale-[1.15]"
                         : game.opponent.includes("Mostar")
                           ? "scale-[1.1]"
                           : "scale-[0.85]"
@@ -673,7 +675,7 @@ const Statistics = () => {
                             <TableCell>
                               <div className="flex items-center gap-2">
                                 {getTeamLogo(team.team) && (
-                                  <img src={getTeamLogo(team.team)!} alt="" className={`object-contain ${team.team === "ŽKK Livno" ? "w-8 h-8" : "w-7 h-7"}`} />
+                                  <img src={getTeamLogo(team.team)!} alt="" className={`object-contain ${team.team === "ŽKK Livno" ? "w-9 h-9" : "w-7 h-7"}`} />
                                 )}
                                 <span className={`text-sm font-bold ${team.team.includes("Posušje") ? "text-primary" : ""}`}>
                                   {team.team}
