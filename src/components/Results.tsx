@@ -156,6 +156,10 @@ const Results = () => {
     return teamLogos[teamName] || null;
   };
 
+  const isLargeLogoTeam = (teamName: string) => {
+    return teamName.includes("Široki") && !teamName.includes("II");
+  };
+
   return (
     <section id="rezultati" className="py-20">
       <div 
