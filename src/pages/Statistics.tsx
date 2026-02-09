@@ -598,8 +598,22 @@ const Statistics = () => {
                               <TableCell className="text-center font-bold text-sm">{team.position}</TableCell>
                               <TableCell>
                                 <div className="flex items-center gap-2">
-                                  {getTeamLogo(team.team) && (
-                                    <img src={getTeamLogo(team.team)!} alt="" className="w-6 h-6 md:w-7 md:h-7 object-contain" />
+                                {getTeamLogo(team.team) && (
+                                    <div className="w-7 h-7 md:w-8 md:h-8 rounded-full overflow-hidden flex items-center justify-center flex-shrink-0">
+                                      <img 
+                                        src={getTeamLogo(team.team)!} 
+                                        alt="" 
+                                        className={`object-contain ${
+                                          team.team === "HKK Grude" || team.team === "HKK Široki" || team.team === "HKK Široki II"
+                                            ? "w-[200%] h-[200%] scale-[1.0]"
+                                            : team.team === "HKK Ljubuški"
+                                            ? "w-[140%] h-[140%]"
+                                            : team.team === "HKK Rama"
+                                            ? "w-[130%] h-[130%]"
+                                            : "w-full h-full"
+                                        }`}
+                                      />
+                                    </div>
                                   )}
                                   <span className={`text-xs md:text-sm font-bold ${team.team === "HKK Posušje" ? "text-primary" : ""}`}>
                                     {team.team}
