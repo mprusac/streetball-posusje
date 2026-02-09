@@ -22,6 +22,7 @@ interface MatchResult {
   isHome: boolean;
   sofaScoreLink: string;
   youtubeLink?: string;
+  competition?: string;
 }
 
 // Logo mapping
