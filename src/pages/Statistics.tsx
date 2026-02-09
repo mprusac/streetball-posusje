@@ -465,59 +465,61 @@ const Statistics = () => {
                     
                     const matchContent = (
                       <div className={`px-2 py-[7px] hover:bg-secondary/50 transition-all duration-200 ${!match.isUpcoming ? 'cursor-pointer hover:shadow-md' : ''}`}>
-                        <div className="flex items-center justify-between">
-                          <div className="flex-1">
-                            <div className="flex items-center gap-2 text-xs text-muted-foreground mb-1">
-                              <span>{match.date}</span>
-                              {match.time && <span>{match.time}</span>}
-                              {match.competition && <span className="text-xs font-bold text-foreground">{match.competition}</span>}
-                              {!match.isUpcoming && !match.competition && <span className="text-muted-foreground/60">FT</span>}
-                            </div>
-                            
-                            {/* Home Team */}
-                            <div className="flex items-center justify-between mb-0.5">
-                              <div className="flex items-center gap-1.5">
-                                <div className="w-5 h-5 flex items-center justify-center flex-shrink-0">
-                                  {homeLogo && <img src={homeLogo} alt="" className={`object-contain ${match.homeTeam.includes("Široki") ? "w-6 h-6" : match.homeTeam.includes("Tomislav") ? "w-4 h-4" : "w-5 h-5"}`} />}
-                                </div>
-                                <span className={`text-sm font-medium ${match.homeTeam.includes("Posušje") ? "text-primary" : "text-foreground"}`}>
-                                  {match.homeTeam}
-                                </span>
-                              </div>
-                              {!match.isUpcoming && (
-                                <span className={`text-sm font-bold ${match.homeScore! > match.awayScore! ? "text-foreground" : "text-muted-foreground"}`}>
-                                  {match.homeScore}
-                                </span>
-                              )}
-                            </div>
-                            
-                            {/* Away Team */}
-                            <div className="flex items-center justify-between">
-                              <div className="flex items-center gap-1.5">
-                                <div className="w-5 h-5 flex items-center justify-center flex-shrink-0">
-                                  {awayLogo && <img src={awayLogo} alt="" className={`object-contain ${match.awayTeam.includes("Široki") ? "w-6 h-6" : match.awayTeam.includes("Tomislav") ? "w-4 h-4" : "w-5 h-5"}`} />}
-                                </div>
-                                <span className={`text-sm font-medium ${match.awayTeam.includes("Posušje") ? "text-primary" : "text-foreground"}`}>
-                                  {match.awayTeam}
-                                </span>
-                              </div>
-                              {!match.isUpcoming && (
-                                <span className={`text-sm font-bold ${match.awayScore! > match.homeScore! ? "text-foreground" : "text-muted-foreground"}`}>
-                                  {match.awayScore}
-                                </span>
-                              )}
-                            </div>
+                        <div>
+                          <div className="flex items-center gap-2 text-xs text-muted-foreground mb-1">
+                            <span>{match.date}</span>
+                            {match.time && <span>{match.time}</span>}
+                            {match.competition && <span className="text-xs font-bold text-foreground">{match.competition}</span>}
+                            {!match.isUpcoming && !match.competition && <span className="text-muted-foreground/60">FT</span>}
                           </div>
                           
-                          {result && (
-                            <div className="ml-2 flex items-center self-center">
-                              <span className={`w-5 h-5 rounded-full flex items-center justify-center text-[9px] font-bold text-white ${
-                                result === "W" ? "bg-green-500" : "bg-red-500"
-                              }`}>
-                                {result}
-                              </span>
+                          <div className="flex items-center">
+                            <div className="flex-1">
+                              {/* Home Team */}
+                              <div className="flex items-center justify-between mb-0.5">
+                                <div className="flex items-center gap-1.5">
+                                  <div className="w-5 h-5 flex items-center justify-center flex-shrink-0">
+                                    {homeLogo && <img src={homeLogo} alt="" className={`object-contain ${match.homeTeam.includes("Široki") ? "w-6 h-6" : match.homeTeam.includes("Tomislav") ? "w-4 h-4" : "w-5 h-5"}`} />}
+                                  </div>
+                                  <span className={`text-sm font-medium ${match.homeTeam.includes("Posušje") ? "text-primary" : "text-foreground"}`}>
+                                    {match.homeTeam}
+                                  </span>
+                                </div>
+                                {!match.isUpcoming && (
+                                  <span className={`text-sm font-bold ${match.homeScore! > match.awayScore! ? "text-foreground" : "text-muted-foreground"}`}>
+                                    {match.homeScore}
+                                  </span>
+                                )}
+                              </div>
+                              
+                              {/* Away Team */}
+                              <div className="flex items-center justify-between">
+                                <div className="flex items-center gap-1.5">
+                                  <div className="w-5 h-5 flex items-center justify-center flex-shrink-0">
+                                    {awayLogo && <img src={awayLogo} alt="" className={`object-contain ${match.awayTeam.includes("Široki") ? "w-6 h-6" : match.awayTeam.includes("Tomislav") ? "w-4 h-4" : "w-5 h-5"}`} />}
+                                  </div>
+                                  <span className={`text-sm font-medium ${match.awayTeam.includes("Posušje") ? "text-primary" : "text-foreground"}`}>
+                                    {match.awayTeam}
+                                  </span>
+                                </div>
+                                {!match.isUpcoming && (
+                                  <span className={`text-sm font-bold ${match.awayScore! > match.homeScore! ? "text-foreground" : "text-muted-foreground"}`}>
+                                    {match.awayScore}
+                                  </span>
+                                )}
+                              </div>
                             </div>
-                          )}
+                            
+                            {result && (
+                              <div className="ml-2 flex items-center">
+                                <span className={`w-5 h-5 rounded-full flex items-center justify-center text-[9px] font-bold text-white ${
+                                  result === "W" ? "bg-green-500" : "bg-red-500"
+                                }`}>
+                                  {result}
+                                </span>
+                              </div>
+                            )}
+                          </div>
                         </div>
                       </div>
                     );
