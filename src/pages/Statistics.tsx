@@ -81,6 +81,7 @@ interface Match {
   awayScore?: number;
   isUpcoming: boolean;
   sofascoreLink?: string;
+  competition?: string;
 }
 
 interface Standing {
