@@ -484,7 +484,9 @@ const Statistics = () => {
                             {/* Away Team */}
                             <div className="flex items-center justify-between">
                               <div className="flex items-center gap-1.5">
-                                {awayLogo && <img src={awayLogo} alt="" className={`object-contain ${match.awayTeam.includes("Široki") || match.awayTeam.includes("Mostar") ? "w-6 h-6 mx-auto" : match.awayTeam.includes("Tomislav") ? "w-4 h-4" : "w-5 h-5"}`} />}
+                                <div className="w-5 h-5 flex items-center justify-center flex-shrink-0">
+                                  {awayLogo && <img src={awayLogo} alt="" className={`object-contain ${match.awayTeam.includes("Široki") || match.awayTeam.includes("Mostar") ? "w-6 h-6" : match.awayTeam.includes("Tomislav") ? "w-4 h-4" : "w-5 h-5"}`} />}
+                                </div>
                                 <span className={`text-sm font-medium ${match.awayTeam.includes("Posušje") ? "text-primary" : "text-foreground"}`}>
                                   {match.awayTeam}
                                 </span>
