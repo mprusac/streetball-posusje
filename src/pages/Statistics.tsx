@@ -123,34 +123,34 @@ interface TopPlayer {
 
 // Form data - based on actual results with scores
 const formData = [
-  { opponent: "HKK Mostar", logo: logoMostar, result: "L" as const, homeTeam: "HKK Mostar", awayTeam: "KK Posušje", homeScore: 92, awayScore: 78 },
-  { opponent: "HKK Široki II", logo: logoSiroki, result: "W" as const, homeTeam: "KK Posušje", awayTeam: "HKK Široki II", homeScore: 79, awayScore: 72 },
-  { opponent: "HKK Rama", logo: logoRama, result: "W" as const, homeTeam: "KK Posušje", awayTeam: "HKK Rama", homeScore: 90, awayScore: 77 },
-  { opponent: "HKK Grude", logo: logoGrude, result: "L" as const, homeTeam: "HKK Grude", awayTeam: "KK Posušje", homeScore: 60, awayScore: 56 },
-  { opponent: "Čapljina", logo: logoCapljina, result: "W" as const, homeTeam: "Čapljina", awayTeam: "KK Posušje", homeScore: 33, awayScore: 107 },
-  { opponent: "HKK Ljubuški", logo: logoLjubuski, result: "L" as const, homeTeam: "HKK Ljubuški", awayTeam: "KK Posušje", homeScore: 85, awayScore: 81 },
-  { opponent: "KK Široki", logo: logoSiroki, result: "L" as const, homeTeam: "KK Posušje", awayTeam: "KK Široki", homeScore: 54, awayScore: 69, competition: "Kup KSHB 🏆" },
+  { opponent: "HKK Mostar", logo: logoMostar, result: "L" as const, homeTeam: "HKK Mostar", awayTeam: "HKK Posušje", homeScore: 92, awayScore: 78 },
+  { opponent: "HKK Široki II", logo: logoSiroki, result: "W" as const, homeTeam: "HKK Posušje", awayTeam: "HKK Široki II", homeScore: 79, awayScore: 72 },
+  { opponent: "HKK Rama", logo: logoRama, result: "W" as const, homeTeam: "HKK Posušje", awayTeam: "HKK Rama", homeScore: 90, awayScore: 77 },
+  { opponent: "HKK Grude", logo: logoGrude, result: "L" as const, homeTeam: "HKK Grude", awayTeam: "HKK Posušje", homeScore: 60, awayScore: 56 },
+  { opponent: "Čapljina", logo: logoCapljina, result: "W" as const, homeTeam: "Čapljina", awayTeam: "HKK Posušje", homeScore: 33, awayScore: 107 },
+  { opponent: "HKK Ljubuški", logo: logoLjubuski, result: "L" as const, homeTeam: "HKK Ljubuški", awayTeam: "HKK Posušje", homeScore: 85, awayScore: 81 },
+  { opponent: "HKK Široki II", logo: logoSiroki, result: "L" as const, homeTeam: "HKK Posušje", awayTeam: "HKK Široki II", homeScore: 54, awayScore: 69, competition: "Kup KSHB 🏆" },
 ];
 
 // All matches - upcoming first, then played from newest to oldest
 const matches: Match[] = [
   // Upcoming matches
-  { id: 8, date: "08.02.2026", time: "19:00", homeTeam: "HKK Tomislav", awayTeam: "KK Posušje", isUpcoming: true, sofascoreLink: "https://www.sofascore.com/basketball/match/hkk-tomislav-tomislavgrad-kk-posusje/TEidsLiOi#id:15014499" },
-  { id: 9, date: "15.02.2026", time: "19:00", homeTeam: "KK Posušje", awayTeam: "HKK Mostar", isUpcoming: true, sofascoreLink: "https://www.sofascore.com/basketball/match/hkk-mostar-kk-posusje/TEidsMbxh#id:15014506" },
-  { id: 10, date: "22.02.2026", time: "19:00", homeTeam: "HKK Široki II", awayTeam: "KK Posušje", isUpcoming: true, sofascoreLink: "https://www.sofascore.com/basketball/match/hkk-siroki-ii-kk-posusje/TEidsJiOi#id:15014507" },
-  { id: 11, date: "01.03.2026", time: "19:00", homeTeam: "HKK Rama", awayTeam: "KK Posušje", isUpcoming: true, sofascoreLink: "https://www.sofascore.com/basketball/match/hkk-rama-kk-posusje/TEidsNiOi#id:15014515" },
-  { id: 12, date: "08.03.2026", time: "19:00", homeTeam: "KK Posušje", awayTeam: "HKK Grude", isUpcoming: true, sofascoreLink: "https://www.sofascore.com/basketball/match/hkk-grude-kk-posusje/TEidsMiOi#id:15014517" },
-  { id: 13, date: "15.03.2026", time: "19:00", homeTeam: "Čapljina", awayTeam: "KK Posušje", isUpcoming: true, sofascoreLink: "https://www.sofascore.com/basketball/match/kk-posusje-hkk-capljina/nOHcsTEid#id:15014535" },
-  { id: 14, date: "22.03.2026", time: "19:00", homeTeam: "KK Posušje", awayTeam: "HKK Ljubuški", isUpcoming: true, sofascoreLink: "https://www.sofascore.com/basketball/match/hkk-ljubuski-kk-posusje/TEidsOiOi#id:15014542" },
+  { id: 8, date: "08.02.2026", time: "19:00", homeTeam: "HKK Tomislav", awayTeam: "HKK Posušje", isUpcoming: true, sofascoreLink: "https://www.sofascore.com/basketball/match/hkk-tomislav-tomislavgrad-kk-posusje/TEidsLiOi#id:15014499" },
+  { id: 9, date: "15.02.2026", time: "19:00", homeTeam: "HKK Posušje", awayTeam: "HKK Mostar", isUpcoming: true, sofascoreLink: "https://www.sofascore.com/basketball/match/hkk-mostar-kk-posusje/TEidsMbxh#id:15014506" },
+  { id: 10, date: "22.02.2026", time: "19:00", homeTeam: "HKK Široki II", awayTeam: "HKK Posušje", isUpcoming: true, sofascoreLink: "https://www.sofascore.com/basketball/match/hkk-siroki-ii-kk-posusje/TEidsJiOi#id:15014507" },
+  { id: 11, date: "01.03.2026", time: "19:00", homeTeam: "HKK Rama", awayTeam: "HKK Posušje", isUpcoming: true, sofascoreLink: "https://www.sofascore.com/basketball/match/hkk-rama-kk-posusje/TEidsNiOi#id:15014515" },
+  { id: 12, date: "08.03.2026", time: "19:00", homeTeam: "HKK Posušje", awayTeam: "HKK Grude", isUpcoming: true, sofascoreLink: "https://www.sofascore.com/basketball/match/hkk-grude-kk-posusje/TEidsMiOi#id:15014517" },
+  { id: 13, date: "15.03.2026", time: "19:00", homeTeam: "Čapljina", awayTeam: "HKK Posušje", isUpcoming: true, sofascoreLink: "https://www.sofascore.com/basketball/match/kk-posusje-hkk-capljina/nOHcsTEid#id:15014535" },
+  { id: 14, date: "22.03.2026", time: "19:00", homeTeam: "HKK Posušje", awayTeam: "HKK Ljubuški", isUpcoming: true, sofascoreLink: "https://www.sofascore.com/basketball/match/hkk-ljubuski-kk-posusje/TEidsOiOi#id:15014542" },
   // Played matches (newest first)
-  { id: 15, date: "20.01.2026", homeTeam: "KK Posušje", awayTeam: "KK Široki", homeScore: 54, awayScore: 69, isUpcoming: false, sofascoreLink: "https://www.sofascore.com/hr/basketball/match/kk-posusje-hkk-siroki/lIcsTEid#id:15400673", competition: "Kup KSHB 🏆" },
-  { id: 1, date: "14.12.2025", homeTeam: "HKK Ljubuški", awayTeam: "KK Posušje", homeScore: 85, awayScore: 81, isUpcoming: false, sofascoreLink: "https://www.sofascore.com/basketball/match/hkk-ljubuski-kk-posusje/TEidsOiOi#id:15014496" },
-  { id: 2, date: "07.12.2025", homeTeam: "Čapljina", awayTeam: "KK Posušje", homeScore: 33, awayScore: 107, isUpcoming: false, sofascoreLink: "https://www.sofascore.com/basketball/match/kk-posusje-hkk-capljina/nOHcsTEid#id:15185580" },
-  { id: 3, date: "30.11.2025", homeTeam: "HKK Grude", awayTeam: "KK Posušje", homeScore: 60, awayScore: 56, isUpcoming: false, sofascoreLink: "https://www.sofascore.com/basketball/match/hkk-grude-kk-posusje/TEidsMiOi#id:15014486" },
-  { id: 4, date: "23.11.2025", homeTeam: "KK Posušje", awayTeam: "HKK Rama", homeScore: 90, awayScore: 77, isUpcoming: false, sofascoreLink: "https://www.sofascore.com/basketball/match/hkk-rama-kk-posusje/TEidsNiOi#id:15014481" },
-  { id: 5, date: "15.11.2025", homeTeam: "KK Posušje", awayTeam: "HKK Široki II", homeScore: 79, awayScore: 72, isUpcoming: false, sofascoreLink: "https://www.sofascore.com/basketball/match/hkk-siroki-ii-kk-posusje/TEidsJiOi#id:15014461" },
-  { id: 6, date: "09.11.2025", homeTeam: "HKK Mostar", awayTeam: "KK Posušje", homeScore: 92, awayScore: 78, isUpcoming: false, sofascoreLink: "https://www.sofascore.com/basketball/match/hkk-mostar-kk-posusje/TEidsMbxh#id:15014458" },
-  { id: 7, date: "02.11.2025", homeTeam: "KK Posušje", awayTeam: "HKK Tomislav", homeScore: 81, awayScore: 85, isUpcoming: false, sofascoreLink: "https://www.sofascore.com/basketball/match/hkk-tomislav-tomislavgrad-kk-posusje/TEidsLiOi#id:14973017" },
+  { id: 15, date: "20.01.2026", homeTeam: "HKK Posušje", awayTeam: "HKK Široki II", homeScore: 54, awayScore: 69, isUpcoming: false, sofascoreLink: "https://www.sofascore.com/hr/basketball/match/kk-posusje-hkk-siroki/lIcsTEid#id:15400673", competition: "Kup KSHB 🏆" },
+  { id: 1, date: "14.12.2025", homeTeam: "HKK Ljubuški", awayTeam: "HKK Posušje", homeScore: 85, awayScore: 81, isUpcoming: false, sofascoreLink: "https://www.sofascore.com/basketball/match/hkk-ljubuski-kk-posusje/TEidsOiOi#id:15014496" },
+  { id: 2, date: "07.12.2025", homeTeam: "Čapljina", awayTeam: "HKK Posušje", homeScore: 33, awayScore: 107, isUpcoming: false, sofascoreLink: "https://www.sofascore.com/basketball/match/kk-posusje-hkk-capljina/nOHcsTEid#id:15185580" },
+  { id: 3, date: "30.11.2025", homeTeam: "HKK Grude", awayTeam: "HKK Posušje", homeScore: 60, awayScore: 56, isUpcoming: false, sofascoreLink: "https://www.sofascore.com/basketball/match/hkk-grude-kk-posusje/TEidsMiOi#id:15014486" },
+  { id: 4, date: "23.11.2025", homeTeam: "HKK Posušje", awayTeam: "HKK Rama", homeScore: 90, awayScore: 77, isUpcoming: false, sofascoreLink: "https://www.sofascore.com/basketball/match/hkk-rama-kk-posusje/TEidsNiOi#id:15014481" },
+  { id: 5, date: "15.11.2025", homeTeam: "HKK Posušje", awayTeam: "HKK Široki II", homeScore: 79, awayScore: 72, isUpcoming: false, sofascoreLink: "https://www.sofascore.com/basketball/match/hkk-siroki-ii-kk-posusje/TEidsJiOi#id:15014461" },
+  { id: 6, date: "09.11.2025", homeTeam: "HKK Mostar", awayTeam: "HKK Posušje", homeScore: 92, awayScore: 78, isUpcoming: false, sofascoreLink: "https://www.sofascore.com/basketball/match/hkk-mostar-kk-posusje/TEidsMbxh#id:15014458" },
+  { id: 7, date: "02.11.2025", homeTeam: "HKK Posušje", awayTeam: "HKK Tomislav", homeScore: 81, awayScore: 85, isUpcoming: false, sofascoreLink: "https://www.sofascore.com/basketball/match/hkk-tomislav-tomislavgrad-kk-posusje/TEidsLiOi#id:14973017" },
 ];
 
 // Standings data
@@ -159,7 +159,7 @@ const standings: Standing[] = [
   { position: 2, team: "HKK Ljubuški", played: 7, won: 6, lost: 1, diff: 89, last5: ["W", "W", "W", "L", "W"], points: 13 },
   { position: 3, team: "HKK Mostar", played: 7, won: 5, lost: 2, diff: 95, last5: ["L", "W", "W", "W", "W"], points: 12 },
   { position: 4, team: "HKK Tomislav", played: 8, won: 4, lost: 4, diff: -1, last5: ["W", "L", "L", "W", "W"], points: 12 },
-  { position: 5, team: "KK Posušje", played: 8, won: 3, lost: 5, diff: 63, last5: ["W", "L", "W", "L", "L"], points: 11 },
+  { position: 5, team: "HKK Posušje", played: 8, won: 3, lost: 5, diff: 63, last5: ["W", "L", "W", "L", "L"], points: 11 },
   { position: 6, team: "HKK Rama", played: 7, won: 3, lost: 4, diff: 15, last5: ["W", "L", "W", "L", "W"], points: 10 },
   { position: 7, team: "HKK Široki II", played: 7, won: 2, lost: 5, diff: 0, last5: ["L", "L", "L", "W", "W"], points: 9 },
   { position: 8, team: "Čapljina", played: 8, won: 0, lost: 8, diff: -357, last5: ["L", "L", "L", "L", "L"], points: 8 },
@@ -353,9 +353,9 @@ const Statistics = () => {
               <span className="font-display tracking-wider text-xl">Nazad</span>
             </button>
             <div className="flex items-end gap-3 absolute left-1/2 -translate-x-1/2 md:static md:translate-x-0 md:ml-4">
-              <img src={logoPosusje} alt="KK Posušje" className="w-10 h-10 object-contain" />
+              <img src={logoPosusje} alt="HKK Posušje" className="w-10 h-10 object-contain" />
               <div>
-                <h1 className="font-display text-lg text-foreground leading-none">KK Posušje</h1>
+                <h1 className="font-display text-lg text-foreground leading-none">HKK Posušje</h1>
                 <div className="flex items-end gap-1 pb-0.5">
                   <a href="https://www.kshb.ba/" target="_blank" rel="noopener noreferrer" className="hover:opacity-80 transition-opacity">
                     <img src={logoKSHB} alt="KSHB" className="w-3 h-3 object-contain" />
@@ -593,7 +593,7 @@ const Statistics = () => {
                           {standings.map((team) => (
                             <TableRow 
                               key={team.position} 
-                              className={`border-border/20 transition-all duration-200 hover:bg-secondary/50 hover:shadow-md ${team.team === "KK Posušje" ? "bg-primary/10 hover:bg-primary/20" : ""}`}
+                              className={`border-border/20 transition-all duration-200 hover:bg-secondary/50 hover:shadow-md ${team.team === "HKK Posušje" ? "bg-primary/10 hover:bg-primary/20" : ""}`}
                             >
                               <TableCell className="text-center font-bold text-sm">{team.position}</TableCell>
                               <TableCell>
@@ -601,7 +601,7 @@ const Statistics = () => {
                                   {getTeamLogo(team.team) && (
                                     <img src={getTeamLogo(team.team)!} alt="" className="w-6 h-6 md:w-7 md:h-7 object-contain" />
                                   )}
-                                  <span className={`text-xs md:text-sm font-bold ${team.team === "KK Posušje" ? "text-primary" : ""}`}>
+                                  <span className={`text-xs md:text-sm font-bold ${team.team === "HKK Posušje" ? "text-primary" : ""}`}>
                                     {team.team}
                                   </span>
                                 </div>
