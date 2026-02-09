@@ -467,7 +467,7 @@ const Statistics = () => {
                             {/* Home Team */}
                             <div className="flex items-center justify-between mb-0.5">
                               <div className="flex items-center gap-1.5">
-                                {homeLogo && <img src={homeLogo} alt="" className="w-5 h-5 object-contain" />}
+                                {homeLogo && <img src={homeLogo} alt="" className={`object-contain ${match.homeTeam.includes("Široki") || match.homeTeam.includes("Mostar") ? "w-6 h-6" : "w-5 h-5"}`} />}
                                 <span className={`text-sm font-medium ${match.homeTeam.includes("Posušje") ? "text-primary" : "text-foreground"}`}>
                                   {match.homeTeam}
                                 </span>
@@ -482,7 +482,7 @@ const Statistics = () => {
                             {/* Away Team */}
                             <div className="flex items-center justify-between">
                               <div className="flex items-center gap-1.5">
-                                {awayLogo && <img src={awayLogo} alt="" className="w-5 h-5 object-contain" />}
+                                {awayLogo && <img src={awayLogo} alt="" className={`object-contain ${match.awayTeam.includes("Široki") || match.awayTeam.includes("Mostar") ? "w-6 h-6" : "w-5 h-5"}`} />}
                                 <span className={`text-sm font-medium ${match.awayTeam.includes("Posušje") ? "text-primary" : "text-foreground"}`}>
                                   {match.awayTeam}
                                 </span>

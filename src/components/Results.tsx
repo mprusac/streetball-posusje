@@ -157,7 +157,7 @@ const Results = () => {
   };
 
   const isLargeLogoTeam = (teamName: string) => {
-    return teamName.includes("Široki") && !teamName.includes("II");
+    return teamName.includes("Široki") || teamName.includes("Mostar") || teamName.includes("Rama") || teamName.includes("Grude") || teamName.includes("Ljubuš");
   };
 
   return (
@@ -268,12 +268,12 @@ const Results = () => {
                     <div className="flex items-start justify-between gap-2 md:gap-4">
                       {/* Home Team */}
                       <div className="flex-1 flex flex-col items-center">
-                        <div className="w-10 h-10 md:w-14 md:h-14 rounded-full bg-background/60 flex items-center justify-center p-1.5 md:p-2 border border-border/50 overflow-hidden">
+                        <div className="w-10 h-10 md:w-14 md:h-14 rounded-full bg-background/60 flex items-center justify-center p-1.5 md:p-2 border-none overflow-hidden">
                           {homeLogo ? (
                             <img 
                               src={homeLogo} 
                               alt={match.homeTeam}
-                              className={`object-contain flex-shrink-0 ${isLargeLogoTeam(match.homeTeam) ? "w-10 h-10 md:w-14 md:h-14 scale-[1.4]" : "w-7 h-7 md:w-10 md:h-10"}`}
+                              className={`object-contain flex-shrink-0 ${isLargeLogoTeam(match.homeTeam) ? "w-10 h-10 md:w-14 md:h-14 scale-[1.6]" : "w-7 h-7 md:w-10 md:h-10"}`}
                             />
                           ) : (
                             <div className="w-full h-full rounded-full bg-muted flex items-center justify-center">
@@ -317,12 +317,12 @@ const Results = () => {
 
                       {/* Away Team */}
                       <div className="flex-1 flex flex-col items-center">
-                        <div className="w-10 h-10 md:w-14 md:h-14 rounded-full bg-background/60 flex items-center justify-center p-1.5 md:p-2 border border-border/50 overflow-hidden">
+                        <div className="w-10 h-10 md:w-14 md:h-14 rounded-full bg-background/60 flex items-center justify-center p-1.5 md:p-2 border-none overflow-hidden">
                           {awayLogo ? (
                             <img 
                               src={awayLogo} 
                               alt={match.awayTeam}
-                              className={`object-contain flex-shrink-0 ${isLargeLogoTeam(match.awayTeam) ? "w-10 h-10 md:w-14 md:h-14 scale-[1.4]" : "w-7 h-7 md:w-10 md:h-10"}`}
+                              className={`object-contain flex-shrink-0 ${isLargeLogoTeam(match.awayTeam) ? "w-10 h-10 md:w-14 md:h-14 scale-[1.6]" : "w-7 h-7 md:w-10 md:h-10"}`}
                             />
                           ) : (
                             <div className="w-full h-full rounded-full bg-muted flex items-center justify-center">
