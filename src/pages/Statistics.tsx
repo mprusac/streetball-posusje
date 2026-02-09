@@ -605,11 +605,15 @@ const Statistics = () => {
                                         alt="" 
                                         className={`object-contain ${
                                           team.team === "HKK Grude" || team.team === "HKK Široki" || team.team === "HKK Široki II"
-                                            ? "w-[200%] h-[200%] scale-[1.0]"
+                                            ? "w-[250%] h-[250%]"
                                             : team.team === "HKK Ljubuški"
-                                            ? "w-[140%] h-[140%]"
-                                            : team.team === "HKK Rama"
                                             ? "w-[130%] h-[130%]"
+                                            : team.team === "HKK Rama"
+                                            ? "w-[120%] h-[120%]"
+                                            : team.team === "HKK Posušje" || team.team === "HKK Tomislav" || team.team === "HKK Mostar"
+                                            ? "w-[85%] h-[85%]"
+                                            : team.team === "HKK Čapljina" || team.team === "Čapljina"
+                                            ? "w-[90%] h-[90%]"
                                             : "w-full h-full"
                                         }`}
                                       />
