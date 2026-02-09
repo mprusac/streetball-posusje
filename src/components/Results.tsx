@@ -360,7 +360,10 @@ const Results = () => {
 
                     {/* Competition label below teams/score */}
                     {match.competition && (
-                      <div className="flex justify-center -mt-1">
+                      <div className="flex justify-center items-center gap-1 -mt-1">
+                        {match.competition === "Liga KSHB" && (
+                          <img src={logoKSHB} alt="KSHB" className="w-4 h-4 object-contain" />
+                        )}
                         <span className="text-[8px] md:text-[10px] font-bold text-primary bg-primary/10 px-2 py-0.5 rounded-full">
                           {match.competition}
                         </span>
