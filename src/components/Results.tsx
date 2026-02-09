@@ -22,6 +22,7 @@ interface MatchResult {
   isHome: boolean;
   sofaScoreLink: string;
   youtubeLink?: string;
+  competition?: string;
 }
 
 // Logo mapping
@@ -42,6 +43,17 @@ const teamLogos: Record<string, string> = {
 };
 
 const results: MatchResult[] = [
+  {
+    id: 0,
+    date: "20.01.2026",
+    homeTeam: "KK Posušje",
+    awayTeam: "KK Široki",
+    homeScore: 54,
+    awayScore: 69,
+    isHome: true,
+    sofaScoreLink: "https://www.sofascore.com/hr/basketball/match/kk-posusje-hkk-siroki/lIcsTEid#id:15400673",
+    competition: "Kup KSHB 🏆",
+  },
   {
     id: 1,
     date: "14.12.2025",
@@ -225,9 +237,16 @@ const Results = () => {
                         </a>
                       )}
                     </div>
-                    <span className="text-[10px] md:text-xs font-medium text-muted-foreground bg-background/50 px-2 md:px-3 py-1 rounded-full">
-                      {match.date}
-                    </span>
+                    <div className="flex flex-col items-center gap-0.5">
+                      {match.competition && (
+                        <span className="text-[8px] md:text-[10px] font-bold text-primary bg-primary/10 px-2 py-0.5 rounded-full">
+                          {match.competition}
+                        </span>
+                      )}
+                      <span className="text-[10px] md:text-xs font-medium text-muted-foreground bg-background/50 px-2 md:px-3 py-1 rounded-full">
+                        {match.date}
+                      </span>
+                    </div>
                     <div className="w-8 md:w-14 flex justify-center items-center">
                       <span title="SofaScore">
                         <ExternalLink
