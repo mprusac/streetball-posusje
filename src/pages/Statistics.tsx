@@ -400,8 +400,10 @@ const Statistics = () => {
                     onMouseLeave={() => setHoveredFormIndex(null)}
                   >
                     <img src={game.logo} alt={game.opponent} className={`object-contain ${
-                      game.opponent.includes("Široki") || game.opponent.includes("Grude")
-                        ? "w-24 h-24" 
+                      game.opponent.includes("Široki")
+                        ? "w-[30rem] h-[30rem]" 
+                        : game.opponent.includes("Grude")
+                        ? "w-24 h-24"
                         : game.opponent.includes("Rama") || game.opponent.includes("Ljubuš")
                           ? "w-12 h-12"
                           : "w-6 h-6"
