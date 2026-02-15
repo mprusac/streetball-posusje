@@ -23,8 +23,7 @@ const Footer = () => {
           <div>
             <img src={logo} alt="HKK Posušje" className="h-20 w-auto mb-4" />
             <p className="text-muted-foreground text-sm">
-              Košarkaški klub koji dominira ne samo na terenu, već u srcima svojih
-              navijača.
+              Ajmo žuti!
             </p>
           </div>
 
