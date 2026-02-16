@@ -45,6 +45,18 @@ const teamLogos: Record<string, string> = {
 
 const results: MatchResult[] = [
   {
+    id: 16,
+    date: "15.02.2026",
+    homeTeam: "HKK Posušje",
+    awayTeam: "HKK Mostar",
+    homeScore: 90,
+    awayScore: 84,
+    isHome: true,
+    sofaScoreLink: "https://www.sofascore.com/hr/basketball/match/hkk-mostar-kk-posusje/TEidsMbxh#id:15014506",
+    youtubeLink: "https://www.youtube.com/watch?v=ncFUEOKNpCo",
+    competition: "Liga KSHB",
+  },
+  {
     id: 0,
     date: "20.01.2026",
     homeTeam: "HKK Posušje",
