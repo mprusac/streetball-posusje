@@ -82,13 +82,13 @@ const Sponsors = () => {
           {sponsors.map((sponsor, index) => (
             <div
               key={sponsor.name}
-              className={`bg-secondary/50 border-2 ${sponsor.borderColor} rounded-xl overflow-hidden hover:scale-[1.03] transition-all duration-300 animate-fade-in-up`}
+              className={`bg-secondary/50 border-2 ${sponsor.borderColor} rounded-xl p-6 md:p-8 flex items-center justify-center hover:scale-[1.03] transition-all duration-300 animate-fade-in-up aspect-[16/9]`}
               style={{ animationDelay: `${index * 100}ms` }}
             >
               <img 
                 src={sponsor.image} 
                 alt={sponsor.name} 
-                className="w-full h-auto object-cover"
+                className="max-w-[80%] max-h-[80%] object-contain"
               />
             </div>
           ))}
