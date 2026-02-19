@@ -82,7 +82,7 @@ const Sponsors = () => {
           {sponsors.map((sponsor, index) => (
             <div
               key={sponsor.name}
-              className={`bg-secondary/50 border-2 ${sponsor.borderColor} rounded-2xl overflow-hidden hover:scale-[1.03] transition-all duration-300 animate-fade-in-up`}
+              className={`bg-secondary/50 border-2 ${sponsor.borderColor} rounded-2xl overflow-hidden hover:scale-[1.05] ${sponsor.glowColor} transition-all duration-300 animate-fade-in-up`}
               style={{ animationDelay: `${index * 100}ms` }}
             >
               <img 
