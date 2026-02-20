@@ -346,7 +346,10 @@ const Statistics = () => {
         <div className="container mx-auto px-4 py-3">
           <div className="flex items-center">
             <button 
-              onClick={() => navigate("/")} 
+              onClick={() => {
+                sessionStorage.setItem("restoreHomeScroll", "true");
+                navigate("/");
+              }} 
               className="inline-flex items-center gap-3 text-primary hover:text-primary/80 transition-colors mr-auto text-lg"
             >
               <ArrowLeft className="w-6 h-6" />
