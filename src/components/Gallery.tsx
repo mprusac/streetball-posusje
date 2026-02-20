@@ -23,6 +23,14 @@ const Gallery = () => {
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [direction, setDirection] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useState(() => {
+    const handleResize = () => setIsMobile(window.innerWidth < 768);
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  });
 
   const openLightbox = (index: number) => {
     setCurrentIndex(index);
