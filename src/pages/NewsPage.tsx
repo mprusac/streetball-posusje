@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link, useParams, useNavigate } from "react-router-dom";
-import { ArrowLeft, Calendar, Trophy, Users, Megaphone, Newspaper, ArrowRight } from "lucide-react";
-import { motion } from "framer-motion";
+import { ArrowLeft, Calendar, Trophy, Users, Megaphone, Newspaper, ArrowRight, X, ChevronLeft, ChevronRight } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
 import Footer from "@/components/Footer";
 import newsLaguna from "@/assets/news-laguna.jpg";
 import newsLagunaCard from "@/assets/news-laguna-card.jpg";
@@ -87,6 +87,24 @@ const getCategoryLabel = (cat: string) => {
 
 const ArticleDetail = ({ article }: { article: NewsItem }) => {
   const navigate = useNavigate();
+  const [lightboxOpen, setLightboxOpen] = useState(false);
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  const galleryImages = article.galleryImages || [];
+
+  const openLightbox = (index: number) => {
+    setCurrentIndex(index);
+    setLightboxOpen(true);
+    document.body.style.overflow = "hidden";
+  };
+
+  const closeLightbox = () => {
+    setLightboxOpen(false);
+    document.body.style.overflow = "auto";
+  };
+
+  const goToPrevious = () => setCurrentIndex((prev) => (prev === 0 ? galleryImages.length - 1 : prev - 1));
+  const goToNext = () => setCurrentIndex((prev) => (prev === galleryImages.length - 1 ? 0 : prev + 1));
   
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -127,10 +145,10 @@ const ArticleDetail = ({ article }: { article: NewsItem }) => {
               ))}
             </div>
 
-            {article.galleryImages && article.galleryImages.length > 0 && (
+            {galleryImages.length > 0 && (
               <div className="mt-8 columns-2 md:columns-3 gap-3">
-                {article.galleryImages.map((img, i) => (
-                  <img key={i} src={img} alt={`${article.title} - slika ${i + 1}`} className="w-full rounded-lg mb-3 break-inside-avoid" />
+                {galleryImages.map((img, i) => (
+                  <img key={i} src={img} alt={`${article.title} - slika ${i + 1}`} className="w-full rounded-lg mb-3 break-inside-avoid cursor-pointer hover:opacity-90 transition-opacity" onClick={() => openLightbox(i)} />
                 ))}
               </div>
             )}
@@ -138,6 +156,34 @@ const ArticleDetail = ({ article }: { article: NewsItem }) => {
         </div>
       </div>
       <Footer />
+
+      {/* Lightbox */}
+      <AnimatePresence>
+        {lightboxOpen && galleryImages.length > 0 && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.15 }}
+            className="fixed inset-0 z-50 bg-background/95 backdrop-blur-sm flex items-center justify-center"
+            onClick={closeLightbox}
+          >
+            <motion.button initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.1 }} onClick={closeLightbox} className="absolute top-4 right-4 p-2 rounded-full bg-muted/50 hover:bg-muted text-foreground transition-colors z-10">
+              <X className="w-6 h-6" />
+            </motion.button>
+            <button onClick={(e) => { e.stopPropagation(); goToPrevious(); }} className="absolute left-4 p-2 rounded-full bg-muted/50 hover:bg-muted text-foreground transition-colors z-10">
+              <ChevronLeft className="w-8 h-8" />
+            </button>
+            <img src={galleryImages[currentIndex]} alt={`Slika ${currentIndex + 1}`} className="max-h-[85vh] max-w-[90vw] object-contain rounded-lg shadow-2xl" onClick={(e) => e.stopPropagation()} />
+            <button onClick={(e) => { e.stopPropagation(); goToNext(); }} className="absolute right-4 p-2 rounded-full bg-muted/50 hover:bg-muted text-foreground transition-colors z-10">
+              <ChevronRight className="w-8 h-8" />
+            </button>
+            <div className="absolute bottom-4 left-1/2 -translate-x-1/2 text-foreground/70 text-sm">
+              {currentIndex + 1} / {galleryImages.length}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 };
