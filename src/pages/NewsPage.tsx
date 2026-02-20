@@ -12,6 +12,7 @@ import newsMostarCard from "@/assets/news-mostar-card.jpg";
 import newsMostarAction from "@/assets/news-mostar-action.png";
 import tomislavCard from "@/assets/tomislav/tomislav-7.png";
 import tomislavDetail from "@/assets/tomislav/tomislav-detail.jpg";
+import newsWeltplastCard from "@/assets/news-weltplast-card.jpg";
 
 interface NewsItem {
   id: number;
