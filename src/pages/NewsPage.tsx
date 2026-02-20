@@ -7,6 +7,7 @@ import news1 from "@/assets/news-1.jpg";
 import news2 from "@/assets/news-2.jpg";
 import news3 from "@/assets/news-3.jpg";
 import newsLaguna from "@/assets/news-laguna.jpg";
+import newsLagunaCard from "@/assets/news-laguna-card.png";
 
 interface NewsItem {
   id: number;
@@ -16,10 +17,11 @@ interface NewsItem {
   date: string;
   category: "utakmica" | "transfer" | "najava" | "klub";
   image: string;
+  cardImage?: string;
 }
 
 const allNews: NewsItem[] = [
-  { id: 17, title: "Sponzorska suradnja sa Agencijom Laguna!", excerpt: "S velikim zadovoljstvom objavljujemo da je poduzeće Agencija Laguna novi srebreni sponzor našeg kluba!", content: "Sponzorska suradnja!\n\nS velikim zadovoljstvom objavljujemo da je poduzeće Agencija Laguna novi srebreni sponzor našeg kluba!\n\nHvala na ukazanom povjerenju, podršci i prepoznavanju važnosti sporta u našoj zajednici. Vaša podrška dodatni je vjetar u leđa našim igračima i motivacija za nove pobjede!\n\nRadujemo se zajedničkim projektima, napretku i svim uspjesima koje ćemo zajedno ostvariti.\n\nAjmo žuti!\n\n#kkposusje #ajmozuti", date: "18. 02. 2026.", category: "klub", image: newsLaguna },
+  { id: 17, title: "Sponzorska suradnja sa Agencijom Laguna!", excerpt: "S velikim zadovoljstvom objavljujemo da je poduzeće Agencija Laguna novi srebreni sponzor našeg kluba!", content: "Sponzorska suradnja!\n\nS velikim zadovoljstvom objavljujemo da je poduzeće Agencija Laguna novi srebreni sponzor našeg kluba!\n\nHvala na ukazanom povjerenju, podršci i prepoznavanju važnosti sporta u našoj zajednici. Vaša podrška dodatni je vjetar u leđa našim igračima i motivacija za nove pobjede!\n\nRadujemo se zajedničkim projektima, napretku i svim uspjesima koje ćemo zajedno ostvariti.\n\nAjmo žuti!\n\n#kkposusje #ajmozuti", date: "18. 02. 2026.", category: "klub", image: newsLaguna, cardImage: newsLagunaCard },
   { id: 1, title: "HKK Posušje pobijedio HKK Grude na domaćem terenu", excerpt: "HKK Posušje ostvario je uvjerljivu pobjedu protiv HKK Grude rezultatom 85:72. Ian Krishnan predvodio je ekipu s 24 poena...", content: "HKK Posušje ostvario je uvjerljivu pobjedu protiv HKK Grude rezultatom 85:72. Ian Krishnan predvodio je ekipu s 24 poena i bio ključni igrač utakmice.\n\nKošarkaši HKK Posušja upisali su pobjedu u 4. kolu Premijer lige Herceg Bosne. U utakmici u kojoj je obrana bila na visokoj razini, domaćini su iskoristili sve ponuđene prilike.\n\nMostarci su od početka nametnuli svoj tempo igre, što je rezultiralo vodstvom od 15 poena već na poluvremenu. Unatoč pokušajima gostiju da se vrate u utakmicu, domaćini su kontrolirali rezultat do kraja.", date: "14. 12. 2024.", category: "utakmica", image: news1 },
   { id: 2, title: "Pobjeda protiv KK Čapljina u gostima", excerpt: "Naši igrači ostvarili su važnu pobjedu na gostovanju kod KK Čapljina rezultatom 82:78...", content: "Naši igrači ostvarili su važnu pobjedu na gostovanju kod KK Čapljina rezultatom 82:78.\n\nBila je to napeta utakmica u kojoj su gosti morali dati sve od sebe za pobjedu. Ključni trenutak bio je u zadnjoj četvrtini kada je naš tim uspješno obranio vodstvo.\n\nOva pobjeda značajna je za plasman u doigravanju.", date: "07. 12. 2024.", category: "utakmica", image: news2 },
   { id: 3, title: "Poraz od HKK Mostar u napetoj utakmici", excerpt: "Unatoč velikom trudu, HKK Posušje izgubio je od HKK Mostar rezultatom 68:75...", content: "Unatoč velikom trudu, HKK Posušje izgubio je od HKK Mostar rezultatom 68:75.\n\nUtakmica je bila izjednačena do samog kraja, ali su gosti uspjeli iskoristiti nekoliko ključnih grešaka domaćina u završnici susreta.", date: "30. 11. 2024.", category: "utakmica", image: news3 },
@@ -147,7 +149,7 @@ const NewsPage = () => {
               <motion.div key={item.id} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4, delay: index * 0.05 }}>
                 <Link to={`/vijesti/${item.id}`} className="group block bg-background rounded-lg overflow-hidden transition-all duration-300 hover:scale-[1.02] hover-lift border border-transparent hover:border-primary/30">
                   <div className="relative h-48 overflow-hidden">
-                    <img src={item.image} alt={item.title} className="w-full h-full object-cover object-[center_65%] transition-transform duration-500 group-hover:scale-110" />
+                    <img src={item.cardImage || item.image} alt={item.title} className="w-full h-full object-cover object-[center_65%] transition-transform duration-500 group-hover:scale-110" />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
                     <span className="absolute top-3 left-3 px-2 py-1 bg-primary/90 text-primary-foreground text-xs rounded flex items-center gap-1 font-bold">
                       {(() => { const cat = item.category; const icons: Record<string, typeof Trophy> = { utakmica: Trophy, transfer: Users, najava: Megaphone, klub: Newspaper }; const labels: Record<string, string> = { utakmica: "Utakmice", transfer: "Transferi", najava: "Najave", klub: "Klub" }; const Icon = icons[cat]; return <><Icon size={12} strokeWidth={3} />{labels[cat]}</>; })()}
