@@ -8,6 +8,7 @@ import news3 from "@/assets/news-3.jpg";
 import newsLaguna from "@/assets/news-laguna.jpg";
 import newsLagunaCard from "@/assets/news-laguna-card.jpg";
 import newsMostarCard from "@/assets/news-mostar-card.jpg";
+import newsMostarAction from "@/assets/news-mostar-action.png";
 
 interface NewsItem {
   id: number;
