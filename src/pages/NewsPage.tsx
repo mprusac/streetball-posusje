@@ -119,7 +119,11 @@ const ArticleDetail = ({ article }: { article: NewsItem }) => {
 
             <div className="prose prose-invert max-w-none">
               {article.content.split('\n\n').map((paragraph, i) => (
-                <p key={i} className="text-foreground/90 text-lg leading-relaxed mb-4">{paragraph}</p>
+                <p key={i} className="text-foreground/90 text-lg leading-relaxed mb-4">
+                  {paragraph.split('\n').map((line, j, arr) => (
+                    <span key={j}>{line}{j < arr.length - 1 && <br />}</span>
+                  ))}
+                </p>
               ))}
             </div>
 
