@@ -349,6 +349,7 @@ const EventAlbum = ({ event }: { event: typeof events[0] }) => {
 
 const GalleryPage = () => {
   const { eventId } = useParams();
+  const navigate = useNavigate();
 
   // Scroll to top on mount
   useEffect(() => {

@@ -190,6 +190,7 @@ const ArticleDetail = ({ article }: { article: NewsItem }) => {
 
 const NewsPage = () => {
   const { articleId } = useParams();
+  const navigate = useNavigate();
   const [activeCategory, setActiveCategory] = useState<string>("sve");
 
   useEffect(() => {
