@@ -9,6 +9,7 @@ import newsWeltplastCard from "@/assets/news-weltplast-card.jpg";
 import najavaTomislav from "@/assets/news-najava-tomislav.jpg";
 import najavaKupSiroki from "@/assets/news-najava-kup-siroki.jpg";
 import najavaLjubuskiGameday from "@/assets/news-najava-ljubuski-gameday.jpg";
+import cardNajavaLjubuskiGameday from "@/assets/card-najava-ljubuski-gameday.png";
 import najavaLjubuski from "@/assets/news-najava-ljubuski.jpg";
 import najavaMostar from "@/assets/news-najava-mostar.jpg";
 import sponzorKtmBrina from "@/assets/news-sponzor-ktm-brina.jpg";
