@@ -473,9 +473,12 @@ const Statistics = () => {
                             <span>{match.date}</span>
                             {match.time && <span>{match.time}</span>}
                             {match.competition ? (
-                              <span className="text-xs font-bold text-primary bg-primary/10 px-1.5 py-0.5 rounded">{match.competition}</span>
+                              <span className="text-xs font-bold text-foreground bg-primary/10 px-1.5 py-0.5 rounded inline-flex items-center gap-1">
+                                {match.competition}
+                                <img src={logoKSHB} alt="KSHB" className="w-3.5 h-3.5 object-contain -mt-0.5" />
+                              </span>
                             ) : (
-                              <span className="text-xs font-bold text-primary bg-primary/10 px-1.5 py-0.5 rounded inline-flex items-center gap-1">
+                              <span className="text-xs font-bold text-foreground bg-primary/10 px-1.5 py-0.5 rounded inline-flex items-center gap-1">
                                 Liga KSHB
                                 <img src={logoKSHB} alt="KSHB" className="w-3.5 h-3.5 object-contain -mt-0.5" />
                               </span>
