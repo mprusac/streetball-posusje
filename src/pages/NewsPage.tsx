@@ -24,6 +24,7 @@ import cardNajavaTomislav from "@/assets/card-najava-tomislav.png";
 import cardNajavaKupSiroki from "@/assets/card-najava-kup-siroki.png";
 import cardJunioriSarajevo from "@/assets/card-juniori-sarajevo.png";
 import cardNajavaLjubuski from "@/assets/card-najava-ljubuski.png";
+import newsPorazLjubuski from "@/assets/news-poraz-ljubuski.png";
 
 interface NewsItem {
   id: number;
