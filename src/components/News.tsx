@@ -16,6 +16,7 @@ interface NewsItem {
   date: string;
   category: "utakmica" | "transfer" | "najava" | "klub";
   image: string;
+  imagePosition?: string;
 }
 
 const categoryConfig: Record<string, { label: string; icon: typeof Trophy }> = {
