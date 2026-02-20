@@ -17,6 +17,7 @@ interface NewsItem {
   date: string;
   category: "utakmica" | "transfer" | "najava" | "klub";
   image: string;
+  cardImage?: string;
 }
 
 const allNews: NewsItem[] = [
