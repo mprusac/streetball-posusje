@@ -127,6 +127,27 @@ const events = [
       { src: rama6, orientation: "horizontal" },     // horizontal
     ] as ImageWithOrientation[],
   },
+  {
+    id: "ljubuski",
+    homeTeam: "HKK Posušje",
+    awayTeam: "HKK Ljubuški",
+    date: "14.12.2025.",
+    description: "Galerija s utakmice Posušje - Ljubuški",
+    coverImage: eventLjubuski,
+    images: [] as string[],
+    imagesWithOrientation: [
+      { src: ljubuski10, orientation: "horizontal" },   // slavlje - horizontal
+      { src: ljubuski1, orientation: "horizontal" },    // dribling - horizontal
+      { src: ljubuski7, orientation: "vertical" },      // igrač sudac - vertical
+      { src: ljubuski2, orientation: "horizontal" },    // borba za loptu - horizontal
+      { src: ljubuski8, orientation: "vertical" },      // 1na1 - vertical
+      { src: ljubuski3, orientation: "vertical" },      // igrač dribling - vertical
+      { src: ljubuski4, orientation: "horizontal" },    // prodor - horizontal
+      { src: ljubuski9, orientation: "vertical" },      // crossover - vertical
+      { src: ljubuski5, orientation: "horizontal" },    // obrana - horizontal
+      { src: ljubuski6, orientation: "horizontal" },    // navijači - horizontal
+    ] as ImageWithOrientation[],
+  },
 ];
 
 const EventCard = ({ event, index }: { event: typeof events[0]; index: number }) => {
