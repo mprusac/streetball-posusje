@@ -144,23 +144,28 @@ const NewsPage = () => {
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
             {filteredNews.map((item, index) => (
-              <motion.article key={item.id} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4, delay: index * 0.05 }} className="group bg-secondary/30 rounded-lg overflow-hidden border border-border/30 hover:border-primary/30 transition-all duration-300">
-                <div className="relative h-48 overflow-hidden">
-                  <img src={item.image} alt={item.title} className="w-full h-full object-cover object-bottom transition-transform duration-500 group-hover:scale-110" />
-                  <span className="absolute top-3 left-3 px-2 py-1 bg-primary/90 text-primary-foreground text-xs rounded">{getCategoryLabel(item.category)}</span>
-                </div>
-                <div className="p-5">
-                  <div className="flex items-center gap-2 text-muted-foreground text-sm mb-3">
-                    <Calendar size={14} />
-                    {item.date}
+              <motion.div key={item.id} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4, delay: index * 0.05 }}>
+                <Link to={`/vijesti/${item.id}`} className="group block bg-background rounded-lg overflow-hidden transition-all duration-300 hover:scale-[1.02] hover-lift border border-transparent hover:border-primary/30">
+                  <div className="relative h-48 overflow-hidden">
+                    <img src={item.image} alt={item.title} className="w-full h-full object-cover object-[center_70%] transition-transform duration-500 group-hover:scale-110" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
+                    <span className="absolute top-3 left-3 px-2 py-1 bg-primary/90 text-primary-foreground text-xs rounded flex items-center gap-1 font-bold">
+                      {(() => { const cat = item.category; const icons: Record<string, typeof Trophy> = { utakmica: Trophy, transfer: Users, najava: Megaphone, klub: Newspaper }; const labels: Record<string, string> = { utakmica: "Utakmice", transfer: "Transferi", najava: "Najave", klub: "Klub" }; const Icon = icons[cat]; return <><Icon size={12} strokeWidth={3} />{labels[cat]}</>; })()}
+                    </span>
                   </div>
-                  <h3 className="text-lg font-display text-foreground mb-3 line-clamp-2 group-hover:text-primary transition-colors">{item.title}</h3>
-                  <p className="text-muted-foreground text-sm mb-4 line-clamp-3">{item.excerpt}</p>
-                  <Link to={`/vijesti/${item.id}`} className="inline-flex items-center gap-2 text-primary text-sm font-medium hover:gap-3 transition-all">
-                    Pročitaj više <ArrowRight size={16} />
-                  </Link>
-                </div>
-              </motion.article>
+                  <div className="p-5 flex flex-col">
+                    <div className="flex items-center gap-2 text-muted-foreground text-sm mb-3">
+                      <Calendar size={14} />
+                      {item.date}
+                    </div>
+                    <h3 className="text-xl font-display text-foreground mb-3 line-clamp-2 group-hover:text-primary transition-colors">{item.title}</h3>
+                    <p className="text-muted-foreground text-sm mb-4 line-clamp-3">{item.excerpt}</p>
+                    <div className="mt-auto inline-flex items-center gap-2 text-primary text-sm font-medium group-hover:gap-3 transition-all">
+                      Pročitaj više <ArrowRight size={16} />
+                    </div>
+                  </div>
+                </Link>
+              </motion.div>
             ))}
           </div>
         </div>
