@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { X, ChevronLeft, ChevronRight } from "lucide-react";
@@ -23,6 +23,14 @@ const Gallery = () => {
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [direction, setDirection] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth < 768);
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   const openLightbox = (index: number) => {
     setCurrentIndex(index);
@@ -97,7 +105,7 @@ const Gallery = () => {
         </h2>
 
         {/* Bento Grid Layout - 3 columns, 20% larger */}
-        <div className="grid grid-cols-3 gap-2 md:gap-4 max-w-4xl mx-auto" style={{ gridAutoRows: "84px" }}>
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-2 md:gap-4 max-w-4xl mx-auto" style={{ gridAutoRows: isMobile ? "100px" : "84px" }}>
           {/* Left column - Timeout (3 rows = 50%) */}
           <GalleryItem index={0} className="row-span-3" objectPosition="center center" />
           
