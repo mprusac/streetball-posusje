@@ -195,9 +195,9 @@ const players: Player[] = [
 
 // Top players data
 const topScorers: TopPlayer[] = [
-  { rank: 1, name: "Ante Kovač", position: "Krilo", value: 18, image: playerKovac },
-  { rank: 2, name: "Josip Ramljak", position: "Bek", value: 15, image: playerRamljak },
-  { rank: 3, name: "Ante Begić", position: "Krilo", value: 13, image: playerBegic },
+  { rank: 1, name: "Ante Kovač", position: "Krilo", value: 17.5, image: playerKovac },
+  { rank: 2, name: "Josip Ramljak", position: "Bek", value: 14.6, image: playerRamljak },
+  { rank: 3, name: "Ante Begić", position: "Krilo", value: 13.2, image: playerBegic },
 ];
 
 const topRebounders: TopPlayer[] = [
