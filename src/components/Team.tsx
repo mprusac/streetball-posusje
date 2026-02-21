@@ -44,12 +44,12 @@ const players: Player[] = [
   },
   {
     id: 2,
-    name: "Ante Begić",
-    position: "Forward",
-    number: "13",
-    image: playerBegic,
-    sofascoreLink: "https://www.sofascore.com/basketball/player/ante-begic/2046150",
-    description: "Iskusni Posušanin i pouzdano krilo koji preuzima odgovornost i zabija kad je najpotrebnije.",
+    name: "Josip Ramljak",
+    position: "Guard",
+    number: "04",
+    image: playerRamljak,
+    sofascoreLink: "https://www.sofascore.com/basketball/player/josip-ramljak/1578845",
+    description: "Energični krilni igrač i jedan od nositelja igre, svestran i često najefikasniji na terenu.",
     stats: { ppg: 13, rpg: 7, apg: 3, mpg: "" },
   },
   {
