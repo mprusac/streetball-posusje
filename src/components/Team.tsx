@@ -40,7 +40,7 @@ const players: Player[] = [
     image: playerKovac,
     sofascoreLink: "https://www.sofascore.com/basketball/player/ante-kovac/1578849",
     description: "Klupsko dijete i najbolji strijelac tima koji svojim iskustvom i eksplozivnošću predvodi ekipu.",
-    stats: { ppg: 21, rpg: 6, apg: 2, mpg: "" },
+    stats: { ppg: 18, rpg: 6, apg: 2, mpg: "" },
   },
   {
     id: 2,
@@ -50,7 +50,7 @@ const players: Player[] = [
     image: playerBegic,
     sofascoreLink: "https://www.sofascore.com/basketball/player/ante-begic/2046150",
     description: "Iskusni Posušanin i pouzdano krilo koji preuzima odgovornost i zabija kad je najpotrebnije.",
-    stats: { ppg: 16, rpg: 7, apg: 4, mpg: "" },
+    stats: { ppg: 13, rpg: 7, apg: 3, mpg: "" },
   },
   {
     id: 3,
@@ -60,7 +60,7 @@ const players: Player[] = [
     image: playerRamljak,
     sofascoreLink: "https://www.sofascore.com/basketball/player/josip-ramljak/1578845",
     description: "Energični krilni igrač i jedan od nositelja igre, svestran i često najefikasniji na terenu.",
-    stats: { ppg: 14, rpg: 5, apg: 5, mpg: "" },
+    stats: { ppg: 15, rpg: 5, apg: 5, mpg: "" },
   },
   {
     id: 4,
@@ -70,7 +70,7 @@ const players: Player[] = [
     image: playerDerek,
     sofascoreLink: "https://www.sofascore.com/basketball/player/mirko-derek/1578853",
     description: "Veteran i vođa na terenu koji pouzdano pokriva poziciju centra te donosi sigurnost pod košem.",
-    stats: { ppg: 7, rpg: 4, apg: 2, mpg: "" },
+    stats: { ppg: 8, rpg: 4, apg: 2, mpg: "" },
   },
   {
     id: 5,
@@ -80,7 +80,7 @@ const players: Player[] = [
     image: playerProtrka,
     sofascoreLink: "https://www.sofascore.com/basketball/player/marko-protrka/1578855",
     description: "Mladi centar svijetle budućnosti koji već prikazuje zrelost na parketu, veliki klupski talent.",
-    stats: { ppg: 7, rpg: 6, apg: 0, bpg: 1, mpg: "" },
+    stats: { ppg: 8, rpg: 7, apg: 2, bpg: 1, mpg: "" },
   },
   {
     id: 6,
@@ -90,7 +90,7 @@ const players: Player[] = [
     image: playerBasicLuka,
     sofascoreLink: "https://www.sofascore.com/basketball/player/luka-basic/1965464",
     description: "Talentirani 18-godišnjak posuškog omladinskog pogona koji vrijedno gradi svoj košarkaški put.",
-    stats: { ppg: 5, rpg: 4, apg: 0, mpg: "" },
+    stats: { ppg: 4, rpg: 4, apg: 1, mpg: "" },
   },
   {
     id: 7,
@@ -100,7 +100,7 @@ const players: Player[] = [
     image: playerPavkovic,
     sofascoreLink: "https://www.sofascore.com/basketball/player/josip-pavkovic/1845527",
     description: "Perspektivan i nadaren mladi igrač koji se svojim doprinosom timu razvija u prvoligaškog košarkaša.",
-    stats: { ppg: 4, rpg: 3, apg: 0, mpg: "" },
+    stats: { ppg: 5, rpg: 3, apg: 0, mpg: "" },
   },
   {
     id: 8,
@@ -110,7 +110,7 @@ const players: Player[] = [
     image: "",
     sofascoreLink: "https://www.sofascore.com/basketball/player/david-dragoja/2078664",
     description: "18-godišnji krilni igrač koji stječe seniorsko iskustvo, ističe se trudom i potencijalom za prvi tim.",
-    stats: { ppg: 3, rpg: 1, apg: 1, mpg: "" },
+    stats: { ppg: 4, rpg: 1, apg: 1, mpg: "" },
   },
   {
     id: 9,
@@ -120,7 +120,7 @@ const players: Player[] = [
     image: "",
     sofascoreLink: "https://www.sofascore.com/basketball/player/luka-ramljak/2364289",
     description: "16-godišnji bek šuter i posuški talent s pozivom u kadetsku reprezentaciju BiH.",
-    stats: { ppg: 2, rpg: 1, apg: 1, mpg: "" },
+    stats: { ppg: 4, rpg: 3, apg: 1, mpg: "" },
   },
   {
     id: 10,
@@ -130,7 +130,7 @@ const players: Player[] = [
     image: "",
     sofascoreLink: "https://www.sofascore.com/basketball/player/jakov-ramljak/1578854",
     description: "Mladi bek koji marljivo gradi svoju ulogu u ekipi, borben na parketu i sve zapaženiji u rotaciji.",
-    stats: { ppg: 1, rpg: 1, apg: 0, mpg: "" },
+    stats: { ppg: 2, rpg: 1, apg: 0, mpg: "" },
   },
   {
     id: 11,
@@ -140,7 +140,7 @@ const players: Player[] = [
     image: "",
     sofascoreLink: "https://www.sofascore.com/basketball/player/stipe-beslic/2339336",
     description: "Mladi igrač iz juniorskog pogona, odlikuje ga velika želja za napretkom i požrtvovnost za tim.",
-    stats: { ppg: 1, rpg: 0, apg: 0, mpg: "" },
+    stats: { ppg: 5, rpg: 1, apg: 0, mpg: "" },
   },
   {
     id: 12,
@@ -150,7 +150,7 @@ const players: Player[] = [
     image: "",
     sofascoreLink: "https://www.sofascore.com/basketball/player/ivan-ramljak/2339345",
     description: "Najiskusnije ime u sastavu, povratnik iz europskih liga koji pridonosi znanjem i autoritetom.",
-    stats: { ppg: 1, rpg: 0, apg: 0, mpg: "" },
+    stats: { ppg: 6, rpg: 3, apg: 1, mpg: "" },
   },
   {
     id: 13,
