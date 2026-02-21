@@ -70,7 +70,7 @@ const players: Player[] = [
     image: playerDerek,
     sofascoreLink: "https://www.sofascore.com/basketball/player/mirko-derek/1578853",
     description: "Veteran i vođa na terenu koji pouzdano pokriva poziciju centra te donosi sigurnost pod košem.",
-    stats: { ppg: 7, rpg: 4, apg: 2, mpg: "" },
+    stats: { ppg: 8, rpg: 4, apg: 2, mpg: "" },
   },
   {
     id: 5,
