@@ -29,6 +29,7 @@ import sponzorPlanet from "@/assets/news-sponzor-planet.jpg";
 import najavasirokiAway from "@/assets/news-najava-siroki-away.jpg";
 import porazSirokiAway from "@/assets/news-poraz-siroki-away.jpg";
 import porazSirokiCard from "@/assets/news-poraz-siroki-card.jpg";
+import berlinCard from "@/assets/berlin/berlin-card.jpg";
 
 interface NewsItem {
   id: number;
@@ -48,6 +49,7 @@ const categoryConfig: Record<string, { label: string; icon: typeof Trophy }> = {
 };
 
 const allNews: NewsItem[] = [
+  { id: 37, title: "ALBA Berlin Winterturnier 2026! 🇩🇪⛹️", excerpt: "Škola košarke KK Posušje sretno se vratila kući nakon 4 dana boravka u Berlinu, gdje su selekcije U-14 i U-16 sudjelovale na prestižnom ALBA Berlin Winterturnieru 2026!", date: "05. 01. 2026.", category: "klub", image: berlinCard },
   { id: 36, title: "Poraz na gostovanju u Širokom! 🏀", excerpt: "Košarkaši Posušja upisali su poraz rezultatom 70:62 na gostovanju kod ekipe Širokog u 10. kolu Prvenstva.", date: "23. 02. 2026.", category: "utakmica", image: porazSirokiCard, imagePosition: "center" },
   { id: 35, title: "Žuti sutra protiv Širokog II na Pecari! 📢", excerpt: "Pred našim košarkašima je novi prvenstveni izazov. Sutra momčad putuje na gostovanje kod ekipe Širokog II.", date: "21. 02. 2026.", category: "najava", image: najavasirokiAway, imagePosition: "bottom", imageScale: 1.1 },
   { id: 17, title: "Sponzorska suradnja sa Agencijom Laguna! 🤝", excerpt: "S velikim zadovoljstvom objavljujemo da je poduzeće Agencija Laguna novi srebreni sponzor našeg kluba!", date: "18. 02. 2026.", category: "klub", image: newsLagunaCard },

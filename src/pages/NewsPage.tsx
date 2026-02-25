@@ -41,6 +41,15 @@ import sponzorMiviko from "@/assets/news-sponzor-miviko.jpg";
 import sponzorPlanet from "@/assets/news-sponzor-planet.jpg";
 import najavasirokiAway from "@/assets/news-najava-siroki-away.jpg";
 import porazSirokiAway from "@/assets/news-poraz-siroki-away.jpg";
+import berlinCard from "@/assets/berlin/berlin-card.jpg";
+import berlin1 from "@/assets/berlin/berlin-1.jpg";
+import berlin2 from "@/assets/berlin/berlin-2.jpg";
+import berlin3 from "@/assets/berlin/berlin-3.jpg";
+import berlin4 from "@/assets/berlin/berlin-4.jpg";
+import berlin5 from "@/assets/berlin/berlin-5.jpg";
+import berlin6 from "@/assets/berlin/berlin-6.jpg";
+import berlin7 from "@/assets/berlin/berlin-7.jpg";
+import berlin8 from "@/assets/berlin/berlin-8.jpg";
 
 interface NewsItem {
   id: number;
@@ -56,6 +65,7 @@ interface NewsItem {
 }
 
 const allNews: NewsItem[] = [
+  { id: 37, title: "ALBA Berlin Winterturnier 2026! 🇩🇪⛹️", excerpt: "Škola košarke KK Posušje sretno se vratila kući nakon 4 dana boravka u Berlinu, gdje su selekcije U-14 i U-16 sudjelovale na prestižnom ALBA Berlin Winterturnieru 2026!", content: "ALBA Berlin Winterturnier 2026! 🇩🇪🏀\n\nS ponosom objavljujemo kako se naša škola košarke sretno vratila kući nakon 4 dana boravka u Berlinu, gdje su selekcije U-14 i U-16 sudjelovale na prestižnom ALBA Berlin Winterturnieru 2026, što ujedno predstavlja prvo međunarodno putovanje u povijesti škole košarke KK Posušje.\n\nZa mlade košarkaše ovaj turnir znači mnogo više od samih utakmica. Riječ je o neprocjenjivom sportskom i životnom iskustvu – novim poznanstvima, susretu s drugačijom sportskom kulturom, jačanju samopouzdanja te stvaranju uspomena koje će nositi cijeli život. Natjecanje s ekipama iz jakog europskog košarkaškog okruženja predstavlja snažan poticaj za daljnji razvoj i motivaciju mladih sportaša.\n\nPosebnu vrijednost ovom nastupu daje činjenica da je ovo prvi korak strateške suradnje KK Posušje s ALBOM Berlin.\n\nKlub će u budućnosti kroz ovakve projekte nastojati sustavno graditi budućnost kluba kroz rad s mladima, ulažući u njihovo sportsko, ali i osobno odrastanje. Ovi nastupi predstavljaju važan korak naprijed, kako za mlade selekcije, tako i za cjelokupni razvoj kluba.\n\nAjmo žuti! 🟡💪\n\n#kkposusje #ajmozuti", date: "05. 01. 2026.", category: "klub", image: berlin1, cardImage: berlinCard, galleryImages: [berlin1, berlin2, berlin3, berlin4, berlin5, berlin6, berlin7, berlin8] },
   { id: 36, title: "Poraz na gostovanju u Širokom! 🏀", excerpt: "Košarkaši Posušja upisali su poraz rezultatom 70:62 na gostovanju kod ekipe Širokog u 10. kolu Prvenstva.", content: "Poraz na gostovanju u Širokom. 🏀🌙\n\nKošarkaši Posušja jučer su igrali utakmicu 10. kola Prvenstva Herceg-Bosne protiv ekipe Širokog.\n\nKošarkaši Posušja su upisali poraz rezultatom 70:62, te se trenutno nalaze na 5. mjesto tablice. U 10. odigranih utakmica Žuti su ostvarili 4 pobjede i 6 poraza.\n\nAjmo žuti! 🟡💪\n\n#kkposusje #ajmozuti", date: "23. 02. 2026.", category: "utakmica", image: porazSirokiAway, cardImagePosition: "center" },
   { id: 35, title: "Žuti sutra protiv Širokog II na Pecari! 📢", excerpt: "Pred našim košarkašima je novi prvenstveni izazov. Sutra momčad putuje na gostovanje kod ekipe Širokog II.", content: "Žuti sutra protiv Širokog II na Pecari! 🔥💪\n\nPred našim košarkašima je novi prvenstveni izazov. Sutra (nedjelja) momčad putuje na gostovanje kod ekipe Širokog II.\n\nUtakmica se igra s početkom u 17:00 sati u dvorani Pecara u Širokom Brijegu.\n\nPozivamo sve naše navijače koji su u mogućnosti da dođu podržati ekipu na ovom gostovanju. 🏀🏟️\n\nAjmo žuti! 🟡💪\n\n#kkposusje #ajmozuti", date: "21. 02. 2026.", category: "najava", image: najavasirokiAway, cardImagePosition: "bottom" },
   { id: 17, title: "Sponzorska suradnja sa Agencijom Laguna! 🤝", excerpt: "S velikim zadovoljstvom objavljujemo da je poduzeće Agencija Laguna novi srebreni sponzor našeg kluba!", content: "Sponzorska suradnja! 🤝✨\n\nS velikim zadovoljstvom objavljujemo da je poduzeće Agencija Laguna novi srebreni sponzor našeg kluba! 🏆\n\nHvala na ukazanom povjerenju, podršci i prepoznavanju važnosti sporta u našoj zajednici. Vaša podrška dodatni je vjetar u leđa našim igračima i motivacija za nove pobjede!\n\nRadujemo se zajedničkim projektima, napretku i svim uspjesima koje ćemo zajedno ostvariti.\n\nAjmo žuti! 🟡💪\n\n#kkposusje #ajmozuti", date: "18. 02. 2026.", category: "klub", image: newsLaguna, cardImage: newsLagunaCard },
