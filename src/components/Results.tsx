@@ -45,6 +45,18 @@ const teamLogos: Record<string, string> = {
 
 const results: MatchResult[] = [
   {
+    id: 18,
+    date: "22.02.2026",
+    homeTeam: "HKK Široki II",
+    awayTeam: "HKK Posušje",
+    homeScore: 70,
+    awayScore: 62,
+    isHome: false,
+    sofaScoreLink: "https://www.sofascore.com/hr/basketball/match/hkk-siroki-ii-kk-posusje/TEidsJiOi#id:15014507",
+    youtubeLink: "https://www.youtube.com/watch?v=xdO6qF1POOc",
+    competition: "Liga KSHB",
+  },
+  {
     id: 16,
     date: "15.02.2026",
     homeTeam: "HKK Posušje",
