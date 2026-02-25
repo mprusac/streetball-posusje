@@ -10,6 +10,8 @@ import ktmBrinaLogo from "@/assets/sponsors/ktm-brina-logo.png";
 import lagunaLogo from "@/assets/sponsors/laguna-logo.png";
 import binvestLogo from "@/assets/sponsors/binvest-logo.png";
 import sisovicLogo from "@/assets/sponsors/sisovic.png";
+import ledaLogo from "@/assets/sponsors/leda-logo.png";
+import croatiaOsiguranjeLogo from "@/assets/sponsors/croatia-osiguranje-logo.png";
 
 interface SponsorTier {
   name: string;
@@ -64,6 +66,8 @@ const sponsors = [
   { name: "Mrvelji d.o.o.", tier: "Bronze", image: mrveljiLogo, borderColor: "border-[hsl(30,60%,45%)]", glowColor: "hover:[box-shadow:0_0_25px_8px_hsl(30,60%,45%,0.3)]", imgClass: "!object-contain scale-[1.15]", url: "https://www.mrvelji.com/" },
   { name: "Weltplast", tier: "Bronze", image: weltplastLogo, borderColor: "border-[hsl(30,60%,45%)]", glowColor: "hover:[box-shadow:0_0_25px_8px_hsl(30,60%,45%,0.3)]", imgClass: "scale-[1.2]", url: "https://weltplast.com/hr/" },
   { name: "Šišović Rakitno", tier: "Gold", image: sisovicLogo, borderColor: "border-[hsl(48,96%,53%)]", glowColor: "hover:[box-shadow:0_0_25px_8px_hsl(48,96%,53%,0.35)]", imgClass: "!object-contain scale-[2.5]", url: "" },
+  { name: "Leda", tier: "Gold", image: ledaLogo, borderColor: "border-[hsl(48,96%,53%)]", glowColor: "hover:[box-shadow:0_0_25px_8px_hsl(48,96%,53%,0.35)]", imgClass: "", url: "" },
+  { name: "Croatia Osiguranje", tier: "Gold", image: croatiaOsiguranjeLogo, borderColor: "border-[hsl(48,96%,53%)]", glowColor: "hover:[box-shadow:0_0_25px_8px_hsl(48,96%,53%,0.35)]", imgClass: "", url: "https://www.crosig.hr/" },
 ];
 
 const Sponsors = () => {
