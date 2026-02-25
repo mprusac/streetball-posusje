@@ -20,6 +20,7 @@ import berlinG7 from "@/assets/berlin/berlin-g7.jpg";
 import berlinG8 from "@/assets/berlin/berlin-g8.jpg";
 import berlinG9 from "@/assets/berlin/berlin-g9.jpg";
 import berlin9 from "@/assets/berlin/berlin-9.jpg";
+import berlinGalleryCover from "@/assets/berlin/berlin-gallery-cover.jpg";
 
 // Import Tomislav images
 import tomislav1 from "@/assets/tomislav/tomislav-1.jpg";
@@ -82,7 +83,7 @@ const events = [
     awayTeam: "Winterturnier 2026",
     date: "05.01.2026.",
     description: "Galerija sa ALBA Berlin turnira",
-    coverImage: berlin9,
+    coverImage: berlinGalleryCover,
     images: [] as string[],
     imagesWithOrientation: [
       { src: berlinG1, orientation: "horizontal" },

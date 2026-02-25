@@ -29,7 +29,8 @@ import sponzorPlanet from "@/assets/news-sponzor-planet.jpg";
 import najavasirokiAway from "@/assets/news-najava-siroki-away.jpg";
 import porazSirokiAway from "@/assets/news-poraz-siroki-away.jpg";
 import porazSirokiCard from "@/assets/news-poraz-siroki-card.jpg";
-import berlinCard from "@/assets/berlin/berlin-card.jpg";
+import berlinCardNew from "@/assets/berlin/berlin-card-new.jpg";
+import deFlag from "@/assets/flags/de-flag.png";
 
 interface NewsItem {
   id: number;
@@ -40,6 +41,7 @@ interface NewsItem {
   image: string;
   imagePosition?: string;
   imageScale?: number;
+  flagImage?: string;
 }
 
 const categoryConfig: Record<string, { label: string; icon: typeof Trophy }> = {
@@ -59,7 +61,7 @@ const allNews: NewsItem[] = [
   { id: 22, title: "Nastavlja se prvenstvo KS Herceg-Bosne! 📢", excerpt: "Nakon zimske pauze, košarkaši KK Posušje vraćaju se prvenstvenim obvezama gostovanjem u Tomislavgradu!", date: "04. 02. 2026.", category: "najava", image: cardNajavaTomislav, imagePosition: "center" },
   { id: 27, title: "Sponzorska suradnja s KTM Brinom! 🤝", excerpt: "S velikim ponosom objavljujemo da je poduzeće KTM Brina novi srebreni sponzor našeg kluba!", date: "22. 01. 2026.", category: "klub", image: sponzorKtmBrina },
   { id: 23, title: "Polufinale Kupa KS Herceg-Bosne! 🏆", excerpt: "Košarkaši KK Posušje sutra izlaze na parket u borbi za finale protiv HKK Široki!", date: "19. 01. 2026.", category: "najava", image: cardNajavaKupSiroki, imagePosition: "center" },
-  { id: 37, title: "ALBA Berlin Winterturnier 2026! 🇩🇪", excerpt: "Škola košarke KK Posušje sretno se vratila kući nakon 4 dana boravka u Berlinu, gdje su selekcije U-14 i U-16 sudjelovale na prestižnom ALBA Berlin Winterturnieru 2026!", date: "05. 01. 2026.", category: "klub", image: berlinCard },
+  { id: 37, title: "ALBA Berlin Winterturnier 2026!", excerpt: "Škola košarke KK Posušje sretno se vratila kući nakon 4 dana boravka u Berlinu, gdje su selekcije U-14 i U-16 sudjelovale na prestižnom ALBA Berlin Winterturnieru 2026!", date: "05. 01. 2026.", category: "klub", image: berlinCardNew, flagImage: deFlag },
   { id: 28, title: "Juniori KK Posušje turnir u Sarajevu otvorili pobjedom! ⛹️", excerpt: "Juniori KK Posušje započeli nastup na međunarodnom košarkaškom turniru u Sarajevu pobjedom nad Šentvidom!", date: "03. 01. 2026.", category: "utakmica", image: cardJunioriSarajevo },
   { id: 29, title: "Vokel zlatni sponzor našeg kluba! 🤝", excerpt: "S velikim ponosom objavljujemo da je Vokel postao zlatni sponzor našeg kluba!", date: "18. 12. 2025.", category: "klub", image: sponzorVokel },
   { id: 30, title: "Sponzorska suradnja s Mrvelji! 🤝", excerpt: "S ponosom objavljujemo da je tvrtka Mrvelji postala brončani sponzor našeg kluba!", date: "15. 12. 2025.", category: "klub", image: sponzorMrvelji },
@@ -137,7 +139,7 @@ const News = () => {
                     <Calendar size={14} className="hidden md:block" />
                     {item.date}
                   </div>
-                  <h3 className="text-lg md:text-xl font-display text-foreground mb-2 md:mb-3 line-clamp-2 group-hover:text-primary transition-colors">{item.title}</h3>
+                  <h3 className="text-lg md:text-xl font-display text-foreground mb-2 md:mb-3 line-clamp-2 group-hover:text-primary transition-colors">{item.title}{item.flagImage && <img src={item.flagImage} alt="flag" className="inline-block w-5 h-3 ml-1.5 align-middle" />}</h3>
                   <p className="text-muted-foreground text-xs md:text-sm mb-3 md:mb-4 line-clamp-2 md:line-clamp-3">{item.excerpt}</p>
                   <div className="mt-auto inline-flex items-center gap-2 text-primary text-xs md:text-sm font-medium group-hover:gap-3 transition-all">
                     Pročitaj više
