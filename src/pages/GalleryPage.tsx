@@ -22,6 +22,17 @@ import berlinG9 from "@/assets/berlin/berlin-g9.jpg";
 import berlin9 from "@/assets/berlin/berlin-9.jpg";
 import berlinGalleryCover from "@/assets/berlin/berlin-gallery-cover.jpg";
 
+// Import Xmas Gear images
+import xmasGear1 from "@/assets/xmas-gear/xmas-gear-1.jpg";
+import xmasGear2 from "@/assets/xmas-gear/xmas-gear-2.jpg";
+import xmasGear3 from "@/assets/xmas-gear/xmas-gear-3.jpg";
+import xmasGear4 from "@/assets/xmas-gear/xmas-gear-4.jpg";
+import xmasGear5 from "@/assets/xmas-gear/xmas-gear-5.jpg";
+import xmasGear6 from "@/assets/xmas-gear/xmas-gear-6.jpg";
+import xmasGear7 from "@/assets/xmas-gear/xmas-gear-7.jpg";
+import xmasGear8 from "@/assets/xmas-gear/xmas-gear-8.jpg";
+import xmasGearCover from "@/assets/xmas-gear/xmas-gear-cover.png";
+
 // Import Tomislav images
 import tomislav1 from "@/assets/tomislav/tomislav-1.jpg";
 import tomislav2 from "@/assets/tomislav/tomislav-2.jpg";
@@ -96,6 +107,25 @@ const events = [
       { src: berlinG8, orientation: "horizontal" },
       { src: berlinG4, orientation: "horizontal" },
       { src: berlin9, orientation: "horizontal" },
+    ] as ImageWithOrientation[],
+  },
+  {
+    id: "bozicno-darivanje",
+    homeTeam: "Božićno darivanje",
+    awayTeam: "službene opreme HKK Posušje",
+    date: "12.12.2025.",
+    description: "Božićno darivanje službene opreme HKK Posušje",
+    coverImage: xmasGearCover,
+    images: [] as string[],
+    imagesWithOrientation: [
+      { src: xmasGear1, orientation: "vertical" },
+      { src: xmasGear2, orientation: "vertical" },
+      { src: xmasGear3, orientation: "vertical" },
+      { src: xmasGear4, orientation: "vertical" },
+      { src: xmasGear5, orientation: "vertical" },
+      { src: xmasGear6, orientation: "vertical" },
+      { src: xmasGear7, orientation: "vertical" },
+      { src: xmasGear8, orientation: "vertical" },
     ] as ImageWithOrientation[],
   },
   {
