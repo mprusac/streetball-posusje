@@ -41,7 +41,7 @@ import sponzorMiviko from "@/assets/news-sponzor-miviko.jpg";
 import sponzorPlanet from "@/assets/news-sponzor-planet.jpg";
 import najavasirokiAway from "@/assets/news-najava-siroki-away.jpg";
 import porazSirokiAway from "@/assets/news-poraz-siroki-away.jpg";
-import berlinCard from "@/assets/berlin/berlin-card.jpg";
+import berlinCardNew from "@/assets/berlin/berlin-card-new.jpg";
 import berlin1 from "@/assets/berlin/berlin-1.jpg";
 import berlin2 from "@/assets/berlin/berlin-2.jpg";
 import berlin3 from "@/assets/berlin/berlin-3.jpg";
@@ -51,6 +51,7 @@ import berlin6 from "@/assets/berlin/berlin-6.jpg";
 import berlin7 from "@/assets/berlin/berlin-7.jpg";
 import berlin8 from "@/assets/berlin/berlin-8.jpg";
 import berlin9 from "@/assets/berlin/berlin-9.jpg";
+import deFlag from "@/assets/flags/de-flag.png";
 interface NewsItem {
   id: number;
   title: string;
@@ -62,6 +63,7 @@ interface NewsItem {
   cardImage?: string;
   cardImagePosition?: string;
   galleryImages?: string[];
+  flagImage?: string;
 }
 
 const allNews: NewsItem[] = [
@@ -75,7 +77,7 @@ const allNews: NewsItem[] = [
   { id: 22, title: "Nastavlja se prvenstvo KS Herceg-Bosne! 📢", excerpt: "Nakon zimske pauze, košarkaši KK Posušje vraćaju se prvenstvenim obvezama gostovanjem u Tomislavgradu!", content: "NASTAVLJA SE PRVENSTVO KS HERCEG-BOSNE! 🏀📢\n\nNakon zimske pauze, košarkaši KK Posušje vraćaju se prvenstvenim obvezama. 💪\n\nU sklopu nastavka natjecanja, našu momčad očekuje gostovanje u Tomislavgradu. 🚌\n\nUtakmica se igra u nedjelju (08.02) s početkom u 16h! ⏰\n\n🗓️ Nedjelja | 08.02.\n⏰ 16:00\n📍 SD Tomislavgrad\n\nOčekuje nas čvrsta i borbena utakmica! 🔥\n\nAjmo žuti! 🟡💪\n\n#kkposusje #ajmozuti", date: "04. 02. 2026.", category: "najava", image: najavaTomislav, cardImage: cardNajavaTomislav, cardImagePosition: "center" },
   { id: 27, title: "Sponzorska suradnja s KTM Brinom! 🤝", excerpt: "S velikim ponosom objavljujemo da je poduzeće KTM Brina novi srebreni sponzor našeg kluba!", content: "Sponzorska suradnja! 🤝✨\n\nS velikim ponosom objavljujemo da je poduzeće KTM Brina novi srebreni sponzor našeg kluba! 🏆\n\nHvala na ukazanom povjerenju, podršci i prepoznavanju važnosti sporta u našoj zajednici. 💪\n\nVeselimo se zajedničkim projektima, napretku i svim budućim uspjesima koje ćemo ostvariti zajedno! 🤝\n\nAjmo žuti! 🟡💪\n\n#kkposusje #ajmozuti", date: "22. 01. 2026.", category: "klub", image: sponzorKtmBrina },
   { id: 23, title: "Polufinale Kupa KS Herceg-Bosne! 🏆", excerpt: "Košarkaši KK Posušje sutra izlaze na parket u borbi za finale protiv HKK Široki!", content: "POLUFINALE KUPA SAVEZA HERCEG-BOSNE! 🏆🔥\n\nKošarkaši KK Posušje sutra izlaze na parket u borbi za finale! 💪🏀\n\nU polufinalu KS Herceg-Bosne našu momčad očekuje izuzetno zahtjevan susret protiv HKK Široki, prve ekipe Širokog. 🔥\n\n⏰ Utorak, 20.01. u 20:00 sati\n📍 GSD Posušje\n\nU drugom polufinalnom susretu snage će odmjeriti drugoligaš HKK Mostar i prvoligaš HKK Zrinski. 🏀\n\nAjmo žuti! 🟡💪\n\n#kkposusje #ajmozuti", date: "19. 01. 2026.", category: "najava", image: najavaKupSiroki, cardImage: cardNajavaKupSiroki, cardImagePosition: "center" },
-  { id: 37, title: "ALBA Berlin Winterturnier 2026! 🇩🇪", excerpt: "Škola košarke KK Posušje sretno se vratila kući nakon 4 dana boravka u Berlinu, gdje su selekcije U-14 i U-16 sudjelovale na prestižnom ALBA Berlin Winterturnieru 2026!", content: "ALBA Berlin Winterturnier 2026! 🇩🇪\n\nS ponosom objavljujemo kako se naša škola košarke sretno vratila kući nakon 4 dana boravka u Berlinu, gdje su selekcije U-14 i U-16 sudjelovale na prestižnom ALBA Berlin Winterturnieru 2026, što ujedno predstavlja prvo međunarodno putovanje u povijesti škole košarke KK Posušje.\n\nZa mlade košarkaše ovaj turnir znači mnogo više od samih utakmica. Riječ je o neprocjenjivom sportskom i životnom iskustvu – novim poznanstvima, susretu s drugačijom sportskom kulturom, jačanju samopouzdanja te stvaranju uspomena koje će nositi cijeli život. Natjecanje s ekipama iz jakog europskog košarkaškog okruženja predstavlja snažan poticaj za daljnji razvoj i motivaciju mladih sportaša.\n\nPosebnu vrijednost ovom nastupu daje činjenica da je ovo prvi korak strateške suradnje KK Posušje s ALBOM Berlin.\n\nKlub će u budućnosti kroz ovakve projekte nastojati sustavno graditi budućnost kluba kroz rad s mladima, ulažući u njihovo sportsko, ali i osobno odrastanje. Ovi nastupi predstavljaju važan korak naprijed, kako za mlade selekcije, tako i za cjelokupni razvoj kluba.\n\nAjmo žuti! 🟡💪\n\n#kkposusje #ajmozuti", date: "05. 01. 2026.", category: "klub", image: berlin1, cardImage: berlinCard, galleryImages: [berlin1, berlin2, berlin3, berlin4, berlin5, berlin6, berlin7, berlin8, berlin9] },
+  { id: 37, title: "ALBA Berlin Winterturnier 2026!", excerpt: "Škola košarke KK Posušje sretno se vratila kući nakon 4 dana boravka u Berlinu, gdje su selekcije U-14 i U-16 sudjelovale na prestižnom ALBA Berlin Winterturnieru 2026!", content: "ALBA Berlin Winterturnier 2026!\n\nS ponosom objavljujemo kako se naša škola košarke sretno vratila kući nakon 4 dana boravka u Berlinu, gdje su selekcije U-14 i U-16 sudjelovale na prestižnom ALBA Berlin Winterturnieru 2026, što ujedno predstavlja prvo međunarodno putovanje u povijesti škole košarke KK Posušje.\n\nZa mlade košarkaše ovaj turnir znači mnogo više od samih utakmica. Riječ je o neprocjenjivom sportskom i životnom iskustvu – novim poznanstvima, susretu s drugačijom sportskom kulturom, jačanju samopouzdanja te stvaranju uspomena koje će nositi cijeli život. Natjecanje s ekipama iz jakog europskog košarkaškog okruženja predstavlja snažan poticaj za daljnji razvoj i motivaciju mladih sportaša.\n\nPosebnu vrijednost ovom nastupu daje činjenica da je ovo prvi korak strateške suradnje KK Posušje s ALBOM Berlin.\n\nKlub će u budućnosti kroz ovakve projekte nastojati sustavno graditi budućnost kluba kroz rad s mladima, ulažući u njihovo sportsko, ali i osobno odrastanje. Ovi nastupi predstavljaju važan korak naprijed, kako za mlade selekcije, tako i za cjelokupni razvoj kluba.\n\nAjmo žuti! 🟡💪\n\n#kkposusje #ajmozuti", date: "05. 01. 2026.", category: "klub", image: berlin1, cardImage: berlinCardNew, flagImage: deFlag, galleryImages: [berlin1, berlin2, berlin3, berlin4, berlin5, berlin6, berlin7, berlin8, berlin9] },
   { id: 28, title: "Juniori KK Posušje turnir u Sarajevu otvorili pobjedom! ⛹️", excerpt: "Juniori KK Posušje započeli nastup na međunarodnom košarkaškom turniru u Sarajevu pobjedom nad Šentvidom 48:43!", content: "Juniori KK Posušje turnir u Sarajevu otvorili pobjedom! 🏀⛹️\n\nJuniori KK Posušje danas su započeli nastup na međunarodnom košarkaškom turniru u Sarajevu (Ilidža), koji se održava od 3. do 5. siječnja 2026. Turnir je započeo danas, a naši juniori su u prvoj utakmici svladali ekipu Šentvid (Slovenija) rezultatom 48:43. 🏆\n\nVrijedi istaknuti kako se ovaj turnir igra u isto vrijeme dok se selekcije U14 i U16 KK Posušje nalaze u Njemačkoj na internacionalnom Alba Berlin Winterturniru, što predstavlja veliki pothvat za KK Posušje na koji smo svi ponosni. 💪\n\nNaši juniori nalaze se u skupini s ekipama:\n\n• Borec Basket Veles (Sjeverna Makedonija)\n• BC Invaders (Albanija)\n• Fast Academy Spor Okolu (Bugarska)\n\n📅 Raspored utakmica:\n⏰ Danas u 19:30 protiv BC Invaders\n⏰ Sutra u 14:50 protiv Borec Basket Veles\n⏰ Sutra u 19:30 – posljednja utakmica grupne faze\n\nU skladu s dobrom suradnjom s HKK Mostar, za ekipu Posušja nastupaju i Robert Grizelj, Ivano Vidić i Ante Raspudić. Momčad vodi Ivo Begić, uz pomoć trenera Borne Peljkovića. 🤝\n\nSretno dalje našim juniorima! 🟡💪\n\n#kkposusje #ajmozuti", date: "03. 01. 2026.", category: "utakmica", image: junioriSarajevo, cardImage: cardJunioriSarajevo },
   { id: 29, title: "Vokel zlatni sponzor našeg kluba! 🤝", excerpt: "S velikim ponosom objavljujemo da je Vokel postao zlatni sponzor našeg kluba!", content: "Vokel zlatni sponzor našeg kluba! 🤝✨\n\nS velikim ponosom objavljujemo da je Vokel postao ZLATNI SPONZOR našeg kluba! 🏆\n\nOva suradnja predstavlja snažan iskorak i veliku podršku razvoju sporta, mladih talenata i ambicija našeg kluba. Povjerenje koje nam je Vokel ukazao daje nam dodatni vjetar u leđa na putu prema novim pobjedama i uspjesima. 💪\n\nHvala Vokelu što je prepoznao našu viziju, trud i strast prema košarci. Radujemo se zajedničkim projektima, dugoročnoj suradnji i stvaranju zlatnih trenutaka – zajedno! 🤝\n\nAjmo žuti! 🟡💪\n\n#kkposusje #ajmozuti #vokel #zlatnisponzor #zajednojači", date: "18. 12. 2025.", category: "klub", image: sponzorVokel },
   { id: 30, title: "Sponzorska suradnja s Mrvelji! 🤝", excerpt: "S ponosom objavljujemo da je tvrtka Mrvelji postala brončani sponzor našeg kluba!", content: "Sponzorska suradnja! 🤝✨\n\nS ponosom objavljujemo da je tvrtka Mrvelji postala brončani sponzor našeg kluba. 🏆\n\nZahvaljujemo na ukazanom povjerenju i podršci razvoju sporta u našem kraju. 💪\n\nRadujemo se zajedničkim projektima i budućim uspjesima! 🤝\n\nAjmo žuti! 🟡💪\n\n#kkposusje #ajmozuti #mrvelji", date: "15. 12. 2025.", category: "klub", image: sponzorMrvelji },
@@ -137,7 +139,7 @@ const ArticleDetail = ({ article }: { article: NewsItem }) => {
 
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
             <span className="inline-block px-3 py-1 bg-primary text-primary-foreground text-sm rounded mb-4">{getCategoryLabel(article.category)}</span>
-            <h1 className="font-display text-3xl md:text-4xl lg:text-5xl text-primary mb-4">{article.title}</h1>
+            <h1 className="font-display text-3xl md:text-4xl lg:text-5xl text-primary mb-4">{article.title}{article.flagImage && <img src={article.flagImage} alt="flag" className="inline-block w-8 h-5 md:w-10 md:h-6 ml-2 align-middle" />}</h1>
             <div className="flex items-center gap-2 text-muted-foreground mb-8">
               <Calendar size={16} />
               <span>{article.date}</span>
@@ -153,7 +155,7 @@ const ArticleDetail = ({ article }: { article: NewsItem }) => {
               {article.content.split('\n\n').map((paragraph, i) => (
                 <p key={i} className="text-foreground/90 text-lg leading-relaxed mb-4">
                   {paragraph.split('\n').map((line, j, arr) => (
-                    <span key={j}>{line}{j < arr.length - 1 && <br />}</span>
+                    <span key={j}>{line}{i === 0 && j === 0 && article.flagImage && <img src={article.flagImage} alt="flag" className="inline-block w-6 h-4 ml-1.5 align-middle" />}{j < arr.length - 1 && <br />}</span>
                   ))}
                 </p>
               ))}
@@ -265,7 +267,7 @@ const NewsPage = () => {
                       <Calendar size={14} />
                       {item.date}
                     </div>
-                    <h3 className="text-xl font-display text-foreground mb-3 line-clamp-2 group-hover:text-primary transition-colors">{item.title}</h3>
+                    <h3 className="text-xl font-display text-foreground mb-3 line-clamp-2 group-hover:text-primary transition-colors">{item.title}{item.flagImage && <img src={item.flagImage} alt="flag" className="inline-block w-5 h-3 ml-1.5 align-middle" />}</h3>
                     <p className="text-muted-foreground text-sm mb-4 line-clamp-3">{item.excerpt}</p>
                     <div className="mt-auto inline-flex items-center gap-2 text-primary text-sm font-medium group-hover:gap-3 transition-all">
                       Pročitaj više <ArrowRight size={16} />
