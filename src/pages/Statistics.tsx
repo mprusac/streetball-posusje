@@ -1,14 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { ArrowLeft, ChevronLeft, ChevronRight, ExternalLink, Download, FileSpreadsheet, CheckCircle2 } from "lucide-react";
-import * as XLSX from "xlsx";
-import {
-  Sheet,
-  SheetContent,
-  SheetHeader,
-  SheetTitle,
-  SheetDescription,
-} from "@/components/ui/sheet";
+import { ArrowLeft, ChevronLeft, ChevronRight, ExternalLink, Download, FileSpreadsheet, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import Footer from "@/components/Footer";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -297,79 +289,16 @@ const Statistics = () => {
   const [hoveredFormIndex, setHoveredFormIndex] = useState<number | null>(null);
   const [leagueCategory, setLeagueCategory] = useState<"seniori" | "seniorke">("seniori");
   const [topPlayersPage, setTopPlayersPage] = useState(0);
-  const [showDownloadDialog, setShowDownloadDialog] = useState(false);
+  const [showDownloadDialog, setShowDownloadDialog] = useState(true);
   const navigate = useNavigate();
 
   const handleDownloadStats = () => {
-    const wb = XLSX.utils.book_new();
-
-    // Sheet 1: Igrači - merge roster with stats
-    const playerStats = players.map(p => {
-      const scorer = topScorers.find(t => t.name === p.name);
-      const rebounder = topRebounders.find(t => t.name === p.name);
-      const assister = topAssisters.find(t => t.name === p.name);
-      const stealer = topSteals.find(t => t.name === p.name);
-      const blocker = topBlocks.find(t => t.name === p.name);
-      const minutes = topMinutes.find(t => t.name === p.name);
-      const twoP = top2PPercentage.find(t => t.name === p.name);
-      const threeP = top3PPercentage.find(t => t.name === p.name);
-      const threes = topThrees.find(t => t.name === p.name);
-      const defReb = topDefRebounds.find(t => t.name === p.name);
-      const offReb = topOffRebounds.find(t => t.name === p.name);
-      const dd = topDoubleDoubles.find(t => t.name === p.name);
-      return {
-        "Broj": p.number,
-        "Ime": p.name,
-        "Pozicija": p.position,
-        "Visina": p.height || "-",
-        "Datum rođenja": p.dateOfBirth || "-",
-        "PPG": scorer?.value ?? "-",
-        "RPG": rebounder?.value ?? "-",
-        "APG": assister?.value ?? "-",
-        "SPG": stealer?.value ?? "-",
-        "BPG": blocker?.value ?? "-",
-        "MIN": minutes?.value ?? "-",
-        "2P%": twoP?.value ?? "-",
-        "3P%": threeP?.value ?? "-",
-        "Trojke (ukupno)": threes?.value ?? "-",
-        "Def. skokovi": defReb?.value ?? "-",
-        "Off. skokovi": offReb?.value ?? "-",
-        "Double-double": dd?.value ?? "-",
-      };
-    });
-    const ws1 = XLSX.utils.json_to_sheet(playerStats);
-    XLSX.utils.book_append_sheet(wb, ws1, "Igrači");
-
-    // Sheet 2: Timska statistika
-    const teamStats = [
-      { "Kategorija": "Poeni", "Ukupno": "797", "Prosjek": "72.5" },
-      { "Kategorija": "Skokovi", "Ukupno": "390", "Prosjek": "35.5" },
-      { "Kategorija": "Asistencije", "Ukupno": "144", "Prosjek": "13.1" },
-      { "Kategorija": "Ukradene lopte", "Ukupno": "87", "Prosjek": "7.9" },
-      { "Kategorija": "Blokade", "Ukupno": "29", "Prosjek": "2.6" },
-      { "Kategorija": "Izgubljene lopte", "Ukupno": "144", "Prosjek": "13.1" },
-      { "Kategorija": "Osobne pogreške", "Ukupno": "227", "Prosjek": "20.6" },
-      { "Kategorija": "Šut za 2p", "Ukupno": "43.5%", "Prosjek": "-" },
-      { "Kategorija": "Šut za 3p", "Ukupno": "30.3%", "Prosjek": "-" },
-      { "Kategorija": "Slobodna bacanja", "Ukupno": "66.1%", "Prosjek": "-" },
-      { "Kategorija": "eFG%", "Ukupno": "51.3%", "Prosjek": "-" },
-      { "Kategorija": "TS%", "Ukupno": "52.4%", "Prosjek": "-" },
-    ];
-    const ws2 = XLSX.utils.json_to_sheet(teamStats);
-    XLSX.utils.book_append_sheet(wb, ws2, "Timska statistika");
-
-    // Sheet 3: Utakmice
-    const matchData = matches.map(m => ({
-      "Datum": m.date,
-      "Domaćin": m.homeTeam,
-      "Gost": m.awayTeam,
-      "Rezultat": m.isUpcoming ? "Nadolazeća" : `${m.homeScore} - ${m.awayScore}`,
-      "Natjecanje": m.competition || "Liga KSHB",
-    }));
-    const ws3 = XLSX.utils.json_to_sheet(matchData);
-    XLSX.utils.book_append_sheet(wb, ws3, "Utakmice");
-
-    XLSX.writeFile(wb, "HKK_Posusje_Statistika.xlsx");
+    const link = document.createElement("a");
+    link.href = "/data/KK_Posusje_statistika_25-26.xlsx";
+    link.download = "KK_Posusje_statistika_25-26.xlsx";
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
     setShowDownloadDialog(false);
   };
 
@@ -839,50 +768,43 @@ const Statistics = () => {
                     </button>
                   </div>
 
-                  {/* Download Sheet */}
-                  <Sheet open={showDownloadDialog} onOpenChange={setShowDownloadDialog}>
-                    <SheetContent side="right" className="bg-secondary border-border/30 w-[380px] sm:w-[420px] flex flex-col">
-                      <SheetHeader className="text-center">
-                        <SheetTitle className="font-display text-2xl flex items-center justify-center gap-2 uppercase tracking-wider">
-                          <FileSpreadsheet className="w-6 h-6 text-primary" />
-                          Preuzmi kompletnu statistiku
-                        </SheetTitle>
-                        <SheetDescription className="text-muted-foreground text-sm leading-relaxed">
-                          Generiraj i preuzmi Excel datoteku sa svim dostupnim podacima o timu i igračima.
-                        </SheetDescription>
-                      </SheetHeader>
-                      <div className="space-y-3 mt-4 flex-1">
-                        <div className="flex items-center gap-3 p-3 rounded-lg bg-background/30 border border-border/20">
-                          <CheckCircle2 className="w-5 h-5 text-primary shrink-0" />
-                          <div>
-                            <p className="text-sm font-normal">Individualna statistika igrača</p>
-                            <p className="text-xs text-muted-foreground">PPG, RPG, APG, šut %, minute, blokade...</p>
-                          </div>
-                        </div>
-                        <div className="flex items-center gap-3 p-3 rounded-lg bg-background/30 border border-border/20">
-                          <CheckCircle2 className="w-5 h-5 text-primary shrink-0" />
-                          <div>
-                            <p className="text-sm font-normal">Timski prosjeci</p>
-                            <p className="text-xs text-muted-foreground">eFG%, TS%, poeni, skokovi, asistencije...</p>
-                          </div>
-                        </div>
-                        <div className="flex items-center gap-3 p-3 rounded-lg bg-background/30 border border-border/20">
-                          <CheckCircle2 className="w-5 h-5 text-primary shrink-0" />
-                          <div>
-                            <p className="text-sm font-normal">Rezultati utakmica</p>
-                            <p className="text-xs text-muted-foreground">Svih {matches.length} utakmica s datumima i rezultatima</p>
-                          </div>
-                        </div>
-                      </div>
-                      <button
-                        onClick={handleDownloadStats}
-                        className="w-full mt-4 flex items-center justify-center gap-2 px-5 py-3 rounded-lg bg-primary text-primary-foreground hover:bg-primary/90 hover:shadow-lg hover:shadow-primary/20 transition-all duration-300 font-display text-sm uppercase tracking-wider"
+                  {/* Download popup - fixed bottom right */}
+                  <AnimatePresence>
+                    {showDownloadDialog && (
+                      <motion.div
+                        initial={{ opacity: 0, y: 40, scale: 0.95 }}
+                        animate={{ opacity: 1, y: 0, scale: 1 }}
+                        exit={{ opacity: 0, y: 40, scale: 0.95 }}
+                        transition={{ duration: 0.3, ease: "easeOut" }}
+                        className="fixed bottom-6 right-6 z-50 w-[340px] bg-secondary border border-border/30 rounded-xl shadow-2xl shadow-black/40 overflow-hidden"
                       >
-                        <Download className="w-4 h-4" />
-                        Preuzmi Excel datoteku
-                      </button>
-                    </SheetContent>
-                  </Sheet>
+                        <div className="p-4">
+                          <div className="flex items-center justify-between mb-2">
+                            <div className="flex items-center gap-2">
+                              <FileSpreadsheet className="w-5 h-5 text-primary" />
+                              <h3 className="font-display text-sm uppercase tracking-wider">Statistika dostupna</h3>
+                            </div>
+                            <button
+                              onClick={() => setShowDownloadDialog(false)}
+                              className="text-muted-foreground hover:text-foreground transition-colors"
+                            >
+                              <X className="w-4 h-4" />
+                            </button>
+                          </div>
+                          <p className="text-xs text-muted-foreground leading-relaxed mb-3">
+                            Kompletna statistika sezone 2025/26 dostupna za preuzimanje — individualni i timski podaci, rezultati svih utakmica.
+                          </p>
+                          <button
+                            onClick={handleDownloadStats}
+                            className="w-full flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg bg-primary text-primary-foreground hover:bg-primary/90 hover:shadow-lg hover:shadow-primary/20 transition-all duration-300 font-display text-xs uppercase tracking-wider"
+                          >
+                            <Download className="w-3.5 h-3.5" />
+                            Preuzmi Excel datoteku
+                          </button>
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
                   </div>
 
                   <div className="grid md:grid-cols-2 gap-5">
