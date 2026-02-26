@@ -289,7 +289,12 @@ const Statistics = () => {
   const [hoveredFormIndex, setHoveredFormIndex] = useState<number | null>(null);
   const [leagueCategory, setLeagueCategory] = useState<"seniori" | "seniorke">("seniori");
   const [topPlayersPage, setTopPlayersPage] = useState(0);
-  const [showDownloadDialog, setShowDownloadDialog] = useState(true);
+  const [showDownloadDialog, setShowDownloadDialog] = useState(false);
+
+  useEffect(() => {
+    const timer = setTimeout(() => setShowDownloadDialog(true), 3000);
+    return () => clearTimeout(timer);
+  }, []);
   const navigate = useNavigate();
 
   const handleDownloadStats = () => {
@@ -1036,21 +1041,21 @@ const Statistics = () => {
                 Kompletna statistika sezone 2025/26 dostupna za preuzimanje — individualni i timski podaci.
               </p>
               <div className="space-y-2 mb-5">
-                <div className="flex items-center gap-3 p-3 rounded-lg bg-background/40 hover:bg-background/60 hover:shadow-[0_0_15px_rgba(234,179,8,0.1)] transition-all duration-300">
+                <div className="flex items-center gap-3 p-3 rounded-lg bg-background/40 hover:bg-background/60 hover:shadow-[0_0_15px_rgba(234,179,8,0.1)] transition-all duration-300 cursor-default select-none">
                   <CheckCircle className="w-6 h-6 text-primary shrink-0" />
                   <div>
                     <p className="text-[13px] font-bold leading-tight">Individualna statistika igrača</p>
                     <p className="text-[11px] text-muted-foreground">PPG, RPG, APG, % šuta, minute, blokade...</p>
                   </div>
                 </div>
-                <div className="flex items-center gap-3 p-3 rounded-lg bg-background/40 hover:bg-background/60 hover:shadow-[0_0_15px_rgba(234,179,8,0.1)] transition-all duration-300">
+                <div className="flex items-center gap-3 p-3 rounded-lg bg-background/40 hover:bg-background/60 hover:shadow-[0_0_15px_rgba(234,179,8,0.1)] transition-all duration-300 cursor-default select-none">
                   <CheckCircle className="w-6 h-6 text-primary shrink-0" />
                   <div>
                     <p className="text-[13px] font-bold leading-tight">Timski prosjeci</p>
                     <p className="text-[11px] text-muted-foreground">eFG%, TS%, poeni, skokovi, asistencije...</p>
                   </div>
                 </div>
-                <div className="flex items-center gap-3 p-3 rounded-lg bg-background/40 hover:bg-background/60 hover:shadow-[0_0_15px_rgba(234,179,8,0.1)] transition-all duration-300">
+                <div className="flex items-center gap-3 p-3 rounded-lg bg-background/40 hover:bg-background/60 hover:shadow-[0_0_15px_rgba(234,179,8,0.1)] transition-all duration-300 cursor-default select-none">
                   <CheckCircle className="w-6 h-6 text-primary shrink-0" />
                   <div>
                     <p className="text-[13px] font-bold leading-tight">Rezultati utakmica</p>
