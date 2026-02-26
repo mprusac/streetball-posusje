@@ -760,6 +760,7 @@ const Statistics = () => {
                       <p className="text-xs md:text-sm text-muted-foreground uppercase mb-0.5">AST / TO</p>
                       <p className="text-2xl md:text-3xl font-display text-foreground">1.25</p>
                       <p className="text-xs text-muted-foreground">180 / 144</p>
+                    </div>
                   </div>
 
                   {/* Download button */}
@@ -771,8 +772,6 @@ const Statistics = () => {
                       <Download className="w-4 h-4" />
                       Preuzmi statistiku
                     </button>
-                  </div>
-
                   </div>
 
                   <div className="grid md:grid-cols-2 gap-5">
