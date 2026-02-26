@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef, useCallback } from "react";
+import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { ArrowLeft, ChevronLeft, ChevronRight, ExternalLink } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
@@ -289,60 +289,30 @@ const Statistics = () => {
   const [hoveredFormIndex, setHoveredFormIndex] = useState<number | null>(null);
   const [leagueCategory, setLeagueCategory] = useState<"seniori" | "seniorke">("seniori");
   const [topPlayersPage, setTopPlayersPage] = useState(0);
-  const [extraMatches, setExtraMatches] = useState(0);
   const navigate = useNavigate();
-
-  const leftColRef = useRef<HTMLDivElement>(null);
-  const rightColRef = useRef<HTMLDivElement>(null);
 
   // Scroll to top on page load
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
-  // Measure right column height and calculate extra matches
-  const updateExtraMatches = useCallback(() => {
-    if (!leftColRef.current || !rightColRef.current) return;
-    const rightHeight = rightColRef.current.offsetHeight;
-    const leftHeight = leftColRef.current.offsetHeight;
-    const diff = rightHeight - leftHeight;
-    if (diff > 0) {
-      // Each match row is approximately 72px tall
-      const matchRowHeight = 72;
-      const extra = Math.floor(diff / matchRowHeight);
-      setExtraMatches(extra);
-    } else {
-      setExtraMatches(0);
-    }
-  }, []);
-
-  useEffect(() => {
-    updateExtraMatches();
-    const observer = new ResizeObserver(() => {
-      updateExtraMatches();
-    });
-    if (rightColRef.current) observer.observe(rightColRef.current);
-    if (leftColRef.current) observer.observe(leftColRef.current);
-    return () => observer.disconnect();
-  }, [updateExtraMatches, activeMainTab, activePlayersTab, leagueCategory, topPlayersPage]);
+  // Calculate extra matches based on active tab
+  const getExtraMatches = () => {
+    if (activeMainTab === "statistics") return 5;
+    if (activeMainTab === "players" && activePlayersTab === "squad") return 7;
+    return 0;
+  };
+  const extraMatches = matchPage === 0 ? getExtraMatches() : 0;
   
   // Sort matches: Page 0 = 1 upcoming + 5 past, Page 1+ = remaining past then remaining upcoming
   const upcomingMatches = matches.filter(m => m.isUpcoming);
   const playedMatches = matches.filter(m => !m.isUpcoming);
   
-  // Page 0: 1 upcoming + 5 past + extra matches to fill height
-  // Page 1+: remaining past (index 5+), then remaining upcoming (index 1+)
   const baseFirstPageMatches = [...upcomingMatches.slice(0, 1), ...playedMatches.slice(0, 5)];
   const remainingMatchesPool = [...playedMatches.slice(5), ...upcomingMatches.slice(1)];
   
   // On page 0, append extra matches from the remaining pool
-  const firstPageMatches = matchPage === 0 
-    ? [...baseFirstPageMatches, ...remainingMatchesPool.slice(0, extraMatches)]
-    : baseFirstPageMatches;
-  
-  const remainingMatches = matchPage === 0
-    ? remainingMatchesPool.slice(extraMatches)
-    : remainingMatchesPool;
+  const firstPageMatches = [...baseFirstPageMatches, ...remainingMatchesPool.slice(0, extraMatches)];
   
   const matchesPerPage = 6;
   const totalMatchPages = 1 + Math.ceil(remainingMatchesPool.length / matchesPerPage);
@@ -418,7 +388,7 @@ const Statistics = () => {
         
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 md:gap-5">
           {/* Left Column - Form & Games */}
-          <div ref={leftColRef} className="lg:col-span-3 flex flex-col gap-3 order-2 lg:order-1">
+          <div className="lg:col-span-3 flex flex-col gap-3 order-2 lg:order-1">
             {/* Recent Form */}
             <div className="bg-secondary/30 rounded-xl p-2 border border-border/30 hover:border-primary/30 hover:shadow-lg hover:shadow-primary/5 transition-all duration-300">
               <h3 className="font-display text-lg text-foreground mb-1 text-center">Nedavna forma</h3>
@@ -595,7 +565,7 @@ const Statistics = () => {
           </div>
 
           {/* Right Column - Tabs */}
-          <div ref={rightColRef} className="lg:col-span-9 order-1 lg:order-2">
+          <div className="lg:col-span-9 order-1 lg:order-2">
             <Tabs value={activeMainTab} onValueChange={setActiveMainTab} className="w-full">
               <TabsList className="w-full bg-secondary/30 border border-border/30 rounded-xl p-1 mb-5 hover:shadow-lg transition-shadow duration-300">
                 <TabsTrigger value="standings" className="flex-1 font-display text-xl md:text-2xl data-[state=active]:bg-primary data-[state=active]:text-primary-foreground transition-all duration-200">
