@@ -460,7 +460,7 @@ const Statistics = () => {
             </div>
 
             {/* Games */}
-            <div className="bg-secondary/30 rounded-xl border border-border/30 hover:border-primary/30 hover:shadow-lg hover:shadow-primary/5 transition-all duration-300 flex flex-col flex-1">
+            <div className="bg-secondary/30 rounded-xl border border-border/30 hover:border-primary/30 hover:shadow-lg hover:shadow-primary/5 transition-all duration-300 flex flex-col">
               <div className="p-2 border-b border-border/30 flex items-center justify-between">
                 <button 
                   onClick={() => setMatchPage(p => Math.max(0, p - 1))}
@@ -736,7 +736,7 @@ const Statistics = () => {
 
               {/* Statistics Tab */}
               <TabsContent value="statistics" className="mt-0">
-                <div className="bg-secondary/30 rounded-xl border border-border/30 p-5 hover:border-primary/30 hover:shadow-xl hover:shadow-primary/5 transition-all duration-300 min-h-[930px]">
+                <div className="bg-secondary/30 rounded-xl border border-border/30 p-5 hover:border-primary/30 hover:shadow-xl hover:shadow-primary/5 transition-all duration-300 min-h-[870px]">
                   <h3 className="font-display text-2xl md:text-3xl text-center mb-5">PREGLED</h3>
 
                   {/* Summary cards */}
@@ -844,7 +844,7 @@ const Statistics = () => {
                   </div>
 
                   {/* eFG% and TS% centered below */}
-                  <div className="mt-10 mb-6 flex gap-3 justify-center">
+                  <div className="mt-5 mb-4 flex gap-3 justify-center">
                     <div className="bg-background/30 rounded-lg px-5 py-2.5 text-center border border-border/20 hover:border-primary/30 hover:shadow-lg hover:shadow-primary/10 hover:scale-105 transition-all duration-300">
                       <p className="text-[10px] md:text-xs text-muted-foreground uppercase">eFG%</p>
                        <p className="text-xl md:text-2xl font-display text-primary">51.3%</p>
