@@ -1,4 +1,5 @@
 import { ExternalLink, ChevronLeft, ChevronRight, Youtube } from "lucide-react";
+import { Link } from "react-router-dom";
 import { useRef, useState, useEffect } from "react";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 
@@ -412,12 +413,13 @@ const Results = () => {
 
           {/* Detaljnije button */}
           <div className="flex justify-center mt-8">
-            <a 
-              href="/statistika"
+            <Link 
+              to="/statistika"
+              onClick={() => sessionStorage.setItem("homeScrollY", String(window.scrollY))}
               className="px-8 py-3 rounded-xl bg-primary/20 border border-primary text-primary font-display text-lg tracking-wider hover:bg-primary hover:text-primary-foreground transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-primary/30"
             >
               Detaljnije
-            </a>
+            </Link>
           </div>
         </div>
       </div>
