@@ -27,14 +27,20 @@ const Index = () => {
   useEffect(() => {
     // Restore scroll position if coming back from a sub-page
     const restoreScroll = sessionStorage.getItem("restoreHomeScroll");
+    const savedY = sessionStorage.getItem("homeScrollY");
+    
     if (restoreScroll === "true") {
       sessionStorage.removeItem("restoreHomeScroll");
-      const savedY = sessionStorage.getItem("homeScrollY");
       if (savedY) {
-        // Small delay to let the page render
-        requestAnimationFrame(() => {
-          window.scrollTo(0, parseInt(savedY, 10));
-        });
+        const targetY = parseInt(savedY, 10);
+        // Multiple attempts to ensure scroll restoration after PageTransition animation
+        const attempts = [50, 150, 350, 500, 700];
+        const timers = attempts.map(delay =>
+          setTimeout(() => {
+            window.scrollTo({ top: targetY, left: 0, behavior: "instant" });
+          }, delay)
+        );
+        return () => timers.forEach(t => clearTimeout(t));
       }
     } else {
       window.scrollTo(0, 0);

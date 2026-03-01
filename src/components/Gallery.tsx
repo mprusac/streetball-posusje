@@ -128,6 +128,7 @@ const Gallery = () => {
         <div className="flex justify-center mt-10">
           <Link 
             to="/galerija"
+            onClick={() => sessionStorage.setItem("homeScrollY", String(window.scrollY))}
             className="px-8 py-3 rounded-xl bg-primary/20 border border-primary text-primary font-display text-lg tracking-wider hover:bg-primary hover:text-primary-foreground transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-primary/30"
           >
             Sva galerija
