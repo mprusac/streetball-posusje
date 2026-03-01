@@ -125,6 +125,9 @@ const Sponsors = () => {
               onClick={() => setIsExpanded(!isExpanded)}
               className="w-full p-6 flex items-center justify-between transition-all duration-300"
             >
+              <div className="p-2 rounded-full opacity-0 pointer-events-none">
+                <ChevronDown size={24} />
+              </div>
               <div className="text-center flex-1">
                 <h3 className="text-2xl md:text-3xl font-display">
                   <span className="text-foreground">POSTANI </span>
