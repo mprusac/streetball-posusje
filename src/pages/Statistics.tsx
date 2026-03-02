@@ -135,11 +135,11 @@ const formData = [
 // All matches - upcoming first, then played from newest to oldest
 const matches: Match[] = [
   // Upcoming matches
-  { id: 11, date: "01.03.2026", time: "19:00", homeTeam: "HKK Rama", awayTeam: "HKK Posušje", isUpcoming: true, sofascoreLink: "https://www.sofascore.com/basketball/match/hkk-rama-kk-posusje/TEidsNiOi#id:15014515" },
   { id: 12, date: "08.03.2026", time: "19:00", homeTeam: "HKK Posušje", awayTeam: "HKK Grude", isUpcoming: true, sofascoreLink: "https://www.sofascore.com/basketball/match/hkk-grude-kk-posusje/TEidsMiOi#id:15014517" },
   { id: 13, date: "15.03.2026", time: "19:00", homeTeam: "Čapljina", awayTeam: "HKK Posušje", isUpcoming: true, sofascoreLink: "https://www.sofascore.com/basketball/match/kk-posusje-hkk-capljina/nOHcsTEid#id:15014535" },
   { id: 14, date: "22.03.2026", time: "19:00", homeTeam: "HKK Posušje", awayTeam: "HKK Ljubuški", isUpcoming: true, sofascoreLink: "https://www.sofascore.com/basketball/match/hkk-ljubuski-kk-posusje/TEidsOiOi#id:15014542" },
   // Played matches (newest first)
+  { id: 19, date: "01.03.2026", homeTeam: "HKK Rama", awayTeam: "HKK Posušje", homeScore: 60, awayScore: 94, isUpcoming: false, sofascoreLink: "https://www.sofascore.com/hr/basketball/match/hkk-rama-kk-posusje/TEidsNiOi#id:15014515", competition: "Liga KSHB" },
   { id: 18, date: "22.02.2026", homeTeam: "HKK Široki II", awayTeam: "HKK Posušje", homeScore: 70, awayScore: 62, isUpcoming: false, sofascoreLink: "https://www.sofascore.com/hr/basketball/match/hkk-siroki-ii-kk-posusje/TEidsJiOi#id:15014507", competition: "Liga KSHB" },
   { id: 16, date: "15.02.2026", homeTeam: "HKK Posušje", awayTeam: "HKK Mostar", homeScore: 90, awayScore: 84, isUpcoming: false, sofascoreLink: "https://www.sofascore.com/hr/basketball/match/hkk-mostar-kk-posusje/TEidsMbxh#id:15014506", competition: "Liga KSHB" },
   { id: 17, date: "08.02.2026", homeTeam: "HKK Tomislav", awayTeam: "HKK Posušje", homeScore: 60, awayScore: 55, isUpcoming: false, sofascoreLink: "https://www.sofascore.com/hr/basketball/match/hkk-tomislav-tomislavgrad-kk-posusje/TEidsLiOi#id:15014499", competition: "Liga KSHB" },
@@ -159,9 +159,9 @@ const standings: Standing[] = [
   { position: 2, team: "HKK Grude", played: 10, won: 8, lost: 2, diff: 108, last5: ["W", "W", "W", "L", "W"], points: 18 },
   { position: 3, team: "HKK Mostar", played: 10, won: 7, lost: 3, diff: 141, last5: ["W", "W", "W", "L", "W"], points: 17 },
   { position: 4, team: "HKK Tomislav", played: 10, won: 5, lost: 5, diff: -9, last5: ["L", "L", "W", "W", "L"], points: 15 },
-  { position: 5, team: "HKK Široki II", played: 10, won: 4, lost: 6, diff: 68, last5: ["W", "W", "L", "W", "W"], points: 14 },
-  { position: 6, team: "HKK Posušje", played: 10, won: 4, lost: 6, diff: 61, last5: ["W", "L", "L", "W", "L"], points: 14 },
-  { position: 7, team: "HKK Rama", played: 10, won: 3, lost: 7, diff: -40, last5: ["L", "W", "L", "L", "L"], points: 13 },
+  { position: 5, team: "HKK Posušje", played: 11, won: 5, lost: 6, diff: 95, last5: ["W", "W", "L", "L", "W"], points: 15 },
+  { position: 6, team: "HKK Široki II", played: 10, won: 4, lost: 6, diff: 68, last5: ["W", "W", "L", "W", "W"], points: 14 },
+  { position: 7, team: "HKK Rama", played: 11, won: 3, lost: 8, diff: -74, last5: ["L", "L", "W", "L", "L"], points: 13 },
   { position: 8, team: "Čapljina", played: 10, won: 0, lost: 10, diff: -457, last5: ["L", "L", "L", "L", "L"], points: 10 },
 ];
 
