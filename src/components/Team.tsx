@@ -100,7 +100,7 @@ const players: Player[] = [
     image: playerBasicLuka,
     sofascoreLink: "https://www.sofascore.com/basketball/player/luka-basic/1965464",
     description: "Talentirani 18-godišnjak posuškog omladinskog pogona koji vrijedno gradi svoj košarkaški put.",
-    stats: { ppg: 4, rpg: 4, apg: 1, mpg: "" },
+    stats: { ppg: 5, rpg: 4, apg: 1, mpg: "" },
   },
   {
     id: 8,
