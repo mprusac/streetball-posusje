@@ -32,6 +32,7 @@ import porazSirokiCard from "@/assets/news-poraz-siroki-card.jpg";
 import berlinCardNew from "@/assets/berlin/berlin-card-new.jpg";
 import deFlag from "@/assets/flags/de-flag.png";
 import pobjeda_RamaCard from "@/assets/news-pobjeda-rama-card.jpg";
+import priznanjeCard from "@/assets/news-priznanje-card.jpg";
 
 interface NewsItem {
   id: number;
