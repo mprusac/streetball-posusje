@@ -34,6 +34,7 @@ import deFlag from "@/assets/flags/de-flag.png";
 import pobjeda_RamaCard from "@/assets/news-pobjeda-rama-card.jpg";
 import priznanjeCard from "@/assets/news-priznanje-card.jpg";
 import najavaGrude from "@/assets/news-najava-grude.jpg";
+import najavaGrudeGameday from "@/assets/news-najava-grude-gameday.jpg";
 
 interface NewsItem {
   id: number;
@@ -54,6 +55,7 @@ const categoryConfig: Record<string, { label: string; icon: typeof Trophy }> = {
 };
 
 const allNews: NewsItem[] = [
+  { id: 41, title: "Veliki susjedski derbi: Borba za PlayOff! 🔥", excerpt: "Košarkaši Posušja ove nedjelje igraju važnu utakmicu u kojoj nam u goste stiže ekipa Gruda!", date: "05. 03. 2026.", category: "najava", image: najavaGrudeGameday, imagePosition: "bottom" },
   { id: 40, title: "Susjedski derbi i nagradna igra! 🔥🏀", excerpt: "U nedjelju 8. ožujka u 19:00 sati GSD Posušje postaje poprište borbe za PlayOff! Uz utakmicu i bogata nagradna igra!", date: "04. 03. 2026.", category: "najava", image: najavaGrude, imagePosition: "center" },
   { id: 39, title: "Veliko priznanje za naš klub! 🏆", excerpt: "Na svečanoj dodjeli priznanja Športskog saveza općine Posušje, naš KK Posušje pokupio je važne nagrade!", date: "04. 03. 2026.", category: "klub", image: priznanjeCard, imagePosition: "center" },
   { id: 38, title: "Pobjeda Žutih u Rami! 🏀🔥", excerpt: "Košarkaši Posušja ostvarili su uvjerljivu pobjedu rezultatom 60:94 na gostovanju u Rami u 11. kolu Prvenstva.", date: "01. 03. 2026.", category: "utakmica", image: pobjeda_RamaCard, imagePosition: "bottom" },
