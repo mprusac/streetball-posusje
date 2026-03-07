@@ -107,7 +107,6 @@ const Sponsors = () => {
               <img 
                 src={sponsor.image} 
                 alt={sponsor.name} 
-                loading="lazy"
                 className={`w-full h-full object-cover ${sponsor.imgClass}`}
               />
             </a>
