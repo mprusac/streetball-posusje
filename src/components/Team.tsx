@@ -186,8 +186,10 @@ const players: Player[] = [
 
 const Team = () => {
   const scrollRef = useRef<HTMLDivElement>(null);
+  const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
   const { elementRef, isVisible } = useScrollReveal();
   const [isMobile, setIsMobile] = useState(false);
+  const [activeIndex, setActiveIndex] = useState(0);
 
   useEffect(() => {
     const handleResize = () => setIsMobile(window.innerWidth < 768);
@@ -196,15 +198,49 @@ const Team = () => {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
+  const scrollToIndex = (index: number) => {
+    const targetCard = cardRefs.current[index];
+    if (targetCard && scrollRef.current) {
+      scrollRef.current.scrollTo({
+        left: targetCard.offsetLeft,
+        behavior: "smooth",
+      });
+    }
+    setActiveIndex(index);
+  };
+
   const scroll = (direction: "left" | "right") => {
-    if (scrollRef.current) {
-      const scrollAmount = isMobile ? 280 : 300;
+    if (isMobile) {
+      const newIndex = direction === "left" 
+        ? Math.max(0, activeIndex - 1) 
+        : Math.min(players.length - 1, activeIndex + 1);
+      scrollToIndex(newIndex);
+    } else if (scrollRef.current) {
       scrollRef.current.scrollBy({
-        left: direction === "left" ? -scrollAmount : scrollAmount,
+        left: direction === "left" ? -300 : 300,
         behavior: "smooth",
       });
     }
   };
+
+  useEffect(() => {
+    if (!isMobile) return;
+    const container = scrollRef.current;
+    if (!container) return;
+    const handleScroll = () => {
+      const children = cardRefs.current.filter(Boolean);
+      let closest = 0;
+      let minDist = Infinity;
+      children.forEach((child, i) => {
+        if (!child) return;
+        const dist = Math.abs(child.offsetLeft - container.scrollLeft);
+        if (dist < minDist) { minDist = dist; closest = i; }
+      });
+      setActiveIndex(closest);
+    };
+    container.addEventListener("scroll", handleScroll, { passive: true });
+    return () => container.removeEventListener("scroll", handleScroll);
+  }, [isMobile]);
 
   return (
     <section id="tim" className="py-20">
@@ -230,34 +266,38 @@ const Team = () => {
           </span>
         </div>
 
-        <div className="relative max-w-[1400px] mx-auto px-14 md:px-16">
-          {/* Scroll Buttons - Visible on all devices */}
+        <div className="relative max-w-[1400px] mx-auto px-12 md:px-16">
+          {/* Scroll Buttons */}
           <button
             onClick={() => scroll("left")}
-            className="flex absolute left-0 md:left-0 top-[40%] md:top-1/2 -translate-y-1/2 z-10 w-8 h-8 md:w-12 md:h-12 rounded-full bg-primary items-center justify-center text-primary-foreground hover:bg-primary/90 hover:scale-110 transition-all duration-300 shadow-lg"
+            disabled={isMobile && activeIndex === 0}
+            className={`flex absolute left-0 md:left-0 top-[40%] md:top-1/2 -translate-y-1/2 z-10 w-8 h-8 md:w-12 md:h-12 rounded-full bg-primary items-center justify-center text-primary-foreground hover:bg-primary/90 hover:scale-110 transition-all duration-300 shadow-lg ${isMobile && activeIndex === 0 ? 'opacity-40' : ''}`}
           >
             <ChevronLeft size={16} className="md:hidden" />
             <ChevronLeft size={24} className="hidden md:block" />
           </button>
           <button
             onClick={() => scroll("right")}
-            className="flex absolute right-0 md:right-0 top-[40%] md:top-1/2 -translate-y-1/2 z-10 w-8 h-8 md:w-12 md:h-12 rounded-full bg-primary items-center justify-center text-primary-foreground hover:bg-primary/90 hover:scale-110 transition-all duration-300 shadow-lg"
+            disabled={isMobile && activeIndex === players.length - 1}
+            className={`flex absolute right-0 md:right-0 top-[40%] md:top-1/2 -translate-y-1/2 z-10 w-8 h-8 md:w-12 md:h-12 rounded-full bg-primary items-center justify-center text-primary-foreground hover:bg-primary/90 hover:scale-110 transition-all duration-300 shadow-lg ${isMobile && activeIndex === players.length - 1 ? 'opacity-40' : ''}`}
           >
             <ChevronRight size={16} className="md:hidden" />
             <ChevronRight size={24} className="hidden md:block" />
           </button>
 
-          {/* Scrollable Container - Responsive grid */}
+          {/* Scrollable Container */}
           <div
             ref={scrollRef}
-            className="flex gap-3 md:gap-5 overflow-x-auto scrollbar-hide scroll-smooth pb-4 snap-x snap-mandatory md:justify-start"
+            className="flex gap-3 md:gap-5 overflow-x-auto scrollbar-hide scroll-smooth pb-4 snap-x snap-mandatory md:snap-none md:justify-start"
             style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
           >
             {players.map((player, index) => (
               <div
                 key={player.id}
-                className={`group flex-shrink-0 relative bg-gradient-card rounded-lg overflow-hidden transition-all duration-300 md:hover:scale-[1.03] hover-lift border border-transparent hover:border-primary/30 snap-center md:snap-start ${isMobile ? 'w-[calc(100vw-7rem)] max-w-[280px]' : 'w-[calc((100%-5rem)/5)] min-w-[220px]'}`}
+                ref={(el) => { cardRefs.current[index] = el; }}
+                className={`group flex-shrink-0 relative bg-gradient-card rounded-lg overflow-hidden transition-all duration-300 md:hover:scale-[1.03] hover-lift border border-transparent hover:border-primary/30 snap-start ${isMobile ? '' : 'w-[calc((100%-5rem)/5)] min-w-[220px]'}`}
                 style={{
+                  ...(isMobile ? { width: '100%', minWidth: '100%', maxWidth: '100%' } : {}),
                   opacity: isVisible ? 1 : 0,
                   transform: isVisible ? "translateX(0)" : "translateX(30px)",
                   transition: `all 0.5s ease ${index * 0.05}s`,
