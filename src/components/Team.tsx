@@ -266,34 +266,38 @@ const Team = () => {
           </span>
         </div>
 
-        <div className="relative max-w-[1400px] mx-auto px-14 md:px-16">
-          {/* Scroll Buttons - Visible on all devices */}
+        <div className="relative max-w-[1400px] mx-auto px-12 md:px-16">
+          {/* Scroll Buttons */}
           <button
             onClick={() => scroll("left")}
-            className="flex absolute left-0 md:left-0 top-[40%] md:top-1/2 -translate-y-1/2 z-10 w-8 h-8 md:w-12 md:h-12 rounded-full bg-primary items-center justify-center text-primary-foreground hover:bg-primary/90 hover:scale-110 transition-all duration-300 shadow-lg"
+            disabled={isMobile && activeIndex === 0}
+            className={`flex absolute left-0 md:left-0 top-[40%] md:top-1/2 -translate-y-1/2 z-10 w-8 h-8 md:w-12 md:h-12 rounded-full bg-primary items-center justify-center text-primary-foreground hover:bg-primary/90 hover:scale-110 transition-all duration-300 shadow-lg ${isMobile && activeIndex === 0 ? 'opacity-40' : ''}`}
           >
             <ChevronLeft size={16} className="md:hidden" />
             <ChevronLeft size={24} className="hidden md:block" />
           </button>
           <button
             onClick={() => scroll("right")}
-            className="flex absolute right-0 md:right-0 top-[40%] md:top-1/2 -translate-y-1/2 z-10 w-8 h-8 md:w-12 md:h-12 rounded-full bg-primary items-center justify-center text-primary-foreground hover:bg-primary/90 hover:scale-110 transition-all duration-300 shadow-lg"
+            disabled={isMobile && activeIndex === players.length - 1}
+            className={`flex absolute right-0 md:right-0 top-[40%] md:top-1/2 -translate-y-1/2 z-10 w-8 h-8 md:w-12 md:h-12 rounded-full bg-primary items-center justify-center text-primary-foreground hover:bg-primary/90 hover:scale-110 transition-all duration-300 shadow-lg ${isMobile && activeIndex === players.length - 1 ? 'opacity-40' : ''}`}
           >
             <ChevronRight size={16} className="md:hidden" />
             <ChevronRight size={24} className="hidden md:block" />
           </button>
 
-          {/* Scrollable Container - Responsive grid */}
+          {/* Scrollable Container */}
           <div
             ref={scrollRef}
-            className="flex gap-3 md:gap-5 overflow-x-auto scrollbar-hide scroll-smooth pb-4 snap-x snap-mandatory md:justify-start"
+            className="flex gap-3 md:gap-5 overflow-x-auto scrollbar-hide scroll-smooth pb-4 snap-x snap-mandatory md:snap-none md:justify-start"
             style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
           >
             {players.map((player, index) => (
               <div
                 key={player.id}
-                className={`group flex-shrink-0 relative bg-gradient-card rounded-lg overflow-hidden transition-all duration-300 md:hover:scale-[1.03] hover-lift border border-transparent hover:border-primary/30 snap-center md:snap-start ${isMobile ? 'w-[calc(100vw-7rem)] max-w-[280px]' : 'w-[calc((100%-5rem)/5)] min-w-[220px]'}`}
+                ref={(el) => { cardRefs.current[index] = el; }}
+                className={`group flex-shrink-0 relative bg-gradient-card rounded-lg overflow-hidden transition-all duration-300 md:hover:scale-[1.03] hover-lift border border-transparent hover:border-primary/30 snap-start ${isMobile ? '' : 'w-[calc((100%-5rem)/5)] min-w-[220px]'}`}
                 style={{
+                  ...(isMobile ? { width: '100%', minWidth: '100%', maxWidth: '100%' } : {}),
                   opacity: isVisible ? 1 : 0,
                   transform: isVisible ? "translateX(0)" : "translateX(30px)",
                   transition: `all 0.5s ease ${index * 0.05}s`,
