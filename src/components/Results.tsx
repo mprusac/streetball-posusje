@@ -249,7 +249,7 @@ const Results = () => {
           <span className="section-title-gold">UTAKMICE</span>
         </h2>
 
-        <div className="relative max-w-[1200px] mx-auto px-14 md:px-20">
+        <div className="relative max-w-[1200px] mx-auto px-12 md:px-20">
           {/* Scroll Buttons - Visible on all devices */}
           <button
             onClick={() => scroll("left")}
@@ -290,9 +290,9 @@ const Results = () => {
                       : "bg-gradient-to-br from-secondary/80 via-secondary/60 to-red-500/10 border-red-500/20 hover:border-red-500/40"
                   }`}
                   style={{ 
-                    width: isMobile ? 'calc(100vw - 7rem)' : 'calc((100% - 2.5rem) / 3)',
-                    minWidth: isMobile ? '240px' : '260px',
-                    maxWidth: isMobile ? '320px' : 'none',
+                    width: isMobile ? 'calc(100vw - 6rem)' : 'calc((100% - 2.5rem) / 3)',
+                    minWidth: isMobile ? '260px' : '260px',
+                    maxWidth: isMobile ? '360px' : 'none',
                     flexShrink: 0,
                     animationDelay: `${index * 100}ms`,
                     opacity: isVisible ? 1 : 0,
