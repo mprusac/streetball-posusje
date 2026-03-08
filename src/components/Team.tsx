@@ -186,8 +186,10 @@ const players: Player[] = [
 
 const Team = () => {
   const scrollRef = useRef<HTMLDivElement>(null);
+  const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
   const { elementRef, isVisible } = useScrollReveal();
   const [isMobile, setIsMobile] = useState(false);
+  const [activeIndex, setActiveIndex] = useState(0);
 
   useEffect(() => {
     const handleResize = () => setIsMobile(window.innerWidth < 768);
@@ -196,15 +198,49 @@ const Team = () => {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
+  const scrollToIndex = (index: number) => {
+    const targetCard = cardRefs.current[index];
+    if (targetCard && scrollRef.current) {
+      scrollRef.current.scrollTo({
+        left: targetCard.offsetLeft,
+        behavior: "smooth",
+      });
+    }
+    setActiveIndex(index);
+  };
+
   const scroll = (direction: "left" | "right") => {
-    if (scrollRef.current) {
-      const scrollAmount = isMobile ? 280 : 300;
+    if (isMobile) {
+      const newIndex = direction === "left" 
+        ? Math.max(0, activeIndex - 1) 
+        : Math.min(players.length - 1, activeIndex + 1);
+      scrollToIndex(newIndex);
+    } else if (scrollRef.current) {
       scrollRef.current.scrollBy({
-        left: direction === "left" ? -scrollAmount : scrollAmount,
+        left: direction === "left" ? -300 : 300,
         behavior: "smooth",
       });
     }
   };
+
+  useEffect(() => {
+    if (!isMobile) return;
+    const container = scrollRef.current;
+    if (!container) return;
+    const handleScroll = () => {
+      const children = cardRefs.current.filter(Boolean);
+      let closest = 0;
+      let minDist = Infinity;
+      children.forEach((child, i) => {
+        if (!child) return;
+        const dist = Math.abs(child.offsetLeft - container.scrollLeft);
+        if (dist < minDist) { minDist = dist; closest = i; }
+      });
+      setActiveIndex(closest);
+    };
+    container.addEventListener("scroll", handleScroll, { passive: true });
+    return () => container.removeEventListener("scroll", handleScroll);
+  }, [isMobile]);
 
   return (
     <section id="tim" className="py-20">
