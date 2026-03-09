@@ -743,23 +743,23 @@ const Statistics = () => {
                   <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-6">
                     <div className="bg-background/30 rounded-lg p-3 text-center border border-border/20 hover:border-primary/30 hover:shadow-lg hover:shadow-primary/10 hover:scale-105 transition-all duration-300">
                       <p className="text-xs md:text-sm text-muted-foreground uppercase mb-0.5">Poeni</p>
-                      <p className="text-2xl md:text-3xl font-display text-primary">927</p>
-                      <p className="text-xs text-muted-foreground">77.3 / utk.</p>
+                      <p className="text-2xl md:text-3xl font-display text-primary">1007</p>
+                      <p className="text-xs text-muted-foreground">77.5 / utk.</p>
                     </div>
                     <div className="bg-background/30 rounded-lg p-3 text-center border border-border/20 hover:border-primary/30 hover:shadow-lg hover:shadow-primary/10 hover:scale-105 transition-all duration-300">
                       <p className="text-xs md:text-sm text-muted-foreground uppercase mb-0.5">Skokovi</p>
-                      <p className="text-2xl md:text-3xl font-display text-foreground">459</p>
-                      <p className="text-xs text-muted-foreground">38.3 / utk.</p>
+                      <p className="text-2xl md:text-3xl font-display text-foreground">491</p>
+                      <p className="text-xs text-muted-foreground">37.8 / utk.</p>
                     </div>
                     <div className="bg-background/30 rounded-lg p-3 text-center border border-border/20 hover:border-primary/30 hover:shadow-lg hover:shadow-primary/10 hover:scale-105 transition-all duration-300">
                       <p className="text-xs md:text-sm text-muted-foreground uppercase mb-0.5">Asistencije</p>
-                      <p className="text-2xl md:text-3xl font-display text-foreground">190</p>
-                      <p className="text-xs text-muted-foreground">15.8 / utk.</p>
+                      <p className="text-2xl md:text-3xl font-display text-foreground">210</p>
+                      <p className="text-xs text-muted-foreground">16.2 / utk.</p>
                     </div>
                     <div className="bg-background/30 rounded-lg p-3 text-center border border-border/20 hover:border-primary/30 hover:shadow-lg hover:shadow-primary/10 hover:scale-105 transition-all duration-300">
                       <p className="text-xs md:text-sm text-muted-foreground uppercase mb-0.5">AST / TO</p>
-                      <p className="text-2xl md:text-3xl font-display text-foreground">1.19</p>
-                      <p className="text-xs text-muted-foreground">190 / 159</p>
+                      <p className="text-2xl md:text-3xl font-display text-foreground">1.30</p>
+                      <p className="text-xs text-muted-foreground">210 / 162</p>
                     </div>
                   </div>
 
