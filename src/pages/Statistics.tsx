@@ -213,9 +213,9 @@ const topAssisters: TopPlayer[] = [
 ];
 
 const topMinutes: TopPlayer[] = [
-  { rank: 1, name: "Ante Begić", position: "Krilo", value: "32:02", image: playerBegic },
-  { rank: 2, name: "Josip Ramljak", position: "Bek", value: "29:59", image: playerRamljak },
-  { rank: 3, name: "Ante Kovač", position: "Krilo", value: "29:42", image: playerKovac },
+  { rank: 1, name: "Ante Begić", position: "Krilo", value: "29:34", image: playerBegic },
+  { rank: 2, name: "Josip Ramljak", position: "Bek", value: "27:29", image: playerRamljak },
+  { rank: 3, name: "Ante Kovač", position: "Krilo", value: "27:25", image: playerKovac },
 ];
 
 const topSteals: TopPlayer[] = [
