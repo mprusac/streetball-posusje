@@ -284,7 +284,7 @@ const allTopCategories = [
 
 const Statistics = () => {
   const [activeMainTab, setActiveMainTab] = useState("standings");
-  const [activePlayersTab, setActivePlayersTab] = useState("squad");
+  const [activePlayersTab, setActivePlayersTab] = useState("top");
   const [matchPage, setMatchPage] = useState(0);
   const [hoveredFormIndex, setHoveredFormIndex] = useState<number | null>(null);
   const [leagueCategory, setLeagueCategory] = useState<"seniori" | "seniorke">("seniori");
