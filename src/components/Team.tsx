@@ -130,7 +130,7 @@ const players: Player[] = [
     image: "",
     sofascoreLink: "https://www.sofascore.com/basketball/player/luka-ramljak/2364289",
     description: "16-godišnji bek šuter i posuški talent s pozivom u kadetsku reprezentaciju BiH.",
-    stats: { ppg: 6, rpg: 2, apg: 1, mpg: "" },
+    stats: { ppg: 5, rpg: 2, apg: 1, mpg: "" },
   },
   {
     id: 11,
