@@ -937,14 +937,14 @@ const Statistics = () => {
                                   </div>
                                 </div>
                               </TableCell>
-                              <TableCell className="text-center">
-                                <div className="flex items-center justify-center gap-1">
+                              <TableCell className="text-center px-1 md:px-4">
+                                <div className="flex items-center justify-center gap-0.5 md:gap-1">
                                   {getFlagImage(player.nationality) ? (
-                                    <img src={getFlagImage(player.nationality)!} alt={player.nationality} className="w-5 h-5 md:w-6 md:h-6 rounded-full object-cover flex-shrink-0" />
+                                    <img src={getFlagImage(player.nationality)!} alt={player.nationality} className="w-4 h-4 md:w-6 md:h-6 rounded-full object-cover flex-shrink-0" />
                                   ) : player.nationality !== "-" ? (
-                                    <span className="text-sm md:text-base">{getFlagEmoji(player.nationality)}</span>
+                                    <span className="text-xs md:text-base">{getFlagEmoji(player.nationality)}</span>
                                   ) : null}
-                                  <span className="text-xs md:text-base font-bold">{player.nationality}</span>
+                                  <span className="text-[10px] md:text-base font-bold hidden sm:inline">{player.nationality}</span>
                                 </div>
                               </TableCell>
                               <TableCell className="text-center text-muted-foreground text-sm md:text-base font-bold hidden md:table-cell">{player.height || "-"}</TableCell>
