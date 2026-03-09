@@ -847,11 +847,11 @@ const Statistics = () => {
                   <div className="mt-5 mb-4 flex gap-3 justify-center">
                     <div className="bg-background/30 rounded-lg px-5 py-2.5 text-center border border-border/20 hover:border-primary/30 hover:shadow-lg hover:shadow-primary/10 hover:scale-105 transition-all duration-300">
                       <p className="text-[10px] md:text-xs text-muted-foreground uppercase">eFG%</p>
-                       <p className="text-xl md:text-2xl font-display text-primary">52.5%</p>
+                       <p className="text-xl md:text-2xl font-display text-primary">52.6%</p>
                     </div>
                     <div className="bg-background/30 rounded-lg px-5 py-2.5 text-center border border-border/20 hover:border-primary/30 hover:shadow-lg hover:shadow-primary/10 hover:scale-105 transition-all duration-300">
                       <p className="text-[10px] md:text-xs text-muted-foreground uppercase">TS%</p>
-                       <p className="text-xl md:text-2xl font-display text-primary">53.5%</p>
+                       <p className="text-xl md:text-2xl font-display text-primary">53.7%</p>
                     </div>
                   </div>
                 </div>
