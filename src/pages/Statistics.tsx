@@ -671,10 +671,10 @@ const Statistics = () => {
                                   </span>
                                 </div>
                               </TableCell>
-                              <TableCell className="text-center text-[10px] md:text-sm font-bold px-1 md:px-4">{team.played}</TableCell>
-                              <TableCell className="text-center text-[10px] md:text-sm font-bold px-1 md:px-4">{team.won}</TableCell>
-                              <TableCell className="text-center text-[10px] md:text-sm font-bold px-1 md:px-4">{team.lost}</TableCell>
-                              <TableCell className={`text-center text-[10px] md:text-sm font-bold px-1 md:px-4 ${team.diff > 0 ? "text-green-400" : team.diff < 0 ? "text-red-400" : ""}`}>
+                              <TableCell className="text-center text-[10px] md:text-sm font-bold px-0 md:px-4 py-0.5 md:py-4">{team.played}</TableCell>
+                              <TableCell className="text-center text-[10px] md:text-sm font-bold px-0 md:px-4 py-0.5 md:py-4">{team.won}</TableCell>
+                              <TableCell className="text-center text-[10px] md:text-sm font-bold px-0 md:px-4 py-0.5 md:py-4">{team.lost}</TableCell>
+                              <TableCell className={`text-center text-[10px] md:text-sm font-bold px-0 md:px-4 py-0.5 md:py-4 ${team.diff > 0 ? "text-green-400" : team.diff < 0 ? "text-red-400" : ""}`}>
                                 {team.diff > 0 ? `+${team.diff}` : team.diff}
                               </TableCell>
                               <TableCell className="text-center hidden sm:table-cell">
