@@ -226,7 +226,9 @@ const NewsPage = () => {
   const [activeCategory, setActiveCategory] = useState<string>("sve");
 
   useEffect(() => {
-    window.scrollTo(0, 0);
+    window.scrollTo({ top: 0, behavior: "instant" as ScrollBehavior });
+    document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0;
   }, []);
 
   if (articleId) {
