@@ -944,7 +944,7 @@ const Statistics = () => {
                                   ) : player.nationality !== "-" ? (
                                     <span className="text-sm md:text-base">{getFlagEmoji(player.nationality)}</span>
                                   ) : null}
-                                  <span className="text-xs md:text-base font-bold hidden sm:inline">{player.nationality}</span>
+                                  <span className="text-xs md:text-base font-bold">{player.nationality}</span>
                                 </div>
                               </TableCell>
                               <TableCell className="text-center text-muted-foreground text-sm md:text-base font-bold hidden md:table-cell">{player.height || "-"}</TableCell>
@@ -978,7 +978,7 @@ const Statistics = () => {
                         </button>
                       </div>
 
-                      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+                      <div className="grid grid-cols-2 gap-4">
                         {allTopCategories.slice(topPlayersPage * 6, (topPlayersPage + 1) * 6).map((category, catIndex) => (
                           <div key={catIndex} className="bg-background/20 rounded-lg p-3 border border-border/20 hover:border-primary/30 hover:shadow-lg hover:shadow-primary/10 transition-all duration-300">
                             <h4 className="font-display text-base text-center mb-3">{category.title}</h4>
