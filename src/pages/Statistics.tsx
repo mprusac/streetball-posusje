@@ -624,14 +624,14 @@ const Statistics = () => {
                       <Table>
                         <TableHeader>
                           <TableRow className="hover:bg-transparent border-border/30">
-                            <TableHead className="w-6 md:w-10 text-center text-[10px] md:text-sm font-bold px-1 md:px-4">#</TableHead>
-                            <TableHead className="text-[10px] md:text-sm font-bold px-1 md:px-4">Ekipa</TableHead>
-                            <TableHead className="text-center w-6 md:w-10 text-[10px] md:text-sm font-bold px-1 md:px-4">UT</TableHead>
-                            <TableHead className="text-center w-6 md:w-10 text-[10px] md:text-sm font-bold px-1 md:px-4">W</TableHead>
-                            <TableHead className="text-center w-6 md:w-10 text-[10px] md:text-sm font-bold px-1 md:px-4">L</TableHead>
-                            <TableHead className="text-center w-8 md:w-14 text-[10px] md:text-sm font-bold px-1 md:px-4">+/-</TableHead>
-                            <TableHead className="text-center w-28 text-sm font-bold hidden sm:table-cell">Zadnjih 5</TableHead>
-                            <TableHead className="text-center w-8 md:w-14 text-[10px] md:text-sm font-bold px-1 md:px-4">BOD</TableHead>
+                            <TableHead className="w-6 md:w-10 text-center text-[10px] md:text-sm font-bold px-0.5 md:px-4 py-1 md:py-3">#</TableHead>
+                            <TableHead className="text-[10px] md:text-sm font-bold px-0.5 md:px-4 py-1 md:py-3">Ekipa</TableHead>
+                            <TableHead className="text-center w-5 md:w-10 text-[10px] md:text-sm font-bold px-0 md:px-4 py-1 md:py-3">UT</TableHead>
+                            <TableHead className="text-center w-5 md:w-10 text-[10px] md:text-sm font-bold px-0 md:px-4 py-1 md:py-3">W</TableHead>
+                            <TableHead className="text-center w-5 md:w-10 text-[10px] md:text-sm font-bold px-0 md:px-4 py-1 md:py-3">L</TableHead>
+                            <TableHead className="text-center w-7 md:w-14 text-[10px] md:text-sm font-bold px-0 md:px-4 py-1 md:py-3">+/-</TableHead>
+                            <TableHead className="text-center w-28 text-sm font-bold hidden sm:table-cell py-1 md:py-3">Zadnjih 5</TableHead>
+                            <TableHead className="text-center w-7 md:w-14 text-[10px] md:text-sm font-bold px-0 md:px-4 py-1 md:py-3">BOD</TableHead>
                           </TableRow>
                         </TableHeader>
                         <TableBody>
@@ -640,8 +640,8 @@ const Statistics = () => {
                               key={team.position} 
                               className={`border-border/20 transition-all duration-200 hover:bg-secondary/50 hover:shadow-md ${team.team === "HKK Posušje" ? "bg-primary/10 hover:bg-primary/20" : ""}`}
                             >
-                              <TableCell className="text-center font-bold text-[10px] md:text-sm px-1 md:px-4">{team.position}</TableCell>
-                              <TableCell className="px-1 md:px-4">
+                              <TableCell className="text-center font-bold text-[10px] md:text-sm px-0.5 md:px-4 py-0.5 md:py-4">{team.position}</TableCell>
+                              <TableCell className="px-0.5 md:px-4 py-0.5 md:py-4">
                                 <div className="flex items-center gap-1 md:gap-2">
                                 {getTeamLogo(team.team) && (
                                     <div className="w-5 h-5 md:w-8 md:h-8 rounded-full overflow-hidden flex items-center justify-center flex-shrink-0">
@@ -671,10 +671,10 @@ const Statistics = () => {
                                   </span>
                                 </div>
                               </TableCell>
-                              <TableCell className="text-center text-[10px] md:text-sm font-bold px-1 md:px-4">{team.played}</TableCell>
-                              <TableCell className="text-center text-[10px] md:text-sm font-bold px-1 md:px-4">{team.won}</TableCell>
-                              <TableCell className="text-center text-[10px] md:text-sm font-bold px-1 md:px-4">{team.lost}</TableCell>
-                              <TableCell className={`text-center text-[10px] md:text-sm font-bold px-1 md:px-4 ${team.diff > 0 ? "text-green-400" : team.diff < 0 ? "text-red-400" : ""}`}>
+                              <TableCell className="text-center text-[10px] md:text-sm font-bold px-0 md:px-4 py-0.5 md:py-4">{team.played}</TableCell>
+                              <TableCell className="text-center text-[10px] md:text-sm font-bold px-0 md:px-4 py-0.5 md:py-4">{team.won}</TableCell>
+                              <TableCell className="text-center text-[10px] md:text-sm font-bold px-0 md:px-4 py-0.5 md:py-4">{team.lost}</TableCell>
+                              <TableCell className={`text-center text-[10px] md:text-sm font-bold px-0 md:px-4 py-0.5 md:py-4 ${team.diff > 0 ? "text-green-400" : team.diff < 0 ? "text-red-400" : ""}`}>
                                 {team.diff > 0 ? `+${team.diff}` : team.diff}
                               </TableCell>
                               <TableCell className="text-center hidden sm:table-cell">
@@ -691,7 +691,7 @@ const Statistics = () => {
                                   ))}
                                 </div>
                               </TableCell>
-                              <TableCell className="text-center font-bold text-[10px] md:text-sm px-1 md:px-4">{team.points}</TableCell>
+                              <TableCell className="text-center font-bold text-[10px] md:text-sm px-0 md:px-4 py-0.5 md:py-4">{team.points}</TableCell>
                             </TableRow>
                           ))}
                         </TableBody>
