@@ -119,10 +119,10 @@ const Navbar = () => {
         {/* Mobile Navigation */}
         <div
           className={`lg:hidden overflow-hidden transition-all duration-300 ${
-            isOpen ? "max-h-[400px] pb-6" : "max-h-0"
+            isOpen ? "max-h-[400px] pb-2" : "max-h-0"
           }`}
         >
-          <div className="flex flex-col gap-3 pt-4">
+          <div className="flex flex-col gap-0 pt-1">
             {navLinks.map((link) => {
               const isRoute = link.isRoute;
               const isActive = isRoute 
@@ -135,7 +135,7 @@ const Navbar = () => {
                     key={link.href}
                     to={link.href}
                     onClick={() => setIsOpen(false)}
-                    className={`font-display text-xl tracking-widest transition-all duration-300 px-3 py-2 rounded-md ${
+                    className={`font-display text-lg tracking-widest transition-all duration-300 px-3 py-1 rounded-md ${
                       isActive
                         ? "text-primary bg-primary/10"
                         : "text-foreground hover:text-primary hover:bg-primary/10"
@@ -151,7 +151,7 @@ const Navbar = () => {
                   key={link.href}
                   href={link.href}
                   onClick={() => setIsOpen(false)}
-                  className={`font-display text-xl tracking-widest transition-all duration-300 px-3 py-2 rounded-md ${
+                  className={`font-display text-lg tracking-widest transition-all duration-300 px-3 py-1 rounded-md ${
                     isActive
                       ? "text-primary bg-primary/10"
                       : "text-foreground hover:text-primary hover:bg-primary/10"
