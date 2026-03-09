@@ -640,11 +640,11 @@ const Statistics = () => {
                               key={team.position} 
                               className={`border-border/20 transition-all duration-200 hover:bg-secondary/50 hover:shadow-md ${team.team === "HKK Posušje" ? "bg-primary/10 hover:bg-primary/20" : ""}`}
                             >
-                              <TableCell className="text-center font-bold text-sm">{team.position}</TableCell>
-                              <TableCell>
-                                <div className="flex items-center gap-2">
+                              <TableCell className="text-center font-bold text-[10px] md:text-sm px-1 md:px-4">{team.position}</TableCell>
+                              <TableCell className="px-1 md:px-4">
+                                <div className="flex items-center gap-1 md:gap-2">
                                 {getTeamLogo(team.team) && (
-                                    <div className="w-7 h-7 md:w-8 md:h-8 rounded-full overflow-hidden flex items-center justify-center flex-shrink-0">
+                                    <div className="w-5 h-5 md:w-8 md:h-8 rounded-full overflow-hidden flex items-center justify-center flex-shrink-0">
                                       <img 
                                         src={getTeamLogo(team.team)!} 
                                         alt="" 
