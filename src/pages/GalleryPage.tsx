@@ -132,10 +132,10 @@ const events = [
   },
   {
     id: "bozicno-darivanje",
-    homeTeam: "Božićno darivanje službene opreme HKK Posušje",
+    homeTeam: "Božićno darivanje službene opreme",
     awayTeam: "",
     date: "12.12.2025.",
-    description: "Božićno darivanje službene opreme HKK Posušje",
+    description: "Božićno darivanje službene opreme",
     coverImage: xmasGearCover,
     images: [] as string[],
     imagesWithOrientation: [
