@@ -621,17 +621,17 @@ const Statistics = () => {
                   
                   {leagueCategory === "seniori" ? (
                     <div className="overflow-x-auto">
-                      <Table className="min-w-[600px]">
+                      <Table>
                         <TableHeader>
                           <TableRow className="hover:bg-transparent border-border/30">
-                            <TableHead className="w-10 text-center text-sm font-bold">#</TableHead>
-                            <TableHead className="text-sm font-bold">Ekipa</TableHead>
-                            <TableHead className="text-center w-10 text-sm font-bold">UT</TableHead>
-                            <TableHead className="text-center w-10 text-sm font-bold">W</TableHead>
-                            <TableHead className="text-center w-10 text-sm font-bold">L</TableHead>
-                            <TableHead className="text-center w-14 text-sm font-bold">+/-</TableHead>
+                            <TableHead className="w-6 md:w-10 text-center text-[10px] md:text-sm font-bold px-1 md:px-4">#</TableHead>
+                            <TableHead className="text-[10px] md:text-sm font-bold px-1 md:px-4">Ekipa</TableHead>
+                            <TableHead className="text-center w-6 md:w-10 text-[10px] md:text-sm font-bold px-1 md:px-4">UT</TableHead>
+                            <TableHead className="text-center w-6 md:w-10 text-[10px] md:text-sm font-bold px-1 md:px-4">W</TableHead>
+                            <TableHead className="text-center w-6 md:w-10 text-[10px] md:text-sm font-bold px-1 md:px-4">L</TableHead>
+                            <TableHead className="text-center w-8 md:w-14 text-[10px] md:text-sm font-bold px-1 md:px-4">+/-</TableHead>
                             <TableHead className="text-center w-28 text-sm font-bold hidden sm:table-cell">Zadnjih 5</TableHead>
-                            <TableHead className="text-center w-14 text-sm font-bold">BOD</TableHead>
+                            <TableHead className="text-center w-8 md:w-14 text-[10px] md:text-sm font-bold px-1 md:px-4">BOD</TableHead>
                           </TableRow>
                         </TableHeader>
                         <TableBody>
@@ -640,11 +640,11 @@ const Statistics = () => {
                               key={team.position} 
                               className={`border-border/20 transition-all duration-200 hover:bg-secondary/50 hover:shadow-md ${team.team === "HKK Posušje" ? "bg-primary/10 hover:bg-primary/20" : ""}`}
                             >
-                              <TableCell className="text-center font-bold text-sm">{team.position}</TableCell>
-                              <TableCell>
-                                <div className="flex items-center gap-2">
+                              <TableCell className="text-center font-bold text-[10px] md:text-sm px-1 md:px-4">{team.position}</TableCell>
+                              <TableCell className="px-1 md:px-4">
+                                <div className="flex items-center gap-1 md:gap-2">
                                 {getTeamLogo(team.team) && (
-                                    <div className="w-7 h-7 md:w-8 md:h-8 rounded-full overflow-hidden flex items-center justify-center flex-shrink-0">
+                                    <div className="w-5 h-5 md:w-8 md:h-8 rounded-full overflow-hidden flex items-center justify-center flex-shrink-0">
                                       <img 
                                         src={getTeamLogo(team.team)!} 
                                         alt="" 
@@ -666,15 +666,15 @@ const Statistics = () => {
                                       />
                                     </div>
                                   )}
-                                  <span className={`text-xs md:text-sm font-bold ${team.team === "HKK Posušje" ? "text-primary" : ""}`}>
+                                  <span className={`text-[10px] md:text-sm font-bold ${team.team === "HKK Posušje" ? "text-primary" : ""}`}>
                                     {team.team}
                                   </span>
                                 </div>
                               </TableCell>
-                              <TableCell className="text-center text-sm font-bold">{team.played}</TableCell>
-                              <TableCell className="text-center text-sm font-bold">{team.won}</TableCell>
-                              <TableCell className="text-center text-sm font-bold">{team.lost}</TableCell>
-                              <TableCell className={`text-center text-sm font-bold ${team.diff > 0 ? "text-green-400" : team.diff < 0 ? "text-red-400" : ""}`}>
+                              <TableCell className="text-center text-[10px] md:text-sm font-bold px-1 md:px-4">{team.played}</TableCell>
+                              <TableCell className="text-center text-[10px] md:text-sm font-bold px-1 md:px-4">{team.won}</TableCell>
+                              <TableCell className="text-center text-[10px] md:text-sm font-bold px-1 md:px-4">{team.lost}</TableCell>
+                              <TableCell className={`text-center text-[10px] md:text-sm font-bold px-1 md:px-4 ${team.diff > 0 ? "text-green-400" : team.diff < 0 ? "text-red-400" : ""}`}>
                                 {team.diff > 0 ? `+${team.diff}` : team.diff}
                               </TableCell>
                               <TableCell className="text-center hidden sm:table-cell">
@@ -691,7 +691,7 @@ const Statistics = () => {
                                   ))}
                                 </div>
                               </TableCell>
-                              <TableCell className="text-center font-bold text-sm">{team.points}</TableCell>
+                              <TableCell className="text-center font-bold text-[10px] md:text-sm px-1 md:px-4">{team.points}</TableCell>
                             </TableRow>
                           ))}
                         </TableBody>
@@ -1021,13 +1021,13 @@ const Statistics = () => {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 40, scale: 0.95 }}
             transition={{ duration: 0.3, ease: "easeOut" }}
-            className="fixed bottom-5 right-5 z-50 w-[324px] bg-secondary border border-border/30 rounded-lg shadow-2xl shadow-black/40 overflow-hidden cursor-default"
+            className="fixed bottom-3 right-3 md:bottom-5 md:right-5 z-50 w-[243px] md:w-[324px] bg-secondary border border-border/30 rounded-lg shadow-2xl shadow-black/40 overflow-hidden cursor-default"
           >
-            <div className="p-4">
-              <div className="flex items-center justify-between mb-2.5">
-                <div className="flex items-center gap-2 flex-1 min-w-0">
-                  <FileSpreadsheet className="w-5 h-5 text-primary shrink-0" />
-                  <h3 className="font-display text-[15px] uppercase tracking-wider leading-none">Preuzmi kompletnu statistiku</h3>
+            <div className="p-3 md:p-4">
+              <div className="flex items-center justify-between mb-2">
+                <div className="flex items-center gap-1.5 md:gap-2 flex-1 min-w-0">
+                  <FileSpreadsheet className="w-4 h-4 md:w-5 md:h-5 text-primary shrink-0" />
+                  <h3 className="font-display text-[11px] md:text-[15px] uppercase tracking-wider leading-none">Preuzmi kompletnu statistiku</h3>
                 </div>
                 <button
                   onClick={() => setShowDownloadDialog(false)}
@@ -1036,35 +1036,35 @@ const Statistics = () => {
                   <X className="w-3.5 h-3.5" />
                 </button>
               </div>
-              <p className="text-[11px] text-muted-foreground leading-relaxed mb-3">
+              <p className="text-[9px] md:text-[11px] text-muted-foreground leading-relaxed mb-2 md:mb-3">
                 Kompletna statistika sezone 2025/26 dostupna za preuzimanje — individualni i timski podaci.
               </p>
-              <div className="space-y-1.5 mb-4">
-                <div className="flex items-center gap-2.5 p-2.5 rounded-md bg-background/40 hover:bg-background/60 hover:shadow-[0_0_18px_rgba(234,179,8,0.12)] border border-transparent hover:border-primary/15 transition-all duration-300">
-                  <CheckCircle className="w-5 h-5 text-primary shrink-0" />
+              <div className="space-y-1 md:space-y-1.5 mb-3 md:mb-4">
+                <div className="flex items-center gap-2 p-1.5 md:p-2.5 rounded-md bg-background/40 hover:bg-background/60 hover:shadow-[0_0_18px_rgba(234,179,8,0.12)] border border-transparent hover:border-primary/15 transition-all duration-300">
+                  <CheckCircle className="w-4 h-4 md:w-5 md:h-5 text-primary shrink-0" />
                   <div>
-                    <p className="text-xs font-bold leading-tight">Individualna statistika igrača</p>
-                    <p className="text-[10px] text-muted-foreground">PPG, RPG, APG, % šuta, minute, blokade...</p>
+                    <p className="text-[10px] md:text-xs font-bold leading-tight">Individualna statistika igrača</p>
+                    <p className="text-[8px] md:text-[10px] text-muted-foreground">PPG, RPG, APG, % šuta, minute, blokade...</p>
                   </div>
                 </div>
-                <div className="flex items-center gap-2.5 p-2.5 rounded-md bg-background/40 hover:bg-background/60 hover:shadow-[0_0_18px_rgba(234,179,8,0.12)] border border-transparent hover:border-primary/15 transition-all duration-300">
-                  <CheckCircle className="w-5 h-5 text-primary shrink-0" />
+                <div className="flex items-center gap-2 p-1.5 md:p-2.5 rounded-md bg-background/40 hover:bg-background/60 hover:shadow-[0_0_18px_rgba(234,179,8,0.12)] border border-transparent hover:border-primary/15 transition-all duration-300">
+                  <CheckCircle className="w-4 h-4 md:w-5 md:h-5 text-primary shrink-0" />
                   <div>
-                    <p className="text-xs font-bold leading-tight">Timski prosjeci</p>
-                    <p className="text-[10px] text-muted-foreground">eFG%, TS%, poeni, skokovi, asistencije...</p>
+                    <p className="text-[10px] md:text-xs font-bold leading-tight">Timski prosjeci</p>
+                    <p className="text-[8px] md:text-[10px] text-muted-foreground">eFG%, TS%, poeni, skokovi, asistencije...</p>
                   </div>
                 </div>
-                <div className="flex items-center gap-2.5 p-2.5 rounded-md bg-background/40 hover:bg-background/60 hover:shadow-[0_0_18px_rgba(234,179,8,0.12)] border border-transparent hover:border-primary/15 transition-all duration-300">
-                  <CheckCircle className="w-5 h-5 text-primary shrink-0" />
+                <div className="flex items-center gap-2 p-1.5 md:p-2.5 rounded-md bg-background/40 hover:bg-background/60 hover:shadow-[0_0_18px_rgba(234,179,8,0.12)] border border-transparent hover:border-primary/15 transition-all duration-300">
+                  <CheckCircle className="w-4 h-4 md:w-5 md:h-5 text-primary shrink-0" />
                   <div>
-                    <p className="text-xs font-bold leading-tight">Rezultati utakmica</p>
-                    <p className="text-[10px] text-muted-foreground">Svih {playedMatches.length} utakmica s datumima i rezultatima</p>
+                    <p className="text-[10px] md:text-xs font-bold leading-tight">Rezultati utakmica</p>
+                    <p className="text-[8px] md:text-[10px] text-muted-foreground">Svih {playedMatches.length} utakmica s datumima i rezultatima</p>
                   </div>
                 </div>
               </div>
               <button
                 onClick={handleDownloadStats}
-                className="w-full flex items-center justify-center gap-2 px-3.5 py-3 rounded-md bg-primary text-primary-foreground hover:bg-primary/80 hover:scale-[1.02] active:scale-[0.98] shadow-md shadow-primary/10 transition-all duration-300 font-display text-sm uppercase tracking-wider cursor-pointer"
+                className="w-full flex items-center justify-center gap-2 px-3 py-2 md:px-3.5 md:py-3 rounded-md bg-primary text-primary-foreground hover:bg-primary/80 hover:scale-[1.02] active:scale-[0.98] shadow-md shadow-primary/10 transition-all duration-300 font-display text-xs md:text-sm uppercase tracking-wider cursor-pointer"
               >
                 <Download className="w-4 h-4" />
                 Preuzmi datoteku
