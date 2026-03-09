@@ -1039,26 +1039,26 @@ const Statistics = () => {
               <p className="text-[9px] md:text-[11px] text-muted-foreground leading-relaxed mb-2 md:mb-3">
                 Kompletna statistika sezone 2025/26 dostupna za preuzimanje — individualni i timski podaci.
               </p>
-              <div className="space-y-1.5 mb-4">
-                <div className="flex items-center gap-2.5 p-2.5 rounded-md bg-background/40 hover:bg-background/60 hover:shadow-[0_0_18px_rgba(234,179,8,0.12)] border border-transparent hover:border-primary/15 transition-all duration-300">
-                  <CheckCircle className="w-5 h-5 text-primary shrink-0" />
+              <div className="space-y-1 md:space-y-1.5 mb-3 md:mb-4">
+                <div className="flex items-center gap-2 p-1.5 md:p-2.5 rounded-md bg-background/40 hover:bg-background/60 hover:shadow-[0_0_18px_rgba(234,179,8,0.12)] border border-transparent hover:border-primary/15 transition-all duration-300">
+                  <CheckCircle className="w-4 h-4 md:w-5 md:h-5 text-primary shrink-0" />
                   <div>
-                    <p className="text-xs font-bold leading-tight">Individualna statistika igrača</p>
-                    <p className="text-[10px] text-muted-foreground">PPG, RPG, APG, % šuta, minute, blokade...</p>
+                    <p className="text-[10px] md:text-xs font-bold leading-tight">Individualna statistika igrača</p>
+                    <p className="text-[8px] md:text-[10px] text-muted-foreground">PPG, RPG, APG, % šuta, minute, blokade...</p>
                   </div>
                 </div>
-                <div className="flex items-center gap-2.5 p-2.5 rounded-md bg-background/40 hover:bg-background/60 hover:shadow-[0_0_18px_rgba(234,179,8,0.12)] border border-transparent hover:border-primary/15 transition-all duration-300">
-                  <CheckCircle className="w-5 h-5 text-primary shrink-0" />
+                <div className="flex items-center gap-2 p-1.5 md:p-2.5 rounded-md bg-background/40 hover:bg-background/60 hover:shadow-[0_0_18px_rgba(234,179,8,0.12)] border border-transparent hover:border-primary/15 transition-all duration-300">
+                  <CheckCircle className="w-4 h-4 md:w-5 md:h-5 text-primary shrink-0" />
                   <div>
-                    <p className="text-xs font-bold leading-tight">Timski prosjeci</p>
-                    <p className="text-[10px] text-muted-foreground">eFG%, TS%, poeni, skokovi, asistencije...</p>
+                    <p className="text-[10px] md:text-xs font-bold leading-tight">Timski prosjeci</p>
+                    <p className="text-[8px] md:text-[10px] text-muted-foreground">eFG%, TS%, poeni, skokovi, asistencije...</p>
                   </div>
                 </div>
-                <div className="flex items-center gap-2.5 p-2.5 rounded-md bg-background/40 hover:bg-background/60 hover:shadow-[0_0_18px_rgba(234,179,8,0.12)] border border-transparent hover:border-primary/15 transition-all duration-300">
-                  <CheckCircle className="w-5 h-5 text-primary shrink-0" />
+                <div className="flex items-center gap-2 p-1.5 md:p-2.5 rounded-md bg-background/40 hover:bg-background/60 hover:shadow-[0_0_18px_rgba(234,179,8,0.12)] border border-transparent hover:border-primary/15 transition-all duration-300">
+                  <CheckCircle className="w-4 h-4 md:w-5 md:h-5 text-primary shrink-0" />
                   <div>
-                    <p className="text-xs font-bold leading-tight">Rezultati utakmica</p>
-                    <p className="text-[10px] text-muted-foreground">Svih {playedMatches.length} utakmica s datumima i rezultatima</p>
+                    <p className="text-[10px] md:text-xs font-bold leading-tight">Rezultati utakmica</p>
+                    <p className="text-[8px] md:text-[10px] text-muted-foreground">Svih {playedMatches.length} utakmica s datumima i rezultatima</p>
                   </div>
                 </div>
               </div>
