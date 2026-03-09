@@ -253,7 +253,7 @@ const NewsPage = () => {
             <p className="text-muted-foreground text-lg">Ostani u toku sa svim događanjima iz kluba</p>
           </motion.div>
 
-          <div className="flex flex-wrap justify-center gap-2 md:gap-3 mb-12">
+          <div className="flex justify-center gap-2 md:gap-3 mb-12">
             {categories.map((category) => {
               const IconComponent = category.icon;
               return (
