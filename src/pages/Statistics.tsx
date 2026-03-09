@@ -826,10 +826,10 @@ const Statistics = () => {
                       <h4 className="font-display text-lg md:text-2xl text-center mb-3">Ostalo</h4>
                       <div className="space-y-1.5">
                         {[
-                          { label: "Ukradene lopte", total: "88", avg: "7.3" },
-                          { label: "Blokade", total: "29", avg: "2.4" },
-                          { label: "Izgubljene lopte", total: "159", avg: "13.3" },
-                          { label: "Osobne pogreške", total: "244", avg: "20.3" },
+                          { label: "Ukradene lopte", total: "95", avg: "7.3" },
+                          { label: "Blokade", total: "30", avg: "2.3" },
+                          { label: "Izgubljene lopte", total: "162", avg: "12.5" },
+                          { label: "Osobne pogreške", total: "265", avg: "20.4" },
                         ].map((stat, i) => (
                           <div key={i} className="flex items-center justify-between py-1.5 border-b border-border/10 hover:bg-background/20 hover:px-1.5 transition-all duration-200 rounded">
                             <span className="text-sm md:text-base text-muted-foreground">{stat.label}</span>
