@@ -1,11 +1,12 @@
 import { Facebook, Instagram, Youtube } from "lucide-react";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import logo from "@/assets/logo.png";
 
 const footerLinks = [
   { label: "O klubu", href: "#o-klubu" },
-  { label: "Statistika", href: "/statistika" },
+  { label: "Statistika", href: "/statistika", isRoute: true },
   { label: "Vijesti", href: "#vijesti" },
-  { label: "Galerija", href: "#galerija" },
+  { label: "Galerija", href: "/galerija", isRoute: true },
   { label: "Kontakt", href: "#kontakt" },
 ];
 
