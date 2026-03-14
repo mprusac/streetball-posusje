@@ -17,6 +17,22 @@ const socialLinks = [
 ];
 
 const Footer = () => {
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const handleHashClick = (hash: string) => {
+    if (location.pathname !== "/") {
+      navigate("/");
+      setTimeout(() => {
+        const el = document.getElementById(hash.slice(1));
+        if (el) el.scrollIntoView({ behavior: "smooth" });
+      }, 500);
+    } else {
+      const el = document.getElementById(hash.slice(1));
+      if (el) el.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
     <footer className="bg-card py-16 border-t border-border">
       <div className="container mx-auto px-4">
@@ -53,15 +69,25 @@ const Footer = () => {
               Brzi linkovi
             </h4>
             <nav className="space-y-2">
-              {footerLinks.map((link) => (
-                <a
-                  key={link.href}
-                  href={link.href}
-                  className="block text-sm text-muted-foreground hover:text-primary transition-colors"
-                >
-                  {link.label}
-                </a>
-              ))}
+              {footerLinks.map((link) =>
+                link.isRoute ? (
+                  <Link
+                    key={link.href}
+                    to={link.href}
+                    className="block text-sm text-muted-foreground hover:text-primary transition-colors"
+                  >
+                    {link.label}
+                  </Link>
+                ) : (
+                  <button
+                    key={link.href}
+                    onClick={() => handleHashClick(link.href)}
+                    className="block text-sm text-muted-foreground hover:text-primary transition-colors"
+                  >
+                    {link.label}
+                  </button>
+                )
+              )}
             </nav>
           </div>
         </div>
