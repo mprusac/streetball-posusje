@@ -30,7 +30,7 @@ function ownerEmailHtml(name: string, email: string, subject: string, message: s
               <td style="vertical-align:middle;">
                 <h1 style="margin:0;font-size:22px;font-weight:800;color:${BRAND_WHITE};letter-spacing:1px;text-transform:uppercase;">NOVA PORUKA</h1>
                 <p style="margin:4px 0 0;font-size:13px;color:${BRAND_DARK};font-weight:700;">Kontakt forma · KK Posušje</p>
-                <p style="margin:4px 0 0;font-size:11px;color:${BRAND_DARK};font-weight:700;">${date}</p>
+                <p style="margin:4px 0 0;font-size:13px;color:${BRAND_DARK};font-weight:700;">${date}</p>
               </td>
               <td align="right" style="vertical-align:middle;width:70px;">
                 <img src="${LOGO_URL}" alt="KK Posušje" width="65" height="65" style="display:block;border:none;outline:none;" />
@@ -51,7 +51,7 @@ function ownerEmailHtml(name: string, email: string, subject: string, message: s
             <tr>
               <td style="padding:12px 16px;background-color:${BRAND_MUTED};border-bottom:1px solid ${BRAND_DARK};">
                 <span style="font-size:11px;text-transform:uppercase;letter-spacing:1px;color:${BRAND_GOLD};font-weight:700;">Email</span>
-                <p style="margin:4px 0 0;font-size:15px;color:${BRAND_WHITE};"><a href="mailto:${email}" style="color:${BRAND_GOLD};text-decoration:none;">${email}</a></p>
+                <p style="margin:4px 0 0;font-size:15px;color:${BRAND_WHITE};"><a href="mailto:${email}" style="color:${BRAND_WHITE};text-decoration:none;">${email}</a></p>
               </td>
             </tr>
             <tr>
@@ -113,7 +113,7 @@ function userConfirmationHtml(name: string, subject: string, message: string): s
           <div style="background-color:${BRAND_MUTED};border-radius:8px;padding:20px;border-left:3px solid ${BRAND_GOLD};text-align:left;">
             <span style="font-size:11px;text-transform:uppercase;letter-spacing:1px;color:${BRAND_GOLD};font-weight:700;">Vaša poruka</span>
             <p style="margin:8px 0 4px;font-size:13px;color:${BRAND_TEXT};">
-              <strong style="color:${BRAND_WHITE};">Predmet:</strong> ${subject}
+              <strong style="color:${BRAND_TEXT};">Predmet:</strong> <span style="color:${BRAND_WHITE};">${subject}</span>
             </p>
             <p style="margin:0;font-size:13px;line-height:1.6;color:${BRAND_TEXT};">${message.replace(/\n/g, '<br />')}</p>
           </div>
