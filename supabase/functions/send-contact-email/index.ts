@@ -101,16 +101,16 @@ function userConfirmationHtml(name: string, subject: string, message: string): s
           <img src="${LOGO_URL}" alt="KK Posušje" width="60" height="60" style="display:inline-block;border:none;outline:none;" />
         </td></tr>
         <!-- Body -->
-        <tr><td style="background-color:${BRAND_CARD};padding:32px;border-radius:0 0 12px 12px;">
-          <h2 style="margin:0 0 4px;font-size:20px;color:${BRAND_WHITE};font-weight:700;">Hvala vam, ${name}!</h2>
+        <tr><td style="background-color:${BRAND_CARD};padding:32px;border-radius:0 0 12px 12px;text-align:center;">
+          <h2 style="margin:0 0 4px;font-size:20px;color:${BRAND_WHITE};font-weight:700;">Hvala Vam, ${name}!</h2>
           <p style="margin:0 0 8px;font-size:14px;line-height:1.6;color:${BRAND_TEXT};">
             Vaša poruka je uspješno zaprimljena.
           </p>
           <p style="margin:0 0 24px;font-size:14px;line-height:1.6;color:${BRAND_TEXT};">
-            Odgovorit ćemo vam u najkraćem mogućem roku.
+            Odgovorit ćemo Vam u najkraćem mogućem roku.
           </p>
           <!-- Summary -->
-          <div style="background-color:${BRAND_MUTED};border-radius:8px;padding:20px;border-left:3px solid ${BRAND_GOLD};">
+          <div style="background-color:${BRAND_MUTED};border-radius:8px;padding:20px;border-left:3px solid ${BRAND_GOLD};text-align:left;">
             <span style="font-size:11px;text-transform:uppercase;letter-spacing:1px;color:${BRAND_GOLD};font-weight:700;">Vaša poruka</span>
             <p style="margin:8px 0 4px;font-size:13px;color:${BRAND_TEXT};">
               <strong style="color:${BRAND_WHITE};">Predmet:</strong> ${subject}
@@ -120,7 +120,7 @@ function userConfirmationHtml(name: string, subject: string, message: string): s
           <!-- CTA -->
           <table width="100%" cellpadding="0" cellspacing="0" style="margin-top:24px;">
             <tr><td align="center">
-              <a href="https://kkposusje.lovable.app" style="display:inline-block;padding:12px 32px;background-color:${BRAND_GOLD};color:${BRAND_DARK};font-size:14px;font-weight:700;text-decoration:none;border-radius:8px;text-transform:uppercase;letter-spacing:1px;">Posjetite našu stranicu</a>
+              <a href="https://kkposusje.ba/" style="display:inline-block;padding:12px 32px;background-color:${BRAND_GOLD};color:${BRAND_DARK};font-size:14px;font-weight:700;text-decoration:none;border-radius:8px;text-transform:uppercase;letter-spacing:1px;">Posjetite našu web stranicu</a>
             </td></tr>
           </table>
         </td></tr>
