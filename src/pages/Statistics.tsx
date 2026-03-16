@@ -316,7 +316,7 @@ const Statistics = () => {
 
   // Calculate extra matches based on active tab
   const getExtraMatches = () => {
-    if (activeMainTab === "statistics") return 4;
+    if (activeMainTab === "statistics") return 1;
     if (activeMainTab === "players" && activePlayersTab === "squad") return 9;
     if (activeMainTab === "players" && activePlayersTab === "top") return 3;
     return 0;
