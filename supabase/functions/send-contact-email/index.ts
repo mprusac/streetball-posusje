@@ -33,7 +33,7 @@ serve(async (req) => {
       },
       body: JSON.stringify({
         from: 'KK Posušje <onboarding@resend.dev>',
-        to: ['mprusac0@gmail.com'],
+        to: ['mprusac23@student.foi.hr'],
         subject: `[Kontakt forma] ${subject}`,
         reply_to: email,
         html: `
