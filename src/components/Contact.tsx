@@ -28,8 +28,9 @@ const Contact = () => {
       if (error) throw error;
 
       toast({
-        title: "Poruka poslana!",
-        description: "Hvala vam na poruci. Odgovorit ćemo vam što prije.",
+        title: "✓ Poruka poslana!",
+        description: "Hvala Vam na poruci.\nOdgovorit ćemo Vam što prije.",
+        variant: "success" as const,
       });
 
       setFormData({ name: "", email: "", subject: "", message: "" });
