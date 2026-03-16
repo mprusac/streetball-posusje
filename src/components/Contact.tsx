@@ -29,7 +29,13 @@ const Contact = () => {
 
       toast({
         title: "✓ Poruka poslana!",
-        description: "Hvala Vam na poruci.\nOdgovorit ćemo Vam što prije.",
+        description: (
+          <>
+            Hvala Vam na poruci.
+            <br />
+            Odgovorit ćemo Vam što prije.
+          </>
+        ),
         variant: "success" as const,
       });
 
