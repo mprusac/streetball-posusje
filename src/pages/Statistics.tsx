@@ -489,7 +489,7 @@ const Statistics = () => {
                   animate={{ opacity: 1, x: 0 }}
                   exit={{ opacity: 0, x: -20 }}
                   transition={{ duration: 0.2 }}
-                  className="divide-y divide-border/20 flex-1 flex flex-col justify-center"
+                  className="divide-y divide-border/20 flex-1 flex flex-col justify-start"
                 >
                   {displayedMatches.map((match) => {
                     const result = getMatchResult(match);
