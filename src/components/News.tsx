@@ -59,6 +59,7 @@ const categoryConfig: Record<string, { label: string; icon: typeof Trophy }> = {
 };
 
 const allNews: NewsItem[] = [
+  { id: 45, title: "Pobjeda nad Čapljinom! 🌕⚫", excerpt: "Košarkaši Posušja jučer su na domaćem terenu ostvarili pobjedu nad ekipom Čapljine rezultatom 83:61.", date: "18. 03. 2026.", category: "utakmica", image: pobjedaCapljina, imagePosition: "top" },
   { id: 44, title: "Žuti sutra protiv Čapljine na domaćem terenu! 🌕⚫", excerpt: "Košarkaši Posušja sutra igraju predzadnju utakmicu ove sezone. Na domaćem terenu igramo protiv ekipe Čapljine.", date: "16. 03. 2026.", category: "najava", image: najavaCapljina, imagePosition: "bottom" },
   { id: 43, title: "Sponzorska suradnja sa Caffe Bar Calipso! 🤝", excerpt: "S velikim zadovoljstvom objavljujemo suradnju sa Caffe Bar Calipso! Hvala na ukazanom povjerenju i podršci!", date: "10. 03. 2026.", category: "klub", image: sponzorCalipso, imagePosition: "center" },
   { id: 42, title: "Pobjeda!!! 🏀🔥", excerpt: "Košarkaši Posušja rezultatom 80:67 upisali su važnu pobjedu na domaćem terenu protiv ekipe Gruda!", date: "08. 03. 2026.", category: "utakmica", image: pobjeda_GrudeCard, imagePosition: "bottom" },
