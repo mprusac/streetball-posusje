@@ -53,6 +53,7 @@ import berlin7 from "@/assets/berlin/berlin-7.jpg";
 import berlin8 from "@/assets/berlin/berlin-8.jpg";
 import berlin9 from "@/assets/berlin/berlin-9.jpg";
 import deFlag from "@/assets/flags/de-flag.png";
+import croFlag from "@/assets/flags/cro-flag.png";
 import pobjeda_RamaCard from "@/assets/news-pobjeda-rama-card.jpg";
 import priznanjeCard from "@/assets/news-priznanje-card.jpg";
 import priznanjeProtrka from "@/assets/priznanje-protrka.jpg";
