@@ -128,19 +128,18 @@ const About = () => {
         >
           <h2 className="section-title mb-8 md:mb-12 text-center">
             <span className="section-title-white">O </span>
-            <span className="section-title-gold">NAMA</span>
+            <span className="section-title-gold">TURNIRU</span>
           </h2>
 
           <div className="gold-border-left mb-10 md:mb-16 text-left mx-auto pl-4 md:pl-6 pr-2 md:pr-0" style={{ maxWidth: "800px" }}>
             <p className="text-sm md:text-xl text-muted-foreground mb-3 md:mb-6 leading-relaxed">
-              <span className="text-primary font-bold">HKK Posušje</span> je hrvatski košarkaški klub iz grada Posušja, osnovan{" "}
-              <span className="text-primary font-semibold">1975. godine</span>.
+              <span className="text-primary font-bold">3x3 Streetball Posušje</span> je ulični košarkaški turnir koji okuplja igrače iz cijele regije na jednom mjestu.
             </p>
             <p className="text-sm md:text-base text-muted-foreground mb-3 md:mb-4 leading-relaxed">
-              Klub njeguje više od <span className="text-primary font-semibold">pet desetljeća tradicije</span> rada s mladima i okuplja igrače iz cijele regije.
+              Turnir se igra po <span className="text-primary font-semibold">FIBA 3x3 pravilima</span> na otvorenom terenu u srcu Posušja.
             </p>
             <p className="text-sm md:text-base text-muted-foreground leading-relaxed">
-              Kroz sustavan rad u omladinskim kategorijama i disciplinirane treninge razvijamo temelje za seniorski tim. Intenzivnim trudom gradimo <span className="text-primary font-semibold">zajedništvo, odgovornost i timski duh</span> kroz svaki trening. Zajedno težimo stvaranju novih sportskih uspjeha i pozitivnih vrijednosti u lokalnoj zajednici.
+              Bilo da si iskusni igrač ili tek počinješ, ovo je prilika da pokažeš svoje vještine, upoznaš nove ljude i uživaš u <span className="text-primary font-semibold">čistoj energiji ulične košarke</span>. Atmosfera, glazba i natjecateljski duh – sve na jednom mjestu.
             </p>
           </div>
         </div>
