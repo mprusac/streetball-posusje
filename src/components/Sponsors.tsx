@@ -173,39 +173,44 @@ const Sponsors = () => {
             </button>
 
             {/* Expandable Content */}
-          <div
+            <div
               className={`overflow-hidden transition-all duration-500 ${
-                isExpanded ? "max-h-[2000px]" : "max-h-0"
+                isExpanded ? "max-h-[4000px]" : "max-h-0"
               }`}
             >
-              <div className="p-4 md:p-6 pt-2 md:pt-4">
-                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3 md:gap-6 mb-4 md:mb-6 mt-2 md:mt-4">
+              <div className="px-3 pb-4 md:px-6 md:pb-6">
+                {/* Mobile: stack all tiers vertically; Desktop: 5 columns */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3 md:gap-4 mb-4 md:mb-6 mt-2 md:mt-4">
                   {sponsorTiers.map((tier, index) => {
                     const shadowColor = tier.name === "ZLATNI" 
-                      ? "hover:[box-shadow:0_0_25px_8px_hsl(48,96%,53%,0.35)]" 
+                      ? "hover:[box-shadow:0_0_20px_6px_hsl(48,96%,53%,0.3)]" 
                       : tier.name === "SREBRENI" 
-                      ? "hover:[box-shadow:0_0_25px_8px_hsl(0,0%,70%,0.25)]" 
+                      ? "hover:[box-shadow:0_0_20px_6px_hsl(0,0%,70%,0.2)]" 
                       : tier.name === "BRONČANI" 
-                      ? "hover:[box-shadow:0_0_25px_8px_hsl(30,60%,45%,0.25)]" 
-                      : "hover:[box-shadow:0_0_25px_8px_hsl(48,96%,53%,0.25)]";
+                      ? "hover:[box-shadow:0_0_20px_6px_hsl(30,60%,45%,0.2)]" 
+                      : "hover:[box-shadow:0_0_20px_6px_hsl(48,96%,53%,0.2)]";
                     
                     return (
                       <div
                         key={tier.name}
-                        className={`group bg-secondary/40 border border-border rounded-lg p-3 md:p-6 animate-fade-in-up transition-all duration-300 hover:scale-[1.03] hover:border-primary/50 ${shadowColor}`}
-                        style={{ animationDelay: `${index * 100}ms` }}
+                        className={`group bg-secondary/40 border border-border rounded-lg p-4 md:p-5 animate-fade-in-up transition-all duration-300 hover:scale-[1.02] hover:border-primary/50 ${shadowColor}`}
+                        style={{ animationDelay: `${index * 80}ms` }}
                       >
-                        <div className={`${tier.color} mb-2 md:mb-3 transition-transform duration-300 group-hover:scale-110`}>{tier.icon}</div>
-                        <h4 className={`font-semibold text-xs md:text-base ${tier.color} transition-colors duration-300`}>{tier.name}</h4>
-                        <p className="text-primary text-sm md:text-lg font-display mt-1">{tier.price}</p>
-                        <ul className="mt-2 md:mt-4 space-y-1 md:space-y-2">
+                        <div className="flex items-center gap-3 mb-3 lg:flex-col lg:items-start lg:gap-0 lg:mb-2">
+                          <div className={`${tier.color} transition-transform duration-300 group-hover:scale-110 lg:mb-2`}>{tier.icon}</div>
+                          <div>
+                            <h4 className={`font-semibold text-sm md:text-base ${tier.color}`}>{tier.name}</h4>
+                            <p className="text-primary text-base md:text-lg font-display">{tier.price}</p>
+                          </div>
+                        </div>
+                        <ul className="space-y-1.5">
                           {tier.benefits.map((benefit) => (
                             <li
                               key={benefit}
-                              className="text-muted-foreground text-xs md:text-sm flex items-start gap-1 md:gap-2"
+                              className="text-muted-foreground text-xs md:text-sm flex items-start gap-2 leading-relaxed"
                             >
-                              <span className="text-primary mt-0.5 md:mt-1">•</span>
-                              {benefit}
+                              <span className="text-primary mt-0.5 shrink-0">•</span>
+                              <span>{benefit}</span>
                             </li>
                           ))}
                         </ul>
@@ -214,13 +219,13 @@ const Sponsors = () => {
                   })}
                 </div>
 
-                {/* Payment Info - Inside expandable */}
-                <div className="bg-background/50 border border-border rounded-lg p-4 md:p-6">
-                  <h4 className="font-display text-base md:text-lg mb-3 md:mb-4">
+                {/* Payment Info */}
+                <div className="bg-background/50 border border-border rounded-lg p-4 md:p-5">
+                  <h4 className="font-display text-base md:text-lg mb-3">
                     <span className="text-foreground">PODACI ZA </span>
                     <span className="text-primary">PLAĆANJE</span>
                   </h4>
-                  <div className="grid grid-cols-1 md:grid-cols-3 gap-3 md:gap-6 text-xs md:text-sm">
+                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs md:text-sm">
                     <div>
                       <span className="text-muted-foreground block mb-1">PRIMATELJ</span>
                       <span className="text-foreground">Streetball Posušje 2026</span>
@@ -231,7 +236,7 @@ const Sponsors = () => {
                     </div>
                     <div>
                       <span className="text-muted-foreground block mb-1">IBAN</span>
-                      <span className="text-foreground">BA39 0000 0000 0000 0000</span>
+                      <span className="text-foreground break-all">BA39 0000 0000 0000 0000</span>
                     </div>
                   </div>
                 </div>
