@@ -19,7 +19,7 @@ const AnimatedRoutes = () => {
     <AnimatePresence mode="wait">
       <Routes location={location} key={location.pathname}>
         <Route path="/" element={<PageTransition><Index /></PageTransition>} />
-        <Route path="/statistika" element={<PageTransition><Statistics /></PageTransition>} />
+        
         <Route path="/galerija" element={<PageTransition><GalleryPage /></PageTransition>} />
         <Route path="/galerija/:eventId" element={<PageTransition><GalleryPage /></PageTransition>} />
         <Route path="/vijesti" element={<PageTransition><NewsPage /></PageTransition>} />

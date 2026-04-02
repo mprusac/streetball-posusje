@@ -231,7 +231,7 @@ className="bg-background/50 border-border focus:border-primary focus-visible:rin
                 allowFullScreen
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
-                title="Lokacija HKK Posušje"
+                title="Lokacija 3x3 Streetball Posušje"
               />
             </div>
           </div>

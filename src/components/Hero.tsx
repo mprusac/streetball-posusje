@@ -84,7 +84,7 @@ const Hero = () => {
             >
               <a href="#kontakt">
                 <span className="absolute inset-0 bg-primary transform -translate-x-full group-hover:translate-x-0 transition-transform duration-500 ease-out" />
-                <span className="relative z-10">Pridruži se</span>
+                <span className="relative z-10">Prijavi ekipu</span>
               </a>
             </Button>
           </div>

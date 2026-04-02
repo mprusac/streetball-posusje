@@ -61,9 +61,7 @@ const Index = () => {
       <Navbar />
       <main>
         <Hero />
-        <Results />
         <News />
-        <Team />
         <Gallery />
         <About />
         <Sponsors />

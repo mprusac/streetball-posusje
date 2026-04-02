@@ -78,7 +78,7 @@ const Footer = () => {
         {/* Bottom Bar */}
         <div className="mt-12 pt-8 border-t border-primary/30 flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-sm text-muted-foreground">
-            © {new Date().getFullYear()} HKK Posušje. Sva prava pridržana.
+            © {new Date().getFullYear()} 3x3 Streetball Posušje. Sva prava pridržana.
           </p>
 
           {/* Social Links */}
