@@ -65,8 +65,10 @@ const Hero = () => {
       <div className="relative z-10 container mx-auto px-4 text-center -mt-20 md:mt-0">
         <div className="max-w-4xl mx-auto">
         <h1 className="text-5xl sm:text-6xl md:text-8xl lg:text-9xl font-display tracking-wider mb-4 mt-16 md:mt-0 animate-fade-in-up">
-            <span className="text-foreground">HKK </span>
-            <span className="text-primary">POSUŠJE</span>
+            <span className="text-foreground">3x3 </span>
+            <span className="text-primary">STREETBALL</span>
+            <br />
+            <span className="text-foreground text-3xl sm:text-4xl md:text-5xl lg:text-6xl tracking-[0.2em]">POSUŠJE</span>
           </h1>
           
           <p className="text-base sm:text-lg md:text-xl text-muted-foreground uppercase tracking-[0.2em] sm:tracking-[0.3em] mb-6 sm:mb-8 animate-fade-in-up delay-200">
