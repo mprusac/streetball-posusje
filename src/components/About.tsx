@@ -16,11 +16,7 @@ const stats: StatItem[] = [
   { value: 8, label: "KATEGORIJE" },
 ];
 
-const categories = [
-  { name: "Muška kategorija", desc: "18+ godina" },
-  { name: "Ženska kategorija", desc: "18+ godina" },
-  { name: "Juniorska kategorija", desc: "U16" },
-];
+// categories removed
 
 const StatCounter = ({ stat, index }: { stat: StatItem; index: number }) => {
   const { count, elementRef } = useCountUp({ end: stat.value });
