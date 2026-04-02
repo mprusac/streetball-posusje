@@ -53,22 +53,24 @@ const Achievements = () => {
             return (
             <div
               key={item.title}
-              className="group card-micro bg-secondary/30 border border-border rounded-xl p-5 md:p-6 hover:border-primary/30"
+              className="group relative overflow-hidden border border-primary/20 rounded-xl p-5 md:p-6 hover:border-primary/60 transition-all duration-500 hover:shadow-[0_0_25px_rgba(234,179,8,0.15)]"
               style={{
                 opacity: isVisible ? 1 : 0,
                 transform: isVisible ? "translateY(0)" : "translateY(20px)",
                 transition: `all 0.5s ease ${index * 0.12}s`,
+                background: 'linear-gradient(135deg, hsl(0 0% 6%) 0%, hsl(45 100% 51% / 0.05) 100%)',
               }}
             >
-              <div className="flex items-start gap-4">
-                <div className="p-2 md:p-3 bg-primary/20 rounded-lg group-hover:bg-primary/30 transition-all duration-300 text-primary flex-shrink-0">
-                  <IconComponent className="w-5 h-5 md:w-6 md:h-6" />
+              <div className="absolute inset-0 bg-gradient-to-r from-primary/0 via-primary/5 to-primary/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              <div className="flex items-start gap-4 relative z-10">
+                <div className="p-2.5 md:p-3.5 bg-primary/15 rounded-xl group-hover:bg-primary/30 group-hover:shadow-[0_0_15px_rgba(234,179,8,0.3)] transition-all duration-500 text-primary flex-shrink-0">
+                  <IconComponent className="w-5 h-5 md:w-6 md:h-6 group-hover:drop-shadow-[0_0_6px_rgba(234,179,8,0.6)] transition-all duration-300" />
                 </div>
                 <div>
-                  <h3 className="font-display text-base md:text-lg text-foreground tracking-wide leading-snug mb-1">
+                  <h3 className="font-display text-base md:text-lg text-foreground tracking-wide leading-snug mb-1 group-hover:text-primary transition-colors duration-300">
                     {item.title}
                   </h3>
-                  <p className="text-primary text-xs md:text-sm mb-0.5">{item.highlight}</p>
+                  <p className="text-primary/90 text-xs md:text-sm mb-0.5 font-medium">{item.highlight}</p>
                   <p className="text-muted-foreground text-xs md:text-sm">{item.detail}</p>
                 </div>
               </div>
