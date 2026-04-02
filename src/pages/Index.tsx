@@ -85,7 +85,7 @@ const Index = () => {
           <Instagram size={20} />
         </a>
         <a
-          href="https://www.facebook.com/kosarkaposusje/"
+          href="https://www.facebook.com/StreetballPosusje"
           target="_blank"
           rel="noopener noreferrer"
           aria-label="Facebook"

@@ -165,6 +165,11 @@ const News = () => {
                   <span className="absolute top-3 left-3 px-2 py-1 bg-primary/90 text-primary-foreground text-[10px] md:text-xs rounded flex items-center gap-1 font-bold">
                     {(() => { const cfg = categoryConfig[item.category]; const Icon = cfg.icon; return <><Icon size={12} strokeWidth={3} />{cfg.label}</>; })()}
                   </span>
+                  {item.pinned && (
+                    <span className="absolute top-3 right-3 p-1.5 bg-primary/90 text-primary-foreground rounded-full shadow-lg">
+                      <Pin size={14} strokeWidth={2.5} className="rotate-45" />
+                    </span>
+                  )}
                 </div>
                 <div className="p-4 md:p-6 flex flex-col flex-1">
                   <div className="flex items-center gap-2 text-muted-foreground text-xs md:text-sm mb-2 md:mb-3">

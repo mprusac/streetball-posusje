@@ -9,8 +9,8 @@ const footerLinks = [
 ];
 
 const socialLinks = [
-  { icon: Facebook, href: "https://www.facebook.com/kosarkaposusje/", label: "Facebook" },
-  { icon: Instagram, href: "https://www.instagram.com/kkposusje/", label: "Instagram" },
+  { icon: Facebook, href: "https://www.facebook.com/StreetballPosusje", label: "Facebook" },
+  { icon: Instagram, href: "https://www.instagram.com/streetball_posusje/", label: "Instagram" },
   { icon: Youtube, href: "https://www.youtube.com/@kosarkaskisavezhercegbosne", label: "YouTube" },
 ];
 
