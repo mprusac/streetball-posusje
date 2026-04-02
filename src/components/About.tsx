@@ -68,8 +68,8 @@ const About = () => {
           }`}
         >
           <h2 className="section-title mb-8 md:mb-12 text-center">
-            <span className="section-title-white">O </span>
-            <span className="section-title-gold">NAMA</span>
+            <span className="section-title-white">NAGRADNI FOND </span>
+            <span className="section-title-gold">7.000 KM</span>
           </h2>
 
           <div className="flex items-start gap-4 md:gap-8 mb-10 md:mb-16 mx-auto justify-center" style={{ maxWidth: "850px" }}>
