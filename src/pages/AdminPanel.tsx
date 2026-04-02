@@ -20,6 +20,14 @@ interface NewsItem {
 
 const FUNCTION_URL = `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/admin-news`;
 
+function getTodayFormatted(): string {
+  const now = new Date();
+  const dd = String(now.getDate()).padStart(2, '0');
+  const mm = String(now.getMonth() + 1).padStart(2, '0');
+  const yyyy = now.getFullYear();
+  return `${dd}. ${mm}. ${yyyy}.`;
+}
+
 const AdminPanel = () => {
   const [token, setToken] = useState<string | null>(sessionStorage.getItem("admin_token"));
   const [username, setUsername] = useState("");
@@ -33,7 +41,7 @@ const AdminPanel = () => {
   const { toast } = useToast();
 
   const [form, setForm] = useState({
-    title: "", excerpt: "", date: "", category: "2025", image_url: "", image_position: "center", pinned: false
+    title: "", excerpt: "", date: getTodayFormatted(), category: "2026", image_url: "", image_position: "center", pinned: false
   });
 
   const headers = { Authorization: `Bearer ${token}`, "Content-Type": "application/json" };
@@ -154,7 +162,7 @@ const AdminPanel = () => {
   const startCreate = () => {
     setEditing(null);
     setCreating(true);
-    setForm({ title: "", excerpt: "", date: "", category: "2025", image_url: "", image_position: "center", pinned: false });
+    setForm({ title: "", excerpt: "", date: getTodayFormatted(), category: "2026", image_url: "", image_position: "center", pinned: false });
   };
 
   // Login screen
@@ -200,27 +208,18 @@ const AdminPanel = () => {
               value={form.excerpt}
               onChange={e => setForm(f => ({ ...f, excerpt: e.target.value }))}
             />
-            <Input placeholder="Datum (npr. 05. 04. 2025.)" value={form.date} onChange={e => setForm(f => ({ ...f, date: e.target.value }))} />
-            <div className="flex gap-3">
+            <div className="flex gap-3 items-center">
               <select
                 className="rounded-md border border-input bg-background px-3 py-2 text-sm"
                 value={form.category}
                 onChange={e => setForm(f => ({ ...f, category: e.target.value }))}
               >
-                <option value="2025">2025</option>
                 <option value="2026">2026</option>
+                <option value="2025">2025</option>
                 <option value="najava">Najava</option>
               </select>
-              <select
-                className="rounded-md border border-input bg-background px-3 py-2 text-sm"
-                value={form.image_position}
-                onChange={e => setForm(f => ({ ...f, image_position: e.target.value }))}
-              >
-                <option value="center">Centar</option>
-                <option value="top">Vrh</option>
-                <option value="bottom">Dno</option>
-              </select>
-              <label className="flex items-center gap-2 text-sm text-foreground cursor-pointer">
+              <span className="text-sm text-muted-foreground">Datum: {form.date}</span>
+              <label className="flex items-center gap-2 text-sm text-foreground cursor-pointer ml-auto">
                 <input type="checkbox" checked={form.pinned} onChange={e => setForm(f => ({ ...f, pinned: e.target.checked }))} />
                 <Pin size={14} /> Prikvači
               </label>
@@ -246,7 +245,7 @@ const AdminPanel = () => {
               )}
             </div>
 
-            <Button onClick={saveNews} disabled={loading || !form.title || !form.date} className="w-full">
+            <Button onClick={saveNews} disabled={loading || !form.title} className="w-full">
               <Save size={16} /> {loading ? "Spremanje..." : editing ? "Spremi promjene" : "Objavi vijest"}
             </Button>
           </div>
