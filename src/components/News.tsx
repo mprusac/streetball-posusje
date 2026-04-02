@@ -3,7 +3,7 @@ import { useRef, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 import josipMamicHks from "@/assets/news/josip-mamic-hks.jpg";
-import streetball2025 from "@/assets/streetball-2025.jpg";
+import streetball2025 from "@/assets/news/streetball-2025-card.png";
 import u16Card from "@/assets/news/u16-1mjesto-card.png";
 import u16DjevojkeCover from "@/assets/news/u16-djevojke-cover.png";
 import croFlag from "@/assets/flags/cro-flag.png";
