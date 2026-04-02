@@ -1,16 +1,12 @@
 import { useCountUp } from "@/hooks/useCountUp";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
-import { Trophy, Calendar, MapPin, Users } from "lucide-react";
 import pulseLogo from "@/assets/pulse-logo.png";
 
 interface StatItem {
   value: number;
   suffix?: string;
   label: string;
-  featured?: boolean;
 }
-
-const prizeStat: StatItem = { value: 7000, suffix: " KM", label: "NAGRADNI FOND", featured: true };
 
 const stats: StatItem[] = [
   { value: 60, suffix: "+", label: "BROJ EKIPA" },
