@@ -66,13 +66,6 @@ const sponsorTiers: SponsorTier[] = [
     color: "text-[hsl(30,60%,45%)]",
   },
   {
-    name: "DONACIJA",
-    price: "Bilo koji iznos",
-    benefits: ["Spiker će uputiti zahvalu i pročitati ime donatora"],
-    icon: <Heart className="w-4 h-4 md:w-8 md:h-8" />,
-    color: "text-primary",
-  },
-  {
     name: "ROBNO PARTNERSTVO",
     price: "Kompenzacija",
     benefits: [
@@ -81,6 +74,13 @@ const sponsorTiers: SponsorTier[] = [
       "Nagradni izazovi na terenu s vašim proizvodom",
     ],
     icon: <Star className="w-4 h-4 md:w-8 md:h-8" />,
+    color: "text-primary",
+  },
+  {
+    name: "DONACIJA",
+    price: "Bilo koji iznos",
+    benefits: ["Spiker će uputiti zahvalu i pročitati ime donatora"],
+    icon: <Heart className="w-4 h-4 md:w-8 md:h-8" />,
     color: "text-primary",
   },
 ];
