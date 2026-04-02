@@ -47,12 +47,11 @@ const Footer = () => {
             <div className="space-y-2 text-sm text-muted-foreground">
               <p>Posušje, Bosna i Hercegovina</p>
               <a
-                href="mailto:kkposusje@gmail.com"
+                href="mailto:streetball.posusje@gmail.com"
                 className="block hover:text-primary transition-colors"
               >
-                kkposusje@gmail.com
+                streetball.posusje@gmail.com
               </a>
-              <p>IBAN: BA39 0000 0000 0000 0000</p>
             </div>
           </div>
 
