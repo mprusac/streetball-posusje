@@ -61,7 +61,9 @@ const WordReveal = ({ text, delay = 0 }: { text: string; delay?: number }) => {
 const Hero = () => {
   const countdown = useCountdown(TOURNAMENT_DATE);
   const [scrollY, setScrollY] = useState(0);
-  const [isMobile, setIsMobile] = useState(false);
+  const [isMobile, setIsMobile] = useState(() =>
+    typeof window !== "undefined" ? window.innerWidth < 768 : false
+  );
   const [displayedText, setDisplayedText] = useState("");
   const [showCursor, setShowCursor] = useState(true);
   const [videoLoaded, setVideoLoaded] = useState(false);
