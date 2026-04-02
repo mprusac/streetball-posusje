@@ -75,8 +75,6 @@ const About = () => {
           </div>
         </div>
 
-        </div>
-
         {/* Vision */}
         <div 
           ref={visRef}
