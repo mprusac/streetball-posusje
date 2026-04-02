@@ -6,8 +6,11 @@ import logo from "@/assets/logo.png";
 const navLinks = [
   { href: "#pocetna", label: "Početna" },
   { href: "#vijesti", label: "Vijesti" },
-  { href: "#o-klubu", label: "O turniru" },
+  { href: "#raspored", label: "Raspored" },
   { href: "/galerija", label: "Galerija", isRoute: true },
+  { href: "#o-klubu", label: "O nama" },
+  { href: "#postignuca", label: "Postignuća" },
+  { href: "#sponzori", label: "Sponzori" },
   { href: "#kontakt", label: "Kontakt" },
 ];
 

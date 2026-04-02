@@ -187,7 +187,7 @@ const Sponsors = () => {
                       ? "hover:[box-shadow:0_0_25px_8px_hsl(0,0%,70%,0.25)]" 
                       : tier.name === "BRONČANI" 
                       ? "hover:[box-shadow:0_0_25px_8px_hsl(30,60%,45%,0.25)]" 
-                      : "hover:[box-shadow:0_0_25px_8px_hsl(0,80%,60%,0.25)]";
+                      : "hover:[box-shadow:0_0_25px_8px_hsl(48,96%,53%,0.25)]";
                     
                     return (
                       <div

@@ -91,11 +91,14 @@ const About = () => {
             <div className="absolute inset-0 rounded-2xl md:rounded-3xl bg-gradient-to-br from-primary/5 via-transparent to-primary/10 pointer-events-none" />
             
             <h3 className="text-2xl md:text-4xl font-display mb-4 md:mb-6 tracking-wide relative z-10">
-              <span className="text-foreground">ZAŠTO </span>
-              <span className="text-primary">3x3?</span>
+              <span className="text-foreground">NAŠA </span>
+              <span className="text-primary">VIZIJA</span>
             </h3>
+            <p className="text-muted-foreground max-w-3xl mx-auto leading-relaxed text-sm md:text-lg relative z-10 mb-4">
+              Vizija Udruge Pulse je pozicionirati Streetball Posušje kao ozbiljan sportski događaj međunarodnog karaktera i stvoriti snažnu sportsku tradiciju. Kontinuiranim podizanjem organizacijske ljestvice, publici svake godine želimo ponuditi novi i još atraktivniji sadržaj.
+            </p>
             <p className="text-muted-foreground max-w-3xl mx-auto leading-relaxed text-sm md:text-lg relative z-10">
-              3x3 košarka je <span className="text-primary font-bold">najbrže rastući urbani sport na svijetu</span> i olimpijska disciplina od 2021. Brza igra, kraći format i intenzivna atmosfera čine je savršenom za sve koji vole košarku u njenom najčišćem obliku. <span className="text-primary font-bold">Streetball Posušje 2026</span> donosi tu energiju u naš grad – jedan dan, jedna lopta, čista strast.
+              Više od samog natjecanja, cilj nam je mladima približiti sport i potaknuti ih da se bave košarkom. S obzirom na prvu godinu turnira i dobro prihvaćen događaj, postavili smo čvrste temelje za dugoročni rast i ostvarenje tih ciljeva.
             </p>
           </div>
         </div>
