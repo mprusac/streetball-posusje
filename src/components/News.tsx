@@ -13,7 +13,7 @@ interface NewsItem {
   title: string;
   excerpt: string;
   date: string;
-  category: "utakmica" | "najava" | "klub";
+  category: string;
   image: string;
   imagePosition?: string;
   imageScale?: number;
