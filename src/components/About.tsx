@@ -55,13 +55,13 @@ const FeaturedStat = () => {
         }}
       >
         <div className="flex items-center gap-3 md:gap-4 justify-center mb-1">
-          <Trophy className="w-6 h-6 md:w-8 md:h-8 text-primary" />
-          <span className="stat-label text-xs md:text-sm tracking-[0.3em] text-primary font-bold">
+          <Trophy className="w-5 h-5 md:w-6 md:h-6 text-primary" />
+          <span className="stat-label text-xs md:text-sm tracking-[0.3em] text-primary font-bold drop-shadow-[0_0_8px_rgba(234,179,8,0.5)]">
             {prizeStat.label}
           </span>
-          <Trophy className="w-6 h-6 md:w-8 md:h-8 text-primary" />
+          <Trophy className="w-5 h-5 md:w-6 md:h-6 text-primary" />
         </div>
-        <div className="stat-number text-5xl md:text-7xl text-primary group-hover:scale-105 transition-transform duration-300">
+        <div className="stat-number text-3xl md:text-5xl text-primary group-hover:scale-105 transition-transform duration-300 drop-shadow-[0_0_12px_rgba(234,179,8,0.4)]">
           {count}
           {prizeStat.suffix}
         </div>
