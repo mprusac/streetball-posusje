@@ -203,6 +203,11 @@ const NewsPage = () => {
                     <span className="absolute top-3 left-3 px-2 py-1 bg-primary/90 text-primary-foreground text-xs rounded flex items-center gap-1 font-bold">
                       {(() => { const cat = item.category; const icons: Record<string, typeof Trophy> = { utakmica: Trophy, najava: Megaphone, klub: Newspaper }; const labels: Record<string, string> = { utakmica: "Utakmice", najava: "Najave", klub: "Klub" }; const Icon = icons[cat]; return <><Icon size={12} strokeWidth={3} />{labels[cat]}</>; })()}
                     </span>
+                    {item.pinned && (
+                      <span className="absolute top-3 right-3 p-1.5 bg-primary/90 text-primary-foreground rounded-full shadow-lg">
+                        <Pin size={14} strokeWidth={2.5} className="rotate-45" />
+                      </span>
+                    )}
                   </div>
                   <div className="p-5 flex flex-col">
                     <div className="flex items-center gap-2 text-muted-foreground text-sm mb-3">
