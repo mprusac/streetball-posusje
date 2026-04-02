@@ -3,10 +3,10 @@ import { Trophy, Sun, Users, Star, Medal } from "lucide-react";
 
 const achievements = [
   {
-    title: "ODLIČNO PRIHVAĆEN DOGAĐAJ LJETNJEG PROGRAMA ☀️",
-    highlight: "Iznimno pozitivan odjek među građanima",
-    detail: "Jedna od najposjećenijih ljetnih manifestacija u Posušju",
-    icon: Sun,
+    title: "DIO FIBA 3x3 KALENDARA 🏀",
+    highlight: "Turnir službeno prijavljen na FIBA 3x3 platformi",
+    detail: "Uključen u raspored lokalnih i regionalnih 3x3 natjecanja",
+    icon: Trophy,
   },
   {
     title: "MEĐUNARODNI KARAKTER TURNIRA 🌍",
@@ -15,10 +15,10 @@ const achievements = [
     icon: Users,
   },
   {
-    title: "DIO FIBA 3x3 KALENDARA 🏀",
-    highlight: "Turnir službeno prijavljen na FIBA 3x3 platformi",
-    detail: "Uključen u raspored lokalnih i regionalnih 3x3 natjecanja",
-    icon: Star,
+    title: "ODLIČNO PRIHVAĆEN DOGAĐAJ LJETNOG PROGRAMA ☀️",
+    highlight: "Iznimno pozitivan odjek među građanima",
+    detail: "Jedna od najposjećenijih ljetnih manifestacija u Posušju",
+    icon: Sun,
   },
   {
     title: "ODLIČNA PROMOCIJA ZA TVRTKE 📈",
