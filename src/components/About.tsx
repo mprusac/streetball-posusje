@@ -67,13 +67,16 @@ const About = () => {
             <span className="section-title-gold">NAMA</span>
           </h2>
 
-          <div className="gold-border-left mb-10 md:mb-16 text-left mx-auto pl-4 md:pl-6 pr-2 md:pr-0" style={{ maxWidth: "800px" }}>
-            <p className="text-sm md:text-xl text-muted-foreground mb-3 md:mb-6 leading-relaxed">
-              <span className="text-primary font-bold">Udruga Pulse</span> ponosni je organizator turnira Streetball Posušje.
-            </p>
-            <p className="text-sm md:text-base text-muted-foreground mb-3 md:mb-4 leading-relaxed">
-              Naša udruga okuplja entuzijaste s ciljem promicanja sporta, poticanja mladih na stvaranje novih sportskih događaja i ulaganja energije u razvoj sporta u našem gradu.
-            </p>
+          <div className="flex items-start gap-4 md:gap-8 mb-10 md:mb-16 mx-auto justify-center" style={{ maxWidth: "850px" }}>
+            <img src={pulseLogo} alt="Pulse logo" className="w-16 h-16 md:w-24 md:h-24 object-contain flex-shrink-0 mt-1" />
+            <div className="gold-border-left text-left pl-4 md:pl-6">
+              <p className="text-sm md:text-xl text-muted-foreground mb-3 md:mb-6 leading-relaxed">
+                <span className="text-primary font-bold">Udruga Pulse</span> ponosni je organizator turnira Streetball Posušje.
+              </p>
+              <p className="text-sm md:text-base text-muted-foreground mb-3 md:mb-4 leading-relaxed">
+                Naša udruga okuplja entuzijaste s ciljem promicanja sporta, poticanja mladih na stvaranje novih sportskih događaja i ulaganja energije u razvoj sporta u našem gradu.
+              </p>
+            </div>
           </div>
         </div>
 
