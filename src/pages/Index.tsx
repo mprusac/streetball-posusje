@@ -57,9 +57,14 @@ const Index = () => {
 
     const revealDeferredContent = () => setShowDeferredContent(true);
 
-    if ("requestIdleCallback" in window) {
-      const idleId = window.requestIdleCallback(revealDeferredContent, { timeout: 1200 });
-      return () => window.cancelIdleCallback(idleId);
+    const browserWindow = window as Window & {
+      requestIdleCallback?: (callback: IdleRequestCallback, options?: IdleRequestOptions) => number;
+      cancelIdleCallback?: (handle: number) => void;
+    };
+
+    if (browserWindow.requestIdleCallback && browserWindow.cancelIdleCallback) {
+      const idleId = browserWindow.requestIdleCallback(revealDeferredContent, { timeout: 1200 });
+      return () => browserWindow.cancelIdleCallback?.(idleId);
     }
 
     const timeoutId = window.setTimeout(revealDeferredContent, 350);
