@@ -61,7 +61,9 @@ const WordReveal = ({ text, delay = 0 }: { text: string; delay?: number }) => {
 const Hero = () => {
   const countdown = useCountdown(TOURNAMENT_DATE);
   const [scrollY, setScrollY] = useState(0);
-  const [isMobile, setIsMobile] = useState(false);
+  const [isMobile, setIsMobile] = useState(() =>
+    typeof window !== "undefined" ? window.innerWidth < 768 : false
+  );
   const [displayedText, setDisplayedText] = useState("");
   const [showCursor, setShowCursor] = useState(true);
   const [videoLoaded, setVideoLoaded] = useState(false);
@@ -103,15 +105,23 @@ const Hero = () => {
     >
       {/* Background Video */}
       <div className="absolute top-0 left-0 right-0 bottom-0 w-full h-full bg-background">
+        <img
+          src="/hero-video-poster.jpg"
+          alt="Streetball Posušje hero poster"
+          loading="eager"
+          fetchPriority="high"
+          className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-500 ${videoLoaded ? "opacity-0" : "opacity-100"}`}
+        />
         <video
           autoPlay
           loop
           muted
           playsInline
           preload="auto"
+          poster="/hero-video-poster.jpg"
           onLoadedData={() => setVideoLoaded(true)}
-          className={`w-full h-full object-cover ${videoLoaded ? 'opacity-100' : 'opacity-0'}`}
-          style={{ transition: 'opacity 0.5s ease' }}
+          className={`w-full h-full object-cover ${videoLoaded ? "opacity-100" : "opacity-0"}`}
+          style={{ transition: "opacity 0.5s ease" }}
         >
           <source src={isMobile ? "/hero-video-mobile.mp4" : "/hero-video-optimized.mp4"} type="video/mp4" />
         </video>
