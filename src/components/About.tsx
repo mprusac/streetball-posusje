@@ -13,8 +13,8 @@ const stats: StatItem[] = [
   { value: 60, suffix: "+", label: "BROJ EKIPA" },
   { value: 150, suffix: "+", label: "BROJ IGRAČA" },
   { value: 200, suffix: "+", label: "BROJ UTAKMICA" },
-  { value: 8, label: "KATEGORIJE" },
   { value: 13, label: "GODINA POSTOJANJA" },
+  { value: 8, label: "KATEGORIJE" },
 ];
 
 // categories removed
