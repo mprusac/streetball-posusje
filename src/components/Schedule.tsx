@@ -62,11 +62,11 @@ const Schedule = () => {
           Raspored turnira po danima i kategorijama
         </p>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-5xl mx-auto">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4 max-w-5xl mx-auto">
           {schedule.map((day, dayIndex) => (
             <div
               key={day.date}
-              className="group bg-secondary/30 border border-border rounded-xl md:rounded-2xl p-6 md:p-8 hover:border-primary/30 transition-all duration-300"
+              className="group bg-secondary/30 border border-border rounded-xl p-4 md:p-5 hover:border-primary/30 transition-all duration-300"
               style={{
                 opacity: isVisible ? 1 : 0,
                 transform: isVisible ? "translateY(0)" : "translateY(20px)",
@@ -74,34 +74,34 @@ const Schedule = () => {
               }}
             >
               {/* Day Header */}
-              <div className="flex items-center gap-3 mb-6">
-                <div className="p-2 md:p-3 bg-primary/20 rounded-lg group-hover:bg-primary/30 transition-all duration-300">
-                  <Calendar className="text-primary w-5 h-5 md:w-6 md:h-6" />
+              <div className="flex items-center gap-2 mb-4">
+                <div className="p-1.5 md:p-2 bg-primary/20 rounded-lg group-hover:bg-primary/30 transition-all duration-300">
+                  <Calendar className="text-primary w-4 h-4 md:w-5 md:h-5" />
                 </div>
                 <div>
-                  <h3 className="font-display text-xl md:text-2xl text-foreground tracking-wide">
+                  <h3 className="font-display text-base md:text-lg text-foreground tracking-wide leading-tight">
                     {day.day}
                   </h3>
-                  <p className="text-primary text-sm md:text-base font-semibold">
+                  <p className="text-primary text-xs md:text-sm font-semibold">
                     {day.date}
                   </p>
                 </div>
               </div>
 
               {/* Events */}
-              <div className="space-y-3">
+              <div className="space-y-2">
                 {day.events.map((event, eventIndex) => (
                   <div
                     key={event}
-                    className="flex items-center gap-3 p-3 rounded-lg bg-background/50 border border-border/50 hover:border-primary/20 transition-all duration-300"
+                    className="flex items-center gap-2 p-2 rounded-lg bg-background/50 border border-border/50 hover:border-primary/20 transition-all duration-300"
                     style={{
                       opacity: isVisible ? 1 : 0,
                       transform: isVisible ? "translateX(0)" : "translateX(-10px)",
                       transition: `all 0.4s ease ${dayIndex * 0.15 + eventIndex * 0.08}s`,
                     }}
                   >
-                    <span className="w-2 h-2 rounded-full bg-primary flex-shrink-0" />
-                    <span className="text-sm md:text-base text-foreground font-medium">
+                    <span className="w-1.5 h-1.5 rounded-full bg-primary flex-shrink-0" />
+                    <span className="text-[11px] md:text-xs text-foreground font-medium whitespace-nowrap">
                       {event}
                     </span>
                   </div>
