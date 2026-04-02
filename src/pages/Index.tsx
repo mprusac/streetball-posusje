@@ -63,6 +63,7 @@ const Index = () => {
       <main>
         <Hero />
         <News />
+        <Schedule />
         <Gallery />
         <About />
         <Sponsors />
