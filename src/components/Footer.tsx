@@ -32,10 +32,10 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-40 max-w-none mx-auto pl-0 lg:pl-36 text-center md:text-left">
           {/* Logo & Description */}
           <div>
-            <img src={logo} alt="3x3 Streetball Posušje" className="h-20 w-auto mb-4 mx-auto md:mx-0" />
+            <img src={logo} alt="Streetball Posušje 2026" className="h-20 w-auto mb-4 mx-auto md:mx-0" />
             <p className="text-muted-foreground text-sm">
-              „Ulica je naš teren,<br />
-              a lopta naš jezik – 3x3 Posušje."
+              „Igra koja spaja –<br />
+              Streetball Posušje 2026."
             </p>
           </div>
 
@@ -45,12 +45,12 @@ const Footer = () => {
               Kontakt
             </h4>
             <div className="space-y-2 text-sm text-muted-foreground">
-              <p>Posušje, Bosna i Hercegovina</p>
+              <p>Trg Hrvatskih branitelja<br />Fra Grge Martića 35<br />88240 Posušje, BiH</p>
               <a
-                href="mailto:streetball.posusje@gmail.com"
+                href="mailto:streetballposusje2025@gmail.com"
                 className="block hover:text-primary transition-colors"
               >
-                streetball.posusje@gmail.com
+                streetballposusje2025@gmail.com
               </a>
             </div>
           </div>
@@ -78,7 +78,7 @@ const Footer = () => {
         {/* Bottom Bar */}
         <div className="mt-12 pt-8 border-t border-primary/30 flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-sm text-muted-foreground">
-            © {new Date().getFullYear()} 3x3 Streetball Posušje. Sva prava pridržana.
+            © {new Date().getFullYear()} Streetball Posušje 2026. Sva prava pridržana.
           </p>
 
           {/* Social Links */}

@@ -29,7 +29,7 @@ function ownerEmailHtml(name: string, email: string, subject: string, message: s
             <tr>
               <td style="vertical-align:middle;">
                 <h1 style="margin:0;font-size:22px;font-weight:800;color:${BRAND_WHITE};letter-spacing:1px;text-transform:uppercase;">NOVA PORUKA</h1>
-                <p style="margin:4px 0 0;font-size:13px;color:${BRAND_DARK};font-weight:700;">Kontakt forma · KK Posušje</p>
+                <p style="margin:4px 0 0;font-size:13px;color:${BRAND_DARK};font-weight:700;">Kontakt forma · Streetball Posušje 2026</p>
                 <p style="margin:4px 0 0;font-size:13px;color:${BRAND_DARK};font-weight:700;">${date}</p>
               </td>
               <td align="right" style="vertical-align:middle;width:70px;">
@@ -75,7 +75,7 @@ function ownerEmailHtml(name: string, email: string, subject: string, message: s
         </td></tr>
         <!-- Footer -->
         <tr><td style="padding:20px;text-align:center;">
-          <p style="margin:0;font-size:11px;color:${BRAND_TEXT};">KK Posušje · Ulica Bartola Kašića 2, 88240 Posušje</p>
+           <p style="margin:0;font-size:11px;color:${BRAND_TEXT};">Streetball Posušje 2026 · Trg Hrvatskih branitelja, Fra Grge Martića 35, 88240 Posušje</p>
           <p style="margin:4px 0 0;font-size:11px;color:${BRAND_TEXT};">Ova poruka je automatski generirana putem kontakt forme na web stranici.</p>
         </td></tr>
       </table>
@@ -97,7 +97,7 @@ function userConfirmationHtml(name: string, subject: string, message: string): s
       <table width="600" cellpadding="0" cellspacing="0" style="max-width:600px;width:100%;">
         <!-- Header -->
         <tr><td style="background-color:${BRAND_GOLD};padding:28px 32px;border-radius:12px 12px 0 0;text-align:center;">
-          <h1 style="margin:0 0 12px;font-size:24px;font-weight:800;color:${BRAND_DARK};letter-spacing:2px;text-transform:uppercase;">KK POSUŠJE</h1>
+          <h1 style="margin:0 0 12px;font-size:24px;font-weight:800;color:${BRAND_DARK};letter-spacing:2px;text-transform:uppercase;">STREETBALL POSUŠJE 2026</h1>
           <img src="${LOGO_URL}" alt="KK Posušje" width="60" height="60" style="display:inline-block;border:none;outline:none;" />
         </td></tr>
         <!-- Body -->
@@ -126,7 +126,7 @@ function userConfirmationHtml(name: string, subject: string, message: string): s
         </td></tr>
         <!-- Footer -->
         <tr><td style="padding:20px;text-align:center;">
-          <p style="margin:0;font-size:11px;color:${BRAND_TEXT};">KK Posušje · Ulica Bartola Kašića 2, 88240 Posušje</p>
+          <p style="margin:0;font-size:11px;color:${BRAND_TEXT};">Streetball Posušje 2026 · Trg Hrvatskih branitelja, Fra Grge Martića 35, 88240 Posušje</p>
           <p style="margin:4px 0 0;font-size:11px;color:${BRAND_TEXT};">Ovo je automatska potvrda. Molimo ne odgovarajte na ovaj email.</p>
         </td></tr>
       </table>
@@ -164,8 +164,8 @@ serve(async (req) => {
         'Authorization': `Bearer ${RESEND_API_KEY}`,
       },
       body: JSON.stringify({
-        from: 'KK Posušje <kontakt@kkposusje.ba>',
-        to: ['mprusac0@gmail.com'],
+        from: 'Streetball Posušje <kontakt@kkposusje.ba>',
+        to: ['streetballposusje2025@gmail.com'],
         subject: `[Kontakt forma] ${subject}`,
         reply_to: email,
         html: ownerEmailHtml(name, email, subject, message),
@@ -186,9 +186,9 @@ serve(async (req) => {
         'Authorization': `Bearer ${RESEND_API_KEY}`,
       },
       body: JSON.stringify({
-        from: 'KK Posušje <kontakt@kkposusje.ba>',
+        from: 'Streetball Posušje <kontakt@kkposusje.ba>',
         to: [email],
-        subject: `Potvrda poruke - KK Posušje`,
+        subject: `Potvrda poruke - Streetball Posušje 2026`,
         html: userConfirmationHtml(name, subject, message),
       }),
     });

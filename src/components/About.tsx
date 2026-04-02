@@ -9,7 +9,7 @@ interface StatItem {
 }
 
 const stats: StatItem[] = [
-  { value: 2025, label: "PRVA EDICIJA" },
+  { value: 2026, label: "PRVA EDICIJA" },
   { value: 32, suffix: "+", label: "PRIJAVLJENIH EKIPA" },
   { value: 3, label: "KATEGORIJE" },
   { value: 1, label: "DAN ČISTOG BASKETA" },
@@ -70,7 +70,7 @@ const About = () => {
 
           <div className="gold-border-left mb-10 md:mb-16 text-left mx-auto pl-4 md:pl-6 pr-2 md:pr-0" style={{ maxWidth: "800px" }}>
             <p className="text-sm md:text-xl text-muted-foreground mb-3 md:mb-6 leading-relaxed">
-              <span className="text-primary font-bold">3x3 Streetball Posušje</span> je ulični košarkaški turnir koji okuplja igrače iz cijele regije na jednom mjestu.
+              <span className="text-primary font-bold">Streetball Posušje 2026</span> je ulični košarkaški turnir koji okuplja igrače iz cijele regije na jednom mjestu.
             </p>
             <p className="text-sm md:text-base text-muted-foreground mb-3 md:mb-4 leading-relaxed">
               Turnir se igra po <span className="text-primary font-semibold">FIBA 3x3 pravilima</span> na otvorenom terenu u srcu Posušja.
@@ -132,7 +132,7 @@ const About = () => {
               <span className="text-primary">3x3?</span>
             </h3>
             <p className="text-muted-foreground max-w-3xl mx-auto leading-relaxed text-sm md:text-lg relative z-10">
-              3x3 košarka je <span className="text-primary font-bold">najbrže rastući urbani sport na svijetu</span> i olimpijska disciplina od 2021. Brza igra, kraći format i intenzivna atmosfera čine je savršenom za sve koji vole košarku u njenom najčišćem obliku. <span className="text-primary font-bold">Streetball Posušje</span> donosi tu energiju u naš grad – jedan dan, jedna lopta, čista strast.
+              3x3 košarka je <span className="text-primary font-bold">najbrže rastući urbani sport na svijetu</span> i olimpijska disciplina od 2021. Brza igra, kraći format i intenzivna atmosfera čine je savršenom za sve koji vole košarku u njenom najčišćem obliku. <span className="text-primary font-bold">Streetball Posušje 2026</span> donosi tu energiju u naš grad – jedan dan, jedna lopta, čista strast.
             </p>
           </div>
         </div>
