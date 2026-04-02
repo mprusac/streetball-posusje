@@ -79,13 +79,14 @@ const Gallery = () => {
 
   const GalleryItem = ({ index, className, style, objectPosition }: { index: number; className: string; style?: React.CSSProperties; objectPosition?: string }) => (
     <div 
-      className={`group relative overflow-hidden rounded-lg cursor-pointer animate-fade-in-up hover-lift ${className}`}
+      className={`group relative overflow-hidden rounded-lg cursor-pointer animate-fade-in-up card-micro ${className}`}
       style={style}
       onClick={() => openLightbox(index)}
     >
       <img
         src={images[index].src}
         alt={images[index].title}
+        loading="lazy"
         className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
         style={{ objectPosition: objectPosition || images[index].objectPosition }}
       />

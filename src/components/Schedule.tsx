@@ -66,7 +66,7 @@ const Schedule = () => {
           {schedule.map((day, dayIndex) => (
             <div
               key={day.date}
-              className="group bg-secondary/30 border border-border rounded-xl p-4 md:p-5 hover:border-primary/30 transition-all duration-300"
+              className="group card-micro bg-secondary/30 border border-border rounded-xl p-4 md:p-5 hover:border-primary/30"
               style={{
                 opacity: isVisible ? 1 : 0,
                 transform: isVisible ? "translateY(0)" : "translateY(20px)",
