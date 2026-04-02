@@ -14,6 +14,7 @@ const stats: StatItem[] = [
   { value: 150, suffix: "+", label: "BROJ IGRAČA" },
   { value: 200, suffix: "+", label: "BROJ UTAKMICA" },
   { value: 8, label: "KATEGORIJE" },
+  { value: 13, label: "GODINA POSTOJANJA" },
 ];
 
 // categories removed
@@ -45,7 +46,7 @@ const About = () => {
     <section id="o-klubu" className="py-20 overflow-hidden">
       {/* Stats */}
       <div className="container mx-auto px-4 mb-12 md:mb-20">
-        <div className="grid grid-cols-3 md:grid-cols-5 gap-4 md:gap-8 max-w-5xl mx-auto">
+        <div className="grid grid-cols-3 gap-4 md:gap-8 max-w-4xl mx-auto">
           {stats.map((stat, index) => (
             <StatCounter key={stat.label} stat={stat} index={index} />
           ))}
