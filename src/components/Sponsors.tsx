@@ -111,7 +111,7 @@ const Sponsors = () => {
   const [isExpanded, setIsExpanded] = useState(false);
 
   return (
-    <section className="py-12 md:py-20">
+    <section id="sponzori" className="py-12 md:py-20">
       <div className="container mx-auto px-4">
         <h2 className="section-title text-center mb-3 md:mb-4">
           <span className="section-title-white">NAŠI </span>
