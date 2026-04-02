@@ -15,70 +15,10 @@ const stats: StatItem[] = [
   { value: 1, label: "DAN ČISTOG BASKETA" },
 ];
 
-const maleCategories = [
-  "Predkadeti",
-  "Kadeti",
-  "Juniori",
-  "Seniori",
-];
-
-const femaleCategories = [
-  "Mlađe kadetkinje",
-  "Kadetkinje",
-  "Juniorke",
-  "Seniorke",
-];
-
-const achievements = [
-  {
-    title: "Višestruki seniorski prvaci Lige Herceg-Bosne",
-    subtitle: "Tri osvojena naslova prvaka (2012, 2016, 2021)",
-    description: "Promocija u Premijer ligu BiH",
-    icon: Trophy,
-    emoji: "🏆",
-  },
-  {
-    title: "Dugogodišnji prvoligaš Bosne i Hercegovine",
-    subtitle: "Dug niz sezona u najvišem rangu BiH košarke",
-    description: "Iznova dokazana kvaliteta među najboljim ekipama",
-    icon: Trophy,
-    emoji: "🏀",
-  },
-  {
-    title: "Nastup na FIBA Kupu Radivoja Koraća (1998./99.)",
-    subtitle: "Sudjelovanje na velikoj europskoj košarkaškoj pozornici",
-    description: "Upisani kao međunarodni predstavnik BiH košarke",
-    icon: Star,
-    emoji: "🌍",
-  },
-  {
-    title: "Brojni naslovi prvaka Lige Mladih Herceg-Bosne",
-    subtitle: "Redovite titule muških i ženskih omladinskih selekcija u svim uzrastima",
-    description: "Rezultat kontinuiranog rada, stručnog kadra i ulaganja u mlade naraštaje",
-    icon: Medal,
-    emoji: "🥇",
-  },
-  {
-    title: "Finalisti Kupa Herceg-Bosne / Polufinale Kupa BiH",
-    subtitle: "Zapaženi rezultati u državnim kup natjecanjima",
-    description: "Česti sudionik nacionalnih završnih turnira",
-    icon: Medal,
-    emoji: "🥈",
-  },
-  {
-    title: "Mladi reprezentativci",
-    subtitle: "Talenti iz Posušja redovito nose dresove državnih selekcija",
-    description: "Više desetaka igrača u reprezentacijama BiH i Hrvatske",
-    icon: Users,
-    emoji: "flags",
-  },
-  {
-    title: "Osnivanje ženskog omladinskog pogona (2002.)",
-    subtitle: "Klub koji jednako ulaže u razvoj djevojčica i dječaka",
-    description: "Ženska selekcija se uspješno natječe u Ligi Herceg-Bosne",
-    icon: Users,
-    emoji: "⛹🏼‍♀️",
-  },
+const categories = [
+  { name: "Muška kategorija", desc: "18+ godina" },
+  { name: "Ženska kategorija", desc: "18+ godina" },
+  { name: "Juniorska kategorija", desc: "U16" },
 ];
 
 const StatCounter = ({ stat, index }: { stat: StatItem; index: number }) => {
