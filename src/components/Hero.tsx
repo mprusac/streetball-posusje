@@ -1,6 +1,6 @@
 import { ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import teamPhoto from "@/assets/team-photo.jpg";
+import heroPhoto from "@/assets/hero-streetball.jpg";
 import { useEffect, useState, useRef } from "react";
 
 const TYPEWRITER_TEXT = "Igra koja spaja";
