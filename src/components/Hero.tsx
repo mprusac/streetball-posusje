@@ -64,10 +64,8 @@ const Hero = () => {
       {/* Content */}
       <div className="relative z-10 container mx-auto px-4 text-center -mt-20 md:mt-0">
         <div className="max-w-4xl mx-auto">
-        <h1 className="text-5xl sm:text-6xl md:text-8xl lg:text-9xl font-display tracking-wider mb-4 mt-24 md:mt-10 animate-fade-in-up">
-            <span className="text-foreground">STREETBALL </span>
-            <span className="text-primary">POSUŠJE </span>
-            <span className="text-foreground">2026</span>
+        <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-display tracking-wider mb-4 mt-24 md:mt-10 animate-fade-in-up">
+            <span className="text-primary">STREETBALL POSUŠJE 2026</span>
           </h1>
           
           <p className="text-base sm:text-lg md:text-xl text-muted-foreground uppercase tracking-[0.2em] sm:tracking-[0.3em] mb-6 sm:mb-8 animate-fade-in-up delay-200">
