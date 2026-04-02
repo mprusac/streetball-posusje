@@ -107,9 +107,11 @@ const Hero = () => {
           loop
           muted
           playsInline
+          preload="auto"
+          poster={heroPhoto}
           className="w-full h-full object-cover"
         >
-          <source src="/hero-video.mov" type="video/mp4" />
+          <source src="/hero-video.mp4" type="video/mp4" />
         </video>
         <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-background" />
       </div>
