@@ -245,7 +245,7 @@ const AdminPanel = () => {
               )}
             </div>
 
-            <Button onClick={saveNews} disabled={loading || !form.title || !form.date} className="w-full">
+            <Button onClick={saveNews} disabled={loading || !form.title} className="w-full">
               <Save size={16} /> {loading ? "Spremanje..." : editing ? "Spremi promjene" : "Objavi vijest"}
             </Button>
           </div>
