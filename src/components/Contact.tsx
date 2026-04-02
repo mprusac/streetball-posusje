@@ -186,7 +186,7 @@ className="bg-background/50 border-border focus:border-primary focus-visible:rin
               <div>
                 <h4 className="font-display text-sm md:text-base text-foreground mb-0.5 tracking-wide">Adresa</h4>
                 <p className="text-muted-foreground text-xs md:text-sm">
-                  Ulica Bartola Kašića 2, 88240 Posušje
+                  Posušje, Bosna i Hercegovina
                 </p>
               </div>
             </div>
