@@ -105,23 +105,15 @@ const Hero = () => {
     >
       {/* Background Video */}
       <div className="absolute top-0 left-0 right-0 bottom-0 w-full h-full bg-background">
-        <img
-          src="/hero-video-poster.jpg"
-          alt="Streetball Posušje hero poster"
-          loading="eager"
-          fetchPriority="high"
-          className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-500 ${videoLoaded ? "opacity-0" : "opacity-100"}`}
-        />
         <video
           autoPlay
           loop
           muted
           playsInline
           preload="auto"
-          poster="/hero-video-poster.jpg"
           onLoadedData={() => setVideoLoaded(true)}
           className={`w-full h-full object-cover ${videoLoaded ? "opacity-100" : "opacity-0"}`}
-          style={{ transition: "opacity 0.5s ease" }}
+          style={{ transition: "opacity 0.3s ease" }}
         >
           <source src={isMobile ? "/hero-video-mobile.mp4" : "/hero-video-optimized.mp4"} type="video/mp4" />
         </video>
