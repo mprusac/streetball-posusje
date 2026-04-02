@@ -1,8 +1,6 @@
 import { useCountUp } from "@/hooks/useCountUp";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
-import { Trophy, Medal, Users, Star } from "lucide-react";
-import bihFlag from "@/assets/flags/bih-flag.png";
-import croFlag from "@/assets/flags/cro-flag.png";
+import { Trophy, Calendar, MapPin, Users } from "lucide-react";
 
 interface StatItem {
   value: number;
