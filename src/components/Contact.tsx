@@ -179,7 +179,7 @@ className="bg-background/50 border-border focus:border-primary focus-visible:rin
           {/* Contact Info & Map */}
           <div className="flex flex-col gap-3 md:gap-4 animate-fade-in-up delay-200 h-full">
             {/* Contact Details */}
-            <div className="group flex items-center gap-3 md:gap-4 p-3 md:p-4 rounded-lg md:rounded-xl bg-secondary/30 border border-border hover:border-primary/30 hover:bg-secondary/40 transition-all duration-300 cursor-default flex-1">
+            <div className="group card-micro flex items-center gap-3 md:gap-4 p-3 md:p-4 rounded-lg md:rounded-xl bg-secondary/30 border border-border hover:border-primary/30 hover:bg-secondary/40 cursor-default flex-1">
               <div className="p-2 md:p-3 bg-primary/20 rounded-lg group-hover:bg-primary/30 group-hover:scale-110 transition-all duration-300">
                 <MapPin className="text-primary" size={18} />
               </div>
