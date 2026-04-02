@@ -42,7 +42,6 @@ const StatCounter = ({ stat, index }: { stat: StatItem; index: number }) => {
 const About = () => {
   const { elementRef: aboutRef, isVisible: aboutVisible } = useScrollReveal();
   const { elementRef: catRef, isVisible: catVisible } = useScrollReveal();
-  const { elementRef: achRef, isVisible: achVisible } = useScrollReveal();
   const { elementRef: visRef, isVisible: visVisible } = useScrollReveal();
 
   return (
