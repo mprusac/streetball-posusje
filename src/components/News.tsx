@@ -40,6 +40,31 @@ const News = () => {
   const { elementRef, isVisible } = useScrollReveal();
   const [isMobile, setIsMobile] = useState(false);
   const [activeIndex, setActiveIndex] = useState(0);
+  const [dbNews, setDbNews] = useState<NewsItem[]>([]);
+
+  // Fetch DB news
+  useEffect(() => {
+    const fetchDbNews = async () => {
+      try {
+        const { data } = await supabase.from('news').select('*').order('created_at', { ascending: false });
+        if (data) {
+          setDbNews(data.map((n: any) => ({
+            id: n.id,
+            title: n.title,
+            excerpt: n.excerpt || '',
+            date: n.date,
+            category: n.category,
+            image: n.image_url || '',
+            imagePosition: n.image_position || 'center',
+            pinned: n.pinned || false,
+          })));
+        }
+      } catch (e) { /* silent */ }
+    };
+    fetchDbNews();
+  }, []);
+
+  const allNews = [...dbNews, ...hardcodedNews];
 
   useEffect(() => {
     const handleResize = () => setIsMobile(window.innerWidth < 768);
