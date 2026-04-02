@@ -7,6 +7,7 @@ import About from "@/components/About";
 import Achievements from "@/components/Achievements";
 import News from "@/components/News";
 import Schedule from "@/components/Schedule";
+import Prizes from "@/components/Prizes";
 import Gallery from "@/components/Gallery";
 import Sponsors from "@/components/Sponsors";
 import Contact from "@/components/Contact";
@@ -65,6 +66,7 @@ const Index = () => {
         <Hero />
         <News />
         <Schedule />
+        <Prizes />
         <Gallery />
         <About />
         <Achievements />
