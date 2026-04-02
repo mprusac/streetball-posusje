@@ -68,18 +68,18 @@ const Hero = () => {
       id="pocetna"
       className="relative min-h-screen flex items-center justify-center overflow-hidden"
     >
-      {/* Parallax Background Image */}
-      <div
-        className="absolute top-0 left-0 right-0 bottom-0 w-full h-full will-change-transform"
-        style={{ 
-          backgroundImage: `url(${heroPhoto})`,
-          backgroundPosition: 'center 40%',
-          backgroundSize: 'cover',
-          backgroundRepeat: 'no-repeat',
-          transform: `translateY(${scrollY * 0.3}px)`,
-        }}
-      >
-        <div className="absolute inset-0 bg-gradient-to-b from-background/70 via-background/50 to-background" />
+      {/* Background Video */}
+      <div className="absolute top-0 left-0 right-0 bottom-0 w-full h-full">
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="w-full h-full object-cover"
+        >
+          <source src="/hero-video.mov" type="video/mp4" />
+        </video>
+        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-background" />
       </div>
 
       {/* Content */}
