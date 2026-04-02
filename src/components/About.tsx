@@ -70,8 +70,6 @@ const FeaturedStat = () => {
   );
 };
 
-
-
 const About = () => {
   const { elementRef: aboutRef, isVisible: aboutVisible } = useScrollReveal();
   // catRef removed
@@ -81,7 +79,7 @@ const About = () => {
     <section id="o-klubu" className="py-20 overflow-hidden">
       {/* Stats */}
       <div className="container mx-auto px-4 mb-12 md:mb-20">
-        
+        <FeaturedStat />
         <div className="grid grid-cols-3 md:grid-cols-5 gap-4 md:gap-8 max-w-4xl mx-auto">
           {stats.map((stat, index) => (
             <StatCounter key={stat.label} stat={stat} index={index} />
@@ -97,7 +95,10 @@ const About = () => {
             aboutVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
           }`}
         >
-          <FeaturedStat />
+          <h2 className="section-title mb-8 md:mb-12 text-center">
+            <span className="section-title-white">O </span>
+            <span className="section-title-gold">NAMA</span>
+          </h2>
 
           <div className="flex items-start gap-4 md:gap-8 mb-10 md:mb-16 mx-auto justify-center" style={{ maxWidth: "850px" }}>
             <img src={pulseLogo} alt="Pulse logo" className="w-16 h-16 md:w-24 md:h-24 lg:w-28 lg:h-28 object-contain flex-shrink-0 hover:scale-110 transition-transform duration-300 cursor-pointer" />
