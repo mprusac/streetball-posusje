@@ -2,8 +2,7 @@ import { Facebook, Instagram, Youtube } from "lucide-react";
 import logo from "@/assets/logo.png";
 
 const footerLinks = [
-  { label: "O klubu", href: "#o-klubu" },
-  { label: "Statistika", href: "/statistika" },
+  { label: "O turniru", href: "#o-klubu" },
   { label: "Vijesti", href: "#vijesti" },
   { label: "Galerija", href: "#galerija" },
   { label: "Kontakt", href: "#kontakt" },
