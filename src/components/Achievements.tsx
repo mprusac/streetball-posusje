@@ -1,38 +1,26 @@
 import { useScrollReveal } from "@/hooks/useScrollReveal";
-import { Sun, Globe, Trophy, TrendingUp } from "lucide-react";
+import { Trophy } from "lucide-react";
 
 const achievements = [
   {
-    icon: <Sun className="w-6 h-6 md:w-8 md:h-8" />,
     title: "ODLIČNO PRIHVAĆEN DOGAĐAJ LJETNJEG PROGRAMA ☀",
-    points: [
-      "Iznimno pozitivan odjek među građanima",
-      "Jedna od najposjećenijih ljetnih manifestacija u Posušju",
-    ],
+    highlight: "Iznimno pozitivan odjek među građanima",
+    detail: "Jedna od najposjećenijih ljetnih manifestacija u Posušju",
   },
   {
-    icon: <Globe className="w-6 h-6 md:w-8 md:h-8" />,
     title: "MEĐUNARODNI KARAKTER TURNIRA 🌍",
-    points: [
-      "Ekipe iz više europskih država",
-      "Sudionici iz Hrvatske, Srbije, Crne Gore i Nizozemske",
-    ],
+    highlight: "Ekipe iz više europskih država",
+    detail: "Sudionici iz Hrvatske, Srbije, Crne Gore i Nizozemske",
   },
   {
-    icon: <Trophy className="w-6 h-6 md:w-8 md:h-8" />,
     title: "DIO FIBA 3x3 KALENDARA 🏀",
-    points: [
-      "Turnir službeno prijavljen na FIBA 3x3 platformi",
-      "Uključen u raspored lokalnih i regionalnih 3x3 natjecanja",
-    ],
+    highlight: "Turnir službeno prijavljen na FIBA 3x3 platformi",
+    detail: "Uključen u raspored lokalnih i regionalnih 3x3 natjecanja",
   },
   {
-    icon: <TrendingUp className="w-6 h-6 md:w-8 md:h-8" />,
     title: "ODLIČNA PROMOCIJA ZA TVRTKE 📈",
-    points: [
-      "Prilika za promociju i podršku privatnog sektora",
-      "Vidljivost brenda pred velikim brojem posjetitelja",
-    ],
+    highlight: "Prilika za promociju i podršku privatnog sektora",
+    detail: "Vidljivost brenda pred velikim brojem posjetitelja",
   },
 ];
 
@@ -55,11 +43,11 @@ const Achievements = () => {
           Rezultati koji govore sami za sebe
         </p>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 max-w-4xl mx-auto">
+        <div className="flex flex-col gap-4 max-w-3xl mx-auto">
           {achievements.map((item, index) => (
             <div
               key={item.title}
-              className="group bg-secondary/30 border border-border rounded-xl md:rounded-2xl p-5 md:p-8 hover:border-primary/30 transition-all duration-300"
+              className="group bg-secondary/30 border border-border rounded-xl p-5 md:p-6 hover:border-primary/30 transition-all duration-300"
               style={{
                 opacity: isVisible ? 1 : 0,
                 transform: isVisible ? "translateY(0)" : "translateY(20px)",
@@ -68,23 +56,14 @@ const Achievements = () => {
             >
               <div className="flex items-start gap-4">
                 <div className="p-2 md:p-3 bg-primary/20 rounded-lg group-hover:bg-primary/30 group-hover:scale-110 transition-all duration-300 text-primary flex-shrink-0">
-                  {item.icon}
+                  <Trophy className="w-5 h-5 md:w-6 md:h-6" />
                 </div>
                 <div>
-                  <h3 className="font-display text-sm md:text-base text-foreground mb-3 tracking-wide leading-snug">
+                  <h3 className="font-display text-sm md:text-base text-foreground tracking-wide leading-snug mb-1">
                     {item.title}
                   </h3>
-                  <ul className="space-y-2">
-                    {item.points.map((point) => (
-                      <li
-                        key={point}
-                        className="text-muted-foreground text-xs md:text-sm flex items-start gap-2"
-                      >
-                        <span className="text-primary mt-0.5">•</span>
-                        {point}
-                      </li>
-                    ))}
-                  </ul>
+                  <p className="text-primary text-xs md:text-sm italic mb-0.5">{item.highlight}</p>
+                  <p className="text-muted-foreground text-xs md:text-sm">{item.detail}</p>
                 </div>
               </div>
             </div>
