@@ -64,6 +64,7 @@ const Hero = () => {
   const [isMobile, setIsMobile] = useState(false);
   const [displayedText, setDisplayedText] = useState("");
   const [showCursor, setShowCursor] = useState(true);
+  const [videoLoaded, setVideoLoaded] = useState(false);
   const typewriterStarted = useRef(false);
 
   useEffect(() => {
@@ -101,14 +102,16 @@ const Hero = () => {
       className="relative min-h-screen flex items-center justify-center overflow-hidden"
     >
       {/* Background Video */}
-      <div className="absolute top-0 left-0 right-0 bottom-0 w-full h-full">
+      <div className="absolute top-0 left-0 right-0 bottom-0 w-full h-full bg-background">
         <video
           autoPlay
           loop
           muted
           playsInline
           preload="auto"
-          className="w-full h-full object-cover"
+          onCanPlayThrough={() => setVideoLoaded(true)}
+          onPlaying={() => setVideoLoaded(true)}
+          className={`w-full h-full object-cover transition-opacity duration-700 ${videoLoaded ? 'opacity-100' : 'opacity-0'}`}
         >
           <source src="/hero-video.mp4" type="video/mp4" />
         </video>
