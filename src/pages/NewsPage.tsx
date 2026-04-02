@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link, useParams, useNavigate } from "react-router-dom";
+import { supabase } from "@/integrations/supabase/client";
 import { ArrowLeft, Calendar, Trophy, Users, Megaphone, Newspaper, ArrowRight, X, ChevronLeft, ChevronRight, Pin } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import Footer from "@/components/Footer";
