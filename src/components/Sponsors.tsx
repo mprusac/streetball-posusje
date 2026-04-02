@@ -179,8 +179,8 @@ const Sponsors = () => {
               }`}
             >
               <div className="px-3 pb-4 md:px-6 md:pb-6">
-                {/* Mobile: 2-col grid; Desktop: vertical stack with horizontal cards */}
-                <div className="grid grid-cols-2 gap-2 mb-4 mt-2 lg:flex lg:flex-col lg:gap-3 lg:mb-6 lg:mt-4">
+                {/* Horizontal scrollable tiers */}
+                <div className="flex gap-3 md:gap-4 mb-4 md:mb-6 mt-2 md:mt-4 overflow-x-auto pb-3 snap-x snap-mandatory scrollbar-thin">
                   {sponsorTiers.map((tier, index) => {
                     const shadowColor = tier.name === "ZLATNI" 
                       ? "hover:[box-shadow:0_0_20px_6px_hsl(48,96%,53%,0.3)]" 
@@ -193,21 +193,21 @@ const Sponsors = () => {
                     return (
                       <div
                         key={tier.name}
-                        className={`group bg-secondary/40 border border-border rounded-lg p-3 lg:p-4 animate-fade-in-up transition-all duration-300 hover:scale-[1.02] hover:border-primary/50 ${shadowColor} lg:flex lg:items-start lg:gap-4`}
+                        className={`group bg-secondary/40 border border-border rounded-lg p-3 md:p-4 animate-fade-in-up transition-all duration-300 hover:scale-[1.02] hover:border-primary/50 ${shadowColor} snap-start shrink-0 w-[200px] md:w-[220px] lg:w-auto lg:flex-1`}
                         style={{ animationDelay: `${index * 80}ms` }}
                       >
-                        <div className="flex items-center gap-2 mb-2 lg:mb-0 lg:shrink-0 lg:w-[140px]">
+                        <div className="flex items-center gap-2 mb-2">
                           <div className={`${tier.color} transition-transform duration-300 group-hover:scale-110`}>{tier.icon}</div>
                           <div>
-                            <h4 className={`font-semibold text-xs lg:text-sm ${tier.color} leading-tight`}>{tier.name}</h4>
-                            <p className="text-primary text-sm lg:text-base font-display leading-tight">{tier.price}</p>
+                            <h4 className={`font-semibold text-xs md:text-sm ${tier.color} leading-tight`}>{tier.name}</h4>
+                            <p className="text-primary text-sm md:text-base font-display leading-tight">{tier.price}</p>
                           </div>
                         </div>
-                        <ul className="space-y-1 lg:flex lg:flex-wrap lg:gap-x-4 lg:gap-y-0.5 lg:space-y-0">
+                        <ul className="space-y-1">
                           {tier.benefits.map((benefit) => (
                             <li
                               key={benefit}
-                              className="text-muted-foreground text-[11px] lg:text-xs flex items-start gap-1.5 leading-snug"
+                              className="text-muted-foreground text-[11px] md:text-xs flex items-start gap-1.5 leading-snug"
                             >
                               <span className="text-primary mt-0.5 shrink-0">•</span>
                               <span>{benefit}</span>
