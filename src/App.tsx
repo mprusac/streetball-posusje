@@ -9,6 +9,7 @@ import Index from "./pages/Index";
 
 import GalleryPage from "./pages/GalleryPage";
 import NewsPage from "./pages/NewsPage";
+import AdminPanel from "./pages/AdminPanel";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
