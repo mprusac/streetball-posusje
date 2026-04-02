@@ -9,10 +9,11 @@ interface StatItem {
 }
 
 const stats: StatItem[] = [
-  { value: 2026, label: "PRVA EDICIJA" },
-  { value: 32, suffix: "+", label: "PRIJAVLJENIH EKIPA" },
-  { value: 3, label: "KATEGORIJE" },
-  { value: 1, label: "DAN ČISTOG BASKETA" },
+  { value: 7000, suffix: " KM", label: "NAGRADNI FOND" },
+  { value: 60, suffix: "+", label: "BROJ EKIPA" },
+  { value: 150, suffix: "+", label: "BROJ IGRAČA" },
+  { value: 200, suffix: "+", label: "BROJ UTAKMICA" },
+  { value: 8, label: "KATEGORIJE" },
 ];
 
 const categories = [
