@@ -45,8 +45,7 @@ Deno.serve(async (req) => {
       const { username, password } = await req.json()
       
       if (username === ADMIN_USERNAME && password === ADMIN_PASSWORD) {
-        const token = generateToken()
-        validTokens.add(token)
+        const token = getExpectedToken()
         return new Response(JSON.stringify({ token }), {
           headers: { ...corsHeaders, 'Content-Type': 'application/json' }
         })
