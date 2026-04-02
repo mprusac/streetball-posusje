@@ -2,6 +2,7 @@ import { Calendar, ArrowRight, ChevronLeft, ChevronRight, Trophy, Users, Megapho
 import { useRef, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
+import { supabase } from "@/integrations/supabase/client";
 import josipMamicHks from "@/assets/news/josip-mamic-hks.jpg";
 import streetball2025 from "@/assets/news/streetball-2025-card.png";
 import u16Card from "@/assets/news/u16-1mjesto-card.png";
