@@ -13,18 +13,32 @@ const schedule: ScheduleDay[] = [
     date: "16.7.2026.",
     events: [
       "Muški U-14 (2012. i mlađi)",
-      "Seniorke",
       "Ženske U-14 (2012. i mlađi)",
+      "Muški U-16 (2010. i mlađi)",
+      "Cure U-16 (2010. i mlađi)",
+      "Amateri - Posuške Ekipe",
     ],
   },
   {
     day: "Petak",
     date: "17.7.2026.",
     events: [
+      "Seniorke",
       "Juniori (U-19)",
-      "Muški U-16 (2010. i mlađi)",
-      "Cure U-16 (2010. i mlađi)",
-      "Amateri - Posuške Ekipe",
+    ],
+  },
+  {
+    day: "Subota",
+    date: "18.7.2026.",
+    events: [
+      "Seniori - Grupe",
+    ],
+  },
+  {
+    day: "Nedjelja",
+    date: "19.7.2026.",
+    events: [
+      "Seniori - Play-Off",
     ],
   },
 ];
@@ -48,7 +62,7 @@ const Schedule = () => {
           Raspored turnira po danima i kategorijama
         </p>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-5xl mx-auto">
           {schedule.map((day, dayIndex) => (
             <div
               key={day.date}
