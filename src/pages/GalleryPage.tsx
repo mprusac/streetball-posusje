@@ -26,6 +26,36 @@ type ImageWithOrientation = {
 
 const events = [
   {
+    id: "streetball-dan3",
+    homeTeam: "Treći dan",
+    awayTeam: "",
+    date: "19.07.2025.",
+    description: "Galerija s trećeg dana Streetball Posušje 2025",
+    coverImage: "",
+    images: [] as string[],
+    imagesWithOrientation: [] as ImageWithOrientation[],
+  },
+  {
+    id: "streetball-dan2",
+    homeTeam: "Drugi dan",
+    awayTeam: "",
+    date: "18.07.2025.",
+    description: "Galerija s drugog dana Streetball Posušje 2025",
+    coverImage: "",
+    images: [] as string[],
+    imagesWithOrientation: [] as ImageWithOrientation[],
+  },
+  {
+    id: "streetball-dan1",
+    homeTeam: "Prvi dan",
+    awayTeam: "",
+    date: "17.07.2025.",
+    description: "Galerija s prvog dana Streetball Posušje 2025",
+    coverImage: "",
+    images: [] as string[],
+    imagesWithOrientation: [] as ImageWithOrientation[],
+  },
+  {
     id: "tomislav",
     homeTeam: "HKK Posušje",
     awayTeam: "HKK Tomislav",
