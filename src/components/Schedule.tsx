@@ -24,7 +24,7 @@ const schedule: ScheduleDay[] = [
       "Juniori (U-19)",
       "Muški U-16 (2010. i mlađi)",
       "Cure U-16 (2010. i mlađi)",
-      "Amateri - Posuške Ekipe",
+      "Amateri - Posuške ekipe",
     ],
   },
 ];
