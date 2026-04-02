@@ -3,6 +3,37 @@ import { Button } from "@/components/ui/button";
 import heroPhoto from "@/assets/hero-streetball.jpg";
 import { useEffect, useState, useRef } from "react";
 
+const TOURNAMENT_DATE = new Date("2025-07-18T18:00:00");
+
+const useCountdown = (targetDate: Date) => {
+  const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
+
+  useEffect(() => {
+    const update = () => {
+      const now = new Date().getTime();
+      const distance = targetDate.getTime() - now;
+
+      if (distance < 0) {
+        setTimeLeft({ days: 0, hours: 0, minutes: 0, seconds: 0 });
+        return;
+      }
+
+      setTimeLeft({
+        days: Math.floor(distance / (1000 * 60 * 60 * 24)),
+        hours: Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
+        minutes: Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)),
+        seconds: Math.floor((distance % (1000 * 60)) / 1000),
+      });
+    };
+
+    update();
+    const interval = setInterval(update, 1000);
+    return () => clearInterval(interval);
+  }, [targetDate]);
+
+  return timeLeft;
+};
+
 const TYPEWRITER_TEXT = "Igra koja spaja";
 
 const WordReveal = ({ text, delay = 0 }: { text: string; delay?: number }) => {
@@ -28,6 +59,7 @@ const WordReveal = ({ text, delay = 0 }: { text: string; delay?: number }) => {
 };
 
 const Hero = () => {
+  const countdown = useCountdown(TOURNAMENT_DATE);
   const [scrollY, setScrollY] = useState(0);
   const [isMobile, setIsMobile] = useState(false);
   const [displayedText, setDisplayedText] = useState("");
@@ -110,6 +142,28 @@ const Hero = () => {
                 <span className="relative z-10">Prijavi se</span>
               </a>
             </Button>
+          </div>
+
+          {/* Countdown */}
+          <div className="mt-8 sm:mt-10 animate-fade-in-up delay-400">
+            <p className="font-display text-sm sm:text-base tracking-[0.2em] text-foreground/80 mb-3 uppercase">Turnir počinje za:</p>
+            <div className="flex justify-center gap-3 sm:gap-6">
+              {[
+                { value: countdown.days, label: "Dana" },
+                { value: countdown.hours, label: "Sati" },
+                { value: countdown.minutes, label: "Minuta" },
+                { value: countdown.seconds, label: "Sekundi" },
+              ].map((item) => (
+                <div key={item.label} className="flex flex-col items-center">
+                  <span className="font-display text-3xl sm:text-5xl md:text-6xl text-primary tabular-nums leading-none">
+                    {String(item.value).padStart(2, "0")}
+                  </span>
+                  <span className="text-[10px] sm:text-xs uppercase tracking-widest text-muted-foreground mt-1">
+                    {item.label}
+                  </span>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </div>
