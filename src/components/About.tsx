@@ -75,35 +75,6 @@ const About = () => {
           </div>
         </div>
 
-        {/* Categories */}
-        <div 
-          ref={catRef}
-          className={`mb-20 max-w-4xl mx-auto transition-all duration-700 ${
-            catVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
-          }`}
-        >
-          <h3 className="text-3xl md:text-4xl font-display text-foreground mb-8 uppercase tracking-wider text-center">
-            Kategorije
-          </h3>
-          
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            {categories.map((cat, index) => (
-              <div
-                key={cat.name}
-                className="group bg-gradient-to-r from-secondary/60 to-secondary/30 border border-border rounded-lg px-6 py-5 text-center font-medium text-foreground hover:border-primary hover:from-primary/20 hover:to-primary/10 transition-all duration-300 cursor-default"
-                style={{ 
-                  opacity: catVisible ? 1 : 0,
-                  transform: catVisible ? "translateY(0)" : "translateY(20px)",
-                  transition: `all 0.5s ease ${index * 0.1}s`
-                }}
-              >
-                <span className="group-hover:text-primary transition-colors duration-300 text-sm md:text-base block font-display">
-                  {cat.name}
-                </span>
-                <span className="text-muted-foreground text-xs mt-1 block">{cat.desc}</span>
-              </div>
-            ))}
-          </div>
         </div>
 
         {/* Vision */}
