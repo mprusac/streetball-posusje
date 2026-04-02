@@ -143,6 +143,28 @@ const Hero = () => {
               </a>
             </Button>
           </div>
+
+          {/* Countdown */}
+          <div className="mt-8 sm:mt-10 animate-fade-in-up delay-400">
+            <p className="font-display text-sm sm:text-base tracking-[0.2em] text-foreground/80 mb-3 uppercase">Turnir počinje za:</p>
+            <div className="flex justify-center gap-3 sm:gap-6">
+              {[
+                { value: countdown.days, label: "Dana" },
+                { value: countdown.hours, label: "Sati" },
+                { value: countdown.minutes, label: "Minuta" },
+                { value: countdown.seconds, label: "Sekundi" },
+              ].map((item) => (
+                <div key={item.label} className="flex flex-col items-center">
+                  <span className="font-display text-3xl sm:text-5xl md:text-6xl text-primary tabular-nums leading-none">
+                    {String(item.value).padStart(2, "0")}
+                  </span>
+                  <span className="text-[10px] sm:text-xs uppercase tracking-widest text-muted-foreground mt-1">
+                    {item.label}
+                  </span>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
 
