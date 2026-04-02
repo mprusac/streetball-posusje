@@ -97,7 +97,7 @@ function userConfirmationHtml(name: string, subject: string, message: string): s
       <table width="600" cellpadding="0" cellspacing="0" style="max-width:600px;width:100%;">
         <!-- Header -->
         <tr><td style="background-color:${BRAND_GOLD};padding:28px 32px;border-radius:12px 12px 0 0;text-align:center;">
-          <h1 style="margin:0 0 12px;font-size:24px;font-weight:800;color:${BRAND_DARK};letter-spacing:2px;text-transform:uppercase;">KK POSUŠJE</h1>
+          <h1 style="margin:0 0 12px;font-size:24px;font-weight:800;color:${BRAND_DARK};letter-spacing:2px;text-transform:uppercase;">STREETBALL POSUŠJE 2026</h1>
           <img src="${LOGO_URL}" alt="KK Posušje" width="60" height="60" style="display:inline-block;border:none;outline:none;" />
         </td></tr>
         <!-- Body -->
