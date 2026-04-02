@@ -73,7 +73,9 @@ const Achievements = () => {
                 </div>
               </div>
             </div>
-          ))}
+            );
+          })}
+
         </div>
       </div>
     </section>
