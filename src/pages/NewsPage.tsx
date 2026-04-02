@@ -46,9 +46,9 @@ const allNews: NewsItem[] = [
 
 const categories = [
   { id: "sve", label: "Sve", icon: Newspaper },
-  { id: "utakmica", label: "Utakmice", icon: Trophy },
   { id: "najava", label: "Najave", icon: Megaphone },
-  { id: "klub", label: "Klub", icon: Newspaper },
+  { id: "2026", label: "2026", icon: Calendar },
+  { id: "2025", label: "2025", icon: Calendar },
 ] as const;
 
 const getCategoryLabel = (cat: string) => {
