@@ -185,9 +185,9 @@ className="bg-background/50 border-border focus:border-primary focus-visible:rin
               </div>
               <div>
                 <h4 className="font-display text-sm md:text-base text-foreground mb-0.5 tracking-wide">Adresa</h4>
-                <p className="text-muted-foreground text-xs md:text-sm">
-                  Posušje, Bosna i Hercegovina
-                </p>
+                 <p className="text-muted-foreground text-xs md:text-sm">
+                   Trg Hrvatskih branitelja<br />Fra Grge Martića 35<br />88240 Posušje, BiH
+                 </p>
               </div>
             </div>
 
