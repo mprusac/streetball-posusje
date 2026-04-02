@@ -2,7 +2,6 @@ import { ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useEffect, useState, useRef } from "react";
 
-
 const TOURNAMENT_DATE = new Date("2026-07-18T18:00:00");
 
 const useCountdown = (targetDate: Date) => {
@@ -38,6 +37,7 @@ const TYPEWRITER_TEXT = "Igra koja spaja";
 
 const WordReveal = ({ text, delay = 0 }: { text: string; delay?: number }) => {
   const words = text.split(" ");
+
   return (
     <span className="inline-flex flex-wrap justify-center gap-x-[0.3em]">
       {words.map((word, i) => (
@@ -60,32 +60,14 @@ const WordReveal = ({ text, delay = 0 }: { text: string; delay?: number }) => {
 
 const Hero = () => {
   const countdown = useCountdown(TOURNAMENT_DATE);
-  const [scrollY, setScrollY] = useState(0);
-  const [isMobile, setIsMobile] = useState(() =>
-    typeof window !== "undefined" ? window.innerWidth < 768 : false
-  );
   const [displayedText, setDisplayedText] = useState("");
   const [showCursor, setShowCursor] = useState(true);
-  const [videoLoaded, setVideoLoaded] = useState(false);
   const typewriterStarted = useRef(false);
-
-  useEffect(() => {
-    const handleScroll = () => setScrollY(window.scrollY);
-    const handleResize = () => setIsMobile(window.innerWidth < 768);
-    
-    handleResize();
-    window.addEventListener("scroll", handleScroll);
-    window.addEventListener("resize", handleResize);
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
 
   useEffect(() => {
     if (typewriterStarted.current) return;
     typewriterStarted.current = true;
-    
+
     let i = 0;
     const timer = setInterval(() => {
       i++;
@@ -95,6 +77,7 @@ const Hero = () => {
         setTimeout(() => setShowCursor(false), 1500);
       }
     }, 100);
+
     return () => clearInterval(timer);
   }, []);
 
@@ -103,24 +86,21 @@ const Hero = () => {
       id="pocetna"
       className="relative min-h-screen flex items-center justify-center overflow-hidden"
     >
-      {/* Background Video */}
-      <div className="absolute top-0 left-0 right-0 bottom-0 w-full h-full bg-background">
+      <div className="absolute inset-0 w-full h-full bg-background">
         <video
           autoPlay
           loop
           muted
           playsInline
           preload="auto"
-          onLoadedData={() => setVideoLoaded(true)}
-          className={`w-full h-full object-cover ${videoLoaded ? "opacity-100" : "opacity-0"}`}
-          style={{ transition: "opacity 0.3s ease" }}
+          className="w-full h-full object-cover"
         >
-          <source src={isMobile ? "/hero-video-mobile.mp4" : "/hero-video-optimized.mp4"} type="video/mp4" />
+          <source media="(max-width: 767px)" src="/hero-video-mobile.mp4" type="video/mp4" />
+          <source media="(min-width: 768px)" src="/hero-video-optimized.mp4" type="video/mp4" />
         </video>
         <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-background" />
       </div>
 
-      {/* Content */}
       <div className="relative z-10 container mx-auto px-4 text-center -mt-20 md:mt-0">
         <div className="max-w-4xl mx-auto">
           <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-display tracking-wider mb-4 mt-24 md:mt-10">
@@ -131,7 +111,7 @@ const Hero = () => {
               <WordReveal text="POSUŠJE 2026" delay={0.5} />
             </span>
           </h1>
-          
+
           <p className="text-base sm:text-lg md:text-xl text-muted-foreground uppercase tracking-[0.2em] sm:tracking-[0.3em] mb-6 sm:mb-8 animate-fade-in-up delay-200">
             {displayedText}
             {showCursor && <span className="inline-block w-[2px] h-[1em] bg-primary ml-1 animate-pulse align-middle" />}
@@ -150,7 +130,6 @@ const Hero = () => {
             </Button>
           </div>
 
-          {/* Countdown */}
           <div className="mt-8 sm:mt-10 animate-fade-in-up delay-400">
             <p className="font-display text-sm sm:text-base tracking-[0.2em] text-foreground/80 mb-3 uppercase">Turnir počinje za:</p>
             <div className="flex justify-center gap-3 sm:gap-6">
@@ -174,7 +153,6 @@ const Hero = () => {
         </div>
       </div>
 
-      {/* Scroll Indicator */}
       <div className="absolute bottom-8 left-0 right-0 flex justify-center">
         <a
           href="#vijesti"

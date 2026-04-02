@@ -1,38 +1,78 @@
-import { useEffect } from "react";
+import { Suspense, lazy, useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { Instagram, Facebook } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
-import About from "@/components/About";
-import Achievements from "@/components/Achievements";
-import News from "@/components/News";
-import Schedule from "@/components/Schedule";
-import Prizes from "@/components/Prizes";
-import Gallery from "@/components/Gallery";
-import Sponsors from "@/components/Sponsors";
-import Contact from "@/components/Contact";
-import Footer from "@/components/Footer";
 import ScrollProgressBar from "@/components/ScrollProgressBar";
+
+const About = lazy(() => import("@/components/About"));
+const Achievements = lazy(() => import("@/components/Achievements"));
+const News = lazy(() => import("@/components/News"));
+const Schedule = lazy(() => import("@/components/Schedule"));
+const Prizes = lazy(() => import("@/components/Prizes"));
+const Gallery = lazy(() => import("@/components/Gallery"));
+const Sponsors = lazy(() => import("@/components/Sponsors"));
+const Contact = lazy(() => import("@/components/Contact"));
+const Footer = lazy(() => import("@/components/Footer"));
+
+const DeferredHomeSections = () => (
+  <Suspense fallback={null}>
+    <hr className="section-divider" />
+    <News />
+    <hr className="section-divider" />
+    <Schedule />
+    <hr className="section-divider" />
+    <Prizes />
+    <hr className="section-divider" />
+    <Gallery />
+    <hr className="section-divider" />
+    <About />
+    <hr className="section-divider" />
+    <Achievements />
+    <hr className="section-divider" />
+    <Sponsors />
+    <hr className="section-divider" />
+    <Contact />
+    <Footer />
+  </Suspense>
+);
 
 const Index = () => {
   const location = useLocation();
+  const [showDeferredContent, setShowDeferredContent] = useState(() =>
+    typeof window !== "undefined" && sessionStorage.getItem("restoreHomeScroll") === "true"
+  );
 
   useEffect(() => {
-    // Save scroll position continuously on homepage
     const handleScroll = () => {
       sessionStorage.setItem("homeScrollY", String(window.scrollY));
     };
-    window.addEventListener("scroll", handleScroll);
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   useEffect(() => {
-    // Restore scroll position if coming back from a sub-page
+    if (showDeferredContent) return;
+
+    const revealDeferredContent = () => setShowDeferredContent(true);
+
+    if ("requestIdleCallback" in window) {
+      const idleId = window.requestIdleCallback(revealDeferredContent, { timeout: 1200 });
+      return () => window.cancelIdleCallback(idleId);
+    }
+
+    const timeoutId = window.setTimeout(revealDeferredContent, 350);
+    return () => window.clearTimeout(timeoutId);
+  }, [showDeferredContent]);
+
+  useEffect(() => {
     const restoreScroll = sessionStorage.getItem("restoreHomeScroll");
     const savedY = sessionStorage.getItem("homeScrollY");
     const returnTarget = sessionStorage.getItem("homeReturnTarget");
 
     if (restoreScroll === "true") {
+      setShowDeferredContent(true);
       sessionStorage.removeItem("restoreHomeScroll");
       const attempts = [80, 200, 350, 550, 800];
 
@@ -64,26 +104,9 @@ const Index = () => {
       <Navbar />
       <main>
         <Hero />
-        <hr className="section-divider" />
-        <News />
-        <hr className="section-divider" />
-        <Schedule />
-        <hr className="section-divider" />
-        <Prizes />
-        <hr className="section-divider" />
-        <Gallery />
-        <hr className="section-divider" />
-        <About />
-        <hr className="section-divider" />
-        <Achievements />
-        <hr className="section-divider" />
-        <Sponsors />
-        <hr className="section-divider" />
-        <Contact />
+        {showDeferredContent && <DeferredHomeSections />}
       </main>
-      <Footer />
 
-      {/* Fixed social icons - bottom right */}
       <div className="fixed bottom-6 right-6 z-50 flex flex-col gap-3">
         <a
           href="https://www.instagram.com/streetball_posusje/"
