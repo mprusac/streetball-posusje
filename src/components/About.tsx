@@ -62,7 +62,7 @@ const About = () => {
         >
           <h2 className="section-title mb-8 md:mb-12 text-center">
             <span className="section-title-white">O </span>
-            <span className="section-title-gold">TURNIRU</span>
+            <span className="section-title-gold">NAMA</span>
           </h2>
 
           <div className="gold-border-left mb-10 md:mb-16 text-left mx-auto pl-4 md:pl-6 pr-2 md:pr-0" style={{ maxWidth: "800px" }}>
