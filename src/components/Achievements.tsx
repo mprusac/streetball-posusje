@@ -1,26 +1,30 @@
 import { useScrollReveal } from "@/hooks/useScrollReveal";
-import { Trophy } from "lucide-react";
+import { Trophy, Sun, Users, Star, Medal } from "lucide-react";
 
 const achievements = [
   {
-    title: "ODLIČNO PRIHVAĆEN DOGAĐAJ LJETNJEG PROGRAMA ☀",
+    title: "ODLIČNO PRIHVAĆEN DOGAĐAJ LJETNJEG PROGRAMA ☀️",
     highlight: "Iznimno pozitivan odjek među građanima",
     detail: "Jedna od najposjećenijih ljetnih manifestacija u Posušju",
+    icon: Sun,
   },
   {
     title: "MEĐUNARODNI KARAKTER TURNIRA 🌍",
     highlight: "Ekipe iz više europskih država",
     detail: "Sudionici iz Hrvatske, Srbije, Crne Gore i Nizozemske",
+    icon: Users,
   },
   {
     title: "DIO FIBA 3x3 KALENDARA 🏀",
     highlight: "Turnir službeno prijavljen na FIBA 3x3 platformi",
     detail: "Uključen u raspored lokalnih i regionalnih 3x3 natjecanja",
+    icon: Star,
   },
   {
     title: "ODLIČNA PROMOCIJA ZA TVRTKE 📈",
     highlight: "Prilika za promociju i podršku privatnog sektora",
     detail: "Vidljivost brenda pred velikim brojem posjetitelja",
+    icon: Medal,
   },
 ];
 
@@ -44,7 +48,9 @@ const Achievements = () => {
         </p>
 
         <div className="flex flex-col gap-4 max-w-3xl mx-auto">
-          {achievements.map((item, index) => (
+          {achievements.map((item, index) => {
+            const IconComponent = item.icon;
+            return (
             <div
               key={item.title}
               className="group card-micro bg-secondary/30 border border-border rounded-xl p-5 md:p-6 hover:border-primary/30"
@@ -56,7 +62,7 @@ const Achievements = () => {
             >
               <div className="flex items-start gap-4">
                 <div className="p-2 md:p-3 bg-primary/20 rounded-lg group-hover:bg-primary/30 transition-all duration-300 text-primary flex-shrink-0">
-                  <Trophy className="w-5 h-5 md:w-6 md:h-6" />
+                  <IconComponent className="w-5 h-5 md:w-6 md:h-6" />
                 </div>
                 <div>
                   <h3 className="font-display text-base md:text-lg text-foreground tracking-wide leading-snug mb-1">
@@ -67,7 +73,9 @@ const Achievements = () => {
                 </div>
               </div>
             </div>
-          ))}
+            );
+          })}
+
         </div>
       </div>
     </section>
