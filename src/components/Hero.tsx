@@ -109,11 +109,11 @@ const Hero = () => {
           muted
           playsInline
           preload="auto"
-          onCanPlayThrough={() => setVideoLoaded(true)}
-          onPlaying={() => setVideoLoaded(true)}
-          className={`w-full h-full object-cover transition-opacity duration-700 ${videoLoaded ? 'opacity-100' : 'opacity-0'}`}
+          onLoadedData={() => setVideoLoaded(true)}
+          className={`w-full h-full object-cover ${videoLoaded ? 'opacity-100' : 'opacity-0'}`}
+          style={{ transition: 'opacity 0.5s ease' }}
         >
-          <source src="/hero-video.mp4" type="video/mp4" />
+          <source src={isMobile ? "/hero-video-mobile.mp4" : "/hero-video-optimized.mp4"} type="video/mp4" />
         </video>
         <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-background" />
       </div>
