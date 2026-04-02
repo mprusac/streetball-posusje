@@ -2,6 +2,7 @@ import { Calendar, ArrowRight, ChevronLeft, ChevronRight, Trophy, Users, Megapho
 import { useRef, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
+import { supabase } from "@/integrations/supabase/client";
 import josipMamicHks from "@/assets/news/josip-mamic-hks.jpg";
 import streetball2025 from "@/assets/news/streetball-2025-card.png";
 import u16Card from "@/assets/news/u16-1mjesto-card.png";
@@ -27,7 +28,7 @@ const categoryConfig: Record<string, { label: string; icon: typeof Trophy }> = {
   najava: { label: "Najave", icon: Megaphone },
 };
 
-const allNews: NewsItem[] = [
+const hardcodedNews: NewsItem[] = [
   { id: 48, title: "Streetball Turnir Posušje 2025 - Prijave otvorene! ⛹️", excerpt: "Streetball turnir Posušje se vraća! Nagradni fond 7.000 KM. Prijave su otvorene, ne propustite priliku za sudjelovanje!", date: "05. 04. 2025.", category: "2025", image: streetball2025, imagePosition: "top", pinned: true },
   { id: 50, title: "Rezultati U-16 (djevojke) - Streetball Posušje 2025 🏀", excerpt: "Pogledajte rezultate kategorije U-16 (djevojke)! 1. mjesto - Basketbalije, 2. mjesto - Maslačak, 3. mjesto - Tomislavgrad.", date: "27. 08. 2025.", category: "2025", image: u16DjevojkeCover, imagePosition: "center" },
   { id: 49, title: "Rezultati U-16 (muški) - Streetball Posušje 2025 🏀", excerpt: "Pogledajte rezultate kategorije U-16 (muški) na ovogodišnjem turniru! 1. mjesto - Grude COM, 2. mjesto - Taxi Jole, 3. mjesto - Broadly Hill Boys.", date: "28. 08. 2025.", category: "2025", image: u16Card, imagePosition: "center" },
@@ -39,6 +40,31 @@ const News = () => {
   const { elementRef, isVisible } = useScrollReveal();
   const [isMobile, setIsMobile] = useState(false);
   const [activeIndex, setActiveIndex] = useState(0);
+  const [dbNews, setDbNews] = useState<NewsItem[]>([]);
+
+  // Fetch DB news
+  useEffect(() => {
+    const fetchDbNews = async () => {
+      try {
+        const { data } = await supabase.from('news').select('*').order('created_at', { ascending: false });
+        if (data) {
+          setDbNews(data.map((n: any) => ({
+            id: n.id,
+            title: n.title,
+            excerpt: n.excerpt || '',
+            date: n.date,
+            category: n.category,
+            image: n.image_url || '',
+            imagePosition: n.image_position || 'center',
+            pinned: n.pinned || false,
+          })));
+        }
+      } catch (e) { /* silent */ }
+    };
+    fetchDbNews();
+  }, []);
+
+  const allNews = [...dbNews, ...hardcodedNews];
 
   useEffect(() => {
     const handleResize = () => setIsMobile(window.innerWidth < 768);
