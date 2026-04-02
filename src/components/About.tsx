@@ -7,10 +7,12 @@ interface StatItem {
   value: number;
   suffix?: string;
   label: string;
+  featured?: boolean;
 }
 
+const prizeStat: StatItem = { value: 7000, suffix: " KM", label: "NAGRADNI FOND", featured: true };
+
 const stats: StatItem[] = [
-  { value: 7000, suffix: " KM", label: "NAGRADNI FOND" },
   { value: 60, suffix: "+", label: "BROJ EKIPA" },
   { value: 150, suffix: "+", label: "BROJ IGRAČA" },
   { value: 200, suffix: "+", label: "BROJ UTAKMICA" },
@@ -38,6 +40,36 @@ const StatCounter = ({ stat, index }: { stat: StatItem; index: number }) => {
   );
 };
 
+const FeaturedStat = () => {
+  const { count, elementRef } = useCountUp({ end: prizeStat.value });
+
+  return (
+    <div
+      ref={elementRef}
+      className="relative text-center mb-8 md:mb-12 animate-fade-in-up group cursor-default"
+    >
+      <div
+        className="inline-block px-8 md:px-14 py-5 md:py-7 rounded-2xl border-2 border-primary/60 hover:border-primary transition-all duration-500 hover:shadow-[0_0_40px_rgba(234,179,8,0.2)]"
+        style={{
+          background: 'linear-gradient(135deg, hsl(0 0% 5%) 0%, hsl(45 100% 51% / 0.08) 50%, hsl(0 0% 8%) 100%)',
+        }}
+      >
+        <div className="flex items-center gap-3 md:gap-4 justify-center mb-1">
+          <Trophy className="w-6 h-6 md:w-8 md:h-8 text-primary" />
+          <span className="stat-label text-xs md:text-sm tracking-[0.3em] text-primary font-bold">
+            {prizeStat.label}
+          </span>
+          <Trophy className="w-6 h-6 md:w-8 md:h-8 text-primary" />
+        </div>
+        <div className="stat-number text-5xl md:text-7xl text-primary group-hover:scale-105 transition-transform duration-300">
+          {count}
+          {prizeStat.suffix}
+        </div>
+      </div>
+    </div>
+  );
+};
+
 const About = () => {
   const { elementRef: aboutRef, isVisible: aboutVisible } = useScrollReveal();
   // catRef removed
@@ -47,7 +79,8 @@ const About = () => {
     <section id="o-klubu" className="py-20 overflow-hidden">
       {/* Stats */}
       <div className="container mx-auto px-4 mb-12 md:mb-20">
-        <div className="grid grid-cols-3 gap-4 md:gap-8 max-w-4xl mx-auto">
+        <FeaturedStat />
+        <div className="grid grid-cols-3 md:grid-cols-5 gap-4 md:gap-8 max-w-4xl mx-auto">
           {stats.map((stat, index) => (
             <StatCounter key={stat.label} stat={stat} index={index} />
           ))}
