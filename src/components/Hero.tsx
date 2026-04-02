@@ -5,6 +5,28 @@ import { useEffect, useState, useRef } from "react";
 
 const TYPEWRITER_TEXT = "Igra koja spaja";
 
+const WordReveal = ({ text, delay = 0 }: { text: string; delay?: number }) => {
+  const words = text.split(" ");
+  return (
+    <span className="inline-flex flex-wrap justify-center gap-x-[0.3em]">
+      {words.map((word, i) => (
+        <span key={i} className="overflow-hidden inline-block">
+          <span
+            className="inline-block"
+            style={{
+              animation: `word-reveal 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards`,
+              animationDelay: `${delay + i * 0.12}s`,
+              opacity: 0,
+            }}
+          >
+            {word}
+          </span>
+        </span>
+      ))}
+    </span>
+  );
+};
+
 const Hero = () => {
   const [scrollY, setScrollY] = useState(0);
   const [isMobile, setIsMobile] = useState(false);
@@ -46,7 +68,7 @@ const Hero = () => {
       id="pocetna"
       className="relative min-h-screen flex items-center justify-center overflow-hidden"
     >
-      {/* Parallax Background Image - Full Width & Centered */}
+      {/* Parallax Background Image */}
       <div
         className="absolute top-0 left-0 right-0 bottom-0 w-full h-full will-change-transform"
         style={{ 
@@ -57,16 +79,19 @@ const Hero = () => {
           transform: `translateY(${scrollY * 0.3}px)`,
         }}
       >
-        {/* Gradient Overlay */}
         <div className="absolute inset-0 bg-gradient-to-b from-background/70 via-background/50 to-background" />
       </div>
 
       {/* Content */}
       <div className="relative z-10 container mx-auto px-4 text-center -mt-20 md:mt-0">
         <div className="max-w-4xl mx-auto">
-        <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-display tracking-wider mb-4 mt-24 md:mt-10 animate-fade-in-up">
-            <span className="text-primary block">STREETBALL</span>
-            <span className="text-primary block">POSUŠJE 2026</span>
+          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-display tracking-wider mb-4 mt-24 md:mt-10">
+            <span className="block">
+              <WordReveal text="STREETBALL" delay={0.2} />
+            </span>
+            <span className="block animate-gradient-text">
+              <WordReveal text="POSUŠJE 2026" delay={0.5} />
+            </span>
           </h1>
           
           <p className="text-base sm:text-lg md:text-xl text-muted-foreground uppercase tracking-[0.2em] sm:tracking-[0.3em] mb-6 sm:mb-8 animate-fade-in-up delay-200">
@@ -77,7 +102,7 @@ const Hero = () => {
           <div className="animate-fade-in-up delay-400">
             <Button
               size="lg"
-              className="group relative overflow-hidden bg-transparent border-2 border-primary text-primary hover:text-primary-foreground font-display uppercase tracking-widest px-6 sm:px-10 py-5 sm:py-7 text-base sm:text-lg transition-all duration-500"
+              className="group relative overflow-hidden bg-transparent border-2 border-primary text-primary hover:text-primary-foreground font-display uppercase tracking-widest px-6 sm:px-10 py-5 sm:py-7 text-base sm:text-lg transition-all duration-500 hover:shadow-[0_0_30px_hsl(48,96%,53%,0.4)]"
               asChild
             >
               <a href="#kontakt">

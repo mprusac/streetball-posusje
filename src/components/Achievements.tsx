@@ -47,7 +47,7 @@ const Achievements = () => {
           {achievements.map((item, index) => (
             <div
               key={item.title}
-              className="group bg-secondary/30 border border-border rounded-xl p-5 md:p-6 hover:border-primary/30 transition-all duration-300"
+              className="group card-micro bg-secondary/30 border border-border rounded-xl p-5 md:p-6 hover:border-primary/30"
               style={{
                 opacity: isVisible ? 1 : 0,
                 transform: isVisible ? "translateY(0)" : "translateY(20px)",
@@ -55,7 +55,7 @@ const Achievements = () => {
               }}
             >
               <div className="flex items-start gap-4">
-                <div className="p-2 md:p-3 bg-primary/20 rounded-lg group-hover:bg-primary/30 group-hover:scale-110 transition-all duration-300 text-primary flex-shrink-0">
+                <div className="icon-bounce p-2 md:p-3 bg-primary/20 rounded-lg group-hover:bg-primary/30 transition-all duration-300 text-primary flex-shrink-0">
                   <Trophy className="w-5 h-5 md:w-6 md:h-6" />
                 </div>
                 <div>
