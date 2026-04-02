@@ -97,10 +97,7 @@ const About = () => {
             aboutVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
           }`}
         >
-          <h2 className="section-title mb-8 md:mb-12 text-center">
-            <span className="section-title-white">NAGRADNI FOND </span>
-            <span className="section-title-gold">7.000 KM</span>
-          </h2>
+          <FeaturedStat />
 
           <div className="flex items-start gap-4 md:gap-8 mb-10 md:mb-16 mx-auto justify-center" style={{ maxWidth: "850px" }}>
             <img src={pulseLogo} alt="Pulse logo" className="w-16 h-16 md:w-24 md:h-24 lg:w-28 lg:h-28 object-contain flex-shrink-0 hover:scale-110 transition-transform duration-300 cursor-pointer" />
