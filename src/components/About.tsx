@@ -1,6 +1,7 @@
 import { useCountUp } from "@/hooks/useCountUp";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 import { Trophy, Calendar, MapPin, Users } from "lucide-react";
+import pulseLogo from "@/assets/pulse-logo.png";
 
 interface StatItem {
   value: number;
