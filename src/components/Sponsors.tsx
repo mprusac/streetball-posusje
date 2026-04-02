@@ -30,36 +30,57 @@ interface SponsorTier {
 const sponsorTiers: SponsorTier[] = [
   {
     name: "ZLATNI",
-    price: "10.000 BAM",
+    price: "1.000 KM",
     benefits: [
-      "Natpis na prednjem dijelu dresa",
-      "Objava na svim kanalima",
-      "Logo na dresu i parketu",
-      "Sezonske ulaznice",
-      "Ekskluzivni sadržaj",
+      "Logo na terenu, zaštitnim spužvama ili tabli koša",
+      "\"Naming rights\" – natjecanje nosi ime sponzora",
+      "Najviša rotacija logotipa na LED ekranima",
+      "Zasebna PR objava/intervju na društvenim mrežama",
+      "Predstavnik dodjeljuje pehar/nagrade pobjednicima",
     ],
     icon: <Crown className="w-4 h-4 md:w-8 md:h-8" />,
     color: "text-primary",
   },
   {
     name: "SREBRENI",
-    price: "5.000 BAM",
-    benefits: ["Natpis na prednjem dijelu dresa", "Objava na svim kanalima"],
+    price: "500 KM",
+    benefits: [
+      "Logo na LED ekranima (srednja rotacija)",
+      "MC spominje tvrtku u najavama i odjavama",
+      "Pravo na promotivni štand, roll-up ili podjelu letaka",
+      "Logo srednje veličine na službenim najavama",
+    ],
     icon: <Medal className="w-4 h-4 md:w-8 md:h-8" />,
     color: "text-[hsl(0,0%,75%)]",
   },
   {
     name: "BRONČANI",
-    price: "2.500 BAM",
-    benefits: ["Natpis na donjem dijelu dresa", "Objava na svim kanalima"],
+    price: "250 KM",
+    benefits: [
+      "Logo na službenim plakatima",
+      "Istaknuto mjesto na \"zidu za slikanje\" (press wall)",
+      "Logo na LED ekranima (osnovna rotacija)",
+      "Spominjanje u završnoj grupnoj zahvali na mrežama",
+    ],
     icon: <Award className="w-4 h-4 md:w-8 md:h-8" />,
     color: "text-[hsl(30,60%,45%)]",
   },
   {
     name: "DONACIJA",
     price: "Bilo koji iznos",
-    benefits: ["Objava na svim kanalima"],
+    benefits: ["Spiker će uputiti zahvalu i pročitati ime donatora"],
     icon: <Heart className="w-4 h-4 md:w-8 md:h-8" />,
+    color: "text-primary",
+  },
+  {
+    name: "ROBNO PARTNERSTVO",
+    price: "Kompenzacija",
+    benefits: [
+      "Ostvarite sponzorski paket kompenzacijom proizvoda/usluga",
+      "Ekskluzivna \"Timeout\" minuta – vaš brend na svim ekranima",
+      "Nagradni izazovi na terenu s vašim proizvodom",
+    ],
+    icon: <Star className="w-4 h-4 md:w-8 md:h-8" />,
     color: "text-primary",
   },
 ];
@@ -90,7 +111,7 @@ const Sponsors = () => {
   const [isExpanded, setIsExpanded] = useState(false);
 
   return (
-    <section className="py-12 md:py-20">
+    <section id="sponzori" className="py-12 md:py-20">
       <div className="container mx-auto px-4">
         <h2 className="section-title text-center mb-3 md:mb-4">
           <span className="section-title-white">NAŠI </span>
@@ -154,11 +175,11 @@ const Sponsors = () => {
             {/* Expandable Content */}
           <div
               className={`overflow-hidden transition-all duration-500 ${
-                isExpanded ? "max-h-[1200px]" : "max-h-0"
+                isExpanded ? "max-h-[2000px]" : "max-h-0"
               }`}
             >
               <div className="p-4 md:p-6 pt-2 md:pt-4">
-                <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-3 md:gap-6 mb-4 md:mb-6 mt-2 md:mt-4">
+                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3 md:gap-6 mb-4 md:mb-6 mt-2 md:mt-4">
                   {sponsorTiers.map((tier, index) => {
                     const shadowColor = tier.name === "ZLATNI" 
                       ? "hover:[box-shadow:0_0_25px_8px_hsl(48,96%,53%,0.35)]" 
@@ -166,7 +187,7 @@ const Sponsors = () => {
                       ? "hover:[box-shadow:0_0_25px_8px_hsl(0,0%,70%,0.25)]" 
                       : tier.name === "BRONČANI" 
                       ? "hover:[box-shadow:0_0_25px_8px_hsl(30,60%,45%,0.25)]" 
-                      : "hover:[box-shadow:0_0_25px_8px_hsl(0,80%,60%,0.25)]";
+                      : "hover:[box-shadow:0_0_25px_8px_hsl(48,96%,53%,0.25)]";
                     
                     return (
                       <div

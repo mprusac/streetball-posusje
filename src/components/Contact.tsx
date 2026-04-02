@@ -186,7 +186,7 @@ className="bg-background/50 border-border focus:border-primary focus-visible:rin
               <div>
                 <h4 className="font-display text-sm md:text-base text-foreground mb-0.5 tracking-wide">Adresa</h4>
                  <p className="text-muted-foreground text-xs md:text-sm">
-                   Trg Hrvatskih branitelja<br />Fra Grge Martića 35<br />88240 Posušje, BiH
+                   Trg Hrvatskih branitelja<br />88240 Posušje, BiH
                  </p>
               </div>
             </div>
@@ -198,10 +198,10 @@ className="bg-background/50 border-border focus:border-primary focus-visible:rin
               <div>
                 <h4 className="font-display text-sm md:text-base text-foreground mb-0.5 tracking-wide">Email</h4>
                 <a
-                   href="mailto:streetballposusje2025@gmail.com"
+                   href="mailto:petarsusnjar@streetball-posusje.com"
                    className="text-muted-foreground text-xs md:text-sm hover:text-primary transition-colors"
                  >
-                   streetballposusje2025@gmail.com
+                   petarsusnjar@streetball-posusje.com
                 </a>
               </div>
             </div>
@@ -213,10 +213,17 @@ className="bg-background/50 border-border focus:border-primary focus-visible:rin
               <div>
                 <h4 className="font-display text-sm md:text-base text-foreground mb-0.5 tracking-wide">Telefon</h4>
                 <a
-                  href="tel:+38763123456"
+                  href="tel:+38763290237"
                   className="text-muted-foreground text-xs md:text-sm hover:text-primary transition-colors"
                 >
-                  +387 63 123 456
+                  +387 63 290 237
+                </a>
+                <br />
+                <a
+                  href="tel:+385916082969"
+                  className="text-muted-foreground text-xs md:text-sm hover:text-primary transition-colors"
+                >
+                  +385 91 608 2969
                 </a>
               </div>
             </div>

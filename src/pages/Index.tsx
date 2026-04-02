@@ -4,6 +4,7 @@ import { Instagram, Facebook } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import About from "@/components/About";
+import Achievements from "@/components/Achievements";
 import News from "@/components/News";
 import Schedule from "@/components/Schedule";
 import Gallery from "@/components/Gallery";
@@ -66,6 +67,7 @@ const Index = () => {
         <Schedule />
         <Gallery />
         <About />
+        <Achievements />
         <Sponsors />
         <Contact />
       </main>
