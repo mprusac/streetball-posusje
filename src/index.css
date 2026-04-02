@@ -153,6 +153,10 @@
     @apply absolute top-4 right-4 text-7xl md:text-8xl font-display text-primary/20;
   }
 
+  .section-divider {
+    @apply w-full max-w-xs mx-auto my-0 border-0 h-px;
+    background: linear-gradient(90deg, transparent, hsl(var(--primary) / 0.4) 30%, hsl(var(--primary) / 0.6) 50%, hsl(var(--primary) / 0.4) 70%, transparent);
+  }
 }
 
 @layer utilities {
