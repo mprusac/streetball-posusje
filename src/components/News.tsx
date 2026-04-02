@@ -1,8 +1,9 @@
-import { Calendar, ArrowRight, ChevronLeft, ChevronRight, Trophy, Users, Megaphone, Newspaper } from "lucide-react";
+import { Calendar, ArrowRight, ChevronLeft, ChevronRight, Trophy, Users, Megaphone, Newspaper, Pin } from "lucide-react";
 import { useRef, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 import josipMamicHks from "@/assets/news/josip-mamic-hks.jpg";
+import streetball2025 from "@/assets/streetball-2025.jpg";
 import croFlag from "@/assets/flags/cro-flag.png";
 
 interface NewsItem {
@@ -15,6 +16,7 @@ interface NewsItem {
   imagePosition?: string;
   imageScale?: number;
   flagImage?: string;
+  pinned?: boolean;
 }
 
 const categoryConfig: Record<string, { label: string; icon: typeof Trophy }> = {
@@ -24,6 +26,7 @@ const categoryConfig: Record<string, { label: string; icon: typeof Trophy }> = {
 };
 
 const allNews: NewsItem[] = [
+  { id: 48, title: "Streetball Turnir Posušje 2025 - Prijave otvorene!", excerpt: "Streetball turnir Posušje se vraća! Nagradni fond 7.000 KM. Prijave su otvorene, ne propustite priliku za sudjelovanje!", date: "05. 04. 2025.", category: "najava", image: streetball2025, imagePosition: "center", pinned: true },
   { id: 47, title: "Josip Mamić na radaru HKS-a!", excerpt: "S velikim ponosom objavljujemo vijest da je naš talentirani predkadet Josip Mamić dobio službeni poziv Hrvatskog košarkaškog saveza!", date: "22. 03. 2026.", category: "klub", image: josipMamicHks, imagePosition: "top", flagImage: croFlag },
 ];
 
@@ -162,6 +165,11 @@ const News = () => {
                   <span className="absolute top-3 left-3 px-2 py-1 bg-primary/90 text-primary-foreground text-[10px] md:text-xs rounded flex items-center gap-1 font-bold">
                     {(() => { const cfg = categoryConfig[item.category]; const Icon = cfg.icon; return <><Icon size={12} strokeWidth={3} />{cfg.label}</>; })()}
                   </span>
+                  {item.pinned && (
+                    <span className="absolute top-3 right-3 p-1.5 bg-primary/90 text-primary-foreground rounded-full shadow-lg">
+                      <Pin size={14} strokeWidth={2.5} className="rotate-45" />
+                    </span>
+                  )}
                 </div>
                 <div className="p-4 md:p-6 flex flex-col flex-1">
                   <div className="flex items-center gap-2 text-muted-foreground text-xs md:text-sm mb-2 md:mb-3">
