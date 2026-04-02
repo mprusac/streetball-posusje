@@ -89,7 +89,7 @@ const Hero = () => {
             <span className="block text-foreground">
               <WordReveal text="STREETBALL" delay={0.2} />
             </span>
-            <span className="block animate-gradient-text">
+            <span className="block text-primary">
               <WordReveal text="POSUŠJE 2026" delay={0.5} />
             </span>
           </h1>
