@@ -132,7 +132,7 @@ const About = () => {
               <span className="text-primary">3x3?</span>
             </h3>
             <p className="text-muted-foreground max-w-3xl mx-auto leading-relaxed text-sm md:text-lg relative z-10">
-              3x3 košarka je <span className="text-primary font-bold">najbrže rastući urbani sport na svijetu</span> i olimpijska disciplina od 2021. Brza igra, kraći format i intenzivna atmosfera čine je savršenom za sve koji vole košarku u njenom najčišćem obliku. <span className="text-primary font-bold">Streetball Posušje</span> donosi tu energiju u naš grad – jedan dan, jedna lopta, čista strast.
+              3x3 košarka je <span className="text-primary font-bold">najbrže rastući urbani sport na svijetu</span> i olimpijska disciplina od 2021. Brza igra, kraći format i intenzivna atmosfera čine je savršenom za sve koji vole košarku u njenom najčišćem obliku. <span className="text-primary font-bold">Streetball Posušje 2026</span> donosi tu energiju u naš grad – jedan dan, jedna lopta, čista strast.
             </p>
           </div>
         </div>
