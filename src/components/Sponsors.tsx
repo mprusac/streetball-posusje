@@ -179,7 +179,7 @@ const Sponsors = () => {
               }`}
             >
               <div className="p-4 md:p-6 pt-2 md:pt-4">
-                <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-3 md:gap-6 mb-4 md:mb-6 mt-2 md:mt-4">
+                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3 md:gap-6 mb-4 md:mb-6 mt-2 md:mt-4">
                   {sponsorTiers.map((tier, index) => {
                     const shadowColor = tier.name === "ZLATNI" 
                       ? "hover:[box-shadow:0_0_25px_8px_hsl(48,96%,53%,0.35)]" 
