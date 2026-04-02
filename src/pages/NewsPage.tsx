@@ -166,6 +166,7 @@ const NewsPage = () => {
   const { articleId } = useParams();
   const navigate = useNavigate();
   const [activeCategory, setActiveCategory] = useState<string>("sve");
+  const [dbNews, setDbNews] = useState<NewsItem[]>([]);
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "instant" as ScrollBehavior });
@@ -173,8 +174,33 @@ const NewsPage = () => {
     document.body.scrollTop = 0;
   }, []);
 
+  useEffect(() => {
+    const fetchDbNews = async () => {
+      try {
+        const { data } = await supabase.from('news').select('*').order('created_at', { ascending: false });
+        if (data) {
+          setDbNews(data.map((n: any) => ({
+            id: n.id,
+            title: n.title,
+            excerpt: n.excerpt || '',
+            content: n.excerpt || '',
+            date: n.date,
+            category: n.category,
+            image: n.image_url || '',
+            cardImage: n.image_url || '',
+            cardImagePosition: n.image_position || 'center',
+            pinned: n.pinned || false,
+          })));
+        }
+      } catch (e) { /* silent */ }
+    };
+    fetchDbNews();
+  }, []);
+
+  const allNews = [...dbNews, ...hardcodedNews];
+
   if (articleId) {
-    const article = allNews.find(n => n.id === parseInt(articleId));
+    const article = allNews.find(n => String(n.id) === articleId);
     if (article) return <ArticleDetail article={article} />;
   }
 
