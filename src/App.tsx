@@ -6,7 +6,7 @@ import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
 import PageTransition from "./components/PageTransition";
 import Index from "./pages/Index";
-import Statistics from "./pages/Statistics";
+
 import GalleryPage from "./pages/GalleryPage";
 import NewsPage from "./pages/NewsPage";
 import NotFound from "./pages/NotFound";
