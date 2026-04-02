@@ -20,6 +20,14 @@ interface NewsItem {
 
 const FUNCTION_URL = `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/admin-news`;
 
+function getTodayFormatted(): string {
+  const now = new Date();
+  const dd = String(now.getDate()).padStart(2, '0');
+  const mm = String(now.getMonth() + 1).padStart(2, '0');
+  const yyyy = now.getFullYear();
+  return `${dd}. ${mm}. ${yyyy}.`;
+}
+
 const AdminPanel = () => {
   const [token, setToken] = useState<string | null>(sessionStorage.getItem("admin_token"));
   const [username, setUsername] = useState("");
