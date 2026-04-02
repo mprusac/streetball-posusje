@@ -109,9 +109,9 @@ const Hero = () => {
           muted
           playsInline
           preload="auto"
-          onCanPlayThrough={() => setVideoLoaded(true)}
-          onPlaying={() => setVideoLoaded(true)}
-          className={`w-full h-full object-cover transition-opacity duration-700 ${videoLoaded ? 'opacity-100' : 'opacity-0'}`}
+          onLoadedData={() => setVideoLoaded(true)}
+          className={`w-full h-full object-cover ${videoLoaded ? 'opacity-100' : 'opacity-0'}`}
+          style={{ transition: 'opacity 0.5s ease' }}
         >
           <source src="/hero-video.mp4" type="video/mp4" />
         </video>
