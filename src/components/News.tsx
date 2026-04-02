@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 import josipMamicHks from "@/assets/news/josip-mamic-hks.jpg";
 import streetball2025 from "@/assets/streetball-2025.jpg";
+import u16Card from "@/assets/news/u16-1mjesto-card.png";
 import croFlag from "@/assets/flags/cro-flag.png";
 
 interface NewsItem {
@@ -27,6 +28,7 @@ const categoryConfig: Record<string, { label: string; icon: typeof Trophy }> = {
 
 const allNews: NewsItem[] = [
   { id: 48, title: "Streetball Turnir Posušje 2025 - Prijave otvorene! ⛹️", excerpt: "Streetball turnir Posušje se vraća! Nagradni fond 7.000 KM. Prijave su otvorene, ne propustite priliku za sudjelovanje!", date: "05. 04. 2025.", category: "najava", image: streetball2025, imagePosition: "center", pinned: true },
+  { id: 49, title: "Rezultati U-16 (muški) - Streetball Posušje 2025 🏀", excerpt: "Pogledajte rezultate kategorije U-16 (muški) na ovogodišnjem turniru! 1. mjesto - Grude COM, 2. mjesto - Taxi Jole, 3. mjesto - Broadly Hill Boys.", date: "28. 08. 2025.", category: "utakmica", image: u16Card, imagePosition: "center" },
   { id: 47, title: "Josip Mamić na radaru HKS-a!", excerpt: "S velikim ponosom objavljujemo vijest da je naš talentirani predkadet Josip Mamić dobio službeni poziv Hrvatskog košarkaškog saveza!", date: "22. 03. 2026.", category: "klub", image: josipMamicHks, imagePosition: "top", flagImage: croFlag },
 ];
 
