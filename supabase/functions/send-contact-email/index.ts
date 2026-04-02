@@ -186,9 +186,9 @@ serve(async (req) => {
         'Authorization': `Bearer ${RESEND_API_KEY}`,
       },
       body: JSON.stringify({
-        from: 'KK Posušje <kontakt@kkposusje.ba>',
+        from: 'Streetball Posušje <kontakt@kkposusje.ba>',
         to: [email],
-        subject: `Potvrda poruke - KK Posušje`,
+        subject: `Potvrda poruke - Streetball Posušje 2026`,
         html: userConfirmationHtml(name, subject, message),
       }),
     });

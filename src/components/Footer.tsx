@@ -45,12 +45,12 @@ const Footer = () => {
               Kontakt
             </h4>
             <div className="space-y-2 text-sm text-muted-foreground">
-              <p>Posušje, Bosna i Hercegovina</p>
+              <p>Trg Hrvatskih branitelja<br />Fra Grge Martića 35<br />88240 Posušje, BiH</p>
               <a
-                href="mailto:streetball.posusje@gmail.com"
+                href="mailto:streetballposusje2025@gmail.com"
                 className="block hover:text-primary transition-colors"
               >
-                streetball.posusje@gmail.com
+                streetballposusje2025@gmail.com
               </a>
             </div>
           </div>
