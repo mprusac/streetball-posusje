@@ -150,7 +150,7 @@ const News = () => {
                 to={`/vijesti/${item.id}`}
                 key={item.id}
                 ref={(el) => { cardRefs.current[index] = el as unknown as HTMLAnchorElement; }}
-                className="group flex-shrink-0 bg-background rounded-lg overflow-hidden transition-all duration-300 hover:scale-[1.02] hover-lift border border-transparent hover:border-primary/30 snap-start flex flex-col"
+                className="group flex-shrink-0 bg-background rounded-lg overflow-hidden transition-all duration-300 hover-lift border border-transparent hover:border-primary/30 snap-start flex flex-col"
                 style={{
                   width: isMobile ? '100%' : 'calc((100% - 3rem) / 3)',
                   minWidth: isMobile ? '100%' : '260px',
@@ -162,7 +162,7 @@ const News = () => {
                 }}
               >
                 <div className="relative h-36 md:h-48 overflow-hidden">
-                  <img src={item.image} alt={item.title} className={`w-full h-full object-cover transition-transform duration-500 ${item.imageScale ? 'scale-[1.1] group-hover:scale-[1.2]' : 'group-hover:scale-110'} ${item.imagePosition === 'center' ? 'object-center' : item.imagePosition === 'upper' ? 'object-[center_5%]' : item.imagePosition === 'top' ? 'object-top' : item.imagePosition === 'lower' ? 'object-[center_35%]' : item.imagePosition === 'bottom' ? 'object-bottom' : 'object-[center_25%]'}`} />
+                  <img src={item.image} alt={item.title} loading="lazy" className={`w-full h-full object-cover transition-transform duration-500 ${item.imageScale ? 'scale-[1.1] group-hover:scale-[1.2]' : 'group-hover:scale-110'} ${item.imagePosition === 'center' ? 'object-center' : item.imagePosition === 'upper' ? 'object-[center_5%]' : item.imagePosition === 'top' ? 'object-top' : item.imagePosition === 'lower' ? 'object-[center_35%]' : item.imagePosition === 'bottom' ? 'object-bottom' : 'object-[center_25%]'}`} />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
                   <span className="absolute top-3 left-3 px-2 py-1 bg-primary/90 text-primary-foreground text-[10px] md:text-xs rounded flex items-center gap-1 font-bold">
                     {(() => { const cfg = categoryConfig[item.category]; const Icon = cfg.icon; return <><Icon size={12} strokeWidth={3} />{cfg.label}</>; })()}
