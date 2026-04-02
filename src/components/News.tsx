@@ -22,9 +22,9 @@ interface NewsItem {
 }
 
 const categoryConfig: Record<string, { label: string; icon: typeof Trophy }> = {
-  utakmica: { label: "Utakmice", icon: Trophy },
+  "2025": { label: "2025", icon: Trophy },
+  "2026": { label: "2026", icon: Trophy },
   najava: { label: "Najave", icon: Megaphone },
-  klub: { label: "Klub", icon: Newspaper },
 };
 
 const allNews: NewsItem[] = [
