@@ -51,7 +51,7 @@ const About = () => {
     <section id="o-klubu" className="py-20 overflow-hidden">
       {/* Stats */}
       <div className="container mx-auto px-4 mb-12 md:mb-20">
-        <FeaturedStat />
+        
         <div className="grid grid-cols-3 md:grid-cols-5 gap-4 md:gap-8 max-w-4xl mx-auto">
           {stats.map((stat, index) => (
             <StatCounter key={stat.label} stat={stat} index={index} />
