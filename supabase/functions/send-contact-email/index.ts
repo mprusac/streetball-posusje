@@ -29,7 +29,7 @@ function ownerEmailHtml(name: string, email: string, subject: string, message: s
             <tr>
               <td style="vertical-align:middle;">
                 <h1 style="margin:0;font-size:22px;font-weight:800;color:${BRAND_WHITE};letter-spacing:1px;text-transform:uppercase;">NOVA PORUKA</h1>
-                <p style="margin:4px 0 0;font-size:13px;color:${BRAND_DARK};font-weight:700;">Kontakt forma · KK Posušje</p>
+                <p style="margin:4px 0 0;font-size:13px;color:${BRAND_DARK};font-weight:700;">Kontakt forma · Streetball Posušje 2026</p>
                 <p style="margin:4px 0 0;font-size:13px;color:${BRAND_DARK};font-weight:700;">${date}</p>
               </td>
               <td align="right" style="vertical-align:middle;width:70px;">
