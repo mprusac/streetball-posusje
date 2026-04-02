@@ -41,7 +41,7 @@ const AdminPanel = () => {
   const { toast } = useToast();
 
   const [form, setForm] = useState({
-    title: "", excerpt: "", date: getTodayFormatted(), category: "2026", image_url: "", image_position: "center", pinned: false
+    title: "", excerpt: "", image_url: "", image_position: "center", pinned: false
   });
 
   const headers = { Authorization: `Bearer ${token}`, "Content-Type": "application/json" };
@@ -113,16 +113,18 @@ const AdminPanel = () => {
         if (!res.ok) throw new Error((await res.json()).error);
         toast({ title: "Vijest ažurirana!" });
       } else {
+        const now = getTodayFormatted();
+        const year = String(new Date().getFullYear());
         const res = await fetch(`${FUNCTION_URL}/create`, {
           method: "POST", headers,
-          body: JSON.stringify(form),
+          body: JSON.stringify({ ...form, date: now, category: year }),
         });
         if (!res.ok) throw new Error((await res.json()).error);
         toast({ title: "Vijest objavljena!" });
       }
       setEditing(null);
       setCreating(false);
-      setForm({ title: "", excerpt: "", date: "", category: "2025", image_url: "", image_position: "center", pinned: false });
+      setForm({ title: "", excerpt: "", image_url: "", image_position: "center", pinned: false });
       fetchNews();
     } catch (err: any) {
       toast({ title: "Greška", description: err.message, variant: "destructive" });
@@ -151,8 +153,6 @@ const AdminPanel = () => {
     setForm({
       title: item.title,
       excerpt: item.excerpt || "",
-      date: item.date,
-      category: item.category,
       image_url: item.image_url || "",
       image_position: item.image_position,
       pinned: item.pinned,
@@ -162,7 +162,7 @@ const AdminPanel = () => {
   const startCreate = () => {
     setEditing(null);
     setCreating(true);
-    setForm({ title: "", excerpt: "", date: getTodayFormatted(), category: "2026", image_url: "", image_position: "center", pinned: false });
+    setForm({ title: "", excerpt: "", image_url: "", image_position: "center", pinned: false });
   };
 
   // Login screen
@@ -209,17 +209,7 @@ const AdminPanel = () => {
               onChange={e => setForm(f => ({ ...f, excerpt: e.target.value }))}
             />
             <div className="flex gap-3 items-center">
-              <select
-                className="rounded-md border border-input bg-background px-3 py-2 text-sm"
-                value={form.category}
-                onChange={e => setForm(f => ({ ...f, category: e.target.value }))}
-              >
-                <option value="2026">2026</option>
-                <option value="2025">2025</option>
-                <option value="najava">Najava</option>
-              </select>
-              <span className="text-sm text-muted-foreground">Datum: {form.date}</span>
-              <label className="flex items-center gap-2 text-sm text-foreground cursor-pointer ml-auto">
+              <label className="flex items-center gap-2 text-sm text-foreground cursor-pointer">
                 <input type="checkbox" checked={form.pinned} onChange={e => setForm(f => ({ ...f, pinned: e.target.checked }))} />
                 <Pin size={14} /> Prikvači
               </label>
