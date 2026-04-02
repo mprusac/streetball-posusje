@@ -126,7 +126,7 @@ function userConfirmationHtml(name: string, subject: string, message: string): s
         </td></tr>
         <!-- Footer -->
         <tr><td style="padding:20px;text-align:center;">
-          <p style="margin:0;font-size:11px;color:${BRAND_TEXT};">KK Posušje · Ulica Bartola Kašića 2, 88240 Posušje</p>
+          <p style="margin:0;font-size:11px;color:${BRAND_TEXT};">Streetball Posušje 2026 · Trg Hrvatskih branitelja, Fra Grge Martića 35, 88240 Posušje</p>
           <p style="margin:4px 0 0;font-size:11px;color:${BRAND_TEXT};">Ovo je automatska potvrda. Molimo ne odgovarajte na ovaj email.</p>
         </td></tr>
       </table>
