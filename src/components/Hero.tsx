@@ -3,6 +3,9 @@ import { Button } from "@/components/ui/button";
 import { useEffect, useState, useRef } from "react";
 
 const TOURNAMENT_DATE = new Date("2026-07-18T18:00:00");
+const MOBILE_HERO_VIDEO = "/hero-video-mobile.mp4";
+const DESKTOP_HERO_VIDEO = "/hero-video-optimized.mp4";
+const DESKTOP_BREAKPOINT = 768;
 
 const useCountdown = (targetDate: Date) => {
   const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
@@ -62,7 +65,17 @@ const Hero = () => {
   const countdown = useCountdown(TOURNAMENT_DATE);
   const [displayedText, setDisplayedText] = useState("");
   const [showCursor, setShowCursor] = useState(true);
+  const [isDesktopViewport, setIsDesktopViewport] = useState(() =>
+    typeof window !== "undefined" ? window.innerWidth >= DESKTOP_BREAKPOINT : true
+  );
+  const [videoSrc, setVideoSrc] = useState(() =>
+    typeof window !== "undefined" && window.innerWidth >= DESKTOP_BREAKPOINT
+      ? MOBILE_HERO_VIDEO
+      : MOBILE_HERO_VIDEO
+  );
   const typewriterStarted = useRef(false);
+  const videoRef = useRef<HTMLVideoElement | null>(null);
+  const pendingPlaybackTime = useRef<number | null>(null);
 
   useEffect(() => {
     if (typewriterStarted.current) return;
@@ -81,6 +94,64 @@ const Hero = () => {
     return () => clearInterval(timer);
   }, []);
 
+  useEffect(() => {
+    const handleResize = () => {
+      setIsDesktopViewport(window.innerWidth >= DESKTOP_BREAKPOINT);
+    };
+
+    handleResize();
+    window.addEventListener("resize", handleResize, { passive: true });
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  useEffect(() => {
+    if (!isDesktopViewport) {
+      pendingPlaybackTime.current = null;
+      setVideoSrc(MOBILE_HERO_VIDEO);
+      return;
+    }
+
+    setVideoSrc(MOBILE_HERO_VIDEO);
+
+    const preloadVideo = document.createElement("video");
+    preloadVideo.src = DESKTOP_HERO_VIDEO;
+    preloadVideo.preload = "auto";
+    preloadVideo.muted = true;
+    preloadVideo.playsInline = true;
+
+    const promoteDesktopVideo = () => {
+      pendingPlaybackTime.current = videoRef.current?.currentTime ?? 0;
+      setVideoSrc((currentSrc) => (currentSrc === DESKTOP_HERO_VIDEO ? currentSrc : DESKTOP_HERO_VIDEO));
+    };
+
+    preloadVideo.addEventListener("canplay", promoteDesktopVideo, { once: true });
+    preloadVideo.load();
+
+    return () => {
+      preloadVideo.removeEventListener("canplay", promoteDesktopVideo);
+      preloadVideo.src = "";
+      preloadVideo.load();
+    };
+  }, [isDesktopViewport]);
+
+  const syncAndPlayVideo = () => {
+    const video = videoRef.current;
+
+    if (!video) return;
+
+    if (videoSrc === DESKTOP_HERO_VIDEO && pendingPlaybackTime.current !== null) {
+      const nextTime = Math.min(pendingPlaybackTime.current, Math.max(video.duration - 0.1, 0));
+
+      if (Number.isFinite(nextTime) && nextTime > 0) {
+        video.currentTime = nextTime;
+      }
+
+      pendingPlaybackTime.current = null;
+    }
+
+    void video.play().catch(() => undefined);
+  };
+
   return (
     <section
       id="pocetna"
@@ -88,16 +159,18 @@ const Hero = () => {
     >
       <div className="absolute inset-0 w-full h-full bg-background">
         <video
+          key={videoSrc}
+          ref={videoRef}
+          src={videoSrc}
           autoPlay
           loop
           muted
           playsInline
           preload="auto"
+          onLoadedData={syncAndPlayVideo}
+          onCanPlay={syncAndPlayVideo}
           className="w-full h-full object-cover"
-        >
-          <source media="(max-width: 767px)" src="/hero-video-mobile.mp4" type="video/mp4" />
-          <source media="(min-width: 768px)" src="/hero-video-optimized.mp4" type="video/mp4" />
-        </video>
+        />
         <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-background" />
       </div>
 
