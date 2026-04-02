@@ -175,7 +175,7 @@ const Sponsors = () => {
             {/* Expandable Content */}
           <div
               className={`overflow-hidden transition-all duration-500 ${
-                isExpanded ? "max-h-[1200px]" : "max-h-0"
+                isExpanded ? "max-h-[2000px]" : "max-h-0"
               }`}
             >
               <div className="p-4 md:p-6 pt-2 md:pt-4">
