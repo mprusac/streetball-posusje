@@ -1,8 +1,10 @@
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 import { Trophy, Medal, Target, Star } from "lucide-react";
+import { useCountUp } from "@/hooks/useCountUp";
 
 const Prizes = () => {
   const { elementRef, isVisible } = useScrollReveal();
+  const { count, elementRef: countRef } = useCountUp({ end: 7000 });
 
   return (
     <section id="nagrade" className="py-20 -mt-6">
@@ -12,12 +14,25 @@ const Prizes = () => {
           isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
         }`}
       >
-        <h2 className="section-title text-center mb-2">
-          <span className="section-title-gold">NAGRADNI FOND</span>
-        </h2>
-        <p className="text-center text-3xl md:text-4xl font-display font-bold animate-gradient-text mb-12 inline-block w-full">
-          7.000 KM
-        </p>
+        <div ref={countRef} className="flex justify-center mb-12">
+          <div
+            className="group inline-block px-8 md:px-14 py-5 md:py-7 rounded-2xl border-2 border-primary/60 hover:border-primary transition-all duration-500 hover:shadow-[0_0_40px_rgba(234,179,8,0.2)] cursor-default"
+            style={{
+              background: 'linear-gradient(135deg, hsl(0 0% 5%) 0%, hsl(45 100% 51% / 0.08) 50%, hsl(0 0% 8%) 100%)',
+            }}
+          >
+            <div className="flex items-center gap-3 md:gap-4 justify-center mb-1">
+              <Trophy className="w-5 h-5 md:w-6 md:h-6 text-primary" />
+              <span className="text-xs md:text-sm tracking-[0.3em] text-primary font-bold font-display drop-shadow-[0_0_8px_rgba(234,179,8,0.5)]">
+                NAGRADNI FOND
+              </span>
+              <Trophy className="w-5 h-5 md:w-6 md:h-6 text-primary" />
+            </div>
+            <div className="text-3xl md:text-5xl font-display font-bold text-primary text-center group-hover:scale-105 transition-transform duration-300 drop-shadow-[0_0_12px_rgba(234,179,8,0.4)]">
+              {count.toLocaleString('de-DE')} KM
+            </div>
+          </div>
+        </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 max-w-4xl mx-auto">
           {/* Seniori */}
