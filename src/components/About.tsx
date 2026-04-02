@@ -9,7 +9,7 @@ interface StatItem {
 }
 
 const stats: StatItem[] = [
-  { value: 2025, label: "PRVA EDICIJA" },
+  { value: 2026, label: "PRVA EDICIJA" },
   { value: 32, suffix: "+", label: "PRIJAVLJENIH EKIPA" },
   { value: 3, label: "KATEGORIJE" },
   { value: 1, label: "DAN ČISTOG BASKETA" },

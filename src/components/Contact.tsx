@@ -224,7 +224,7 @@ className="bg-background/50 border-border focus:border-primary focus-visible:rin
             {/* Map */}
             <div className="rounded-lg md:rounded-xl overflow-hidden bg-secondary border border-border hover:border-primary/30 transition-all duration-300 flex-[2]">
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2901.5!2d17.3265!3d43.4715!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x134b1db8c1c3b8a1%3A0x4e5b0b2e0c3f0a0b!2sUlica%20Bartola%20Ka%C5%A1i%C4%87a%202%2C%20Posu%C5%A1je!5e0!3m2!1sen!2sba!4v1700000000000!5m2!1sen!2sba"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2901.5!2d17.3265!3d43.4715!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x134b432c8a6f1b1d%3A0x8c0c7e9f0a0b0c0d!2sTrg%20Hrvatskih%20branitelja%2C%20Fra%20Grge%20Marti%C4%87a%2035%2C%20Posu%C5%A1je%2088240!5e0!3m2!1shr!2sba!4v1700000000000!5m2!1shr!2sba"
                 width="100%"
                 height="100%"
                 style={{ border: 0, minHeight: '120px', filter: 'invert(90%) hue-rotate(180deg) brightness(0.8) contrast(1.2)' }}

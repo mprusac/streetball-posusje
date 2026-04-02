@@ -32,7 +32,7 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-40 max-w-none mx-auto pl-0 lg:pl-36 text-center md:text-left">
           {/* Logo & Description */}
           <div>
-            <img src={logo} alt="3x3 Streetball Posušje" className="h-20 w-auto mb-4 mx-auto md:mx-0" />
+            <img src={logo} alt="Streetball Posušje 2026" className="h-20 w-auto mb-4 mx-auto md:mx-0" />
             <p className="text-muted-foreground text-sm">
               „Ulica je naš teren,<br />
               a lopta naš jezik – 3x3 Posušje."
