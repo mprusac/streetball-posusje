@@ -94,7 +94,7 @@ const Hero = () => {
       {/* Scroll Indicator */}
       <div className="absolute bottom-8 left-0 right-0 flex justify-center">
         <a
-          href="#rezultati"
+          href="#vijesti"
           className="text-primary animate-bounce"
           aria-label="Scroll down"
         >
