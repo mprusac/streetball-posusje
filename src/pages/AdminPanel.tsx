@@ -136,7 +136,7 @@ const AdminPanel = () => {
     if (!confirm("Jeste li sigurni da želite obrisati ovu vijest?")) return;
     try {
       const res = await fetch(`${FUNCTION_URL}/delete`, {
-        method: "DELETE", headers,
+        method: "POST", headers,
         body: JSON.stringify({ id }),
       });
       if (!res.ok) throw new Error((await res.json()).error);
