@@ -64,6 +64,7 @@ const Hero = () => {
   const [isMobile, setIsMobile] = useState(false);
   const [displayedText, setDisplayedText] = useState("");
   const [showCursor, setShowCursor] = useState(true);
+  const [videoLoaded, setVideoLoaded] = useState(false);
   const typewriterStarted = useRef(false);
 
   useEffect(() => {
