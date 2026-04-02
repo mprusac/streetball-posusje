@@ -4,6 +4,7 @@ import { ArrowLeft, Calendar, Trophy, Users, Megaphone, Newspaper, ArrowRight, X
 import { motion, AnimatePresence } from "framer-motion";
 import Footer from "@/components/Footer";
 import streetball2025 from "@/assets/streetball-2025.jpg";
+import streetball2025Banner from "@/assets/streetball-2025-banner.png";
 import josipMamicHks from "@/assets/news/josip-mamic-hks.jpg";
 import croFlag from "@/assets/flags/cro-flag.png";
 
