@@ -13,6 +13,14 @@ import u163mjesto from "@/assets/news/u16-3mjesto.jpg";
 import u16Action1 from "@/assets/news/u16-action1.jpg";
 import u16Action2 from "@/assets/news/u16-action2.jpg";
 import u16Publika from "@/assets/news/u16-publika.jpg";
+import u16DjevojkeCover from "@/assets/news/u16-djevojke-cover.png";
+import u16Djevojke1 from "@/assets/news/u16-djevojke-1.jpg";
+import u16Djevojke2 from "@/assets/news/u16-djevojke-2.jpg";
+import u16Djevojke3 from "@/assets/news/u16-djevojke-3.jpg";
+import u16Djevojke4 from "@/assets/news/u16-djevojke-4.jpg";
+import u16Djevojke5 from "@/assets/news/u16-djevojke-5.jpg";
+import u16Djevojke6 from "@/assets/news/u16-djevojke-6.jpg";
+import u16Djevojke7 from "@/assets/news/u16-djevojke-7.jpg";
 import croFlag from "@/assets/flags/cro-flag.png";
 
 interface NewsItem {
