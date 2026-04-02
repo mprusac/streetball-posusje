@@ -208,27 +208,18 @@ const AdminPanel = () => {
               value={form.excerpt}
               onChange={e => setForm(f => ({ ...f, excerpt: e.target.value }))}
             />
-            <Input placeholder="Datum (npr. 05. 04. 2025.)" value={form.date} onChange={e => setForm(f => ({ ...f, date: e.target.value }))} />
-            <div className="flex gap-3">
+            <div className="flex gap-3 items-center">
               <select
                 className="rounded-md border border-input bg-background px-3 py-2 text-sm"
                 value={form.category}
                 onChange={e => setForm(f => ({ ...f, category: e.target.value }))}
               >
-                <option value="2025">2025</option>
                 <option value="2026">2026</option>
+                <option value="2025">2025</option>
                 <option value="najava">Najava</option>
               </select>
-              <select
-                className="rounded-md border border-input bg-background px-3 py-2 text-sm"
-                value={form.image_position}
-                onChange={e => setForm(f => ({ ...f, image_position: e.target.value }))}
-              >
-                <option value="center">Centar</option>
-                <option value="top">Vrh</option>
-                <option value="bottom">Dno</option>
-              </select>
-              <label className="flex items-center gap-2 text-sm text-foreground cursor-pointer">
+              <span className="text-sm text-muted-foreground">Datum: {form.date}</span>
+              <label className="flex items-center gap-2 text-sm text-foreground cursor-pointer ml-auto">
                 <input type="checkbox" checked={form.pinned} onChange={e => setForm(f => ({ ...f, pinned: e.target.checked }))} />
                 <Pin size={14} /> Prikvači
               </label>
