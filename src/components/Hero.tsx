@@ -1,6 +1,6 @@
 import { ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import teamPhoto from "@/assets/team-photo.jpg";
+import heroPhoto from "@/assets/hero-streetball.jpg";
 import { useEffect, useState, useRef } from "react";
 
 const TYPEWRITER_TEXT = "Igra koja spaja";
@@ -50,9 +50,9 @@ const Hero = () => {
       <div
         className="absolute top-0 left-0 right-0 bottom-0 w-full h-full will-change-transform"
         style={{ 
-          backgroundImage: `url(${teamPhoto})`,
-          backgroundPosition: 'center center',
-          backgroundSize: isMobile ? 'cover' : '140%',
+          backgroundImage: `url(${heroPhoto})`,
+          backgroundPosition: 'center 40%',
+          backgroundSize: 'cover',
           backgroundRepeat: 'no-repeat',
           transform: `translateY(${scrollY * 0.3}px)`,
         }}
