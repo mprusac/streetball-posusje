@@ -101,7 +101,7 @@ Deno.serve(async (req) => {
     }
 
     // Update news
-    if (path === 'update' && req.method === 'PUT') {
+    if (path === 'update' && (req.method === 'PUT' || req.method === 'POST')) {
       const body = await req.json()
       const { id, ...updates } = body
 
@@ -125,7 +125,7 @@ Deno.serve(async (req) => {
     }
 
     // Delete news
-    if (path === 'delete' && req.method === 'DELETE') {
+    if (path === 'delete' && (req.method === 'DELETE' || req.method === 'POST')) {
       const { id } = await req.json()
 
       if (!id) {
