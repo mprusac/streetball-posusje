@@ -162,7 +162,7 @@ const AdminPanel = () => {
   const startCreate = () => {
     setEditing(null);
     setCreating(true);
-    setForm({ title: "", excerpt: "", date: "", category: "2025", image_url: "", image_position: "center", pinned: false });
+    setForm({ title: "", excerpt: "", date: getTodayFormatted(), category: "2026", image_url: "", image_position: "center", pinned: false });
   };
 
   // Login screen
