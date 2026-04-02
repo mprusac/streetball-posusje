@@ -11,25 +11,24 @@ const supabaseServiceKey = Deno.env.get('SUPABASE_SERVICE_ROLE_KEY')!
 const ADMIN_USERNAME = Deno.env.get('ADMIN_USERNAME')!
 const ADMIN_PASSWORD = Deno.env.get('ADMIN_PASSWORD')!
 
-// Simple token - hash of credentials + date
-function generateToken(): string {
-  const data = `${ADMIN_USERNAME}:${ADMIN_PASSWORD}:${new Date().toISOString().slice(0, 10)}`
+// Deterministic token based on credentials - verifiable across cold starts
+function getExpectedToken(): string {
+  const day = new Date().toISOString().slice(0, 10)
+  const data = `${ADMIN_USERNAME}:${ADMIN_PASSWORD}:${day}`
   let hash = 0
   for (let i = 0; i < data.length; i++) {
     const char = data.charCodeAt(i)
     hash = ((hash << 5) - hash) + char
     hash = hash & hash
   }
-  return `admin_${Math.abs(hash).toString(36)}_${Date.now().toString(36)}`
+  return `admin_${Math.abs(hash).toString(36)}_${day.replace(/-/g, '')}`
 }
-
-// Store valid tokens in memory (reset on cold start)
-const validTokens = new Set<string>()
 
 function verifyAdminToken(req: Request): boolean {
   const auth = req.headers.get('Authorization')
   if (!auth?.startsWith('Bearer admin_')) return false
-  return validTokens.has(auth.replace('Bearer ', ''))
+  const token = auth.replace('Bearer ', '')
+  return token === getExpectedToken()
 }
 
 Deno.serve(async (req) => {
@@ -46,8 +45,7 @@ Deno.serve(async (req) => {
       const { username, password } = await req.json()
       
       if (username === ADMIN_USERNAME && password === ADMIN_PASSWORD) {
-        const token = generateToken()
-        validTokens.add(token)
+        const token = getExpectedToken()
         return new Response(JSON.stringify({ token }), {
           headers: { ...corsHeaders, 'Content-Type': 'application/json' }
         })
