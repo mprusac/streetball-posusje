@@ -124,7 +124,7 @@ const AdminPanel = () => {
       }
       setEditing(null);
       setCreating(false);
-      setForm({ title: "", excerpt: "", date: "", category: "2025", image_url: "", image_position: "center", pinned: false });
+      setForm({ title: "", excerpt: "", image_url: "", image_position: "center", pinned: false });
       fetchNews();
     } catch (err: any) {
       toast({ title: "Greška", description: err.message, variant: "destructive" });
