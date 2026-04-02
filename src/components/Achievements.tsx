@@ -59,10 +59,10 @@ const Achievements = () => {
                   <Trophy className="w-5 h-5 md:w-6 md:h-6" />
                 </div>
                 <div>
-                  <h3 className="font-display text-sm md:text-base text-foreground tracking-wide leading-snug mb-1">
+                  <h3 className="font-display text-base md:text-lg text-foreground tracking-wide leading-snug mb-1">
                     {item.title}
                   </h3>
-                  <p className="text-primary text-xs md:text-sm italic mb-0.5">{item.highlight}</p>
+                  <p className="text-primary text-xs md:text-sm mb-0.5">{item.highlight}</p>
                   <p className="text-muted-foreground text-xs md:text-sm">{item.detail}</p>
                 </div>
               </div>
