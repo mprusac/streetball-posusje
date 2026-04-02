@@ -55,7 +55,7 @@ const Achievements = () => {
               }}
             >
               <div className="flex items-start gap-4">
-                <div className="icon-bounce p-2 md:p-3 bg-primary/20 rounded-lg group-hover:bg-primary/30 transition-all duration-300 text-primary flex-shrink-0">
+                <div className="p-2 md:p-3 bg-primary/20 rounded-lg group-hover:bg-primary/30 transition-all duration-300 text-primary flex-shrink-0">
                   <Trophy className="w-5 h-5 md:w-6 md:h-6" />
                 </div>
                 <div>
