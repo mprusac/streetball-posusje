@@ -41,7 +41,7 @@ const AdminPanel = () => {
   const { toast } = useToast();
 
   const [form, setForm] = useState({
-    title: "", excerpt: "", date: "", category: "2025", image_url: "", image_position: "center", pinned: false
+    title: "", excerpt: "", date: getTodayFormatted(), category: "2026", image_url: "", image_position: "center", pinned: false
   });
 
   const headers = { Authorization: `Bearer ${token}`, "Content-Type": "application/json" };
