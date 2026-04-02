@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import heroPhoto from "@/assets/hero-streetball.jpg";
 import { useEffect, useState, useRef } from "react";
 
-const TOURNAMENT_DATE = new Date("2025-07-18T18:00:00");
+const TOURNAMENT_DATE = new Date("2026-07-18T18:00:00");
 
 const useCountdown = (targetDate: Date) => {
   const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
