@@ -3,7 +3,7 @@ import { Link, useParams, useNavigate } from "react-router-dom";
 import { ArrowLeft, Calendar, Trophy, Users, Megaphone, Newspaper, ArrowRight, X, ChevronLeft, ChevronRight, Pin } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import Footer from "@/components/Footer";
-import streetball2025 from "@/assets/streetball-2025.jpg";
+import streetball2025 from "@/assets/news/streetball-2025-card.png";
 import streetball2025Banner from "@/assets/streetball-2025-banner.png";
 import josipMamicHks from "@/assets/news/josip-mamic-hks.jpg";
 import u16Card from "@/assets/news/u16-1mjesto-card.png";
