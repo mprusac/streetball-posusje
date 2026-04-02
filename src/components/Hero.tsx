@@ -107,7 +107,6 @@ const Hero = () => {
           muted
           playsInline
           preload="auto"
-          poster={heroPhoto}
           className="w-full h-full object-cover"
         >
           <source src="/hero-video.mp4" type="video/mp4" />
