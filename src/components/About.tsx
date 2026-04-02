@@ -62,7 +62,7 @@ const FeaturedStat = () => {
           <Trophy className="w-5 h-5 md:w-6 md:h-6 text-primary" />
         </div>
         <div className="stat-number text-3xl md:text-5xl text-primary group-hover:scale-105 transition-transform duration-300 drop-shadow-[0_0_12px_rgba(234,179,8,0.4)]">
-          {count}
+          {count.toLocaleString('de-DE')}
           {prizeStat.suffix}
         </div>
       </div>
