@@ -113,9 +113,11 @@ const AdminPanel = () => {
         if (!res.ok) throw new Error((await res.json()).error);
         toast({ title: "Vijest ažurirana!" });
       } else {
+        const now = getTodayFormatted();
+        const year = String(new Date().getFullYear());
         const res = await fetch(`${FUNCTION_URL}/create`, {
           method: "POST", headers,
-          body: JSON.stringify(form),
+          body: JSON.stringify({ ...form, date: now, category: year }),
         });
         if (!res.ok) throw new Error((await res.json()).error);
         toast({ title: "Vijest objavljena!" });
