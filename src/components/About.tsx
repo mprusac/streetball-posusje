@@ -68,7 +68,7 @@ const About = () => {
           </h2>
 
           <div className="flex items-start gap-4 md:gap-8 mb-10 md:mb-16 mx-auto justify-center" style={{ maxWidth: "850px" }}>
-            <img src={pulseLogo} alt="Pulse logo" <img src={pulseLogo} alt="Pulse logo" className="w-20 h-20 md:w-32 md:h-32 lg:w-40 lg:h-40 object-contain flex-shrink-0 mt-1 rounded-lg border-2 border-transparent hover:border-primary hover:scale-110 transition-all duration-300 cursor-pointer" /> />
+            <img src={pulseLogo} alt="Pulse logo" className="w-20 h-20 md:w-32 md:h-32 lg:w-40 lg:h-40 object-contain flex-shrink-0 mt-1 rounded-lg border-2 border-transparent hover:border-primary hover:scale-110 transition-all duration-300 cursor-pointer" />
             <div className="gold-border-left text-left pl-4 md:pl-6">
               <p className="text-sm md:text-xl text-muted-foreground mb-3 md:mb-6 leading-relaxed">
                 <span className="text-primary font-bold">Udruga Pulse</span> ponosni je organizator turnira Streetball Posušje.
