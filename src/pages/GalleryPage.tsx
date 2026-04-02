@@ -87,11 +87,17 @@ const EventCard = ({ event, index }: { event: typeof events[0]; index: number })
     >
       <Link to={`/galerija/${event.id}`} className="group block">
         <div className="relative overflow-hidden rounded-lg aspect-[4/3] shadow-[0_0_20px_rgba(234,179,8,0.15)] hover:shadow-[0_0_30px_rgba(234,179,8,0.25)] transition-shadow duration-300">
-          <img
-            src={event.coverImage}
-            alt={`${event.homeTeam} - ${event.awayTeam}`}
-            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-          />
+          {event.coverImage ? (
+            <img
+              src={event.coverImage}
+              alt={event.awayTeam ? `${event.homeTeam} - ${event.awayTeam}` : event.homeTeam}
+              className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+            />
+          ) : (
+            <div className="w-full h-full bg-muted/30 flex items-center justify-center transition-transform duration-500 group-hover:scale-110">
+              <Camera className="w-12 h-12 text-primary/40" />
+            </div>
+          )}
           {/* Hover overlay - covers entire image */}
           <div className="absolute inset-0 bg-black/0 group-hover:bg-black/60 transition-all duration-300">
             <div className="absolute inset-0 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300">
