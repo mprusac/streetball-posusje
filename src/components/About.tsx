@@ -40,35 +40,7 @@ const StatCounter = ({ stat, index }: { stat: StatItem; index: number }) => {
   );
 };
 
-const FeaturedStat = () => {
-  const { count, elementRef } = useCountUp({ end: prizeStat.value });
 
-  return (
-    <div
-      ref={elementRef}
-      className="relative text-center mb-8 md:mb-12 animate-fade-in-up group cursor-default"
-    >
-      <div
-        className="inline-block px-8 md:px-14 py-5 md:py-7 rounded-2xl border-2 border-primary/60 hover:border-primary transition-all duration-500 hover:shadow-[0_0_40px_rgba(234,179,8,0.2)]"
-        style={{
-          background: 'linear-gradient(135deg, hsl(0 0% 5%) 0%, hsl(45 100% 51% / 0.08) 50%, hsl(0 0% 8%) 100%)',
-        }}
-      >
-        <div className="flex items-center gap-3 md:gap-4 justify-center mb-1">
-          <Trophy className="w-5 h-5 md:w-6 md:h-6 text-primary" />
-          <span className="stat-label text-xs md:text-sm tracking-[0.3em] text-primary font-bold drop-shadow-[0_0_8px_rgba(234,179,8,0.5)]">
-            {prizeStat.label}
-          </span>
-          <Trophy className="w-5 h-5 md:w-6 md:h-6 text-primary" />
-        </div>
-        <div className="stat-number text-3xl md:text-5xl text-primary group-hover:scale-105 transition-transform duration-300 drop-shadow-[0_0_12px_rgba(234,179,8,0.4)]">
-          {count}
-          {prizeStat.suffix}
-        </div>
-      </div>
-    </div>
-  );
-};
 
 const About = () => {
   const { elementRef: aboutRef, isVisible: aboutVisible } = useScrollReveal();
