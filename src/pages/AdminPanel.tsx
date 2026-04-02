@@ -209,17 +209,7 @@ const AdminPanel = () => {
               onChange={e => setForm(f => ({ ...f, excerpt: e.target.value }))}
             />
             <div className="flex gap-3 items-center">
-              <select
-                className="rounded-md border border-input bg-background px-3 py-2 text-sm"
-                value={form.category}
-                onChange={e => setForm(f => ({ ...f, category: e.target.value }))}
-              >
-                <option value="2026">2026</option>
-                <option value="2025">2025</option>
-                <option value="najava">Najava</option>
-              </select>
-              <span className="text-sm text-muted-foreground">Datum: {form.date}</span>
-              <label className="flex items-center gap-2 text-sm text-foreground cursor-pointer ml-auto">
+              <label className="flex items-center gap-2 text-sm text-foreground cursor-pointer">
                 <input type="checkbox" checked={form.pinned} onChange={e => setForm(f => ({ ...f, pinned: e.target.checked }))} />
                 <Pin size={14} /> Prikvači
               </label>
