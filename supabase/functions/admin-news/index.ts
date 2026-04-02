@@ -125,7 +125,7 @@ Deno.serve(async (req) => {
     }
 
     // Delete news
-    if (path === 'delete' && req.method === 'DELETE') {
+    if (path === 'delete' && (req.method === 'DELETE' || req.method === 'POST')) {
       const { id } = await req.json()
 
       if (!id) {
