@@ -64,13 +64,21 @@ const Index = () => {
       <Navbar />
       <main>
         <Hero />
+        <hr className="section-divider" />
         <News />
+        <hr className="section-divider" />
         <Schedule />
+        <hr className="section-divider" />
         <Prizes />
+        <hr className="section-divider" />
         <Gallery />
+        <hr className="section-divider" />
         <About />
+        <hr className="section-divider" />
         <Achievements />
+        <hr className="section-divider" />
         <Sponsors />
+        <hr className="section-divider" />
         <Contact />
       </main>
       <Footer />
