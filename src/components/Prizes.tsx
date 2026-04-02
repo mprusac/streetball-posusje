@@ -5,7 +5,7 @@ const Prizes = () => {
   const { elementRef, isVisible } = useScrollReveal();
 
   return (
-    <section id="nagrade" className="py-20">
+    <section id="nagrade" className="py-20 -mt-6">
       <div
         ref={elementRef}
         className={`container mx-auto px-4 transition-all duration-700 ${
