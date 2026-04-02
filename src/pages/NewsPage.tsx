@@ -177,7 +177,7 @@ const NewsPage = () => {
     if (article) return <ArticleDetail article={article} />;
   }
 
-  const filteredNews = activeCategory === "sve" ? allNews : allNews.filter(item => item.category === activeCategory);
+  const filteredNews = activeCategory === "sve" ? allNews : activeCategory === "najava" ? allNews.filter(item => item.category === "najava") : allNews.filter(item => item.date.includes(activeCategory));
 
   return (
     <div className="min-h-screen bg-background" style={{ zoom: 0.9 }}>
