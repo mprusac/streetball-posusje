@@ -202,7 +202,7 @@ const Sponsors = () => {
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-3 md:gap-6 text-xs md:text-sm">
                     <div>
                       <span className="text-muted-foreground block mb-1">PRIMATELJ</span>
-                      <span className="text-foreground">Košarkaški Klub Posušje</span>
+                      <span className="text-foreground">3x3 Streetball Posušje</span>
                     </div>
                     <div>
                       <span className="text-muted-foreground block mb-1">BANKA</span>

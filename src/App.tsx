@@ -6,7 +6,7 @@ import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
 import PageTransition from "./components/PageTransition";
 import Index from "./pages/Index";
-import Statistics from "./pages/Statistics";
+
 import GalleryPage from "./pages/GalleryPage";
 import NewsPage from "./pages/NewsPage";
 import NotFound from "./pages/NotFound";
@@ -19,7 +19,7 @@ const AnimatedRoutes = () => {
     <AnimatePresence mode="wait">
       <Routes location={location} key={location.pathname}>
         <Route path="/" element={<PageTransition><Index /></PageTransition>} />
-        <Route path="/statistika" element={<PageTransition><Statistics /></PageTransition>} />
+        
         <Route path="/galerija" element={<PageTransition><GalleryPage /></PageTransition>} />
         <Route path="/galerija/:eventId" element={<PageTransition><GalleryPage /></PageTransition>} />
         <Route path="/vijesti" element={<PageTransition><NewsPage /></PageTransition>} />

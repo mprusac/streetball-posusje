@@ -5,8 +5,6 @@ import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import About from "@/components/About";
 import News from "@/components/News";
-import Results from "@/components/Results";
-import Team from "@/components/Team";
 import Gallery from "@/components/Gallery";
 import Sponsors from "@/components/Sponsors";
 import Contact from "@/components/Contact";
@@ -63,9 +61,7 @@ const Index = () => {
       <Navbar />
       <main>
         <Hero />
-        <Results />
         <News />
-        <Team />
         <Gallery />
         <About />
         <Sponsors />

@@ -1,8 +1,6 @@
 import { useCountUp } from "@/hooks/useCountUp";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
-import { Trophy, Medal, Users, Star } from "lucide-react";
-import bihFlag from "@/assets/flags/bih-flag.png";
-import croFlag from "@/assets/flags/cro-flag.png";
+import { Trophy, Calendar, MapPin, Users } from "lucide-react";
 
 interface StatItem {
   value: number;
@@ -11,76 +9,16 @@ interface StatItem {
 }
 
 const stats: StatItem[] = [
-  { value: 1975, label: "GODINA OSNUTKA" },
-  { value: 150, suffix: "+", label: "AKTIVNIH ČLANOVA" },
-  { value: 8, label: "UZRASNE SELEKCIJE" },
-  { value: 50, label: "GODINA POSTOJANJA" },
+  { value: 2025, label: "PRVA EDICIJA" },
+  { value: 32, suffix: "+", label: "PRIJAVLJENIH EKIPA" },
+  { value: 3, label: "KATEGORIJE" },
+  { value: 1, label: "DAN ČISTOG BASKETA" },
 ];
 
-const maleCategories = [
-  "Predkadeti",
-  "Kadeti",
-  "Juniori",
-  "Seniori",
-];
-
-const femaleCategories = [
-  "Mlađe kadetkinje",
-  "Kadetkinje",
-  "Juniorke",
-  "Seniorke",
-];
-
-const achievements = [
-  {
-    title: "Višestruki seniorski prvaci Lige Herceg-Bosne",
-    subtitle: "Tri osvojena naslova prvaka (2012, 2016, 2021)",
-    description: "Promocija u Premijer ligu BiH",
-    icon: Trophy,
-    emoji: "🏆",
-  },
-  {
-    title: "Dugogodišnji prvoligaš Bosne i Hercegovine",
-    subtitle: "Dug niz sezona u najvišem rangu BiH košarke",
-    description: "Iznova dokazana kvaliteta među najboljim ekipama",
-    icon: Trophy,
-    emoji: "🏀",
-  },
-  {
-    title: "Nastup na FIBA Kupu Radivoja Koraća (1998./99.)",
-    subtitle: "Sudjelovanje na velikoj europskoj košarkaškoj pozornici",
-    description: "Upisani kao međunarodni predstavnik BiH košarke",
-    icon: Star,
-    emoji: "🌍",
-  },
-  {
-    title: "Brojni naslovi prvaka Lige Mladih Herceg-Bosne",
-    subtitle: "Redovite titule muških i ženskih omladinskih selekcija u svim uzrastima",
-    description: "Rezultat kontinuiranog rada, stručnog kadra i ulaganja u mlade naraštaje",
-    icon: Medal,
-    emoji: "🥇",
-  },
-  {
-    title: "Finalisti Kupa Herceg-Bosne / Polufinale Kupa BiH",
-    subtitle: "Zapaženi rezultati u državnim kup natjecanjima",
-    description: "Česti sudionik nacionalnih završnih turnira",
-    icon: Medal,
-    emoji: "🥈",
-  },
-  {
-    title: "Mladi reprezentativci",
-    subtitle: "Talenti iz Posušja redovito nose dresove državnih selekcija",
-    description: "Više desetaka igrača u reprezentacijama BiH i Hrvatske",
-    icon: Users,
-    emoji: "flags",
-  },
-  {
-    title: "Osnivanje ženskog omladinskog pogona (2002.)",
-    subtitle: "Klub koji jednako ulaže u razvoj djevojčica i dječaka",
-    description: "Ženska selekcija se uspješno natječe u Ligi Herceg-Bosne",
-    icon: Users,
-    emoji: "⛹🏼‍♀️",
-  },
+const categories = [
+  { name: "Muška kategorija", desc: "18+ godina" },
+  { name: "Ženska kategorija", desc: "18+ godina" },
+  { name: "Juniorska kategorija", desc: "U16" },
 ];
 
 const StatCounter = ({ stat, index }: { stat: StatItem; index: number }) => {
@@ -104,7 +42,6 @@ const StatCounter = ({ stat, index }: { stat: StatItem; index: number }) => {
 const About = () => {
   const { elementRef: aboutRef, isVisible: aboutVisible } = useScrollReveal();
   const { elementRef: catRef, isVisible: catVisible } = useScrollReveal();
-  const { elementRef: achRef, isVisible: achVisible } = useScrollReveal();
   const { elementRef: visRef, isVisible: visVisible } = useScrollReveal();
 
   return (
@@ -128,19 +65,18 @@ const About = () => {
         >
           <h2 className="section-title mb-8 md:mb-12 text-center">
             <span className="section-title-white">O </span>
-            <span className="section-title-gold">NAMA</span>
+            <span className="section-title-gold">TURNIRU</span>
           </h2>
 
           <div className="gold-border-left mb-10 md:mb-16 text-left mx-auto pl-4 md:pl-6 pr-2 md:pr-0" style={{ maxWidth: "800px" }}>
             <p className="text-sm md:text-xl text-muted-foreground mb-3 md:mb-6 leading-relaxed">
-              <span className="text-primary font-bold">HKK Posušje</span> je hrvatski košarkaški klub iz grada Posušja, osnovan{" "}
-              <span className="text-primary font-semibold">1975. godine</span>.
+              <span className="text-primary font-bold">3x3 Streetball Posušje</span> je ulični košarkaški turnir koji okuplja igrače iz cijele regije na jednom mjestu.
             </p>
             <p className="text-sm md:text-base text-muted-foreground mb-3 md:mb-4 leading-relaxed">
-              Klub njeguje više od <span className="text-primary font-semibold">pet desetljeća tradicije</span> rada s mladima i okuplja igrače iz cijele regije.
+              Turnir se igra po <span className="text-primary font-semibold">FIBA 3x3 pravilima</span> na otvorenom terenu u srcu Posušja.
             </p>
             <p className="text-sm md:text-base text-muted-foreground leading-relaxed">
-              Kroz sustavan rad u omladinskim kategorijama i disciplinirane treninge razvijamo temelje za seniorski tim. Intenzivnim trudom gradimo <span className="text-primary font-semibold">zajedništvo, odgovornost i timski duh</span> kroz svaki trening. Zajedno težimo stvaranju novih sportskih uspjeha i pozitivnih vrijednosti u lokalnoj zajednici.
+              Bilo da si iskusni igrač ili tek počinješ, ovo je prilika da pokažeš svoje vještine, upoznaš nove ljude i uživaš u <span className="text-primary font-semibold">čistoj energiji ulične košarke</span>. Atmosfera, glazba i natjecateljski duh – sve na jednom mjestu.
             </p>
           </div>
         </div>
@@ -153,115 +89,26 @@ const About = () => {
           }`}
         >
           <h3 className="text-3xl md:text-4xl font-display text-foreground mb-8 uppercase tracking-wider text-center">
-            Selekcije
+            Kategorije
           </h3>
           
-          {/* Muške selekcije */}
-          <div className="mb-8">
-            <h4 className="text-sm font-semibold text-primary uppercase tracking-widest text-center mb-4 flex items-center justify-center gap-2">
-              <span className="w-8 h-px bg-primary/50"></span>
-              Muške
-              <span className="w-8 h-px bg-primary/50"></span>
-            </h4>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
-              {maleCategories.map((category, index) => (
-                <div
-                  key={category}
-                  className="group bg-gradient-to-r from-secondary/60 to-secondary/30 border border-border rounded-lg px-4 py-3 text-center font-medium text-foreground hover:border-primary hover:from-primary/20 hover:to-primary/10 transition-all duration-300 cursor-default"
-                  style={{ 
-                    opacity: catVisible ? 1 : 0,
-                    transform: catVisible ? "translateY(0)" : "translateY(20px)",
-                    transition: `all 0.5s ease ${index * 0.1}s`
-                  }}
-                >
-                  <span className="group-hover:text-primary transition-colors duration-300 text-sm md:text-base">
-                    {category}
-                  </span>
-                </div>
-              ))}
-            </div>
-          </div>
-          
-          {/* Ženske selekcije */}
-          <div>
-            <h4 className="text-sm font-semibold text-primary uppercase tracking-widest text-center mb-4 flex items-center justify-center gap-2">
-              <span className="w-8 h-px bg-primary/50"></span>
-              Ženske
-              <span className="w-8 h-px bg-primary/50"></span>
-            </h4>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
-              {femaleCategories.map((category, index) => (
-                <div
-                  key={category}
-                  className="group bg-gradient-to-r from-secondary/60 to-secondary/30 border border-border rounded-lg px-4 py-3 text-center font-medium text-foreground hover:border-primary hover:from-primary/20 hover:to-primary/10 transition-all duration-300 cursor-default"
-                  style={{ 
-                    opacity: catVisible ? 1 : 0,
-                    transform: catVisible ? "translateY(0)" : "translateY(20px)",
-                    transition: `all 0.5s ease ${(index + 4) * 0.1}s`
-                  }}
-                >
-                  <span className="group-hover:text-primary transition-colors duration-300 text-sm md:text-base">
-                    {category}
-                  </span>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-
-        {/* Achievements - Vertical Timeline Style */}
-        <div 
-          ref={achRef}
-          className={`mb-12 md:mb-20 w-full flex flex-col items-center transition-all duration-700 ${
-            achVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
-          }`}
-        >
-          <h3 className="text-3xl md:text-5xl lg:text-6xl font-display text-foreground mb-6 md:mb-8 uppercase tracking-wider text-center">
-            Postignuća
-          </h3>
-          <div className="space-y-3 md:space-y-4 max-w-2xl w-full">
-            {achievements.map((achievement, index) => {
-              const IconComponent = achievement.icon;
-              return (
-                <div
-                  key={achievement.title}
-                  className="group relative flex items-start gap-3 md:gap-4 p-3 md:p-5 rounded-xl bg-secondary/30 border border-border hover:border-primary/50 hover:bg-secondary/50 transition-all duration-300"
-                  style={{ 
-                    opacity: achVisible ? 1 : 0,
-                    transform: achVisible ? "translateX(0)" : "translateX(-30px)",
-                    transition: `all 0.5s ease ${index * 0.1}s`
-                  }}
-                >
-                  {/* Icon */}
-                  <div className="flex-shrink-0 w-10 h-10 md:w-12 md:h-12 rounded-full bg-primary/20 flex items-center justify-center group-hover:bg-primary/30 group-hover:scale-110 transition-all duration-300">
-                    <IconComponent className="w-5 h-5 md:w-6 md:h-6 text-primary" />
-                  </div>
-                  
-                  {/* Content */}
-                  <div className="flex-1 min-w-0">
-                    <div className="flex items-center gap-2 mb-1">
-                      <h4 className="font-display text-base md:text-xl text-foreground tracking-wide leading-tight">
-                        {achievement.title}
-                      </h4>
-                      {achievement.emoji === "flags" ? (
-                        <span className="flex items-center gap-1">
-                          <img src={bihFlag} alt="BiH" className="h-[18px] w-[18px] object-contain rounded-full" />
-                          <img src={croFlag} alt="Hrvatska" className="w-5 h-5 object-contain" />
-                        </span>
-                      ) : (
-                        <span className="text-base md:text-lg">{achievement.emoji}</span>
-                      )}
-                    </div>
-                    <p className="text-primary font-medium text-xs md:text-sm mb-1">
-                      {achievement.subtitle}
-                    </p>
-                    <p className="text-muted-foreground text-xs md:text-sm">
-                      {achievement.description}
-                    </p>
-                  </div>
-                </div>
-              );
-            })}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            {categories.map((cat, index) => (
+              <div
+                key={cat.name}
+                className="group bg-gradient-to-r from-secondary/60 to-secondary/30 border border-border rounded-lg px-6 py-5 text-center font-medium text-foreground hover:border-primary hover:from-primary/20 hover:to-primary/10 transition-all duration-300 cursor-default"
+                style={{ 
+                  opacity: catVisible ? 1 : 0,
+                  transform: catVisible ? "translateY(0)" : "translateY(20px)",
+                  transition: `all 0.5s ease ${index * 0.1}s`
+                }}
+              >
+                <span className="group-hover:text-primary transition-colors duration-300 text-sm md:text-base block font-display">
+                  {cat.name}
+                </span>
+                <span className="text-muted-foreground text-xs mt-1 block">{cat.desc}</span>
+              </div>
+            ))}
           </div>
         </div>
 
@@ -278,15 +125,14 @@ const About = () => {
               background: 'linear-gradient(135deg, hsl(0 0% 5%) 0%, hsl(45 100% 51% / 0.1) 50%, hsl(0 0% 8%) 100%)',
             }}
           >
-            {/* Subtle glow effect */}
             <div className="absolute inset-0 rounded-2xl md:rounded-3xl bg-gradient-to-br from-primary/5 via-transparent to-primary/10 pointer-events-none" />
             
             <h3 className="text-2xl md:text-4xl font-display mb-4 md:mb-6 tracking-wide relative z-10">
-              <span className="text-foreground">NAŠA </span>
-              <span className="text-primary">VIZIJA</span>
+              <span className="text-foreground">ZAŠTO </span>
+              <span className="text-primary">3x3?</span>
             </h3>
             <p className="text-muted-foreground max-w-3xl mx-auto leading-relaxed text-sm md:text-lg relative z-10">
-              Naša vizija temelji se na kontinuiranom razvoju mladih talenata kroz sustavan i kvalitetan rad. Naglašavamo vrijednosti kao što su <span className="text-primary font-bold">odgovornost, disciplina i timski duh</span> u svakom aspektu klupskih aktivnosti. Cilj nam je stvoriti okruženje u kojem svaki mladi igrač može napredovati u vrhunskog sportaša i odgovornu osobu. Kroz ulaganja u stručni trenažni kadar, infrastrukturu i partnersku suradnju, nastojimo učvrstiti <span className="text-primary font-bold">HKK Posušje kao košarkaški centar BiH</span> i simbol sportskih uspjeha i pozitivnih životnih vrijednosti.
+              3x3 košarka je <span className="text-primary font-bold">najbrže rastući urbani sport na svijetu</span> i olimpijska disciplina od 2021. Brza igra, kraći format i intenzivna atmosfera čine je savršenom za sve koji vole košarku u njenom najčišćem obliku. <span className="text-primary font-bold">Streetball Posušje</span> donosi tu energiju u naš grad – jedan dan, jedna lopta, čista strast.
             </p>
           </div>
         </div>

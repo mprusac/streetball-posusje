@@ -69,7 +69,7 @@ const Contact = () => {
         </h2>
 
         <p className="text-muted-foreground text-center mb-16 max-w-2xl mx-auto">
-          Želite postati dio naše obitelji ili imate pitanja? Javite nam se!
+          Želite prijaviti ekipu ili imate pitanja o turniru? Javite nam se!
         </p>
 
         <div className="grid lg:grid-cols-2 gap-6 md:gap-8 max-w-6xl mx-auto items-stretch">
@@ -186,7 +186,7 @@ className="bg-background/50 border-border focus:border-primary focus-visible:rin
               <div>
                 <h4 className="font-display text-sm md:text-base text-foreground mb-0.5 tracking-wide">Adresa</h4>
                 <p className="text-muted-foreground text-xs md:text-sm">
-                  Ulica Bartola Kašića 2, 88240 Posušje
+                  Posušje, Bosna i Hercegovina
                 </p>
               </div>
             </div>
@@ -198,10 +198,10 @@ className="bg-background/50 border-border focus:border-primary focus-visible:rin
               <div>
                 <h4 className="font-display text-sm md:text-base text-foreground mb-0.5 tracking-wide">Email</h4>
                 <a
-                  href="mailto:kk.posusje@gmail.com"
+                  href="mailto:streetball.posusje@gmail.com"
                   className="text-muted-foreground text-xs md:text-sm hover:text-primary transition-colors"
                 >
-                  kk.posusje@gmail.com
+                  streetball.posusje@gmail.com
                 </a>
               </div>
             </div>
@@ -231,7 +231,7 @@ className="bg-background/50 border-border focus:border-primary focus-visible:rin
                 allowFullScreen
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
-                title="Lokacija HKK Posušje"
+                title="Lokacija 3x3 Streetball Posušje"
               />
             </div>
           </div>
