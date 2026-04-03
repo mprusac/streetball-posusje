@@ -213,7 +213,7 @@ const AdminPanel = () => {
       }
       setEditing(null);
       setView("main");
-      setForm({ title: "", excerpt: "", image_url: "", image_position: "center", pinned: false, gallery_images: [], category: String(new Date().getFullYear()) });
+      setForm({ title: "", excerpt: "", date: getTodayFormatted(), image_url: "", image_position: "center", pinned: false, gallery_images: [], category: String(new Date().getFullYear()) });
       fetchNews();
     } catch (err: any) {
       toast({ title: "Greška", description: err.message, variant: "destructive" });
