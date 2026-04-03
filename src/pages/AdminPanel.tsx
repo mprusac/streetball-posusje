@@ -362,16 +362,14 @@ const AdminPanel = () => {
         {/* News Form */}
         {view === "news-form" && (
           <div className="bg-card p-6 rounded-xl border border-border mb-8 space-y-4">
-            <div className="flex items-center justify-between">
-              <div className="flex items-center gap-3">
-                <button
-                  onClick={() => { setView("main"); setEditing(null); }}
-                  className="text-muted-foreground hover:text-foreground transition-colors"
-                >
-                  <ArrowLeft size={20} />
-                </button>
-                <h2 className="font-display text-xl text-foreground">{editing ? "Uredi vijest" : "Nova vijest"}</h2>
-              </div>
+            <div className="relative flex items-center justify-center">
+              <button
+                onClick={() => { setView("main"); setEditing(null); }}
+                className="absolute left-0 text-muted-foreground hover:text-foreground transition-colors"
+              >
+                <ArrowLeft size={20} />
+              </button>
+              <h2 className="font-display text-xl text-foreground">{editing ? "Uredi vijest" : "Nova vijest"}</h2>
             </div>
             <Input placeholder="Naslov *" value={form.title} onChange={e => setForm(f => ({ ...f, title: e.target.value }))} />
             <textarea
