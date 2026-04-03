@@ -4,19 +4,8 @@ import { motion, AnimatePresence } from "framer-motion";
 import { ArrowLeft, Camera, X, ChevronLeft, ChevronRight } from "lucide-react";
 import Footer from "@/components/Footer";
 
-import eventTomislav from "@/assets/event-tomislav.png";
 
-// Import Tomislav images
-import tomislav1 from "@/assets/tomislav/tomislav-1.jpg";
-import tomislav2 from "@/assets/tomislav/tomislav-2.jpg";
-import tomislav3 from "@/assets/tomislav/tomislav-3.png";
-import tomislav4 from "@/assets/tomislav/tomislav-4.jpg";
-import tomislav5 from "@/assets/tomislav/tomislav-5.jpg";
-import tomislav6 from "@/assets/tomislav/tomislav-6.jpg";
-import tomislav7 from "@/assets/tomislav/tomislav-7.png";
-import tomislav8 from "@/assets/tomislav/tomislav-8.jpg";
-import tomislav9 from "@/assets/tomislav/tomislav-9.png";
-import tomislav10 from "@/assets/tomislav/tomislav-10.jpg";
+
 
 // Image orientation type - vertical or horizontal
 type ImageWithOrientation = {
@@ -54,27 +43,6 @@ const events = [
     coverImage: "",
     images: [] as string[],
     imagesWithOrientation: [] as ImageWithOrientation[],
-  },
-  {
-    id: "tomislav",
-    homeTeam: "HKK Posušje",
-    awayTeam: "HKK Tomislav",
-    date: "02.11.2025.",
-    description: "Galerija s utakmice Posušje - Tomislav",
-    coverImage: eventTomislav,
-    images: [] as string[],
-    imagesWithOrientation: [
-      { src: tomislav3, orientation: "horizontal" },
-      { src: tomislav1, orientation: "vertical" },
-      { src: tomislav2, orientation: "vertical" },
-      { src: tomislav7, orientation: "horizontal" },
-      { src: tomislav4, orientation: "vertical" },
-      { src: tomislav5, orientation: "vertical" },
-      { src: tomislav9, orientation: "horizontal" },
-      { src: tomislav6, orientation: "vertical" },
-      { src: tomislav8, orientation: "vertical" },
-      { src: tomislav10, orientation: "vertical" },
-    ] as ImageWithOrientation[],
   },
 ];
 
@@ -187,7 +155,7 @@ const EventAlbum = ({ event }: { event: typeof events[0] }) => {
               className="inline-flex items-center gap-3 text-primary hover:text-primary/80 transition-colors mb-8 text-lg"
             >
               <ArrowLeft className="w-6 h-6" />
-              <span className="font-display font-bold tracking-wider text-xl">Nazad na galeriju</span>
+              <span className="font-display font-bold uppercase tracking-wider text-xl">NAZAD NA GALERIJU</span>
             </Link>
           </motion.div>
 
@@ -318,7 +286,7 @@ const GalleryPage = () => {
               className="inline-flex items-center gap-3 text-primary hover:text-primary/80 transition-colors mb-8 text-lg"
             >
               <ArrowLeft className="w-6 h-6" />
-              <span className="font-display tracking-wider text-xl">Nazad</span>
+              <span className="font-display font-bold uppercase tracking-wider text-xl">NAZAD</span>
             </button>
           </motion.div>
 
