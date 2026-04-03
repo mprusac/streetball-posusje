@@ -1,0 +1,1 @@
+ALTER TABLE public.galleries ADD COLUMN cover_image text;

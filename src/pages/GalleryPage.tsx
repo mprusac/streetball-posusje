@@ -10,11 +10,12 @@ interface GalleryEvent {
   title: string;
   date: string;
   images: string[];
+  cover_image: string | null;
   created_at: string;
 }
 
 const EventCard = ({ event, index }: { event: GalleryEvent; index: number }) => {
-  const coverImage = event.images?.[0];
+  const coverImage = event.cover_image || event.images?.[0];
   
   return (
     <motion.div

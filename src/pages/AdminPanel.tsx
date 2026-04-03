@@ -30,6 +30,7 @@ interface GalleryItem {
   title: string;
   date: string;
   images: string[];
+  cover_image: string | null;
   created_at: string;
 }
 
@@ -86,8 +87,10 @@ const AdminPanel = () => {
   });
 
   const [galleryForm, setGalleryForm] = useState({
-    title: "", date: getTodayFormatted(), images: [] as string[]
+    title: "", date: getTodayFormatted(), images: [] as string[], cover_image: "" as string
   });
+  const [uploadingCoverImage, setUploadingCoverImage] = useState(false);
+  const coverImageInputRef = useRef<HTMLInputElement>(null);
 
   const headers = { Authorization: `Bearer ${token}`, "Content-Type": "application/json" };
 
@@ -181,6 +184,21 @@ const AdminPanel = () => {
     setUploadingGallery(false);
   };
 
+  const uploadCoverImage = async (file: File) => {
+    setUploadingCoverImage(true);
+    try {
+      const filePath = `galleries/cover-${Date.now()}-${file.name}`;
+      const { error } = await supabase.storage.from("news-images").upload(filePath, file);
+      if (error) throw error;
+      const { data: { publicUrl } } = supabase.storage.from("news-images").getPublicUrl(filePath);
+      setGalleryForm(f => ({ ...f, cover_image: publicUrl }));
+      toast({ title: "Naslovna slika uploadana!" });
+    } catch (err: any) {
+      toast({ title: "Greška pri uploadu", description: err.message, variant: "destructive" });
+    }
+    setUploadingCoverImage(false);
+  };
+
   const uploadGalleryImages = async (files: FileList) => {
     setUploadingGalleryImages(true);
     const newUrls: string[] = [];
@@ -256,7 +274,7 @@ const AdminPanel = () => {
       }
       setEditingGallery(null);
       setView("main");
-      setGalleryForm({ title: "", date: getTodayFormatted(), images: [] });
+      setGalleryForm({ title: "", date: getTodayFormatted(), images: [], cover_image: "" });
       fetchGalleries();
     } catch (err: any) {
       toast({ title: "Greška", description: err.message, variant: "destructive" });
@@ -314,6 +332,7 @@ const AdminPanel = () => {
       title: item.title,
       date: item.date,
       images: item.images || [],
+      cover_image: item.cover_image || "",
     });
   };
 
@@ -326,7 +345,7 @@ const AdminPanel = () => {
   const startCreateGallery = () => {
     setEditingGallery(null);
     setView("gallery-form");
-    setGalleryForm({ title: "", date: getTodayFormatted(), images: [] });
+    setGalleryForm({ title: "", date: getTodayFormatted(), images: [], cover_image: "" });
   };
 
   // Login screen
@@ -551,6 +570,33 @@ const AdminPanel = () => {
             <Input placeholder="Naslov galerije *" value={galleryForm.title} onChange={e => setGalleryForm(f => ({ ...f, title: e.target.value }))} />
             <Input placeholder="dd.mm.yyyy" value={galleryForm.date} onChange={e => handleDateInput(e.target.value, setGalleryForm)} maxLength={10} />
             
+            {/* Cover image upload */}
+            <div className="space-y-2">
+              <label className="text-sm text-muted-foreground font-medium">Naslovna slika</label>
+              <div
+                onDragOver={e => { e.preventDefault(); e.currentTarget.classList.add('border-primary', 'bg-primary/5'); }}
+                onDragLeave={e => { e.preventDefault(); e.currentTarget.classList.remove('border-primary', 'bg-primary/5'); }}
+                onDrop={e => { e.preventDefault(); e.currentTarget.classList.remove('border-primary', 'bg-primary/5'); if (e.dataTransfer.files?.[0]) uploadCoverImage(e.dataTransfer.files[0]); }}
+                className="border-2 border-dashed border-border rounded-lg p-4 text-center transition-colors cursor-pointer"
+                onClick={() => coverImageInputRef.current?.click()}
+              >
+                <input ref={coverImageInputRef} type="file" accept="image/*" className="hidden" onChange={e => { if (e.target.files?.[0]) uploadCoverImage(e.target.files[0]); }} />
+                <Upload size={20} className="mx-auto mb-1 text-muted-foreground" />
+                <p className="text-sm text-muted-foreground">{uploadingCoverImage ? "Učitavanje..." : "Klikni ili povuci naslovnu sliku ovdje"}</p>
+              </div>
+              {galleryForm.cover_image && (
+                <div className="relative inline-block">
+                  <img src={galleryForm.cover_image} alt="Cover" className="h-20 rounded-lg object-cover" />
+                  <button
+                    onClick={() => setGalleryForm(f => ({ ...f, cover_image: "" }))}
+                    className="absolute top-1 right-1 bg-background/80 rounded-full p-1 hover:bg-destructive hover:text-destructive-foreground transition-colors"
+                  >
+                    <X size={14} />
+                  </button>
+                </div>
+              )}
+            </div>
+
             {/* Gallery images upload */}
             <div className="space-y-2">
               <label className="text-sm text-muted-foreground font-medium">Slike galerije</label>
@@ -659,8 +705,8 @@ const AdminPanel = () => {
                   {!loading && galleries.length === 0 && <p className="text-muted-foreground text-center py-4">Nema galerija. Dodajte prvu!</p>}
                   {galleries.map(item => (
                     <div key={item.id} className="flex items-center gap-3 bg-card p-3 rounded-xl border border-border">
-                      {item.images?.[0] && (
-                        <img src={item.images[0]} alt={item.title} className="w-12 h-12 rounded-lg object-cover flex-shrink-0" />
+                      {(item.cover_image || item.images?.[0]) && (
+                        <img src={item.cover_image || item.images[0]} alt={item.title} className="w-12 h-12 rounded-lg object-cover flex-shrink-0" />
                       )}
                       <div className="flex-1 min-w-0">
                         <h3 className="text-foreground font-medium truncate text-sm">{item.title}</h3>
