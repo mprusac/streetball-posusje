@@ -81,7 +81,8 @@ const Footer = () => {
         {/* Bottom Bar */}
         <div className="mt-12 pt-8 border-t border-primary/30 flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-sm text-muted-foreground">
-            © {new Date().getFullYear()} Streetball Posušje 2026. Sva prava pridržana.
+            © {new Date().getFullYear()} Streetball Posušje 2026.<br />
+            Sva prava pridržana.
           </p>
 
           {/* Social Links */}

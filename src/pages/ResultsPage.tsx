@@ -42,7 +42,7 @@ const ResultsPage = () => {
             className="inline-flex items-center gap-3 text-primary hover:text-primary/80 transition-colors mb-8 text-lg"
           >
             <ArrowLeft className="w-5 h-5" />
-            <span className="font-display font-bold tracking-wider">Nazad</span>
+            <span className="font-display font-bold uppercase tracking-wider">NAZAD</span>
           </Link>
 
           <h1 className="font-display text-3xl md:text-5xl text-center mb-4">
