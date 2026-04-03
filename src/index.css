@@ -142,7 +142,7 @@
   }
 
   .stat-number {
-    @apply text-5xl md:text-6xl lg:text-7xl font-display text-primary;
+    @apply text-5xl md:text-6xl lg:text-7xl font-display font-bold text-primary;
   }
 
   .stat-label {
