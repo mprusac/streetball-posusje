@@ -369,7 +369,7 @@ const AdminPanel = () => {
               >
                 <ArrowLeft size={20} />
               </button>
-              <h2 className="font-display text-xl text-foreground">{editing ? "Uredi vijest" : "Nova vijest"}</h2>
+              <h2 className="font-display text-xl text-primary">{editing ? "Uredi vijest" : "Nova vijest"}</h2>
             </div>
             <Input placeholder="Naslov *" value={form.title} onChange={e => setForm(f => ({ ...f, title: e.target.value }))} />
             <textarea
