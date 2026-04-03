@@ -161,7 +161,7 @@ const Sponsors = () => {
               <div className="text-center flex-1">
                 <h3 className="text-2xl md:text-3xl font-display">
                   <span className="text-foreground">POSTANI </span>
-                  <span className="text-primary">SPONZOR</span>
+                  <span className="text-foreground">SPONZOR</span>
                 </h3>
                 <p className="text-muted-foreground text-base mt-1">
                   <span className="md:hidden">Pogledaj sponzorske pakete<br />i podrži turnir</span>
@@ -197,7 +197,7 @@ const Sponsors = () => {
                         className={`group bg-secondary/40 border border-border rounded-lg p-3 md:p-4 animate-fade-in-up transition-all duration-300 hover:scale-[1.02] hover:border-primary/50 ${shadowColor} snap-start shrink-0 w-[calc(50%-6px)] md:w-[220px] lg:w-auto lg:flex-1`}
                         style={{ animationDelay: `${index * 80}ms` }}
                       >
-                        <div className="flex items-center gap-2 mb-2 min-h-[40px] md:min-h-[52px]">
+                        <div className="flex items-center gap-2 mb-2 min-h-[48px] md:min-h-[56px]">
                           <div className={`${tier.color} transition-transform duration-300 group-hover:scale-110 w-4 md:w-8 flex items-center justify-center shrink-0`}>{tier.icon}</div>
                           <div>
                             <h4 className={`font-semibold text-xs md:text-sm ${tier.color} leading-none`}>{tier.name}</h4>
@@ -223,7 +223,7 @@ const Sponsors = () => {
                 {/* Payment Info */}
                 <div className="bg-background/50 border border-border rounded-lg p-4 md:p-5">
                   <h4 className="font-display text-base md:text-lg mb-3">
-                    <span className="text-foreground">PODACI ZA </span>
+                    <span className="text-primary">PODACI ZA </span>
                     <span className="text-primary">PLAĆANJE</span>
                   </h4>
                   <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs md:text-sm">
