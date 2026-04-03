@@ -415,11 +415,16 @@ const AdminPanel = () => {
             {/* Thumbnail upload */}
             <div className="space-y-2">
               <label className="text-sm text-muted-foreground font-medium">Naslovna slika (thumbnail)</label>
-              <div>
+              <div
+                onDragOver={e => { e.preventDefault(); e.currentTarget.classList.add('border-primary', 'bg-primary/5'); }}
+                onDragLeave={e => { e.preventDefault(); e.currentTarget.classList.remove('border-primary', 'bg-primary/5'); }}
+                onDrop={e => { e.preventDefault(); e.currentTarget.classList.remove('border-primary', 'bg-primary/5'); if (e.dataTransfer.files?.[0]) uploadImage(e.dataTransfer.files[0]); }}
+                className="border-2 border-dashed border-border rounded-lg p-4 text-center transition-colors cursor-pointer"
+                onClick={() => fileInputRef.current?.click()}
+              >
                 <input ref={fileInputRef} type="file" accept="image/*" className="hidden" onChange={e => { if (e.target.files?.[0]) uploadImage(e.target.files[0]); }} />
-                <Button type="button" variant="outline" onClick={() => fileInputRef.current?.click()} disabled={uploadingImage} className="w-full">
-                  <Upload size={16} /> {uploadingImage ? "Učitavanje..." : "Odaberi naslovnu sliku"}
-                </Button>
+                <Upload size={20} className="mx-auto mb-1 text-muted-foreground" />
+                <p className="text-sm text-muted-foreground">{uploadingImage ? "Učitavanje..." : "Klikni ili povuci sliku ovdje"}</p>
               </div>
               {form.image_url && (
                 <div className="relative inline-block">
@@ -437,11 +442,16 @@ const AdminPanel = () => {
             {/* Gallery images upload */}
             <div className="space-y-2">
               <label className="text-sm text-muted-foreground font-medium">Slike članka (galerija)</label>
-              <div>
+              <div
+                onDragOver={e => { e.preventDefault(); e.currentTarget.classList.add('border-primary', 'bg-primary/5'); }}
+                onDragLeave={e => { e.preventDefault(); e.currentTarget.classList.remove('border-primary', 'bg-primary/5'); }}
+                onDrop={e => { e.preventDefault(); e.currentTarget.classList.remove('border-primary', 'bg-primary/5'); if (e.dataTransfer.files?.length) uploadGalleryImagesForNews(e.dataTransfer.files); }}
+                className="border-2 border-dashed border-border rounded-lg p-4 text-center transition-colors cursor-pointer"
+                onClick={() => galleryInputRef.current?.click()}
+              >
                 <input ref={galleryInputRef} type="file" accept="image/*" multiple className="hidden" onChange={e => { if (e.target.files?.length) uploadGalleryImagesForNews(e.target.files); }} />
-                <Button type="button" variant="outline" onClick={() => galleryInputRef.current?.click()} disabled={uploadingGallery} className="w-full">
-                  <ImagePlus size={16} /> {uploadingGallery ? "Učitavanje..." : "Dodaj slike u galeriju"}
-                </Button>
+                <ImagePlus size={20} className="mx-auto mb-1 text-muted-foreground" />
+                <p className="text-sm text-muted-foreground">{uploadingGallery ? "Učitavanje..." : "Klikni ili povuci slike ovdje"}</p>
               </div>
               {form.gallery_images.length > 0 && (
                 <div className="grid grid-cols-3 md:grid-cols-4 gap-2">
@@ -484,11 +494,16 @@ const AdminPanel = () => {
             {/* Gallery images upload */}
             <div className="space-y-2">
               <label className="text-sm text-muted-foreground font-medium">Slike galerije</label>
-              <div>
+              <div
+                onDragOver={e => { e.preventDefault(); e.currentTarget.classList.add('border-primary', 'bg-primary/5'); }}
+                onDragLeave={e => { e.preventDefault(); e.currentTarget.classList.remove('border-primary', 'bg-primary/5'); }}
+                onDrop={e => { e.preventDefault(); e.currentTarget.classList.remove('border-primary', 'bg-primary/5'); if (e.dataTransfer.files?.length) uploadGalleryImages(e.dataTransfer.files); }}
+                className="border-2 border-dashed border-border rounded-lg p-4 text-center transition-colors cursor-pointer"
+                onClick={() => galleryImagesInputRef.current?.click()}
+              >
                 <input ref={galleryImagesInputRef} type="file" accept="image/*" multiple className="hidden" onChange={e => { if (e.target.files?.length) uploadGalleryImages(e.target.files); }} />
-                <Button type="button" variant="outline" onClick={() => galleryImagesInputRef.current?.click()} disabled={uploadingGalleryImages} className="w-full">
-                  <ImagePlus size={16} /> {uploadingGalleryImages ? "Učitavanje..." : "Dodaj slike"}
-                </Button>
+                <ImagePlus size={20} className="mx-auto mb-1 text-muted-foreground" />
+                <p className="text-sm text-muted-foreground">{uploadingGalleryImages ? "Učitavanje..." : "Klikni ili povuci slike ovdje"}</p>
               </div>
               {galleryForm.images.length > 0 && (
                 <div className="grid grid-cols-3 md:grid-cols-4 gap-2">
