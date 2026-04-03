@@ -36,8 +36,8 @@ const Footer = () => {
           <div>
             <img src={logo} alt="Streetball Posušje 2026" className="h-20 w-auto mb-4 mx-auto md:mx-0" />
             <p className="text-muted-foreground text-sm">
-              „Igra koja spaja –<br />
-              Streetball Posušje 2026."
+              „Gdje košarka postaje spektakl"<br />
+              - Streetball Posušje 2026
             </p>
           </div>
 
