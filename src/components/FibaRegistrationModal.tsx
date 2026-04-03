@@ -45,7 +45,7 @@ const FibaRegistrationModal = ({ isOpen, onClose }: FibaRegistrationModalProps) 
         }}
         onClick={(e) => e.stopPropagation()}
       >
-        <div className="sticky top-0 z-10 bg-card border-b border-border rounded-t-2xl px-6 py-4 flex items-center justify-between">
+        <div className="sticky top-0 z-10 border-b border-primary/30 rounded-t-2xl px-6 py-4 flex items-center justify-between" style={{ background: 'hsl(0 0% 6%)' }}>
           <h2 className="font-display text-xl md:text-2xl">
             <span className="text-foreground">PRIJAVA NA </span>
             <span className="text-primary">TURNIR</span>

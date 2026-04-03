@@ -56,7 +56,10 @@ const ResultsPage = () => {
 
           <div
             ref={containerRef}
-            className="bg-card rounded-xl border border-border p-4 md:p-6 min-h-[400px]"
+            className="rounded-xl border-2 border-primary p-4 md:p-6 min-h-[400px]"
+            style={{
+              background: 'linear-gradient(135deg, hsl(0 0% 5%) 0%, hsl(45 100% 51% / 0.08) 50%, hsl(0 0% 8%) 100%)',
+            }}
           />
         </div>
       </div>
