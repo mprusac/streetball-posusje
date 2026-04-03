@@ -58,21 +58,21 @@ const Navbar = () => {
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center gap-4">
+          <div className="hidden lg:flex items-center gap-2">
             {navLinks.map((link) => {
               const isRoute = link.isRoute;
               const isActive = isRoute 
                 ? location.pathname === link.href 
                 : activeSection === link.href.slice(1);
               
-              const className = `group relative font-display font-bold text-xl uppercase tracking-widest transition-all duration-300 py-2 px-3 ${
+              const className = `group relative font-display font-bold text-xl uppercase tracking-widest transition-all duration-300 py-2 px-2 ${
                 isActive
                   ? "text-primary"
                   : "text-foreground hover:text-primary"
               }`;
 
               const underline = (
-                <span className={`absolute bottom-0 left-0 h-[2px] bg-primary transition-all duration-300 ${isActive ? 'w-full' : 'w-0 group-hover:w-full'}`} />
+                <span className={`absolute bottom-0 left-2 right-2 h-[1.5px] bg-primary transition-all duration-300 ${isActive ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'}`} />
               );
               
               if (isRoute) {
