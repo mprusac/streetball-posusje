@@ -36,7 +36,18 @@ function getTodayFormatted(): string {
   const dd = String(now.getDate()).padStart(2, '0');
   const mm = String(now.getMonth() + 1).padStart(2, '0');
   const yyyy = now.getFullYear();
-  return `${dd}. ${mm}. ${yyyy}.`;
+  return `${dd}.${mm}.${yyyy}`;
+}
+
+function handleDateInput(value: string, setter: (fn: (prev: any) => any) => void) {
+  // Strip everything except digits
+  const digits = value.replace(/\D/g, '').slice(0, 8);
+  let formatted = '';
+  for (let i = 0; i < digits.length; i++) {
+    formatted += digits[i];
+    if (i === 1 || i === 3) formatted += '.';
+  }
+  setter((f: any) => ({ ...f, date: formatted }));
 }
 
 type AdminView = "main" | "news-form" | "gallery-form";
