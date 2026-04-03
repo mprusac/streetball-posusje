@@ -224,7 +224,7 @@ const AdminPanel = () => {
     <div className="min-h-screen bg-background">
       {/* Top Bar */}
       <div className="sticky top-0 z-40 bg-[hsl(0,0%,7%)] shadow-md">
-        <div className="container mx-auto flex items-center justify-between px-4 md:px-8 h-14">
+        <div className="container mx-auto relative flex items-center justify-between px-4 md:px-8 h-14">
           <button
             onClick={() => navigate("/")}
             className="flex items-center gap-2 text-primary hover:text-primary/80 transition-colors"
