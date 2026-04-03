@@ -337,9 +337,14 @@ const AdminPanel = () => {
             </Button>
           </div>
         ) : (
-          <Button onClick={startCreate} className="mb-6">
-            <Plus size={16} /> Nova vijest
-          </Button>
+          <div className="flex items-center justify-center gap-4 mb-6">
+            <Button onClick={startCreate}>
+              <Plus size={16} /> Nova vijest
+            </Button>
+            <Button variant="outline" onClick={() => toast({ title: "Galerija", description: "Funkcionalnost galerije dolazi uskoro." })}>
+              <ImagePlus size={16} /> Nova galerija
+            </Button>
+          </div>
         )}
 
         {/* News list */}
