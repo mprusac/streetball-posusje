@@ -44,7 +44,7 @@ const Navbar = () => {
     <nav
       aria-label="Glavna navigacija"
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled ? "bg-background/95 backdrop-blur-md shadow-lg" : "bg-transparent"
+        scrolled || isOpen ? "bg-background/95 backdrop-blur-md shadow-lg" : "bg-transparent"
       }`}
     >
       <div className="container mx-auto px-4">
@@ -124,7 +124,7 @@ const Navbar = () => {
             isOpen ? "max-h-[400px] pb-2" : "max-h-0"
           }`}
         >
-          <div className="flex flex-col gap-0 pt-1">
+          <div className="flex flex-col gap-0 pt-0 pb-1">
             {navLinks.map((link) => {
               const isRoute = link.isRoute;
               const isActive = isRoute 
