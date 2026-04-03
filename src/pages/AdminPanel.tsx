@@ -461,7 +461,7 @@ const AdminPanel = () => {
               >
                 <ArrowLeft size={20} />
               </button>
-              <h2 className="font-display text-xl text-foreground">{editingGallery ? "Uredi galeriju" : "Nova galerija"}</h2>
+              <h2 className="font-display text-xl text-primary">{editingGallery ? "Uredi galeriju" : "Nova galerija"}</h2>
             </div>
             <Input placeholder="Naslov galerije *" value={galleryForm.title} onChange={e => setGalleryForm(f => ({ ...f, title: e.target.value }))} />
             <Input placeholder="Datum (npr. 19.07.2025.)" value={galleryForm.date} onChange={e => setGalleryForm(f => ({ ...f, date: e.target.value }))} />
