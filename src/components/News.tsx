@@ -140,7 +140,7 @@ const News = () => {
           <span className="section-title-gold">VIJESTI</span>
         </h2>
 
-        <p className="text-muted-foreground text-center mb-12">
+        <p className="text-muted-foreground text-center mb-12 text-base md:text-lg">
           Prati sve aktualnosti i novosti o turniru
         </p>
 

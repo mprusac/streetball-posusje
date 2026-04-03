@@ -118,7 +118,7 @@ const Sponsors = () => {
           <span className="section-title-gold">SPONZORI</span>
         </h2>
 
-        <p className="text-muted-foreground text-center mb-8 md:mb-16 max-w-2xl mx-auto text-sm md:text-base">
+        <p className="text-muted-foreground text-center mb-8 md:mb-16 max-w-2xl mx-auto text-base md:text-lg">
           Naši partneri koji podržavaju razvoj turnira i omogućavaju ostvarivanje naših ciljeva
         </p>
 

@@ -68,7 +68,7 @@ const Contact = () => {
           <span className="text-primary">KONTAKTIRAJTE NAS</span>
         </h2>
 
-        <p className="text-muted-foreground text-center mb-16 max-w-2xl mx-auto">
+        <p className="text-muted-foreground text-center mb-16 max-w-2xl mx-auto text-base md:text-lg">
           Želite postati sponzor ili imate pitanja o turniru? Javite nam se!
         </p>
 
