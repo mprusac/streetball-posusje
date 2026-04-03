@@ -136,12 +136,10 @@ const Hero = () => {
             <Button
               size="lg"
               className="group relative overflow-hidden bg-transparent border-2 border-primary text-primary hover:text-primary-foreground font-display uppercase tracking-widest px-6 sm:px-10 py-5 sm:py-7 text-base sm:text-lg transition-all duration-500 hover:shadow-[0_0_30px_hsl(48,96%,53%,0.4)]"
-              asChild
+              onClick={() => setRegistrationOpen(true)}
             >
-              <a href="#kontakt">
-                <span className="absolute inset-0 bg-primary transform -translate-x-full group-hover:translate-x-0 transition-transform duration-500 ease-out" />
-                <span className="relative z-10">Prijavi se</span>
-              </a>
+              <span className="absolute inset-0 bg-primary transform -translate-x-full group-hover:translate-x-0 transition-transform duration-500 ease-out" />
+              <span className="relative z-10">Prijavi se</span>
             </Button>
           </div>
 
