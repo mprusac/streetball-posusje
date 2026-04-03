@@ -216,9 +216,9 @@ const Sponsors = () => {
                           {tier.benefits.map((benefit) => (
                             <li
                               key={benefit}
-                              className="text-muted-foreground text-[11px] md:text-xs flex items-start gap-1.5 leading-snug"
+                              className="text-muted-foreground text-[11px] md:text-xs flex items-center gap-1.5 leading-snug"
                             >
-                              <span className="text-primary mt-0.5 shrink-0">•</span>
+                              <span className="text-primary shrink-0">•</span>
                               <span>{benefit}</span>
                             </li>
                           ))}
