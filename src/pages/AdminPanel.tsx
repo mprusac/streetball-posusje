@@ -285,6 +285,7 @@ const AdminPanel = () => {
     setForm({
       title: item.title,
       excerpt: item.excerpt || "",
+      date: item.date || getTodayFormatted(),
       image_url: item.image_url || "",
       image_position: item.image_position,
       pinned: item.pinned,
