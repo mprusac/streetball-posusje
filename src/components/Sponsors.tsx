@@ -181,7 +181,7 @@ const Sponsors = () => {
             >
               <div className="px-3 pb-4 md:px-6 md:pb-6">
                 {/* Horizontal scrollable tiers */}
-                <div className="flex gap-3 md:gap-4 mb-4 md:mb-6 mt-2 md:mt-4 overflow-x-auto pb-3 snap-x snap-mandatory scrollbar-thin">
+                <div className="flex gap-3 md:gap-4 mb-4 md:mb-6 mt-2 md:mt-4 overflow-x-auto pb-3 snap-x snap-mandatory scrollbar-thin" style={{ overflowX: 'auto', WebkitOverflowScrolling: 'touch' }}>
                   {sponsorTiers.map((tier, index) => {
                     const shadowColor = tier.name === "ZLATNI" 
                       ? "hover:[box-shadow:0_0_20px_6px_hsl(48,96%,53%,0.3)]" 
