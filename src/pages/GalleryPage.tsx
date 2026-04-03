@@ -2,51 +2,20 @@ import { useState, useEffect } from "react";
 import { Link, useParams, useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowLeft, Camera, X, ChevronLeft, ChevronRight } from "lucide-react";
+import { supabase } from "@/integrations/supabase/client";
 import Footer from "@/components/Footer";
 
+interface GalleryEvent {
+  id: string;
+  title: string;
+  date: string;
+  images: string[];
+  created_at: string;
+}
 
-
-
-// Image orientation type - vertical or horizontal
-type ImageWithOrientation = {
-  src: string;
-  orientation: "vertical" | "horizontal";
-};
-
-const events = [
-  {
-    id: "streetball-dan3",
-    homeTeam: "Treći dan",
-    awayTeam: "",
-    date: "19.07.2025.",
-    description: "Galerija s trećeg dana Streetball Posušje 2025",
-    coverImage: "",
-    images: [] as string[],
-    imagesWithOrientation: [] as ImageWithOrientation[],
-  },
-  {
-    id: "streetball-dan2",
-    homeTeam: "Drugi dan",
-    awayTeam: "",
-    date: "18.07.2025.",
-    description: "Galerija s drugog dana Streetball Posušje 2025",
-    coverImage: "",
-    images: [] as string[],
-    imagesWithOrientation: [] as ImageWithOrientation[],
-  },
-  {
-    id: "streetball-dan1",
-    homeTeam: "Prvi dan",
-    awayTeam: "",
-    date: "17.07.2025.",
-    description: "Galerija s prvog dana Streetball Posušje 2025",
-    coverImage: "",
-    images: [] as string[],
-    imagesWithOrientation: [] as ImageWithOrientation[],
-  },
-];
-
-const EventCard = ({ event, index }: { event: typeof events[0]; index: number }) => {
+const EventCard = ({ event, index }: { event: GalleryEvent; index: number }) => {
+  const coverImage = event.images?.[0];
+  
   return (
     <motion.div
       initial={{ opacity: 0, y: 30 }}
@@ -55,10 +24,10 @@ const EventCard = ({ event, index }: { event: typeof events[0]; index: number })
     >
       <Link to={`/galerija/${event.id}`} className="group block">
         <div className="relative overflow-hidden rounded-lg aspect-[4/3] shadow-[0_0_20px_rgba(234,179,8,0.15)] hover:shadow-[0_0_30px_rgba(234,179,8,0.25)] transition-shadow duration-300">
-          {event.coverImage ? (
+          {coverImage ? (
             <img
-              src={event.coverImage}
-              alt={event.awayTeam ? `${event.homeTeam} - ${event.awayTeam}` : event.homeTeam}
+              src={coverImage}
+              alt={event.title}
               className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
             />
           ) : (
@@ -66,7 +35,6 @@ const EventCard = ({ event, index }: { event: typeof events[0]; index: number })
               <Camera className="w-12 h-12 text-primary/40" />
             </div>
           )}
-          {/* Hover overlay - covers entire image */}
           <div className="absolute inset-0 bg-black/0 group-hover:bg-black/60 transition-all duration-300">
             <div className="absolute inset-0 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300">
               <div className="w-16 h-16 rounded-full bg-primary/90 flex items-center justify-center">
@@ -80,31 +48,27 @@ const EventCard = ({ event, index }: { event: typeof events[0]; index: number })
         </div>
         <div className="mt-4">
           <h3 className="font-display text-xl text-foreground group-hover:text-primary transition-colors">
-            {event.awayTeam ? `${event.homeTeam} - ${event.awayTeam}` : event.homeTeam}
+            {event.title}
           </h3>
           <p className="text-primary font-bold mt-1">{event.date}</p>
-          <p className="text-muted-foreground text-sm mt-1 hidden md:block">{event.description}</p>
+          <p className="text-muted-foreground text-sm mt-1 hidden md:block">
+            {event.images?.length || 0} fotografija
+          </p>
         </div>
       </Link>
     </motion.div>
   );
 };
 
-const EventAlbum = ({ event }: { event: typeof events[0] }) => {
+const EventAlbum = ({ event }: { event: GalleryEvent }) => {
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
 
-  // Scroll to top on mount
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "instant" as ScrollBehavior });
-    document.documentElement.scrollTop = 0;
-    document.body.scrollTop = 0;
   }, []);
 
-  // Get all images (either from imagesWithOrientation or regular images array)
-  const allImages = event.imagesWithOrientation 
-    ? event.imagesWithOrientation.map(img => img.src)
-    : event.images;
+  const allImages = event.images || [];
 
   const openLightbox = (index: number) => {
     setCurrentIndex(index);
@@ -125,26 +89,10 @@ const EventAlbum = ({ event }: { event: typeof events[0] }) => {
     setCurrentIndex((prev) => (prev === allImages.length - 1 ? 0 : prev + 1));
   };
 
-  // Get span classes based on orientation - compact layout
-  const getSpanClasses = (index: number) => {
-    if (event.imagesWithOrientation) {
-      const img = event.imagesWithOrientation[index];
-      // Horizontal images span 2 columns, 1 row
-      // Vertical images span 1 column, 2 rows
-      return img.orientation === "horizontal" 
-        ? "col-span-2 row-span-1" 
-        : "col-span-1 row-span-2";
-    }
-    
-    // Fallback
-    return "col-span-1 row-span-1";
-  };
-
   return (
     <div className="min-h-screen bg-background">
       <div className="pt-8 pb-16">
         <div className="container mx-auto px-4">
-          {/* Back link */}
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
@@ -159,7 +107,6 @@ const EventAlbum = ({ event }: { event: typeof events[0] }) => {
             </Link>
           </motion.div>
 
-          {/* Title */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -167,14 +114,13 @@ const EventAlbum = ({ event }: { event: typeof events[0] }) => {
             className="text-center mb-12"
           >
             <h1 className="font-display text-4xl md:text-5xl lg:text-6xl mb-2">
-              <span className="text-primary">{event.homeTeam}</span>
-              <span className="text-white"> - {event.awayTeam}</span>
+              <span className="text-primary">{event.title}</span>
             </h1>
             <p className="text-primary font-display text-2xl md:text-3xl mt-2">{event.date}</p>
-            <p className="text-muted-foreground mt-4">{event.description}</p>
+            <p className="text-muted-foreground mt-4">{allImages.length} fotografija</p>
           </motion.div>
 
-          {/* Masonry Gallery - clean columns layout */}
+          {/* Masonry Gallery */}
           <div className="columns-2 md:columns-3 gap-1.5 max-w-5xl mx-auto">
             {allImages.map((img, index) => (
               <motion.div
@@ -254,28 +200,59 @@ const EventAlbum = ({ event }: { event: typeof events[0] }) => {
 const GalleryPage = () => {
   const { eventId } = useParams();
   const navigate = useNavigate();
+  const [galleries, setGalleries] = useState<GalleryEvent[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [selectedGallery, setSelectedGallery] = useState<GalleryEvent | null>(null);
 
-  // Scroll to top on mount
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "instant" as ScrollBehavior });
-    document.documentElement.scrollTop = 0;
-    document.body.scrollTop = 0;
   }, []);
 
-  // If eventId is provided, show the album
-  if (eventId) {
-    const event = events.find((e) => e.id === eventId);
-    if (event) {
-      return <EventAlbum event={event} />;
+  useEffect(() => {
+    const fetchGalleries = async () => {
+      setLoading(true);
+      const { data, error } = await supabase
+        .from('galleries')
+        .select('*')
+        .order('date', { ascending: false });
+      
+      if (!error && data) {
+        // Sort chronologically by parsing date (DD.MM.YYYY. format)
+        const sorted = [...data].sort((a, b) => {
+          const parseDate = (d: string) => {
+            const parts = d.replace(/\./g, '').trim().split(' ').filter(Boolean);
+            if (parts.length >= 3) {
+              return new Date(parseInt(parts[2]), parseInt(parts[1]) - 1, parseInt(parts[0])).getTime();
+            }
+            return 0;
+          };
+          return parseDate(b.date) - parseDate(a.date);
+        });
+        setGalleries(sorted as GalleryEvent[]);
+      }
+      setLoading(false);
+    };
+    fetchGalleries();
+  }, []);
+
+  // Find gallery by ID
+  useEffect(() => {
+    if (eventId && galleries.length > 0) {
+      const found = galleries.find(g => g.id === eventId);
+      setSelectedGallery(found || null);
+    } else {
+      setSelectedGallery(null);
     }
+  }, [eventId, galleries]);
+
+  if (eventId && selectedGallery) {
+    return <EventAlbum event={selectedGallery} />;
   }
 
-  // Otherwise show the events list
   return (
     <div className="min-h-screen bg-background">
       <div className="pt-8 pb-16">
         <div className="container mx-auto px-4">
-          {/* Back link */}
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
@@ -290,7 +267,6 @@ const GalleryPage = () => {
             </button>
           </motion.div>
 
-          {/* Header */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -306,12 +282,17 @@ const GalleryPage = () => {
             </p>
           </motion.div>
 
-          {/* Events Grid */}
-          <div className="grid grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8 max-w-6xl mx-auto">
-            {events.map((event, index) => (
-              <EventCard key={event.id} event={event} index={index} />
-            ))}
-          </div>
+          {loading ? (
+            <p className="text-muted-foreground text-center py-8">Učitavanje galerija...</p>
+          ) : galleries.length === 0 ? (
+            <p className="text-muted-foreground text-center py-8">Nema galerija za prikaz.</p>
+          ) : (
+            <div className="grid grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8 max-w-6xl mx-auto">
+              {galleries.map((event, index) => (
+                <EventCard key={event.id} event={event} index={index} />
+              ))}
+            </div>
+          )}
         </div>
       </div>
       <Footer />
