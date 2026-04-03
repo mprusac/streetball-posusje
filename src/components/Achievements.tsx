@@ -67,7 +67,7 @@ const Achievements = () => {
                   <IconComponent className="w-5 h-5 md:w-6 md:h-6 group-hover:drop-shadow-[0_0_6px_rgba(234,179,8,0.6)] transition-all duration-300" />
                 </div>
                 <div>
-                  <h3 className="font-display text-base md:text-lg text-foreground tracking-wide leading-snug mb-1 group-hover:text-primary transition-colors duration-300">
+                  <h3 className="font-display text-base md:text-lg text-foreground tracking-wide leading-snug mb-1 transition-colors duration-300">
                     {item.title}
                   </h3>
                   <p className="text-primary/90 text-xs md:text-sm mb-0.5 font-medium">{item.highlight}</p>

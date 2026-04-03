@@ -69,7 +69,7 @@ const Contact = () => {
         </h2>
 
         <p className="text-muted-foreground text-center mb-16 max-w-2xl mx-auto">
-          Želite prijaviti ekipu ili imate pitanja o turniru? Javite nam se!
+          Želite postati sponzor ili imate pitanja o turniru? Javite nam se!
         </p>
 
         <div className="grid lg:grid-cols-2 gap-6 md:gap-8 max-w-6xl mx-auto items-stretch">

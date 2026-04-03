@@ -141,7 +141,7 @@ const News = () => {
         </h2>
 
         <p className="text-muted-foreground text-center mb-12">
-          Prati sve aktualnosti i novosti iz kluba
+          Prati sve aktualnosti i novosti o turniru
         </p>
 
         {/* News Slider */}

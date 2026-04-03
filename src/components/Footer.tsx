@@ -25,6 +25,7 @@ const Footer = () => {
         element.scrollIntoView({ behavior: "smooth", block: "start" });
       }
     }
+    // /admin link handled natively by browser
   };
 
   return (

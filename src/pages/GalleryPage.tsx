@@ -334,7 +334,7 @@ const GalleryPage = () => {
               <span className="text-primary"> GALERIJA</span>
             </h1>
             <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-              Zabilježeni trenuci sa naših utakmica
+              Zabilježeni trenuci sa našeg turnira
             </p>
           </motion.div>
 
