@@ -383,7 +383,7 @@ const Statistics = () => {
               className="inline-flex items-center gap-3 text-primary hover:text-primary/80 transition-colors mr-auto text-lg"
             >
               <ArrowLeft className="w-6 h-6" />
-              <span className="font-display tracking-wider text-xl">Nazad</span>
+              <span className="font-display font-bold tracking-wider text-xl">Nazad</span>
             </button>
             <div className="flex items-end gap-3 absolute left-1/2 -translate-x-1/2 md:static md:translate-x-0 md:ml-4">
               <img src={logoPosusje} alt="HKK Posušje" className="w-10 h-10 object-contain" />
