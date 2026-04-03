@@ -350,7 +350,7 @@ const AdminPanel = () => {
           <h1 className="absolute left-1/2 -translate-x-1/2 font-display text-lg md:text-xl text-primary tracking-wide whitespace-nowrap">
             Admin Panel <span className="text-foreground">|</span> <span className="text-foreground">Vijesti & Galerija</span>
           </h1>
-          <Button variant="outline" onClick={logout} size="sm" className="border-primary text-foreground hover:bg-primary/10">
+          <Button variant="outline" onClick={logout} size="sm" className="border-primary text-foreground hover:bg-primary hover:text-primary-foreground transition-colors">
             <LogOut size={16} /> Odjava
           </Button>
         </div>
