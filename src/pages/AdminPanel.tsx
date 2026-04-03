@@ -274,7 +274,7 @@ const AdminPanel = () => {
       }
       setEditingGallery(null);
       setView("main");
-      setGalleryForm({ title: "", date: getTodayFormatted(), images: [] });
+      setGalleryForm({ title: "", date: getTodayFormatted(), images: [], cover_image: "" });
       fetchGalleries();
     } catch (err: any) {
       toast({ title: "Greška", description: err.message, variant: "destructive" });
