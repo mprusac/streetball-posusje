@@ -122,7 +122,7 @@
 
 @layer components {
   .section-title {
-    @apply text-[2.15rem] sm:text-[3.45rem] md:text-[4.3rem] lg:text-[5.2rem] font-display font-extrabold tracking-wide uppercase;
+    @apply text-[1.85rem] sm:text-[2.8rem] md:text-[3.5rem] lg:text-[4.2rem] font-display font-extrabold tracking-wide uppercase;
   }
 
   .section-title-white {
