@@ -265,7 +265,6 @@ const AdminPanel = () => {
   };
 
   const deleteNews = async (id: string) => {
-    if (!confirm("Jeste li sigurni da želite obrisati ovu vijest?")) return;
     try {
       const res = await fetch(`${NEWS_URL}/delete`, {
         method: "POST", headers,
