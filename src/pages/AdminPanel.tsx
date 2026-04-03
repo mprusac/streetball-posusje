@@ -332,6 +332,7 @@ const AdminPanel = () => {
       title: item.title,
       date: item.date,
       images: item.images || [],
+      cover_image: item.cover_image || "",
     });
   };
 
