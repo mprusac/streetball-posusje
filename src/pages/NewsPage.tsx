@@ -39,10 +39,21 @@ interface NewsItem {
   pinned?: boolean;
 }
 
+const parseNewsDate = (dateStr: string): Date => {
+  const clean = dateStr.replace(/\.$/, '').trim();
+  const parts = clean.split('.').map(s => s.trim());
+  if (parts.length >= 3) {
+    return new Date(parseInt(parts[2]), parseInt(parts[1]) - 1, parseInt(parts[0]));
+  }
+  return new Date(0);
+};
+
+const stripTrailingDot = (d: string) => d.replace(/\.\s*$/, '');
+
 const hardcodedNews: NewsItem[] = [
-  { id: 48, title: "Streetball Turnir Posušje 2025 - Prijave otvorene! ⛹️", excerpt: "Streetball turnir Posušje se vraća! Nagradni fond 7.000 KM. Prijave su otvorene, ne propustite priliku za sudjelovanje!", content: "Streetball Posušje 2025 – Prijavi ekipu i osvoji nagrade! 🏀\n\nOvog ljeta, 18. i 19. srpnja 2025., Trg Hrvatskih branitelja u Posušju postaje centar vrhunske 3x3 košarke!\n\nU sklopu Posuškog Lita održava se Streetball Posušje, turnir koji okuplja sve generacije. Pripremili smo vrhunski program za sve posjetitelje koji će moći uživati u vrhunskoj košarci i odličnoj ponudi hrane i pića!\n\nNagradni fond: 7000 KM\n\nSeniori: Kotizacija - 100KM\n1. mjesto 4.500 KM\n2. mjesto 1.000 KM\n\nNatjecanja u tricama i zakucavanju po 100 KM\nMVP turnira - 200 KM\n\nAmateri, Juniori i Seniorke: Kotizacija besplatna\n1. mjesto 300KM\n\nSlužbena FIBA pravila, profesionalni teren i oprema!\nOdlična ponuda hrane i pića!\nDJ program\n\nPrijavi svoju ekipu i osvoji vrijedne nagrade! Vidimo se na Trgu hrvatskih branitelja u Posušju! 🏀🔥\n\nKontakt osoba: Petar Šušnjar (+387 63 390 237, +385 91 6082969)\nZvonimir Biško (+387 63 420 125, +385 95 3303102)", date: "05. 04. 2025.", category: "2025", image: streetball2025Banner, cardImage: streetball2025, cardImagePosition: "center", pinned: true },
-  { id: 50, title: "Rezultati U-16 (djevojke) - Streetball Posušje 2025 🏀", excerpt: "Pogledajte rezultate kategorije U-16 (djevojke)! 1. mjesto - Basketbalije, 2. mjesto - Maslačak, 3. mjesto - Tomislavgrad.", content: "🏀 Rezultati kategorije U-16 (djevojke) – Streetball Posušje 2025 🏀\n\n🥇 1. mjesto – Basketbalije\nElla Patrij, Marta Oreč, Franka Matić i Petra Ivanković\n🏆 U finalu svladale ekipu Maslačak.\n\n🥈 2. mjesto – Maslačak\nPetra Bago, Kristina Milas i Iva Pavković\n\n🥉 3. mjesto – Tomislavgrad\nRužica Martić, Matea Ćosić, Lorena Jurič i Tina Matić\n\n🏅 Nagrade je uručio naš košarkaš Marko Ramljak, a za nagrade su se pobrinuli naši partneri Meggle, Planet i Binvest – veliko hvala!", date: "27. 08. 2025.", category: "2025", image: u16DjevojkeCover, cardImage: u16DjevojkeCover, cardImagePosition: "center", galleryImages: [u16Djevojke1, u16Djevojke2, u16Djevojke3, u16Djevojke4, u16Djevojke5, u16Djevojke6, u16Djevojke7] },
-  { id: 49, title: "Rezultati U-16 (muški) - Streetball Posušje 2025 🏀", excerpt: "Pogledajte rezultate kategorije U-16 (muški) na ovogodišnjem turniru! 1. mjesto - Grude COM, 2. mjesto - Taxi Jole, 3. mjesto - Broadly Hill Boys.", content: "🏀 Rezultati kategorije U-16 (muški) na ovogodišnjem turniru Streetball Posušje 2025 🏀\n\n🥇 1. mjesto – Grude COM\nStjepan Stipić, Ivan Iličić, David Raspudić i Luka Raspudić\n🏆 U finalu svladali ekipu Taxi Jole rezultatom 8:5.\n\n🥈 2. mjesto – Taxi Jole\nLuka Ramljak, Marko Petrović, Ante Pišković i Jerko Šego\n\n🥉 3. mjesto – Broadly Hill Boys\nAnte Zadro, Jure Kondža, Dražen Pavković i David Perko\n🏆 U utakmici za treće mjesto pobijedili ekipu Ilirik 3x3 rezultatom 10:4.\n\n🏅 Za ekipu Ilirik 3x3 nastupali su: Josip Ćutuk, David Ćutuk i Petar Tomić.\n\n🏅 Nagrade je uručio naš košarkaš Marko Ramljak, a za nagrade su se pobrinuli naši partneri Meggle, Planet i Binvest – hvala na podršci!", date: "28. 08. 2025.", category: "2025", image: u161mjesto, cardImage: u16Card, cardImagePosition: "center", galleryImages: [u161mjesto, u162mjesto, u163mjesto, u16Action1, u16Action2, u16Publika] },
+  { id: 48, title: "Streetball Turnir Posušje 2025 - Prijave otvorene! ⛹️", excerpt: "Streetball turnir Posušje se vraća! Nagradni fond 7.000 KM. Prijave su otvorene, ne propustite priliku za sudjelovanje!", content: "Streetball Posušje 2025 – Prijavi ekipu i osvoji nagrade! 🏀\n\nOvog ljeta, 18. i 19. srpnja 2025., Trg Hrvatskih branitelja u Posušju postaje centar vrhunske 3x3 košarke!\n\nU sklopu Posuškog Lita održava se Streetball Posušje, turnir koji okuplja sve generacije. Pripremili smo vrhunski program za sve posjetitelje koji će moći uživati u vrhunskoj košarci i odličnoj ponudi hrane i pića!\n\nNagradni fond: 7000 KM\n\nSeniori: Kotizacija - 100KM\n1. mjesto 4.500 KM\n2. mjesto 1.000 KM\n\nNatjecanja u tricama i zakucavanju po 100 KM\nMVP turnira - 200 KM\n\nAmateri, Juniori i Seniorke: Kotizacija besplatna\n1. mjesto 300KM\n\nSlužbena FIBA pravila, profesionalni teren i oprema!\nOdlična ponuda hrane i pića!\nDJ program\n\nPrijavi svoju ekipu i osvoji vrijedne nagrade! Vidimo se na Trgu hrvatskih branitelja u Posušju! 🏀🔥\n\nKontakt osoba: Petar Šušnjar (+387 63 390 237, +385 91 6082969)\nZvonimir Biško (+387 63 420 125, +385 95 3303102)", date: "05. 04. 2025", category: "2025", image: streetball2025Banner, cardImage: streetball2025, cardImagePosition: "center", pinned: true },
+  { id: 50, title: "Rezultati U-16 (djevojke) - Streetball Posušje 2025 🏀", excerpt: "Pogledajte rezultate kategorije U-16 (djevojke)! 1. mjesto - Basketbalije, 2. mjesto - Maslačak, 3. mjesto - Tomislavgrad.", content: "🏀 Rezultati kategorije U-16 (djevojke) – Streetball Posušje 2025 🏀\n\n🥇 1. mjesto – Basketbalije\nElla Patrij, Marta Oreč, Franka Matić i Petra Ivanković\n🏆 U finalu svladale ekipu Maslačak.\n\n🥈 2. mjesto – Maslačak\nPetra Bago, Kristina Milas i Iva Pavković\n\n🥉 3. mjesto – Tomislavgrad\nRužica Martić, Matea Ćosić, Lorena Jurič i Tina Matić\n\n🏅 Nagrade je uručio naš košarkaš Marko Ramljak, a za nagrade su se pobrinuli naši partneri Meggle, Planet i Binvest – veliko hvala!", date: "27. 08. 2025", category: "2025", image: u16DjevojkeCover, cardImage: u16DjevojkeCover, cardImagePosition: "center", galleryImages: [u16Djevojke1, u16Djevojke2, u16Djevojke3, u16Djevojke4, u16Djevojke5, u16Djevojke6, u16Djevojke7] },
+  { id: 49, title: "Rezultati U-16 (muški) - Streetball Posušje 2025 🏀", excerpt: "Pogledajte rezultate kategorije U-16 (muški) na ovogodišnjem turniru! 1. mjesto - Grude COM, 2. mjesto - Taxi Jole, 3. mjesto - Broadly Hill Boys.", content: "🏀 Rezultati kategorije U-16 (muški) na ovogodišnjem turniru Streetball Posušje 2025 🏀\n\n🥇 1. mjesto – Grude COM\nStjepan Stipić, Ivan Iličić, David Raspudić i Luka Raspudić\n🏆 U finalu svladali ekipu Taxi Jole rezultatom 8:5.\n\n🥈 2. mjesto – Taxi Jole\nLuka Ramljak, Marko Petrović, Ante Pišković i Jerko Šego\n\n🥉 3. mjesto – Broadly Hill Boys\nAnte Zadro, Jure Kondža, Dražen Pavković i David Perko\n🏆 U utakmici za treće mjesto pobijedili ekipu Ilirik 3x3 rezultatom 10:4.\n\n🏅 Za ekipu Ilirik 3x3 nastupali su: Josip Ćutuk, David Ćutuk i Petar Tomić.\n\n🏅 Nagrade je uručio naš košarkaš Marko Ramljak, a za nagrade su se pobrinuli naši partneri Meggle, Planet i Binvest – hvala na podršci!", date: "28. 08. 2025", category: "2025", image: u161mjesto, cardImage: u16Card, cardImagePosition: "center", galleryImages: [u161mjesto, u162mjesto, u163mjesto, u16Action1, u16Action2, u16Publika] },
 ];
 
 const categories = [
@@ -184,7 +195,7 @@ const NewsPage = () => {
             title: n.title,
             excerpt: n.excerpt || '',
             content: n.excerpt || '',
-            date: n.date,
+            date: stripTrailingDot(n.date),
             category: n.category,
             image: n.image_url || '',
             cardImage: n.image_url || '',
@@ -198,7 +209,7 @@ const NewsPage = () => {
     fetchDbNews();
   }, []);
 
-  const allNews = [...dbNews, ...hardcodedNews];
+  const allNews = [...dbNews, ...hardcodedNews].sort((a, b) => parseNewsDate(b.date).getTime() - parseNewsDate(a.date).getTime());
 
   if (articleId) {
     const article = allNews.find(n => String(n.id) === articleId);
