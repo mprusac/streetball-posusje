@@ -195,7 +195,7 @@ const NewsPage = () => {
             title: n.title,
             excerpt: n.excerpt || '',
             content: n.excerpt || '',
-            date: n.date,
+            date: stripTrailingDot(n.date),
             category: n.category,
             image: n.image_url || '',
             cardImage: n.image_url || '',
