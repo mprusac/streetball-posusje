@@ -260,11 +260,23 @@ const AdminPanel = () => {
               value={form.excerpt}
               onChange={e => setForm(f => ({ ...f, excerpt: e.target.value }))}
             />
-            <div className="flex gap-3 items-center">
+            <div className="flex gap-4 items-center flex-wrap">
               <label className="flex items-center gap-2 text-sm text-foreground cursor-pointer">
                 <input type="checkbox" checked={form.pinned} onChange={e => setForm(f => ({ ...f, pinned: e.target.checked }))} />
                 <Pin size={14} /> Prikvači
               </label>
+              <div className="flex items-center gap-2">
+                <span className="text-sm text-muted-foreground">Kategorija:</span>
+                <select
+                  value={form.category}
+                  onChange={e => setForm(f => ({ ...f, category: e.target.value }))}
+                  className="rounded-md border border-input bg-background px-3 py-1.5 text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                >
+                  <option value="2026">2026</option>
+                  <option value="2025">2025</option>
+                  <option value="najava">Najava</option>
+                </select>
+              </div>
             </div>
             
             {/* Thumbnail upload */}
