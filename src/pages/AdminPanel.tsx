@@ -570,6 +570,33 @@ const AdminPanel = () => {
             <Input placeholder="Naslov galerije *" value={galleryForm.title} onChange={e => setGalleryForm(f => ({ ...f, title: e.target.value }))} />
             <Input placeholder="dd.mm.yyyy" value={galleryForm.date} onChange={e => handleDateInput(e.target.value, setGalleryForm)} maxLength={10} />
             
+            {/* Cover image upload */}
+            <div className="space-y-2">
+              <label className="text-sm text-muted-foreground font-medium">Naslovna slika</label>
+              <div
+                onDragOver={e => { e.preventDefault(); e.currentTarget.classList.add('border-primary', 'bg-primary/5'); }}
+                onDragLeave={e => { e.preventDefault(); e.currentTarget.classList.remove('border-primary', 'bg-primary/5'); }}
+                onDrop={e => { e.preventDefault(); e.currentTarget.classList.remove('border-primary', 'bg-primary/5'); if (e.dataTransfer.files?.[0]) uploadCoverImage(e.dataTransfer.files[0]); }}
+                className="border-2 border-dashed border-border rounded-lg p-4 text-center transition-colors cursor-pointer"
+                onClick={() => coverImageInputRef.current?.click()}
+              >
+                <input ref={coverImageInputRef} type="file" accept="image/*" className="hidden" onChange={e => { if (e.target.files?.[0]) uploadCoverImage(e.target.files[0]); }} />
+                <Upload size={20} className="mx-auto mb-1 text-muted-foreground" />
+                <p className="text-sm text-muted-foreground">{uploadingCoverImage ? "Učitavanje..." : "Klikni ili povuci naslovnu sliku ovdje"}</p>
+              </div>
+              {galleryForm.cover_image && (
+                <div className="relative inline-block">
+                  <img src={galleryForm.cover_image} alt="Cover" className="h-20 rounded-lg object-cover" />
+                  <button
+                    onClick={() => setGalleryForm(f => ({ ...f, cover_image: "" }))}
+                    className="absolute top-1 right-1 bg-background/80 rounded-full p-1 hover:bg-destructive hover:text-destructive-foreground transition-colors"
+                  >
+                    <X size={14} />
+                  </button>
+                </div>
+              )}
+            </div>
+
             {/* Gallery images upload */}
             <div className="space-y-2">
               <label className="text-sm text-muted-foreground font-medium">Slike galerije</label>
