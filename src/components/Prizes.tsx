@@ -108,7 +108,7 @@ const Prizes = () => {
 
           {/* Amateri, Juniori, Seniorke */}
           <div
-            className="md:col-span-2 card-micro bg-secondary/30 border border-border rounded-xl p-5 md:p-6 hover:border-primary/30 group"
+            className="md:col-span-2 max-w-md mx-auto w-full card-micro bg-secondary/30 border border-border rounded-xl p-5 md:p-6 hover:border-primary/30 group"
             style={{
               opacity: isVisible ? 1 : 0,
               transform: isVisible ? "translateY(0)" : "translateY(20px)",
