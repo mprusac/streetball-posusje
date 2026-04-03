@@ -507,10 +507,10 @@ const AdminPanel = () => {
         {view === "main" && (
           <>
             <div className="flex items-center justify-center gap-4 mb-8">
-              <Button onClick={startCreateNews} variant="outline" size="lg" className="border-primary bg-background text-foreground hover:bg-primary/10 px-6 py-3 text-base">
+              <Button onClick={startCreateNews} variant="outline" size="lg" className="border-primary bg-background text-foreground hover:bg-primary hover:text-primary-foreground px-6 py-3 text-base transition-colors">
                 <Newspaper size={20} /> Nova vijest
               </Button>
-              <Button onClick={startCreateGallery} variant="outline" size="lg" className="border-primary bg-background text-foreground hover:bg-primary/10 px-6 py-3 text-base">
+              <Button onClick={startCreateGallery} variant="outline" size="lg" className="border-primary bg-background text-foreground hover:bg-primary hover:text-primary-foreground px-6 py-3 text-base transition-colors">
                 <ImagePlus size={20} /> Nova galerija
               </Button>
             </div>
