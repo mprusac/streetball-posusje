@@ -228,7 +228,7 @@ const AdminPanel = () => {
             </div>
             <Input placeholder="Naslov *" value={form.title} onChange={e => setForm(f => ({ ...f, title: e.target.value }))} />
             <textarea
-              placeholder="Kratki opis / izvadak"
+              placeholder="Tekst vijesti / članka"
               className="w-full rounded-md border border-input bg-background px-3 py-2 text-sm min-h-[80px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
               value={form.excerpt}
               onChange={e => setForm(f => ({ ...f, excerpt: e.target.value }))}
