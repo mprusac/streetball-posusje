@@ -314,7 +314,7 @@ const GalleryPage = () => {
             transition={{ duration: 0.3 }}
           >
             <button
-              onClick={() => navigate(eventId ? -1 : "/")}
+              onClick={() => eventId ? navigate(-1) : navigate("/")}
               className="inline-flex items-center gap-3 text-primary hover:text-primary/80 transition-colors mb-8 text-lg"
             >
               <ArrowLeft className="w-6 h-6" />
