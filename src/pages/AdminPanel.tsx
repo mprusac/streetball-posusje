@@ -41,6 +41,9 @@ function getTodayFormatted(): string {
 
 type AdminView = "main" | "news-form" | "gallery-form";
 
+// Custom category modal state
+
+
 const AdminPanel = () => {
   const [token, setToken] = useState<string | null>(sessionStorage.getItem("admin_token"));
   const [username, setUsername] = useState("");
@@ -54,6 +57,8 @@ const AdminPanel = () => {
   const [uploadingImage, setUploadingImage] = useState(false);
   const [uploadingGallery, setUploadingGallery] = useState(false);
   const [uploadingGalleryImages, setUploadingGalleryImages] = useState(false);
+  const [showCategoryModal, setShowCategoryModal] = useState(false);
+  const [customCategory, setCustomCategory] = useState("");
   const fileInputRef = useRef<HTMLInputElement>(null);
   const galleryInputRef = useRef<HTMLInputElement>(null);
   const galleryImagesInputRef = useRef<HTMLInputElement>(null);
@@ -391,10 +396,8 @@ const AdminPanel = () => {
                   value={form.category}
                   onChange={e => {
                     if (e.target.value === '__custom__') {
-                      const custom = prompt("Unesite naziv nove kategorije:");
-                      if (custom && custom.trim()) {
-                        setForm(f => ({ ...f, category: custom.trim() }));
-                      }
+                      setCustomCategory("");
+                      setShowCategoryModal(true);
                     } else {
                       setForm(f => ({ ...f, category: e.target.value }));
                     }
@@ -407,8 +410,50 @@ const AdminPanel = () => {
                   {form.category && !["2026", "2025", "najava"].includes(form.category) && (
                     <option value={form.category}>{form.category}</option>
                   )}
-                  <option value="__custom__">+ Nova kategorija...</option>
+                  <option value="__custom__">+ nova kategorija...</option>
                 </select>
+
+                {/* Custom category modal */}
+                {showCategoryModal && (
+                  <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60" onClick={() => setShowCategoryModal(false)}>
+                    <div className="bg-[hsl(0,0%,10%)] border border-primary/30 rounded-xl p-6 w-full max-w-sm mx-4 shadow-2xl" onClick={e => e.stopPropagation()}>
+                      <h3 className="font-display text-lg text-primary text-center mb-4">Nova kategorija</h3>
+                      <input
+                        autoFocus
+                        value={customCategory}
+                        onChange={e => setCustomCategory(e.target.value)}
+                        onKeyDown={e => {
+                          if (e.key === 'Enter' && customCategory.trim()) {
+                            setForm(f => ({ ...f, category: customCategory.trim() }));
+                            setShowCategoryModal(false);
+                          }
+                        }}
+                        placeholder="Unesite naziv kategorije"
+                        className="w-full rounded-md border border-primary/30 bg-background px-3 py-2 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary mb-4"
+                      />
+                      <div className="flex gap-2">
+                        <button
+                          onClick={() => setShowCategoryModal(false)}
+                          className="flex-1 px-4 py-2 rounded-md border border-border text-sm text-muted-foreground hover:text-foreground transition-colors"
+                        >
+                          Odustani
+                        </button>
+                        <button
+                          onClick={() => {
+                            if (customCategory.trim()) {
+                              setForm(f => ({ ...f, category: customCategory.trim() }));
+                              setShowCategoryModal(false);
+                            }
+                          }}
+                          disabled={!customCategory.trim()}
+                          className="flex-1 px-4 py-2 rounded-md bg-primary text-primary-foreground text-sm font-medium hover:bg-primary/90 transition-colors disabled:opacity-50"
+                        >
+                          Dodaj
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                )}
               </div>
             </div>
             
@@ -428,7 +473,7 @@ const AdminPanel = () => {
               </div>
               {form.image_url && (
                 <div className="relative inline-block">
-                  <img src={form.image_url} alt="Preview" className="h-32 rounded-lg object-cover" />
+                  <img src={form.image_url} alt="Preview" className="h-20 rounded-lg object-cover" />
                   <button
                     onClick={() => setForm(f => ({ ...f, image_url: "" }))}
                     className="absolute top-1 right-1 bg-background/80 rounded-full p-1 hover:bg-destructive hover:text-destructive-foreground transition-colors"
@@ -454,10 +499,10 @@ const AdminPanel = () => {
                 <p className="text-sm text-muted-foreground">{uploadingGallery ? "Učitavanje..." : "Klikni ili povuci slike ovdje"}</p>
               </div>
               {form.gallery_images.length > 0 && (
-                <div className="grid grid-cols-3 md:grid-cols-4 gap-2">
+                <div className="grid grid-cols-4 md:grid-cols-6 gap-2">
                   {form.gallery_images.map((url, i) => (
                     <div key={i} className="relative group">
-                      <img src={url} alt={`Galerija ${i + 1}`} className="w-full h-24 rounded-lg object-cover" />
+                      <img src={url} alt={`Galerija ${i + 1}`} className="w-full h-16 rounded-lg object-cover" />
                       <button
                         onClick={() => removeGalleryImage(i)}
                         className="absolute top-1 right-1 bg-background/80 rounded-full p-1 hover:bg-destructive hover:text-destructive-foreground transition-colors opacity-0 group-hover:opacity-100"
@@ -506,10 +551,10 @@ const AdminPanel = () => {
                 <p className="text-sm text-muted-foreground">{uploadingGalleryImages ? "Učitavanje..." : "Klikni ili povuci slike ovdje"}</p>
               </div>
               {galleryForm.images.length > 0 && (
-                <div className="grid grid-cols-3 md:grid-cols-4 gap-2">
+                <div className="grid grid-cols-4 md:grid-cols-6 gap-2">
                   {galleryForm.images.map((url, i) => (
                     <div key={i} className="relative group">
-                      <img src={url} alt={`Slika ${i + 1}`} className="w-full h-24 rounded-lg object-cover" />
+                      <img src={url} alt={`Slika ${i + 1}`} className="w-full h-16 rounded-lg object-cover" />
                       <button
                         onClick={() => removeGalleryFormImage(i)}
                         className="absolute top-1 right-1 bg-background/80 rounded-full p-1 hover:bg-destructive hover:text-destructive-foreground transition-colors opacity-0 group-hover:opacity-100"
