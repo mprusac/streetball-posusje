@@ -200,8 +200,8 @@ const Sponsors = () => {
                         <div className="flex items-center gap-2 mb-2 min-h-[40px] md:min-h-[52px]">
                           <div className={`${tier.color} transition-transform duration-300 group-hover:scale-110 w-4 md:w-8 flex items-center justify-center shrink-0`}>{tier.icon}</div>
                           <div>
-                            <h4 className={`font-semibold text-xs md:text-sm ${tier.color} leading-tight`}>{tier.name}</h4>
-                            <p className="text-primary text-sm md:text-base font-display leading-tight">{tier.price}</p>
+                            <h4 className={`font-semibold text-xs md:text-sm ${tier.color} leading-none`}>{tier.name}</h4>
+                            <p className="text-primary text-sm md:text-base font-display leading-none mt-0.5">{tier.price}</p>
                           </div>
                         </div>
                         <ul className="space-y-1">
