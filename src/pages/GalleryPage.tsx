@@ -55,27 +55,6 @@ const events = [
     images: [] as string[],
     imagesWithOrientation: [] as ImageWithOrientation[],
   },
-  {
-    id: "tomislav",
-    homeTeam: "HKK Posušje",
-    awayTeam: "HKK Tomislav",
-    date: "02.11.2025.",
-    description: "Galerija s utakmice Posušje - Tomislav",
-    coverImage: eventTomislav,
-    images: [] as string[],
-    imagesWithOrientation: [
-      { src: tomislav3, orientation: "horizontal" },
-      { src: tomislav1, orientation: "vertical" },
-      { src: tomislav2, orientation: "vertical" },
-      { src: tomislav7, orientation: "horizontal" },
-      { src: tomislav4, orientation: "vertical" },
-      { src: tomislav5, orientation: "vertical" },
-      { src: tomislav9, orientation: "horizontal" },
-      { src: tomislav6, orientation: "vertical" },
-      { src: tomislav8, orientation: "vertical" },
-      { src: tomislav10, orientation: "vertical" },
-    ] as ImageWithOrientation[],
-  },
 ];
 
 const EventCard = ({ event, index }: { event: typeof events[0]; index: number }) => {
