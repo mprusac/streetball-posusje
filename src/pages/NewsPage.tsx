@@ -209,7 +209,9 @@ const NewsPage = () => {
     fetchDbNews();
   }, []);
 
-  const allNews = [...dbNews, ...hardcodedNews].sort((a, b) => parseNewsDate(b.date).getTime() - parseNewsDate(a.date).getTime());
+  const allNews = [...dbNews, ...hardcodedNews]
+    .sort((a, b) => parseNewsDate(b.date).getTime() - parseNewsDate(a.date).getTime())
+    .sort((a, b) => (b.pinned ? 1 : 0) - (a.pinned ? 1 : 0));
 
   if (articleId) {
     const article = allNews.find(n => String(n.id) === articleId);
