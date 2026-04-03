@@ -154,7 +154,7 @@ const Hero = () => {
                 { value: countdown.seconds, label: "Sekundi" },
               ].map((item) => (
                 <div key={item.label} className="flex flex-col items-center">
-                  <span className="font-display text-3xl sm:text-5xl md:text-6xl text-primary tabular-nums leading-none">
+                  <span className="font-display font-bold text-2xl sm:text-4xl md:text-5xl text-primary tabular-nums leading-none">
                     {String(item.value).padStart(2, "0")}
                   </span>
                   <span className="text-[10px] sm:text-xs uppercase tracking-widest text-muted-foreground mt-1">
