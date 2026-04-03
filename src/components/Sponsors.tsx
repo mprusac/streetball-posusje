@@ -223,7 +223,7 @@ const Sponsors = () => {
                 {/* Payment Info */}
                 <div className="bg-background/50 border border-border rounded-lg p-4 md:p-5">
                   <h4 className="font-display text-base md:text-lg mb-3">
-                    <span className="text-foreground">PODACI ZA </span>
+                    <span className="text-primary">PODACI ZA </span>
                     <span className="text-primary">PLAĆANJE</span>
                   </h4>
                   <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs md:text-sm">
