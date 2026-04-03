@@ -62,6 +62,7 @@ const Hero = () => {
   const countdown = useCountdown(TOURNAMENT_DATE);
   const [displayedText, setDisplayedText] = useState("");
   const [showCursor, setShowCursor] = useState(true);
+  const [registrationOpen, setRegistrationOpen] = useState(false);
   const typewriterStarted = useRef(false);
   const videoRef = useRef<HTMLVideoElement | null>(null);
 
