@@ -396,10 +396,8 @@ const AdminPanel = () => {
                   value={form.category}
                   onChange={e => {
                     if (e.target.value === '__custom__') {
-                      const custom = prompt("Unesite naziv nove kategorije:");
-                      if (custom && custom.trim()) {
-                        setForm(f => ({ ...f, category: custom.trim() }));
-                      }
+                      setCustomCategory("");
+                      setShowCategoryModal(true);
                     } else {
                       setForm(f => ({ ...f, category: e.target.value }));
                     }
@@ -412,8 +410,50 @@ const AdminPanel = () => {
                   {form.category && !["2026", "2025", "najava"].includes(form.category) && (
                     <option value={form.category}>{form.category}</option>
                   )}
-                  <option value="__custom__">+ Nova kategorija...</option>
+                  <option value="__custom__">+ nova kategorija...</option>
                 </select>
+
+                {/* Custom category modal */}
+                {showCategoryModal && (
+                  <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60" onClick={() => setShowCategoryModal(false)}>
+                    <div className="bg-[hsl(0,0%,10%)] border border-primary/30 rounded-xl p-6 w-full max-w-sm mx-4 shadow-2xl" onClick={e => e.stopPropagation()}>
+                      <h3 className="font-display text-lg text-primary text-center mb-4">Nova kategorija</h3>
+                      <input
+                        autoFocus
+                        value={customCategory}
+                        onChange={e => setCustomCategory(e.target.value)}
+                        onKeyDown={e => {
+                          if (e.key === 'Enter' && customCategory.trim()) {
+                            setForm(f => ({ ...f, category: customCategory.trim() }));
+                            setShowCategoryModal(false);
+                          }
+                        }}
+                        placeholder="Unesite naziv kategorije"
+                        className="w-full rounded-md border border-primary/30 bg-background px-3 py-2 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary mb-4"
+                      />
+                      <div className="flex gap-2">
+                        <button
+                          onClick={() => setShowCategoryModal(false)}
+                          className="flex-1 px-4 py-2 rounded-md border border-border text-sm text-muted-foreground hover:text-foreground transition-colors"
+                        >
+                          Odustani
+                        </button>
+                        <button
+                          onClick={() => {
+                            if (customCategory.trim()) {
+                              setForm(f => ({ ...f, category: customCategory.trim() }));
+                              setShowCategoryModal(false);
+                            }
+                          }}
+                          disabled={!customCategory.trim()}
+                          className="flex-1 px-4 py-2 rounded-md bg-primary text-primary-foreground text-sm font-medium hover:bg-primary/90 transition-colors disabled:opacity-50"
+                        >
+                          Dodaj
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                )}
               </div>
             </div>
             
