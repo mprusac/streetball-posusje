@@ -44,7 +44,7 @@ const Achievements = () => {
         </h2>
 
         <p className="text-muted-foreground text-center mb-12 max-w-2xl mx-auto text-base md:text-lg">
-          Rezultati koji govore sami za sebe
+          Rezultati koji potvrđuju rast i značaj turnira
         </p>
 
         <div className="flex flex-col gap-4 max-w-3xl mx-auto">
