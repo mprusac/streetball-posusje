@@ -547,7 +547,7 @@ const AdminPanel = () => {
 
             {/* Galleries section */}
             <div>
-              <h2 className="font-display text-xl text-primary mb-4">Galerije</h2>
+              <h2 className="font-display text-xl text-primary mb-4 text-center">Galerije</h2>
               <div className="space-y-3">
                 {!loading && galleries.length === 0 && <p className="text-muted-foreground text-center py-4">Nema galerija u bazi. Dodajte prvu!</p>}
                 {galleries.map(item => (
