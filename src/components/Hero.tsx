@@ -176,6 +176,8 @@ const Hero = () => {
         </a>
       </div>
     </section>
+    <FibaRegistrationModal isOpen={registrationOpen} onClose={() => setRegistrationOpen(false)} />
+    </>
   );
 };
 
