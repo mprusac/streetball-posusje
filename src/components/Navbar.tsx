@@ -126,10 +126,10 @@ const Navbar = () => {
                     key={link.href}
                     to={link.href}
                     onClick={() => setIsOpen(false)}
-                    className={`font-display font-bold text-base tracking-widest transition-all duration-300 px-3 py-0.5 rounded-md ${
+                    className={`font-display font-bold text-base uppercase tracking-widest transition-all duration-300 px-3 py-1 ${
                       isActive
-                        ? "text-primary"
-                        : "text-foreground hover:text-primary"
+                        ? "text-primary bg-gradient-to-r from-primary/20 to-transparent"
+                        : "text-foreground hover:text-primary hover:bg-gradient-to-r hover:from-primary/15 hover:to-transparent"
                     }`}
                   >
                     {link.label}
@@ -142,10 +142,10 @@ const Navbar = () => {
                   key={link.href}
                   href={link.href}
                   onClick={() => setIsOpen(false)}
-                  className={`font-display font-bold text-base tracking-widest transition-all duration-300 px-3 py-0.5 rounded-md ${
+                  className={`font-display font-bold text-base uppercase tracking-widest transition-all duration-300 px-3 py-1 ${
                     isActive
-                      ? "text-primary"
-                      : "text-foreground hover:text-primary"
+                      ? "text-primary bg-gradient-to-r from-primary/20 to-transparent"
+                      : "text-foreground hover:text-primary hover:bg-gradient-to-r hover:from-primary/15 hover:to-transparent"
                   }`}
                 >
                   {link.label}
