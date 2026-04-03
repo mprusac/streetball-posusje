@@ -39,7 +39,7 @@ const FibaRegistrationModal = ({ isOpen, onClose }: FibaRegistrationModalProps) 
       onClick={onClose}
     >
       <div
-        className="relative border-2 border-primary rounded-2xl w-full max-w-3xl max-h-[85vh] overflow-y-auto shadow-2xl"
+        className="relative border-2 border-primary rounded-2xl w-full max-w-3xl max-h-[95vh] overflow-y-auto shadow-2xl"
         style={{
           background: 'linear-gradient(135deg, hsl(0 0% 5%) 0%, hsl(45 100% 51% / 0.08) 50%, hsl(0 0% 8%) 100%)',
         }}
