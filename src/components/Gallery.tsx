@@ -101,7 +101,7 @@ const Gallery = () => {
     <section id="galerija" className="py-20">
       <div className="container mx-auto px-4">
         <h2 className="section-title text-center mb-12">
-          <span className="section-title-gold">GALERIJA</span>
+          <span className="section-title-white">GALERIJA</span>
         </h2>
 
         {/* Mobile: Compact Grid Layout */}
