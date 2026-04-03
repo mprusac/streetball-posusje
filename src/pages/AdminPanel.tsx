@@ -87,8 +87,10 @@ const AdminPanel = () => {
   });
 
   const [galleryForm, setGalleryForm] = useState({
-    title: "", date: getTodayFormatted(), images: [] as string[]
+    title: "", date: getTodayFormatted(), images: [] as string[], cover_image: "" as string
   });
+  const [uploadingCoverImage, setUploadingCoverImage] = useState(false);
+  const coverImageInputRef = useRef<HTMLInputElement>(null);
 
   const headers = { Authorization: `Bearer ${token}`, "Content-Type": "application/json" };
 
