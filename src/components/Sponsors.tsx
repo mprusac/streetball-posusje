@@ -229,15 +229,15 @@ const Sponsors = () => {
                   <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs md:text-sm">
                     <div>
                       <span className="text-muted-foreground block mb-1">PRIMATELJ</span>
-                      <span className="text-foreground">Streetball Posušje 2026</span>
+                      <span className="text-foreground">Udruga Pulse, Ričina 3, Čitluk, Posušje</span>
                     </div>
                     <div>
                       <span className="text-muted-foreground block mb-1">BANKA</span>
-                      <span className="text-foreground">UniCredit Bank d.d. Mostar</span>
+                      <span className="text-foreground">Intesa Sanpaolo Banka BiH</span>
                     </div>
                     <div>
-                      <span className="text-muted-foreground block mb-1">IBAN</span>
-                      <span className="text-foreground break-all">BA39 0000 0000 0000 0000</span>
+                      <span className="text-muted-foreground block mb-1">BROJ RAČUNA</span>
+                      <span className="text-foreground break-all">1544002022913382</span>
                     </div>
                   </div>
                 </div>
