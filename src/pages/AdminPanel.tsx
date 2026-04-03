@@ -66,7 +66,8 @@ const AdminPanel = () => {
   const navigate = useNavigate();
 
   const [form, setForm] = useState({
-    title: "", excerpt: "", image_url: "", image_position: "center", pinned: false, gallery_images: [] as string[], category: String(new Date().getFullYear())
+    title: "", excerpt: "", date: getTodayFormatted(), image_url: "", image_position: "center", pinned: false, gallery_images: [] as string[], category: String(new Date().getFullYear())
+  });
   });
 
   const [galleryForm, setGalleryForm] = useState({
