@@ -117,13 +117,13 @@ const Prizes = () => {
           >
             <div className="flex items-center gap-2 mb-4">
               <div className="icon-bounce p-2 bg-primary/20 rounded-lg group-hover:bg-primary/30 transition-all duration-300">
-                <Medal className="text-primary w-5 h-5" />
+                <Medal className="text-primary w-6 h-6" />
               </div>
-              <div>
-                <h3 className="font-display text-base md:text-lg text-foreground tracking-wide">
+              <div className="leading-tight">
+                <h3 className="font-display text-sm md:text-base text-foreground tracking-wide">
                   AMATERI (Posuške ekipe)
                 </h3>
-                <h3 className="font-display text-sm md:text-base text-foreground tracking-wide mt-1">
+                <h3 className="font-display text-xs md:text-sm text-foreground tracking-wide mt-0.5">
                   JUNIORI (U-18), SENIORKE
                 </h3>
               </div>
