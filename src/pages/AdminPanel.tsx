@@ -1,10 +1,11 @@
 
 import { useState, useEffect, useRef } from "react";
-import { Trash2, Edit, Plus, LogOut, Save, X, Upload, Pin } from "lucide-react";
+import { Trash2, Edit, Plus, LogOut, Save, X, Upload, Pin, ArrowLeft } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useToast } from "@/hooks/use-toast";
+import { useNavigate } from "react-router-dom";
 
 interface NewsItem {
   id: string;
@@ -39,6 +40,7 @@ const AdminPanel = () => {
   const [uploadingImage, setUploadingImage] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
   const { toast } = useToast();
+  const navigate = useNavigate();
 
   const [form, setForm] = useState({
     title: "", excerpt: "", image_url: "", image_position: "center", pinned: false
@@ -169,14 +171,23 @@ const AdminPanel = () => {
   if (!token) {
     return (
       <div className="min-h-screen bg-background flex items-center justify-center p-4">
-        <form onSubmit={login} className="w-full max-w-sm space-y-4 bg-card p-8 rounded-xl border border-border">
-          <h1 className="font-display text-3xl text-primary text-center mb-6">Admin Panel</h1>
-          <Input placeholder="Korisničko ime" value={username} onChange={e => setUsername(e.target.value)} required />
-          <Input type="password" placeholder="Lozinka" value={password} onChange={e => setPassword(e.target.value)} required />
-          <Button type="submit" className="w-full" disabled={loading}>
-            {loading ? "Prijava..." : "Prijavi se"}
-          </Button>
-        </form>
+        <div className="w-full max-w-sm">
+          <button
+            onClick={() => navigate("/")}
+            className="flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors mb-6"
+          >
+            <ArrowLeft size={20} />
+            <span className="text-sm">Nazad</span>
+          </button>
+          <form onSubmit={login} className="space-y-4 bg-card p-8 rounded-xl border border-border">
+            <h1 className="font-display text-3xl text-primary text-center mb-6">Admin Panel</h1>
+            <Input placeholder="Korisničko ime" value={username} onChange={e => setUsername(e.target.value)} required />
+            <Input type="password" placeholder="Lozinka" value={password} onChange={e => setPassword(e.target.value)} required />
+            <Button type="submit" className="w-full" disabled={loading}>
+              {loading ? "Prijava..." : "Prijavi se"}
+            </Button>
+          </form>
+        </div>
       </div>
     );
   }
@@ -185,8 +196,17 @@ const AdminPanel = () => {
   return (
     <div className="min-h-screen bg-background p-4 md:p-8">
       <div className="max-w-4xl mx-auto">
+        {/* Header */}
         <div className="flex items-center justify-between mb-8">
-          <h1 className="font-display text-3xl text-primary">Admin Panel - Vijesti</h1>
+          <div className="flex items-center gap-4">
+            <button
+              onClick={() => navigate("/")}
+              className="flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors"
+            >
+              <ArrowLeft size={20} />
+            </button>
+            <h1 className="font-display text-3xl text-primary text-center flex-1">Admin Panel - Vijesti</h1>
+          </div>
           <Button variant="outline" onClick={logout} size="sm">
             <LogOut size={16} /> Odjava
           </Button>
@@ -196,10 +216,15 @@ const AdminPanel = () => {
         {creating ? (
           <div className="bg-card p-6 rounded-xl border border-border mb-8 space-y-4">
             <div className="flex items-center justify-between">
-              <h2 className="font-display text-xl text-foreground">{editing ? "Uredi vijest" : "Nova vijest"}</h2>
-              <Button variant="ghost" size="icon" onClick={() => { setCreating(false); setEditing(null); }}>
-                <X size={20} />
-              </Button>
+              <div className="flex items-center gap-3">
+                <button
+                  onClick={() => { setCreating(false); setEditing(null); }}
+                  className="text-muted-foreground hover:text-foreground transition-colors"
+                >
+                  <ArrowLeft size={20} />
+                </button>
+                <h2 className="font-display text-xl text-foreground">{editing ? "Uredi vijest" : "Nova vijest"}</h2>
+              </div>
             </div>
             <Input placeholder="Naslov *" value={form.title} onChange={e => setForm(f => ({ ...f, title: e.target.value }))} />
             <textarea
@@ -218,20 +243,22 @@ const AdminPanel = () => {
             {/* Image upload */}
             <div className="space-y-2">
               <label className="text-sm text-muted-foreground">Thumbnail slika</label>
-              <div className="flex gap-2">
-                <Input
-                  placeholder="URL slike"
-                  value={form.image_url}
-                  onChange={e => setForm(f => ({ ...f, image_url: e.target.value }))}
-                  className="flex-1"
-                />
+              <div>
                 <input ref={fileInputRef} type="file" accept="image/*" className="hidden" onChange={e => { if (e.target.files?.[0]) uploadImage(e.target.files[0]); }} />
-                <Button type="button" variant="outline" onClick={() => fileInputRef.current?.click()} disabled={uploadingImage}>
-                  <Upload size={16} /> {uploadingImage ? "..." : "Upload"}
+                <Button type="button" variant="outline" onClick={() => fileInputRef.current?.click()} disabled={uploadingImage} className="w-full">
+                  <Upload size={16} /> {uploadingImage ? "Učitavanje..." : "Odaberi sliku"}
                 </Button>
               </div>
               {form.image_url && (
-                <img src={form.image_url} alt="Preview" className="h-32 rounded-lg object-cover" />
+                <div className="relative">
+                  <img src={form.image_url} alt="Preview" className="h-32 rounded-lg object-cover" />
+                  <button
+                    onClick={() => setForm(f => ({ ...f, image_url: "" }))}
+                    className="absolute top-1 right-1 bg-background/80 rounded-full p-1 hover:bg-destructive hover:text-destructive-foreground transition-colors"
+                  >
+                    <X size={14} />
+                  </button>
+                </div>
               )}
             </div>
 
