@@ -17,7 +17,7 @@ const ResultsPage = () => {
     containerRef.current.innerHTML = "";
 
     const script = document.createElement("script");
-    script.setAttribute("data-fiba-embedtype", "results");
+    script.setAttribute("data-fiba-embedtype", "registration");
     script.setAttribute("data-fiba-eventid", "06f6d620-d5d0-4be1-8cad-1adfeeba8301");
     script.src = "https://play.fiba3x3.com/embed.js";
     script.async = true;
