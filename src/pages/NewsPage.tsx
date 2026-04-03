@@ -91,7 +91,7 @@ const ArticleDetail = ({ article }: { article: NewsItem }) => {
           <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.3 }}>
             <button onClick={() => navigate("/vijesti")} className="inline-flex items-center gap-3 text-primary hover:text-primary/80 transition-colors mb-8 text-lg">
               <ArrowLeft className="w-6 h-6" />
-              <span className="font-display tracking-wider text-xl">Nazad na vijesti</span>
+              <span className="font-display font-bold tracking-wider text-xl">Nazad na vijesti</span>
             </button>
           </motion.div>
 
