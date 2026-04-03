@@ -546,7 +546,7 @@ const AdminPanel = () => {
               <h2 className="font-display text-xl text-primary">{editingGallery ? "Uredi galeriju" : "Nova galerija"}</h2>
             </div>
             <Input placeholder="Naslov galerije *" value={galleryForm.title} onChange={e => setGalleryForm(f => ({ ...f, title: e.target.value }))} />
-            <Input placeholder="Datum (npr. 19.07.2025.)" value={galleryForm.date} onChange={e => setGalleryForm(f => ({ ...f, date: e.target.value }))} />
+            <Input placeholder="dd.mm.yyyy" value={galleryForm.date} onChange={e => handleDateInput(e.target.value, setGalleryForm)} maxLength={10} />
             
             {/* Gallery images upload */}
             <div className="space-y-2">
