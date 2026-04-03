@@ -28,10 +28,21 @@ const categoryConfig: Record<string, { label: string; icon: typeof Trophy }> = {
   najava: { label: "Najave", icon: Megaphone },
 };
 
+const parseNewsDate = (dateStr: string): Date => {
+  const clean = dateStr.replace(/\.$/, '').trim();
+  const parts = clean.split('.').map(s => s.trim());
+  if (parts.length >= 3) {
+    return new Date(parseInt(parts[2]), parseInt(parts[1]) - 1, parseInt(parts[0]));
+  }
+  return new Date(0);
+};
+
+const stripTrailingDot = (d: string) => d.replace(/\.\s*$/, '');
+
 const hardcodedNews: NewsItem[] = [
-  { id: 48, title: "Streetball Turnir Posušje 2025 - Prijave otvorene! ⛹️", excerpt: "Streetball turnir Posušje se vraća! Nagradni fond 7.000 KM. Prijave su otvorene, ne propustite priliku za sudjelovanje!", date: "05. 04. 2025.", category: "2025", image: streetball2025, imagePosition: "top", pinned: true },
-  { id: 50, title: "Rezultati U-16 (djevojke) - Streetball Posušje 2025 🏀", excerpt: "Pogledajte rezultate kategorije U-16 (djevojke)! 1. mjesto - Basketbalije, 2. mjesto - Maslačak, 3. mjesto - Tomislavgrad.", date: "27. 08. 2025.", category: "2025", image: u16DjevojkeCover, imagePosition: "center" },
-  { id: 49, title: "Rezultati U-16 (muški) - Streetball Posušje 2025 🏀", excerpt: "Pogledajte rezultate kategorije U-16 (muški) na ovogodišnjem turniru! 1. mjesto - Grude COM, 2. mjesto - Taxi Jole, 3. mjesto - Broadly Hill Boys.", date: "28. 08. 2025.", category: "2025", image: u16Card, imagePosition: "center" },
+  { id: 48, title: "Streetball Turnir Posušje 2025 - Prijave otvorene! ⛹️", excerpt: "Streetball turnir Posušje se vraća! Nagradni fond 7.000 KM. Prijave su otvorene, ne propustite priliku za sudjelovanje!", date: "05. 04. 2025", category: "2025", image: streetball2025, imagePosition: "top", pinned: true },
+  { id: 50, title: "Rezultati U-16 (djevojke) - Streetball Posušje 2025 🏀", excerpt: "Pogledajte rezultate kategorije U-16 (djevojke)! 1. mjesto - Basketbalije, 2. mjesto - Maslačak, 3. mjesto - Tomislavgrad.", date: "27. 08. 2025", category: "2025", image: u16DjevojkeCover, imagePosition: "center" },
+  { id: 49, title: "Rezultati U-16 (muški) - Streetball Posušje 2025 🏀", excerpt: "Pogledajte rezultate kategorije U-16 (muški) na ovogodišnjem turniru! 1. mjesto - Grude COM, 2. mjesto - Taxi Jole, 3. mjesto - Broadly Hill Boys.", date: "28. 08. 2025", category: "2025", image: u16Card, imagePosition: "center" },
 ];
 
 const News = () => {
