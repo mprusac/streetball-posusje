@@ -144,7 +144,7 @@ const Hero = () => {
             </Button>
           </div>
 
-          <div className="mt-8 sm:mt-10 animate-fade-in-up delay-400">
+          <div className="mt-5 sm:mt-10 animate-fade-in-up delay-400">
             <p className="font-display text-sm sm:text-base tracking-[0.2em] text-foreground/80 mb-3 uppercase">Turnir počinje za:</p>
             <div className="flex justify-center gap-3 sm:gap-6">
               {[
