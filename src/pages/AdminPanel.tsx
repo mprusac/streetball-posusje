@@ -513,7 +513,7 @@ const AdminPanel = () => {
 
             {/* News section */}
             <div className="mb-10">
-              <h2 className="font-display text-xl text-primary mb-4">Vijesti</h2>
+              <h2 className="font-display text-xl text-primary mb-4 text-center">Vijesti</h2>
               <div className="space-y-3">
                 {loading && news.length === 0 && <p className="text-muted-foreground text-center py-4">Učitavanje...</p>}
                 {!loading && news.length === 0 && <p className="text-muted-foreground text-center py-4">Nema vijesti u bazi. Dodajte prvu!</p>}
