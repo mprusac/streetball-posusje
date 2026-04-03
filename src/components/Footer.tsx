@@ -1,4 +1,4 @@
-import { Facebook, Instagram, Youtube } from "lucide-react";
+import { Facebook, Instagram } from "lucide-react";
 import logo from "@/assets/logo.png";
 
 const footerLinks = [
@@ -12,7 +12,6 @@ const footerLinks = [
 const socialLinks = [
   { icon: Facebook, href: "https://www.facebook.com/StreetballPosusje", label: "Facebook" },
   { icon: Instagram, href: "https://www.instagram.com/streetball_posusje/", label: "Instagram" },
-  { icon: Youtube, href: "https://www.youtube.com/@kosarkaskisavezhercegbosne", label: "YouTube" },
 ];
 
 const Footer = () => {
