@@ -14,17 +14,11 @@ const ResultsPage = () => {
   useEffect(() => {
     if (!containerRef.current) return;
 
-    // Clear any previous content
     containerRef.current.innerHTML = "";
 
-    // Create the FIBA embed div
-    const embedDiv = document.createElement("div");
-    embedDiv.setAttribute("data-fiba-embedtype", "results");
-    embedDiv.setAttribute("data-fiba-eventid", "3eab0fdf-75f7-48a3-a788-51e5cccf0021");
-    containerRef.current.appendChild(embedDiv);
-
-    // Load the embed script
     const script = document.createElement("script");
+    script.setAttribute("data-fiba-embedtype", "results");
+    script.setAttribute("data-fiba-eventid", "3eab0fdf-75f7-48a3-a788-51e5cccf0021");
     script.src = "https://play.fiba3x3.com/embed.js";
     script.async = true;
     containerRef.current.appendChild(script);
