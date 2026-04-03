@@ -415,11 +415,16 @@ const AdminPanel = () => {
             {/* Thumbnail upload */}
             <div className="space-y-2">
               <label className="text-sm text-muted-foreground font-medium">Naslovna slika (thumbnail)</label>
-              <div>
+              <div
+                onDragOver={e => { e.preventDefault(); e.currentTarget.classList.add('border-primary', 'bg-primary/5'); }}
+                onDragLeave={e => { e.preventDefault(); e.currentTarget.classList.remove('border-primary', 'bg-primary/5'); }}
+                onDrop={e => { e.preventDefault(); e.currentTarget.classList.remove('border-primary', 'bg-primary/5'); if (e.dataTransfer.files?.[0]) uploadImage(e.dataTransfer.files[0]); }}
+                className="border-2 border-dashed border-border rounded-lg p-4 text-center transition-colors cursor-pointer"
+                onClick={() => fileInputRef.current?.click()}
+              >
                 <input ref={fileInputRef} type="file" accept="image/*" className="hidden" onChange={e => { if (e.target.files?.[0]) uploadImage(e.target.files[0]); }} />
-                <Button type="button" variant="outline" onClick={() => fileInputRef.current?.click()} disabled={uploadingImage} className="w-full">
-                  <Upload size={16} /> {uploadingImage ? "Učitavanje..." : "Odaberi naslovnu sliku"}
-                </Button>
+                <Upload size={20} className="mx-auto mb-1 text-muted-foreground" />
+                <p className="text-sm text-muted-foreground">{uploadingImage ? "Učitavanje..." : "Klikni ili povuci sliku ovdje"}</p>
               </div>
               {form.image_url && (
                 <div className="relative inline-block">
