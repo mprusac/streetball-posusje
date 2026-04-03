@@ -618,9 +618,9 @@ const AdminPanel = () => {
                           <h3 className="text-foreground font-medium truncate text-sm">{item.title}</h3>
                           {item.pinned && <Pin size={12} className="text-primary rotate-45 flex-shrink-0" />}
                         </div>
-                        <p className="text-muted-foreground text-xs flex items-center">
+                        <p className="text-muted-foreground text-xs flex items-center leading-none">
                           <span>{item.date} • {item.category}</span>
-                          {item.gallery_images?.length > 0 && <span className="ml-1 text-primary inline-flex items-center gap-0.5">📸 {item.gallery_images.length}</span>}
+                          {item.gallery_images?.length > 0 && <span className="ml-1.5 text-primary inline-flex items-center gap-0.5"><ImagePlus size={11} className="flex-shrink-0" /> {item.gallery_images.length}</span>}
                         </p>
                       </div>
                       <div className="flex gap-1 flex-shrink-0">
