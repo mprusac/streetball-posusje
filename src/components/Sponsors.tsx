@@ -211,7 +211,7 @@ const Sponsors = () => {
                           <div className={`${tier.color} transition-transform duration-300 group-hover:scale-110 w-4 md:w-8 flex items-center justify-center shrink-0`}>{tier.icon}</div>
                           <div className="leading-[1.1]">
                             <h4 className={`font-semibold text-xs md:text-sm ${tier.color}`}>{tier.name}</h4>
-                            <p className="text-primary text-sm md:text-base font-display">{tier.price}</p>
+                            <p className="text-primary text-sm md:text-base font-display font-bold">{tier.price}</p>
                           </div>
                         </div>
                         <ul className="space-y-1">
