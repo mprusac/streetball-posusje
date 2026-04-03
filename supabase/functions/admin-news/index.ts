@@ -80,7 +80,7 @@ Deno.serve(async (req) => {
     // Create news
     if (path === 'create' && req.method === 'POST') {
       const body = await req.json()
-      const { title, excerpt, date, category, image_url, image_position, pinned } = body
+      const { title, excerpt, date, category, image_url, image_position, pinned, gallery_images } = body
 
       if (!title || !date) {
         return new Response(JSON.stringify({ error: 'Title and date required' }), {
@@ -90,7 +90,7 @@ Deno.serve(async (req) => {
 
       const { data, error } = await supabase
         .from('news')
-        .insert({ title, excerpt, date, category: category || '2025', image_url, image_position: image_position || 'center', pinned: pinned || false })
+        .insert({ title, excerpt, date, category: category || '2025', image_url, image_position: image_position || 'center', pinned: pinned || false, gallery_images: gallery_images || [] })
         .select()
         .single()
 

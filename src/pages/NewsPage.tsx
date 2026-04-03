@@ -189,6 +189,7 @@ const NewsPage = () => {
             image: n.image_url || '',
             cardImage: n.image_url || '',
             cardImagePosition: n.image_position || 'center',
+            galleryImages: n.gallery_images || [],
             pinned: n.pinned || false,
           })));
         }
