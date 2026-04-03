@@ -55,7 +55,7 @@ const Footer = () => {
                 petarsusnjar@streetball-posusje.com
               </a>
               <p>+387 63 290 237<br />+385 91 608 2969</p>
-            </div>
+            </address>
           </div>
 
           {/* Quick Links */}
