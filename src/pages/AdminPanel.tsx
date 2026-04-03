@@ -362,16 +362,14 @@ const AdminPanel = () => {
         {/* News Form */}
         {view === "news-form" && (
           <div className="bg-card p-6 rounded-xl border border-border mb-8 space-y-4">
-            <div className="flex items-center justify-between">
-              <div className="flex items-center gap-3">
-                <button
-                  onClick={() => { setView("main"); setEditing(null); }}
-                  className="text-muted-foreground hover:text-foreground transition-colors"
-                >
-                  <ArrowLeft size={20} />
-                </button>
-                <h2 className="font-display text-xl text-foreground">{editing ? "Uredi vijest" : "Nova vijest"}</h2>
-              </div>
+            <div className="relative flex items-center justify-center">
+              <button
+                onClick={() => { setView("main"); setEditing(null); }}
+                className="absolute left-0 text-muted-foreground hover:text-foreground transition-colors"
+              >
+                <ArrowLeft size={20} />
+              </button>
+              <h2 className="font-display text-xl text-foreground">{editing ? "Uredi vijest" : "Nova vijest"}</h2>
             </div>
             <Input placeholder="Naslov *" value={form.title} onChange={e => setForm(f => ({ ...f, title: e.target.value }))} />
             <textarea
@@ -456,16 +454,14 @@ const AdminPanel = () => {
         {/* Gallery Form */}
         {view === "gallery-form" && (
           <div className="bg-card p-6 rounded-xl border border-border mb-8 space-y-4">
-            <div className="flex items-center justify-between">
-              <div className="flex items-center gap-3">
-                <button
-                  onClick={() => { setView("main"); setEditingGallery(null); }}
-                  className="text-muted-foreground hover:text-foreground transition-colors"
-                >
-                  <ArrowLeft size={20} />
-                </button>
-                <h2 className="font-display text-xl text-foreground">{editingGallery ? "Uredi galeriju" : "Nova galerija"}</h2>
-              </div>
+            <div className="relative flex items-center justify-center">
+              <button
+                onClick={() => { setView("main"); setEditingGallery(null); }}
+                className="absolute left-0 text-muted-foreground hover:text-foreground transition-colors"
+              >
+                <ArrowLeft size={20} />
+              </button>
+              <h2 className="font-display text-xl text-foreground">{editingGallery ? "Uredi galeriju" : "Nova galerija"}</h2>
             </div>
             <Input placeholder="Naslov galerije *" value={galleryForm.title} onChange={e => setGalleryForm(f => ({ ...f, title: e.target.value }))} />
             <Input placeholder="Datum (npr. 19.07.2025.)" value={galleryForm.date} onChange={e => setGalleryForm(f => ({ ...f, date: e.target.value }))} />
@@ -507,17 +503,17 @@ const AdminPanel = () => {
         {view === "main" && (
           <>
             <div className="flex items-center justify-center gap-4 mb-8">
-              <Button onClick={startCreateNews} variant="outline" size="lg" className="border-primary bg-background text-foreground hover:bg-primary/10 px-6 py-3 text-base">
+              <Button onClick={startCreateNews} variant="outline" size="lg" className="border-primary bg-background text-foreground hover:bg-primary hover:text-primary-foreground px-6 py-3 text-base transition-colors">
                 <Newspaper size={20} /> Nova vijest
               </Button>
-              <Button onClick={startCreateGallery} variant="outline" size="lg" className="border-primary bg-background text-foreground hover:bg-primary/10 px-6 py-3 text-base">
+              <Button onClick={startCreateGallery} variant="outline" size="lg" className="border-primary bg-background text-foreground hover:bg-primary hover:text-primary-foreground px-6 py-3 text-base transition-colors">
                 <ImagePlus size={20} /> Nova galerija
               </Button>
             </div>
 
             {/* News section */}
             <div className="mb-10">
-              <h2 className="font-display text-xl text-primary mb-4">Vijesti</h2>
+              <h2 className="font-display text-xl text-primary mb-4 text-center">Vijesti</h2>
               <div className="space-y-3">
                 {loading && news.length === 0 && <p className="text-muted-foreground text-center py-4">Učitavanje...</p>}
                 {!loading && news.length === 0 && <p className="text-muted-foreground text-center py-4">Nema vijesti u bazi. Dodajte prvu!</p>}
@@ -551,7 +547,7 @@ const AdminPanel = () => {
 
             {/* Galleries section */}
             <div>
-              <h2 className="font-display text-xl text-primary mb-4">Galerije</h2>
+              <h2 className="font-display text-xl text-primary mb-4 text-center">Galerije</h2>
               <div className="space-y-3">
                 {!loading && galleries.length === 0 && <p className="text-muted-foreground text-center py-4">Nema galerija u bazi. Dodajte prvu!</p>}
                 {galleries.map(item => (
