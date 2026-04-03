@@ -4,12 +4,12 @@ import { Link, useLocation } from "react-router-dom";
 import logo from "@/assets/logo.png";
 
 const navLinks = [
-  { href: "#pocetna", label: "Početna" },
-  { href: "#vijesti", label: "Vijesti" },
-  { href: "/galerija", label: "Galerija", isRoute: true },
-  { href: "/rezultati", label: "Rezultati", isRoute: true },
-  { href: "#o-klubu", label: "O turniru" },
-  { href: "#kontakt", label: "Kontakt" },
+  { href: "#pocetna", label: "POČETNA" },
+  { href: "#vijesti", label: "VIJESTI" },
+  { href: "/galerija", label: "GALERIJA", isRoute: true },
+  { href: "/rezultati", label: "REZULTATI", isRoute: true },
+  { href: "#o-klubu", label: "O TURNIRU" },
+  { href: "#kontakt", label: "KONTAKT" },
 ];
 
 const Navbar = () => {
@@ -70,18 +70,13 @@ const Navbar = () => {
                   <Link
                     key={link.href}
                     to={link.href}
-                    className={`group relative font-display font-bold text-xl tracking-widest transition-all duration-300 py-2 ${
+                    className={`group relative font-display font-bold text-xl uppercase tracking-widest transition-all duration-300 py-2 px-3 ${
                       isActive
-                        ? "text-primary"
-                        : "text-foreground hover:text-primary"
+                        ? "text-primary bg-gradient-to-r from-primary/20 to-transparent"
+                        : "text-foreground hover:text-primary hover:bg-gradient-to-r hover:from-primary/15 hover:to-transparent"
                     }`}
                   >
                     {link.label}
-                    <span 
-                      className={`absolute left-0 -bottom-1 h-0.5 bg-primary transition-all duration-300 ease-out ${
-                        isActive ? "w-full" : "w-0 group-hover:w-full"
-                      }`}
-                    />
                   </Link>
                 );
               }
@@ -90,18 +85,13 @@ const Navbar = () => {
                 <a
                   key={link.href}
                   href={link.href}
-                  className={`group relative font-display font-bold text-xl tracking-widest transition-all duration-300 py-2 ${
+                  className={`group relative font-display font-bold text-xl uppercase tracking-widest transition-all duration-300 py-2 px-3 ${
                     isActive
-                      ? "text-primary"
-                      : "text-foreground hover:text-primary"
+                      ? "text-primary bg-gradient-to-r from-primary/20 to-transparent"
+                      : "text-foreground hover:text-primary hover:bg-gradient-to-r hover:from-primary/15 hover:to-transparent"
                   }`}
                 >
                   {link.label}
-                  <span 
-                    className={`absolute left-0 -bottom-1 h-0.5 bg-primary transition-all duration-300 ease-out ${
-                      isActive ? "w-full" : "w-0 group-hover:w-full"
-                    }`}
-                  />
                 </a>
               );
             })}
@@ -136,10 +126,10 @@ const Navbar = () => {
                     key={link.href}
                     to={link.href}
                     onClick={() => setIsOpen(false)}
-                    className={`font-display font-bold text-base tracking-widest transition-all duration-300 px-3 py-0.5 rounded-md ${
+                    className={`font-display font-bold text-base uppercase tracking-widest transition-all duration-300 px-3 py-1 ${
                       isActive
-                        ? "text-primary"
-                        : "text-foreground hover:text-primary"
+                        ? "text-primary bg-gradient-to-r from-primary/20 to-transparent"
+                        : "text-foreground hover:text-primary hover:bg-gradient-to-r hover:from-primary/15 hover:to-transparent"
                     }`}
                   >
                     {link.label}
@@ -152,10 +142,10 @@ const Navbar = () => {
                   key={link.href}
                   href={link.href}
                   onClick={() => setIsOpen(false)}
-                  className={`font-display font-bold text-base tracking-widest transition-all duration-300 px-3 py-0.5 rounded-md ${
+                  className={`font-display font-bold text-base uppercase tracking-widest transition-all duration-300 px-3 py-1 ${
                     isActive
-                      ? "text-primary"
-                      : "text-foreground hover:text-primary"
+                      ? "text-primary bg-gradient-to-r from-primary/20 to-transparent"
+                      : "text-foreground hover:text-primary hover:bg-gradient-to-r hover:from-primary/15 hover:to-transparent"
                   }`}
                 >
                   {link.label}
