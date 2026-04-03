@@ -1,6 +1,6 @@
 
 import { useState, useEffect, useRef } from "react";
-import { Trash2, Edit, Plus, LogOut, Save, X, Upload, Pin, ArrowLeft } from "lucide-react";
+import { Trash2, Edit, Plus, LogOut, Save, X, Upload, Pin, ArrowLeft, ImagePlus } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -16,6 +16,7 @@ interface NewsItem {
   image_url: string | null;
   image_position: string;
   pinned: boolean;
+  gallery_images: string[];
   created_at: string;
 }
 
@@ -38,12 +39,14 @@ const AdminPanel = () => {
   const [editing, setEditing] = useState<NewsItem | null>(null);
   const [creating, setCreating] = useState(false);
   const [uploadingImage, setUploadingImage] = useState(false);
+  const [uploadingGallery, setUploadingGallery] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
+  const galleryInputRef = useRef<HTMLInputElement>(null);
   const { toast } = useToast();
   const navigate = useNavigate();
 
   const [form, setForm] = useState({
-    title: "", excerpt: "", image_url: "", image_position: "center", pinned: false
+    title: "", excerpt: "", image_url: "", image_position: "center", pinned: false, gallery_images: [] as string[]
   });
 
   const headers = { Authorization: `Bearer ${token}`, "Content-Type": "application/json" };
@@ -104,6 +107,29 @@ const AdminPanel = () => {
     setUploadingImage(false);
   };
 
+  const uploadGalleryImages = async (files: FileList) => {
+    setUploadingGallery(true);
+    const newUrls: string[] = [];
+    try {
+      for (const file of Array.from(files)) {
+        const filePath = `gallery/${Date.now()}-${file.name}`;
+        const { error } = await supabase.storage.from("news-images").upload(filePath, file);
+        if (error) throw error;
+        const { data: { publicUrl } } = supabase.storage.from("news-images").getPublicUrl(filePath);
+        newUrls.push(publicUrl);
+      }
+      setForm(f => ({ ...f, gallery_images: [...f.gallery_images, ...newUrls] }));
+      toast({ title: `${newUrls.length} slika uploadano!` });
+    } catch (err: any) {
+      toast({ title: "Greška pri uploadu galerije", description: err.message, variant: "destructive" });
+    }
+    setUploadingGallery(false);
+  };
+
+  const removeGalleryImage = (index: number) => {
+    setForm(f => ({ ...f, gallery_images: f.gallery_images.filter((_, i) => i !== index) }));
+  };
+
   const saveNews = async () => {
     setLoading(true);
     try {
@@ -126,7 +152,7 @@ const AdminPanel = () => {
       }
       setEditing(null);
       setCreating(false);
-      setForm({ title: "", excerpt: "", image_url: "", image_position: "center", pinned: false });
+      setForm({ title: "", excerpt: "", image_url: "", image_position: "center", pinned: false, gallery_images: [] });
       fetchNews();
     } catch (err: any) {
       toast({ title: "Greška", description: err.message, variant: "destructive" });
@@ -158,13 +184,14 @@ const AdminPanel = () => {
       image_url: item.image_url || "",
       image_position: item.image_position,
       pinned: item.pinned,
+      gallery_images: item.gallery_images || [],
     });
   };
 
   const startCreate = () => {
     setEditing(null);
     setCreating(true);
-    setForm({ title: "", excerpt: "", image_url: "", image_position: "center", pinned: false });
+    setForm({ title: "", excerpt: "", image_url: "", image_position: "center", pinned: false, gallery_images: [] });
   };
 
   // Login screen
@@ -240,17 +267,17 @@ const AdminPanel = () => {
               </label>
             </div>
             
-            {/* Image upload */}
+            {/* Thumbnail upload */}
             <div className="space-y-2">
-              <label className="text-sm text-muted-foreground">Thumbnail slika</label>
+              <label className="text-sm text-muted-foreground font-medium">Naslovna slika (thumbnail)</label>
               <div>
                 <input ref={fileInputRef} type="file" accept="image/*" className="hidden" onChange={e => { if (e.target.files?.[0]) uploadImage(e.target.files[0]); }} />
                 <Button type="button" variant="outline" onClick={() => fileInputRef.current?.click()} disabled={uploadingImage} className="w-full">
-                  <Upload size={16} /> {uploadingImage ? "Učitavanje..." : "Odaberi sliku"}
+                  <Upload size={16} /> {uploadingImage ? "Učitavanje..." : "Odaberi naslovnu sliku"}
                 </Button>
               </div>
               {form.image_url && (
-                <div className="relative">
+                <div className="relative inline-block">
                   <img src={form.image_url} alt="Preview" className="h-32 rounded-lg object-cover" />
                   <button
                     onClick={() => setForm(f => ({ ...f, image_url: "" }))}
@@ -260,6 +287,33 @@ const AdminPanel = () => {
                   </button>
                 </div>
               )}
+            </div>
+
+            {/* Gallery images upload */}
+            <div className="space-y-2">
+              <label className="text-sm text-muted-foreground font-medium">Slike članka (galerija)</label>
+              <div>
+                <input ref={galleryInputRef} type="file" accept="image/*" multiple className="hidden" onChange={e => { if (e.target.files?.length) uploadGalleryImages(e.target.files); }} />
+                <Button type="button" variant="outline" onClick={() => galleryInputRef.current?.click()} disabled={uploadingGallery} className="w-full">
+                  <ImagePlus size={16} /> {uploadingGallery ? "Učitavanje..." : "Dodaj slike u galeriju"}
+                </Button>
+              </div>
+              {form.gallery_images.length > 0 && (
+                <div className="grid grid-cols-3 md:grid-cols-4 gap-2">
+                  {form.gallery_images.map((url, i) => (
+                    <div key={i} className="relative group">
+                      <img src={url} alt={`Galerija ${i + 1}`} className="w-full h-24 rounded-lg object-cover" />
+                      <button
+                        onClick={() => removeGalleryImage(i)}
+                        className="absolute top-1 right-1 bg-background/80 rounded-full p-1 hover:bg-destructive hover:text-destructive-foreground transition-colors opacity-0 group-hover:opacity-100"
+                      >
+                        <X size={12} />
+                      </button>
+                    </div>
+                  ))}
+                </div>
+              )}
+              <p className="text-xs text-muted-foreground">Ove slike će se prikazati u masonry layoutu na dnu članka.</p>
             </div>
 
             <Button onClick={saveNews} disabled={loading || !form.title} className="w-full">
@@ -286,7 +340,10 @@ const AdminPanel = () => {
                   <h3 className="text-foreground font-medium truncate">{item.title}</h3>
                   {item.pinned && <Pin size={14} className="text-primary rotate-45 flex-shrink-0" />}
                 </div>
-                <p className="text-muted-foreground text-sm">{item.date} • {item.category}</p>
+                <p className="text-muted-foreground text-sm">
+                  {item.date} • {item.category}
+                  {item.gallery_images?.length > 0 && <span className="ml-2 text-primary">📸 {item.gallery_images.length} slika</span>}
+                </p>
               </div>
               <div className="flex gap-2 flex-shrink-0">
                 <Button variant="outline" size="icon" onClick={() => startEdit(item)}>
