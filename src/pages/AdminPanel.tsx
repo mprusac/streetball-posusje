@@ -30,6 +30,7 @@ interface GalleryItem {
   title: string;
   date: string;
   images: string[];
+  cover_image: string | null;
   created_at: string;
 }
 
