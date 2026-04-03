@@ -68,7 +68,6 @@ const AdminPanel = () => {
   const [form, setForm] = useState({
     title: "", excerpt: "", date: getTodayFormatted(), image_url: "", image_position: "center", pinned: false, gallery_images: [] as string[], category: String(new Date().getFullYear())
   });
-  });
 
   const [galleryForm, setGalleryForm] = useState({
     title: "", date: getTodayFormatted(), images: [] as string[]
