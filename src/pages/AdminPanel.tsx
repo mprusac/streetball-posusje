@@ -325,7 +325,7 @@ const AdminPanel = () => {
                   ))}
                 </div>
               )}
-              <p className="text-xs text-muted-foreground">Ove slike će se prikazati u masonry layoutu na dnu članka.</p>
+              
             </div>
 
             <Button onClick={saveNews} disabled={loading || !form.title} className="w-full">
