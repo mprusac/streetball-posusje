@@ -6,7 +6,6 @@ import logo from "@/assets/logo.png";
 const navLinks = [
   { href: "#pocetna", label: "Početna" },
   { href: "#vijesti", label: "Vijesti" },
-  { href: "#raspored", label: "Raspored" },
   { href: "/galerija", label: "Galerija", isRoute: true },
   { href: "/rezultati", label: "Rezultati", isRoute: true },
   { href: "#o-klubu", label: "O turniru" },
@@ -44,11 +43,11 @@ const Navbar = () => {
     <nav
       aria-label="Glavna navigacija"
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled || isOpen ? "bg-background/95 backdrop-blur-md shadow-lg" : "bg-transparent"
+        scrolled ? "bg-background/95 backdrop-blur-md shadow-lg" : "bg-transparent"
       }`}
     >
       <div className="container mx-auto px-4">
-        <div className="flex items-center justify-between h-20">
+        <div className="flex items-center justify-between h-16 lg:h-20">
           {/* Logo with yellow glow on hover */}
           <Link to="/" className="flex items-center gap-3 group">
             <img 
@@ -121,10 +120,10 @@ const Navbar = () => {
         {/* Mobile Navigation */}
         <div
           className={`lg:hidden overflow-hidden transition-all duration-300 ${
-            isOpen ? "max-h-[400px] pb-2" : "max-h-0"
+            isOpen ? "max-h-[280px] pb-1" : "max-h-0"
           }`}
         >
-          <div className="flex flex-col gap-0 pt-0 pb-1">
+          <div className="flex flex-col gap-0 pt-0 pb-0">
             {navLinks.map((link) => {
               const isRoute = link.isRoute;
               const isActive = isRoute 
@@ -137,10 +136,10 @@ const Navbar = () => {
                     key={link.href}
                     to={link.href}
                     onClick={() => setIsOpen(false)}
-                    className={`font-display text-lg tracking-widest transition-all duration-300 px-3 py-1 rounded-md ${
+                    className={`font-display font-bold text-base tracking-widest transition-all duration-300 px-3 py-0.5 rounded-md ${
                       isActive
-                        ? "text-primary bg-primary/10"
-                        : "text-foreground hover:text-primary hover:bg-primary/10"
+                        ? "text-primary"
+                        : "text-foreground hover:text-primary"
                     }`}
                   >
                     {link.label}
@@ -153,10 +152,10 @@ const Navbar = () => {
                   key={link.href}
                   href={link.href}
                   onClick={() => setIsOpen(false)}
-                  className={`font-display text-lg tracking-widest transition-all duration-300 px-3 py-1 rounded-md ${
+                  className={`font-display font-bold text-base tracking-widest transition-all duration-300 px-3 py-0.5 rounded-md ${
                     isActive
-                      ? "text-primary bg-primary/10"
-                      : "text-foreground hover:text-primary hover:bg-primary/10"
+                      ? "text-primary"
+                      : "text-foreground hover:text-primary"
                   }`}
                 >
                   {link.label}
