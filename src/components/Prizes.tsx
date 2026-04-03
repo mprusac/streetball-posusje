@@ -21,9 +21,9 @@ const Prizes = () => {
               background: 'linear-gradient(135deg, hsl(0 0% 5%) 0%, hsl(45 100% 51% / 0.08) 50%, hsl(0 0% 8%) 100%)',
             }}
           >
-            <div className="flex items-center gap-3 md:gap-4 justify-center mb-1">
+            <div className="flex items-center gap-3 md:gap-4 justify-center mb-2 md:mb-3">
               <Trophy className="w-5 h-5 md:w-6 md:h-6 text-primary" />
-              <span className="text-xs md:text-sm tracking-[0.3em] text-primary font-bold font-display drop-shadow-[0_0_8px_rgba(234,179,8,0.5)]">
+              <span className="text-sm md:text-base tracking-[0.3em] text-primary font-bold font-display drop-shadow-[0_0_8px_rgba(234,179,8,0.5)]">
                 NAGRADNI FOND
               </span>
               <Trophy className="w-5 h-5 md:w-6 md:h-6 text-primary" />
