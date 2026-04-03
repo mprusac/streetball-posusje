@@ -205,11 +205,11 @@ const Sponsors = () => {
                         className={`group bg-secondary/40 border border-border rounded-lg p-3 md:p-4 animate-fade-in-up transition-all duration-300 hover:scale-[1.02] hover:border-primary/50 ${shadowColor} snap-start shrink-0 w-[calc(50%-6px)] md:w-[220px] lg:w-auto lg:flex-1`}
                         style={{ animationDelay: `${index * 80}ms` }}
                       >
-                        <div className="flex items-center gap-2 mb-2 min-h-[48px] md:min-h-[56px]">
+                        <div className="flex items-center gap-2 mb-1 min-h-[44px] md:min-h-[52px]">
                           <div className={`${tier.color} transition-transform duration-300 group-hover:scale-110 w-4 md:w-8 flex items-center justify-center shrink-0`}>{tier.icon}</div>
-                          <div>
-                            <h4 className={`font-semibold text-xs md:text-sm ${tier.color} leading-none`}>{tier.name}</h4>
-                            <p className="text-primary text-sm md:text-base font-display leading-none mt-0.5">{tier.price}</p>
+                          <div className="leading-[1.1]">
+                            <h4 className={`font-semibold text-xs md:text-sm ${tier.color}`}>{tier.name}</h4>
+                            <p className="text-primary text-sm md:text-base font-display">{tier.price}</p>
                           </div>
                         </div>
                         <ul className="space-y-1">
