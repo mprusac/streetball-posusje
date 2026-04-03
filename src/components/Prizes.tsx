@@ -28,8 +28,18 @@ const Prizes = () => {
               </span>
               <Trophy className="w-5 h-5 md:w-6 md:h-6 text-primary" />
             </div>
-            <div className="text-3xl md:text-5xl font-display font-bold text-primary text-center group-hover:scale-105 transition-transform duration-300 drop-shadow-[0_0_12px_rgba(234,179,8,0.4)]">
-              {count.toLocaleString('de-DE')} KM
+            <div className="text-3xl md:text-5xl font-display font-bold text-center group-hover:scale-105 transition-transform duration-300">
+              <span
+                style={{
+                  backgroundImage: 'linear-gradient(90deg, hsl(var(--primary)) 0%, hsl(var(--primary)) 40%, hsl(0 0% 100% / 0.9) 50%, hsl(var(--primary)) 60%, hsl(var(--primary)) 100%)',
+                  backgroundSize: '200% 100%',
+                  WebkitBackgroundClip: 'text',
+                  WebkitTextFillColor: 'transparent',
+                  animation: 'shimmer 3s ease-in-out infinite',
+                }}
+              >
+                {count.toLocaleString('de-DE')} KM
+              </span>
             </div>
           </div>
         </div>
