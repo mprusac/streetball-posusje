@@ -65,33 +65,29 @@ const Navbar = () => {
                 ? location.pathname === link.href 
                 : activeSection === link.href.slice(1);
               
+              const className = `group relative font-display font-bold text-xl uppercase tracking-widest transition-all duration-300 py-2 px-3 ${
+                isActive
+                  ? "text-primary"
+                  : "text-foreground hover:text-primary"
+              }`;
+
+              const underline = (
+                <span className={`absolute bottom-0 left-0 h-[2px] bg-primary transition-all duration-300 ${isActive ? 'w-full' : 'w-0 group-hover:w-full'}`} />
+              );
+              
               if (isRoute) {
                 return (
-                  <Link
-                    key={link.href}
-                    to={link.href}
-                    className={`group relative font-display font-bold text-xl uppercase tracking-widest transition-all duration-300 py-2 px-3 ${
-                      isActive
-                        ? "text-primary bg-gradient-to-r from-primary/20 to-transparent"
-                        : "text-foreground hover:text-primary hover:bg-gradient-to-r hover:from-primary/15 hover:to-transparent"
-                    }`}
-                  >
+                  <Link key={link.href} to={link.href} className={className}>
                     {link.label}
+                    {underline}
                   </Link>
                 );
               }
               
               return (
-                <a
-                  key={link.href}
-                  href={link.href}
-                  className={`group relative font-display font-bold text-xl uppercase tracking-widest transition-all duration-300 py-2 px-3 ${
-                    isActive
-                      ? "text-primary bg-gradient-to-r from-primary/20 to-transparent"
-                      : "text-foreground hover:text-primary hover:bg-gradient-to-r hover:from-primary/15 hover:to-transparent"
-                  }`}
-                >
+                <a key={link.href} href={link.href} className={className}>
                   {link.label}
+                  {underline}
                 </a>
               );
             })}
