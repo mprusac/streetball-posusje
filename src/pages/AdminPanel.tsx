@@ -454,16 +454,14 @@ const AdminPanel = () => {
         {/* Gallery Form */}
         {view === "gallery-form" && (
           <div className="bg-card p-6 rounded-xl border border-border mb-8 space-y-4">
-            <div className="flex items-center justify-between">
-              <div className="flex items-center gap-3">
-                <button
-                  onClick={() => { setView("main"); setEditingGallery(null); }}
-                  className="text-muted-foreground hover:text-foreground transition-colors"
-                >
-                  <ArrowLeft size={20} />
-                </button>
-                <h2 className="font-display text-xl text-foreground">{editingGallery ? "Uredi galeriju" : "Nova galerija"}</h2>
-              </div>
+            <div className="relative flex items-center justify-center">
+              <button
+                onClick={() => { setView("main"); setEditingGallery(null); }}
+                className="absolute left-0 text-muted-foreground hover:text-foreground transition-colors"
+              >
+                <ArrowLeft size={20} />
+              </button>
+              <h2 className="font-display text-xl text-foreground">{editingGallery ? "Uredi galeriju" : "Nova galerija"}</h2>
             </div>
             <Input placeholder="Naslov galerije *" value={galleryForm.title} onChange={e => setGalleryForm(f => ({ ...f, title: e.target.value }))} />
             <Input placeholder="Datum (npr. 19.07.2025.)" value={galleryForm.date} onChange={e => setGalleryForm(f => ({ ...f, date: e.target.value }))} />
