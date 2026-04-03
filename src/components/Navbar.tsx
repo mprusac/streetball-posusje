@@ -58,7 +58,7 @@ const Navbar = () => {
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center gap-4">
+          <div className="hidden lg:flex items-center gap-2">
             {navLinks.map((link) => {
               const isRoute = link.isRoute;
               const isActive = isRoute 
