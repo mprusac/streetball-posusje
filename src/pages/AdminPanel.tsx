@@ -279,7 +279,6 @@ const AdminPanel = () => {
   };
 
   const deleteGallery = async (id: string) => {
-    if (!confirm("Jeste li sigurni da želite obrisati ovu galeriju?")) return;
     try {
       const res = await fetch(`${GALLERY_URL}/delete`, {
         method: "POST", headers,
