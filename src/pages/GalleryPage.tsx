@@ -187,7 +187,7 @@ const EventAlbum = ({ event }: { event: typeof events[0] }) => {
               className="inline-flex items-center gap-3 text-primary hover:text-primary/80 transition-colors mb-8 text-lg"
             >
               <ArrowLeft className="w-6 h-6" />
-              <span className="font-display tracking-wider text-xl">Nazad na galeriju</span>
+              <span className="font-display font-bold tracking-wider text-xl">Nazad na galeriju</span>
             </Link>
           </motion.div>
 
