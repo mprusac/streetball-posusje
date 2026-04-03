@@ -62,6 +62,7 @@ const News = () => {
           setDbNews(data.map((n: any) => ({
             id: n.id,
             title: n.title,
+            date: stripTrailingDot(n.date),
             excerpt: n.excerpt || '',
             date: n.date,
             category: n.category,
