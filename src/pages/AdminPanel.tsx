@@ -627,9 +627,25 @@ const AdminPanel = () => {
                         <Button variant="outline" size="icon" className="h-8 w-8" onClick={() => startEditNews(item)}>
                           <Edit size={14} />
                         </Button>
-                        <Button variant="destructive" size="icon" className="h-8 w-8" onClick={() => deleteNews(item.id)}>
-                          <Trash2 size={14} />
-                        </Button>
+                        <AlertDialog>
+                          <AlertDialogTrigger asChild>
+                            <Button variant="destructive" size="icon" className="h-8 w-8">
+                              <Trash2 size={14} />
+                            </Button>
+                          </AlertDialogTrigger>
+                          <AlertDialogContent className="bg-[hsl(0,0%,7%)] border-primary/30 text-foreground">
+                            <AlertDialogHeader>
+                              <AlertDialogTitle className="text-primary">Obriši vijest</AlertDialogTitle>
+                              <AlertDialogDescription className="text-muted-foreground">
+                                Jeste li sigurni da želite obrisati ovu vijest? Ova radnja se ne može poništiti.
+                              </AlertDialogDescription>
+                            </AlertDialogHeader>
+                            <AlertDialogFooter>
+                              <AlertDialogCancel className="bg-transparent border-border text-foreground hover:bg-muted">Odustani</AlertDialogCancel>
+                              <AlertDialogAction className="bg-primary text-primary-foreground hover:bg-primary/80" onClick={() => deleteNews(item.id)}>Obriši</AlertDialogAction>
+                            </AlertDialogFooter>
+                          </AlertDialogContent>
+                        </AlertDialog>
                       </div>
                     </div>
                   ))}
