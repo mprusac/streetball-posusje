@@ -705,8 +705,8 @@ const AdminPanel = () => {
                   {!loading && galleries.length === 0 && <p className="text-muted-foreground text-center py-4">Nema galerija. Dodajte prvu!</p>}
                   {galleries.map(item => (
                     <div key={item.id} className="flex items-center gap-3 bg-card p-3 rounded-xl border border-border">
-                      {item.images?.[0] && (
-                        <img src={item.images[0]} alt={item.title} className="w-12 h-12 rounded-lg object-cover flex-shrink-0" />
+                      {(item.cover_image || item.images?.[0]) && (
+                        <img src={item.cover_image || item.images[0]} alt={item.title} className="w-12 h-12 rounded-lg object-cover flex-shrink-0" />
                       )}
                       <div className="flex-1 min-w-0">
                         <h3 className="text-foreground font-medium truncate text-sm">{item.title}</h3>
