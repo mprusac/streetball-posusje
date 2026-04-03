@@ -71,7 +71,7 @@ const Navbar = () => {
                   <Link
                     key={link.href}
                     to={link.href}
-                    className={`group relative font-display text-xl tracking-widest transition-all duration-300 py-2 ${
+                    className={`group relative font-display font-bold text-xl tracking-widest transition-all duration-300 py-2 ${
                       isActive
                         ? "text-primary"
                         : "text-foreground hover:text-primary"
