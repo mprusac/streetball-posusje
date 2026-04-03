@@ -41,6 +41,9 @@ function getTodayFormatted(): string {
 
 type AdminView = "main" | "news-form" | "gallery-form";
 
+// Custom category modal state
+
+
 const AdminPanel = () => {
   const [token, setToken] = useState<string | null>(sessionStorage.getItem("admin_token"));
   const [username, setUsername] = useState("");
