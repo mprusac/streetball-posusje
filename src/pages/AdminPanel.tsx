@@ -551,7 +551,7 @@ const AdminPanel = () => {
                 <p className="text-sm text-muted-foreground">{uploadingGalleryImages ? "Učitavanje..." : "Klikni ili povuci slike ovdje"}</p>
               </div>
               {galleryForm.images.length > 0 && (
-                <div className="grid grid-cols-3 md:grid-cols-4 gap-2">
+                <div className="grid grid-cols-4 md:grid-cols-6 gap-2">
                   {galleryForm.images.map((url, i) => (
                     <div key={i} className="relative group">
                       <img src={url} alt={`Slika ${i + 1}`} className="w-full h-24 rounded-lg object-cover" />
