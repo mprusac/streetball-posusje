@@ -159,16 +159,18 @@ const Sponsors = () => {
                 <ChevronDown size={24} />
               </div>
               <div className="text-center flex-1">
-                <h3 className="text-2xl md:text-3xl font-display relative inline-block">
-                  <span className="text-primary relative">
+                <h3 className="text-2xl md:text-3xl font-display">
+                  <span 
+                    className="text-primary bg-clip-text relative"
+                    style={{
+                      backgroundImage: 'linear-gradient(90deg, hsl(var(--primary)) 0%, hsl(var(--primary)) 40%, hsl(0 0% 100% / 0.9) 50%, hsl(var(--primary)) 60%, hsl(var(--primary)) 100%)',
+                      backgroundSize: '200% 100%',
+                      WebkitBackgroundClip: 'text',
+                      WebkitTextFillColor: 'transparent',
+                      animation: 'shimmer 3s ease-in-out infinite',
+                    }}
+                  >
                     POSTANI SPONZOR
-                    <span 
-                      className="absolute inset-0 bg-gradient-to-r from-transparent via-white/40 to-transparent pointer-events-none"
-                      style={{
-                        animation: 'shimmer 3s ease-in-out infinite',
-                        backgroundSize: '200% 100%',
-                      }}
-                    />
                   </span>
                 </h3>
                 <p className="text-muted-foreground text-base mt-1">
@@ -216,9 +218,9 @@ const Sponsors = () => {
                           {tier.benefits.map((benefit) => (
                             <li
                               key={benefit}
-                              className="text-muted-foreground text-[11px] md:text-xs flex items-center gap-1.5 leading-snug"
+                              className="text-muted-foreground text-[11px] md:text-xs flex items-start gap-1.5 leading-snug"
                             >
-                              <span className="text-primary shrink-0">•</span>
+                              <span className="text-primary mt-0.5 shrink-0">•</span>
                               <span>{benefit}</span>
                             </li>
                           ))}
