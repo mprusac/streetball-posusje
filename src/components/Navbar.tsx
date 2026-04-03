@@ -4,12 +4,12 @@ import { Link, useLocation } from "react-router-dom";
 import logo from "@/assets/logo.png";
 
 const navLinks = [
-  { href: "#pocetna", label: "Početna" },
-  { href: "#vijesti", label: "Vijesti" },
-  { href: "/galerija", label: "Galerija", isRoute: true },
-  { href: "/rezultati", label: "Rezultati", isRoute: true },
-  { href: "#o-klubu", label: "O turniru" },
-  { href: "#kontakt", label: "Kontakt" },
+  { href: "#pocetna", label: "POČETNA" },
+  { href: "#vijesti", label: "VIJESTI" },
+  { href: "/galerija", label: "GALERIJA", isRoute: true },
+  { href: "/rezultati", label: "REZULTATI", isRoute: true },
+  { href: "#o-klubu", label: "O TURNIRU" },
+  { href: "#kontakt", label: "KONTAKT" },
 ];
 
 const Navbar = () => {
