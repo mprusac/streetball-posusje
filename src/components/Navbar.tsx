@@ -124,7 +124,7 @@ const Navbar = () => {
             isOpen ? "max-h-[400px] pb-2" : "max-h-0"
           }`}
         >
-          <div className="flex flex-col gap-0 pt-1">
+          <div className="flex flex-col gap-0 pt-0 pb-1">
             {navLinks.map((link) => {
               const isRoute = link.isRoute;
               const isActive = isRoute 
