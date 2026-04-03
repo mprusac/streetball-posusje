@@ -1,6 +1,7 @@
 import { ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useEffect, useState, useRef } from "react";
+import FibaRegistrationModal from "@/components/FibaRegistrationModal";
 
 const TOURNAMENT_DATE = new Date("2026-07-18T18:00:00");
 const useCountdown = (targetDate: Date) => {
