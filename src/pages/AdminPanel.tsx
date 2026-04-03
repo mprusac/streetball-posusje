@@ -473,7 +473,7 @@ const AdminPanel = () => {
               </div>
               {form.image_url && (
                 <div className="relative inline-block">
-                  <img src={form.image_url} alt="Preview" className="h-32 rounded-lg object-cover" />
+                  <img src={form.image_url} alt="Preview" className="h-20 rounded-lg object-cover" />
                   <button
                     onClick={() => setForm(f => ({ ...f, image_url: "" }))}
                     className="absolute top-1 right-1 bg-background/80 rounded-full p-1 hover:bg-destructive hover:text-destructive-foreground transition-colors"
