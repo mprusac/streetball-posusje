@@ -1,6 +1,7 @@
 import { ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useEffect, useState, useRef } from "react";
+import FibaRegistrationModal from "@/components/FibaRegistrationModal";
 
 const TOURNAMENT_DATE = new Date("2026-07-18T18:00:00");
 const useCountdown = (targetDate: Date) => {
@@ -61,6 +62,7 @@ const Hero = () => {
   const countdown = useCountdown(TOURNAMENT_DATE);
   const [displayedText, setDisplayedText] = useState("");
   const [showCursor, setShowCursor] = useState(true);
+  const [registrationOpen, setRegistrationOpen] = useState(false);
   const typewriterStarted = useRef(false);
   const videoRef = useRef<HTMLVideoElement | null>(null);
 
@@ -92,6 +94,7 @@ const Hero = () => {
   };
 
   return (
+    <>
     <section
       id="pocetna"
       className="relative min-h-screen flex items-center justify-center overflow-hidden"
@@ -134,12 +137,10 @@ const Hero = () => {
             <Button
               size="lg"
               className="group relative overflow-hidden bg-transparent border-2 border-primary text-primary hover:text-primary-foreground font-display uppercase tracking-widest px-6 sm:px-10 py-5 sm:py-7 text-base sm:text-lg transition-all duration-500 hover:shadow-[0_0_30px_hsl(48,96%,53%,0.4)]"
-              asChild
+              onClick={() => setRegistrationOpen(true)}
             >
-              <a href="#kontakt">
-                <span className="absolute inset-0 bg-primary transform -translate-x-full group-hover:translate-x-0 transition-transform duration-500 ease-out" />
-                <span className="relative z-10">Prijavi se</span>
-              </a>
+              <span className="absolute inset-0 bg-primary transform -translate-x-full group-hover:translate-x-0 transition-transform duration-500 ease-out" />
+              <span className="relative z-10">Prijavi se</span>
             </Button>
           </div>
 
@@ -176,6 +177,8 @@ const Hero = () => {
         </a>
       </div>
     </section>
+    <FibaRegistrationModal isOpen={registrationOpen} onClose={() => setRegistrationOpen(false)} />
+    </>
   );
 };
 

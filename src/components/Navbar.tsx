@@ -8,6 +8,7 @@ const navLinks = [
   { href: "#vijesti", label: "Vijesti" },
   { href: "#raspored", label: "Raspored" },
   { href: "/galerija", label: "Galerija", isRoute: true },
+  { href: "/rezultati", label: "Rezultati", isRoute: true },
   { href: "#o-klubu", label: "O turniru" },
   { href: "#kontakt", label: "Kontakt" },
 ];
