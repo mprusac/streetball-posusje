@@ -184,6 +184,21 @@ const AdminPanel = () => {
     setUploadingGallery(false);
   };
 
+  const uploadCoverImage = async (file: File) => {
+    setUploadingCoverImage(true);
+    try {
+      const filePath = `galleries/cover-${Date.now()}-${file.name}`;
+      const { error } = await supabase.storage.from("news-images").upload(filePath, file);
+      if (error) throw error;
+      const { data: { publicUrl } } = supabase.storage.from("news-images").getPublicUrl(filePath);
+      setGalleryForm(f => ({ ...f, cover_image: publicUrl }));
+      toast({ title: "Naslovna slika uploadana!" });
+    } catch (err: any) {
+      toast({ title: "Greška pri uploadu", description: err.message, variant: "destructive" });
+    }
+    setUploadingCoverImage(false);
+  };
+
   const uploadGalleryImages = async (files: FileList) => {
     setUploadingGalleryImages(true);
     const newUrls: string[] = [];
