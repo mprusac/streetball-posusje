@@ -4,19 +4,8 @@ import { motion, AnimatePresence } from "framer-motion";
 import { ArrowLeft, Camera, X, ChevronLeft, ChevronRight } from "lucide-react";
 import Footer from "@/components/Footer";
 
-import eventTomislav from "@/assets/event-tomislav.png";
 
-// Import Tomislav images
-import tomislav1 from "@/assets/tomislav/tomislav-1.jpg";
-import tomislav2 from "@/assets/tomislav/tomislav-2.jpg";
-import tomislav3 from "@/assets/tomislav/tomislav-3.png";
-import tomislav4 from "@/assets/tomislav/tomislav-4.jpg";
-import tomislav5 from "@/assets/tomislav/tomislav-5.jpg";
-import tomislav6 from "@/assets/tomislav/tomislav-6.jpg";
-import tomislav7 from "@/assets/tomislav/tomislav-7.png";
-import tomislav8 from "@/assets/tomislav/tomislav-8.jpg";
-import tomislav9 from "@/assets/tomislav/tomislav-9.png";
-import tomislav10 from "@/assets/tomislav/tomislav-10.jpg";
+
 
 // Image orientation type - vertical or horizontal
 type ImageWithOrientation = {
