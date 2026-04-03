@@ -64,7 +64,6 @@ const News = () => {
             title: n.title,
             date: stripTrailingDot(n.date),
             excerpt: n.excerpt || '',
-            date: n.date,
             category: n.category,
             image: n.image_url || '',
             imagePosition: n.image_position || 'center',
