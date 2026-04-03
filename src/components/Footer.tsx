@@ -46,7 +46,7 @@ const Footer = () => {
             <h4 className="font-display text-lg text-primary mb-4 uppercase tracking-wider">
               Kontakt
             </h4>
-            <div className="space-y-2 text-sm text-muted-foreground">
+            <address className="space-y-2 text-sm text-muted-foreground not-italic">
               <p>Trg Hrvatskih branitelja<br />88240 Posušje, BiH</p>
               <a
                 href="mailto:petarsusnjar@streetball-posusje.com"
