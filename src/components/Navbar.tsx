@@ -6,6 +6,7 @@ import logo from "@/assets/logo.png";
 const navLinks = [
   { href: "#pocetna", label: "Početna" },
   { href: "#vijesti", label: "Vijesti" },
+  { href: "#raspored", label: "Raspored" },
   { href: "/galerija", label: "Galerija", isRoute: true },
   { href: "/rezultati", label: "Rezultati", isRoute: true },
   { href: "#o-klubu", label: "O turniru" },
@@ -123,7 +124,7 @@ const Navbar = () => {
             isOpen ? "max-h-[400px] pb-2" : "max-h-0"
           }`}
         >
-          <div className="flex flex-col gap-0 pt-1 bg-background/95 backdrop-blur-md rounded-lg mt-1 px-2 py-1">
+          <div className="flex flex-col gap-0 pt-1">
             {navLinks.map((link) => {
               const isRoute = link.isRoute;
               const isActive = isRoute 
@@ -136,7 +137,7 @@ const Navbar = () => {
                     key={link.href}
                     to={link.href}
                     onClick={() => setIsOpen(false)}
-                    className={`font-display font-bold text-base tracking-widest transition-all duration-300 px-3 py-1.5 rounded-md ${
+                    className={`font-display text-lg tracking-widest transition-all duration-300 px-3 py-1 rounded-md ${
                       isActive
                         ? "text-primary bg-primary/10"
                         : "text-foreground hover:text-primary hover:bg-primary/10"
@@ -152,7 +153,7 @@ const Navbar = () => {
                   key={link.href}
                   href={link.href}
                   onClick={() => setIsOpen(false)}
-                  className={`font-display font-bold text-base tracking-widest transition-all duration-300 px-3 py-1.5 rounded-md ${
+                  className={`font-display text-lg tracking-widest transition-all duration-300 px-3 py-1 rounded-md ${
                     isActive
                       ? "text-primary bg-primary/10"
                       : "text-foreground hover:text-primary hover:bg-primary/10"
