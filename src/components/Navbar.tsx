@@ -72,7 +72,7 @@ const Navbar = () => {
               }`;
 
               const underline = (
-                <span className={`absolute bottom-0 left-2 right-2 h-[1.5px] bg-primary transition-all duration-300 ${isActive ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'}`} />
+                <span className={`absolute bottom-0 left-2 right-2 h-[1.5px] bg-primary transition-all duration-300 origin-left ${isActive ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'}`} />
               );
               
               if (isRoute) {
