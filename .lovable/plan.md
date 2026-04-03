@@ -1,28 +1,16 @@
 
 
-## Plan: Popup za preuzimanje statistike na stranici Statistika
+## Problem
+The "Amateri" card at the bottom spans `md:col-span-2` (full width of both columns), making it look too wide and stretched on laptop screens.
 
-### Pristup
-Dodati gumb "Preuzmi statistiku" ispod eFG%/TS% badge-ova koji otvara Dialog (modal) sa pregledom dostupnih podataka i gumbom za preuzimanje XLSX datoteke.
+## Solution
+Remove `md:col-span-2` so the card takes up only one column width, and center it below the other two cards using a wrapper or grid utility.
 
-### Koraci
+### Changes in `src/components/Prizes.tsx`
+- **Line 111**: Replace `md:col-span-2` with `md:col-span-1` and add `md:mx-auto` to center it
+- Wrap the bottom card in a full-width container that centers it, or use `md:col-start-1 md:col-end-3` with inner max-width constraint
+- Best approach: Keep `md:col-span-2` but add `max-w-md mx-auto` to constrain the card's inner width while staying centered across both columns
 
-1. **Instalirati `xlsx` paket** za generiranje Excel datoteka client-side.
-
-2. **Dodati Dialog komponentu** u `src/pages/Statistics.tsx`:
-   - Importati `Dialog`, `DialogContent`, `DialogHeader`, `DialogTitle` iz postojećeg UI-ja.
-   - Dodati state `showDownloadDialog`.
-   - Gumb za otvaranje dialoga smjestiti ispod eFG%/TS% badge-ova (linija ~829), stiliziran sa `Download` ikonom.
-
-3. **Sadržaj popup-a**:
-   - Naslov: "Preuzmi kompletnu statistiku"
-   - Kratki opis što sadrži datoteka (individualna statistika, timski prosjeci, rezultati utakmica).
-   - Lista sheet-ova sa ikonama (CheckCircle ili FileSpreadsheet).
-   - Gumb "Preuzmi XLSX" koji pokreće generiranje i download.
-
-4. **Implementirati `handleDownloadStats()`**:
-   - Sheet 1 "Igrači": mapirati sve igrače iz `rosterPlayers` + prosjeke iz `topScorers`, `topRebounders`, `topAssists`, itd.
-   - Sheet 2 "Timska statistika": eFG%, TS%, timski prosjeci.
-   - Sheet 3 "Utakmice": sve utakmice s datumima, protivnicima i rezultatima.
-   - Preuzeti kao `HKK_Posusje_Statistika.xlsx`.
+### Specific change
+Line 111: Add `max-w-md mx-auto w-full` to the className so the card stays centered but doesn't stretch to fill the full 2-column width.
 
