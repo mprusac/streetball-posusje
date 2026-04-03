@@ -20,7 +20,16 @@ interface NewsItem {
   created_at: string;
 }
 
-const FUNCTION_URL = `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/admin-news`;
+interface GalleryItem {
+  id: string;
+  title: string;
+  date: string;
+  images: string[];
+  created_at: string;
+}
+
+const NEWS_URL = `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/admin-news`;
+const GALLERY_URL = `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/admin-galleries`;
 
 function getTodayFormatted(): string {
   const now = new Date();
@@ -30,23 +39,33 @@ function getTodayFormatted(): string {
   return `${dd}. ${mm}. ${yyyy}.`;
 }
 
+type AdminView = "main" | "news-form" | "gallery-form";
+
 const AdminPanel = () => {
   const [token, setToken] = useState<string | null>(sessionStorage.getItem("admin_token"));
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [news, setNews] = useState<NewsItem[]>([]);
+  const [galleries, setGalleries] = useState<GalleryItem[]>([]);
   const [loading, setLoading] = useState(false);
   const [editing, setEditing] = useState<NewsItem | null>(null);
-  const [creating, setCreating] = useState(false);
+  const [editingGallery, setEditingGallery] = useState<GalleryItem | null>(null);
+  const [view, setView] = useState<AdminView>("main");
   const [uploadingImage, setUploadingImage] = useState(false);
   const [uploadingGallery, setUploadingGallery] = useState(false);
+  const [uploadingGalleryImages, setUploadingGalleryImages] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
   const galleryInputRef = useRef<HTMLInputElement>(null);
+  const galleryImagesInputRef = useRef<HTMLInputElement>(null);
   const { toast } = useToast();
   const navigate = useNavigate();
 
   const [form, setForm] = useState({
     title: "", excerpt: "", image_url: "", image_position: "center", pinned: false, gallery_images: [] as string[], category: String(new Date().getFullYear())
+  });
+
+  const [galleryForm, setGalleryForm] = useState({
+    title: "", date: getTodayFormatted(), images: [] as string[]
   });
 
   const headers = { Authorization: `Bearer ${token}`, "Content-Type": "application/json" };
@@ -55,7 +74,7 @@ const AdminPanel = () => {
     e.preventDefault();
     setLoading(true);
     try {
-      const res = await fetch(`${FUNCTION_URL}/login`, {
+      const res = await fetch(`${NEWS_URL}/login`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ username, password }),
@@ -78,19 +97,34 @@ const AdminPanel = () => {
 
   const fetchNews = async () => {
     if (!token) return;
-    setLoading(true);
     try {
-      const res = await fetch(`${FUNCTION_URL}/list`, { headers });
+      const res = await fetch(`${NEWS_URL}/list`, { headers });
       if (res.status === 401) { logout(); return; }
       const data = await res.json();
       setNews(data);
     } catch (err: any) {
       toast({ title: "Greška", description: err.message, variant: "destructive" });
     }
-    setLoading(false);
   };
 
-  useEffect(() => { if (token) fetchNews(); }, [token]);
+  const fetchGalleries = async () => {
+    if (!token) return;
+    try {
+      const res = await fetch(`${GALLERY_URL}/list`, { headers });
+      if (res.status === 401) return;
+      const data = await res.json();
+      setGalleries(data);
+    } catch (err: any) {
+      toast({ title: "Greška", description: err.message, variant: "destructive" });
+    }
+  };
+
+  useEffect(() => {
+    if (token) {
+      setLoading(true);
+      Promise.all([fetchNews(), fetchGalleries()]).finally(() => setLoading(false));
+    }
+  }, [token]);
 
   const uploadImage = async (file: File) => {
     setUploadingImage(true);
@@ -107,7 +141,7 @@ const AdminPanel = () => {
     setUploadingImage(false);
   };
 
-  const uploadGalleryImages = async (files: FileList) => {
+  const uploadGalleryImagesForNews = async (files: FileList) => {
     setUploadingGallery(true);
     const newUrls: string[] = [];
     try {
@@ -126,15 +160,38 @@ const AdminPanel = () => {
     setUploadingGallery(false);
   };
 
+  const uploadGalleryImages = async (files: FileList) => {
+    setUploadingGalleryImages(true);
+    const newUrls: string[] = [];
+    try {
+      for (const file of Array.from(files)) {
+        const filePath = `galleries/${Date.now()}-${file.name}`;
+        const { error } = await supabase.storage.from("news-images").upload(filePath, file);
+        if (error) throw error;
+        const { data: { publicUrl } } = supabase.storage.from("news-images").getPublicUrl(filePath);
+        newUrls.push(publicUrl);
+      }
+      setGalleryForm(f => ({ ...f, images: [...f.images, ...newUrls] }));
+      toast({ title: `${newUrls.length} slika uploadano!` });
+    } catch (err: any) {
+      toast({ title: "Greška pri uploadu", description: err.message, variant: "destructive" });
+    }
+    setUploadingGalleryImages(false);
+  };
+
   const removeGalleryImage = (index: number) => {
     setForm(f => ({ ...f, gallery_images: f.gallery_images.filter((_, i) => i !== index) }));
+  };
+
+  const removeGalleryFormImage = (index: number) => {
+    setGalleryForm(f => ({ ...f, images: f.images.filter((_, i) => i !== index) }));
   };
 
   const saveNews = async () => {
     setLoading(true);
     try {
       if (editing) {
-        const res = await fetch(`${FUNCTION_URL}/update`, {
+        const res = await fetch(`${NEWS_URL}/update`, {
           method: "POST", headers,
           body: JSON.stringify({ id: editing.id, ...form }),
         });
@@ -142,7 +199,7 @@ const AdminPanel = () => {
         toast({ title: "Vijest ažurirana!" });
       } else {
         const now = getTodayFormatted();
-        const res = await fetch(`${FUNCTION_URL}/create`, {
+        const res = await fetch(`${NEWS_URL}/create`, {
           method: "POST", headers,
           body: JSON.stringify({ ...form, date: now }),
         });
@@ -150,9 +207,37 @@ const AdminPanel = () => {
         toast({ title: "Vijest objavljena!" });
       }
       setEditing(null);
-      setCreating(false);
+      setView("main");
       setForm({ title: "", excerpt: "", image_url: "", image_position: "center", pinned: false, gallery_images: [], category: String(new Date().getFullYear()) });
       fetchNews();
+    } catch (err: any) {
+      toast({ title: "Greška", description: err.message, variant: "destructive" });
+    }
+    setLoading(false);
+  };
+
+  const saveGallery = async () => {
+    setLoading(true);
+    try {
+      if (editingGallery) {
+        const res = await fetch(`${GALLERY_URL}/update`, {
+          method: "POST", headers,
+          body: JSON.stringify({ id: editingGallery.id, ...galleryForm }),
+        });
+        if (!res.ok) throw new Error((await res.json()).error);
+        toast({ title: "Galerija ažurirana!" });
+      } else {
+        const res = await fetch(`${GALLERY_URL}/create`, {
+          method: "POST", headers,
+          body: JSON.stringify(galleryForm),
+        });
+        if (!res.ok) throw new Error((await res.json()).error);
+        toast({ title: "Galerija objavljena!" });
+      }
+      setEditingGallery(null);
+      setView("main");
+      setGalleryForm({ title: "", date: getTodayFormatted(), images: [] });
+      fetchGalleries();
     } catch (err: any) {
       toast({ title: "Greška", description: err.message, variant: "destructive" });
     }
@@ -162,7 +247,7 @@ const AdminPanel = () => {
   const deleteNews = async (id: string) => {
     if (!confirm("Jeste li sigurni da želite obrisati ovu vijest?")) return;
     try {
-      const res = await fetch(`${FUNCTION_URL}/delete`, {
+      const res = await fetch(`${NEWS_URL}/delete`, {
         method: "POST", headers,
         body: JSON.stringify({ id }),
       });
@@ -174,9 +259,24 @@ const AdminPanel = () => {
     }
   };
 
-  const startEdit = (item: NewsItem) => {
+  const deleteGallery = async (id: string) => {
+    if (!confirm("Jeste li sigurni da želite obrisati ovu galeriju?")) return;
+    try {
+      const res = await fetch(`${GALLERY_URL}/delete`, {
+        method: "POST", headers,
+        body: JSON.stringify({ id }),
+      });
+      if (!res.ok) throw new Error((await res.json()).error);
+      toast({ title: "Galerija obrisana!" });
+      fetchGalleries();
+    } catch (err: any) {
+      toast({ title: "Greška", description: err.message, variant: "destructive" });
+    }
+  };
+
+  const startEditNews = (item: NewsItem) => {
     setEditing(item);
-    setCreating(true);
+    setView("news-form");
     setForm({
       title: item.title,
       excerpt: item.excerpt || "",
@@ -188,10 +288,26 @@ const AdminPanel = () => {
     });
   };
 
-  const startCreate = () => {
+  const startEditGallery = (item: GalleryItem) => {
+    setEditingGallery(item);
+    setView("gallery-form");
+    setGalleryForm({
+      title: item.title,
+      date: item.date,
+      images: item.images || [],
+    });
+  };
+
+  const startCreateNews = () => {
     setEditing(null);
-    setCreating(true);
+    setView("news-form");
     setForm({ title: "", excerpt: "", image_url: "", image_position: "center", pinned: false, gallery_images: [], category: String(new Date().getFullYear()) });
+  };
+
+  const startCreateGallery = () => {
+    setEditingGallery(null);
+    setView("gallery-form");
+    setGalleryForm({ title: "", date: getTodayFormatted(), images: [] });
   };
 
   // Login screen
@@ -232,7 +348,7 @@ const AdminPanel = () => {
             <ArrowLeft size={22} />
           </button>
           <h1 className="absolute left-1/2 -translate-x-1/2 font-display text-lg md:text-xl text-primary tracking-wide whitespace-nowrap">
-            Admin Panel <span className="text-primary/60">|</span> Vijesti & Galerija
+            Admin Panel <span className="text-foreground">|</span> <span className="text-foreground">Vijesti & Galerija</span>
           </h1>
           <Button variant="outline" onClick={logout} size="sm" className="border-primary text-foreground hover:bg-primary/10">
             <LogOut size={16} /> Odjava
@@ -243,13 +359,13 @@ const AdminPanel = () => {
       <div className="p-4 md:p-8">
       <div className="max-w-4xl mx-auto">
 
-        {/* Create/Edit Form */}
-        {creating ? (
+        {/* News Form */}
+        {view === "news-form" && (
           <div className="bg-card p-6 rounded-xl border border-border mb-8 space-y-4">
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-3">
                 <button
-                  onClick={() => { setCreating(false); setEditing(null); }}
+                  onClick={() => { setView("main"); setEditing(null); }}
                   className="text-muted-foreground hover:text-foreground transition-colors"
                 >
                   <ArrowLeft size={20} />
@@ -309,7 +425,7 @@ const AdminPanel = () => {
             <div className="space-y-2">
               <label className="text-sm text-muted-foreground font-medium">Slike članka (galerija)</label>
               <div>
-                <input ref={galleryInputRef} type="file" accept="image/*" multiple className="hidden" onChange={e => { if (e.target.files?.length) uploadGalleryImages(e.target.files); }} />
+                <input ref={galleryInputRef} type="file" accept="image/*" multiple className="hidden" onChange={e => { if (e.target.files?.length) uploadGalleryImagesForNews(e.target.files); }} />
                 <Button type="button" variant="outline" onClick={() => galleryInputRef.current?.click()} disabled={uploadingGallery} className="w-full">
                   <ImagePlus size={16} /> {uploadingGallery ? "Učitavanje..." : "Dodaj slike u galeriju"}
                 </Button>
@@ -329,54 +445,141 @@ const AdminPanel = () => {
                   ))}
                 </div>
               )}
-              
             </div>
 
             <Button onClick={saveNews} disabled={loading || !form.title} className="w-full">
               <Save size={16} /> {loading ? "Spremanje..." : editing ? "Spremi promjene" : "Objavi vijest"}
             </Button>
           </div>
-        ) : (
-          <div className="flex items-center justify-center gap-4 mb-6">
-            <Button onClick={startCreate} variant="outline" size="lg" className="border-primary bg-background text-foreground hover:bg-primary/10 px-6 py-3 text-base">
-              <Plus size={18} /> <Newspaper size={18} /> Nova vijest
-            </Button>
-            <Button variant="outline" size="lg" onClick={() => toast({ title: "Galerija", description: "Funkcionalnost galerije dolazi uskoro." })} className="border-primary bg-background text-foreground hover:bg-primary/10 px-6 py-3 text-base">
-              <Plus size={18} /> <ImagePlus size={18} /> Nova galerija
+        )}
+
+        {/* Gallery Form */}
+        {view === "gallery-form" && (
+          <div className="bg-card p-6 rounded-xl border border-border mb-8 space-y-4">
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-3">
+                <button
+                  onClick={() => { setView("main"); setEditingGallery(null); }}
+                  className="text-muted-foreground hover:text-foreground transition-colors"
+                >
+                  <ArrowLeft size={20} />
+                </button>
+                <h2 className="font-display text-xl text-foreground">{editingGallery ? "Uredi galeriju" : "Nova galerija"}</h2>
+              </div>
+            </div>
+            <Input placeholder="Naslov galerije *" value={galleryForm.title} onChange={e => setGalleryForm(f => ({ ...f, title: e.target.value }))} />
+            <Input placeholder="Datum (npr. 19.07.2025.)" value={galleryForm.date} onChange={e => setGalleryForm(f => ({ ...f, date: e.target.value }))} />
+            
+            {/* Gallery images upload */}
+            <div className="space-y-2">
+              <label className="text-sm text-muted-foreground font-medium">Slike galerije</label>
+              <div>
+                <input ref={galleryImagesInputRef} type="file" accept="image/*" multiple className="hidden" onChange={e => { if (e.target.files?.length) uploadGalleryImages(e.target.files); }} />
+                <Button type="button" variant="outline" onClick={() => galleryImagesInputRef.current?.click()} disabled={uploadingGalleryImages} className="w-full">
+                  <ImagePlus size={16} /> {uploadingGalleryImages ? "Učitavanje..." : "Dodaj slike"}
+                </Button>
+              </div>
+              {galleryForm.images.length > 0 && (
+                <div className="grid grid-cols-3 md:grid-cols-4 gap-2">
+                  {galleryForm.images.map((url, i) => (
+                    <div key={i} className="relative group">
+                      <img src={url} alt={`Slika ${i + 1}`} className="w-full h-24 rounded-lg object-cover" />
+                      <button
+                        onClick={() => removeGalleryFormImage(i)}
+                        className="absolute top-1 right-1 bg-background/80 rounded-full p-1 hover:bg-destructive hover:text-destructive-foreground transition-colors opacity-0 group-hover:opacity-100"
+                      >
+                        <X size={12} />
+                      </button>
+                    </div>
+                  ))}
+                </div>
+              )}
+              <p className="text-xs text-muted-foreground">{galleryForm.images.length} slika dodano</p>
+            </div>
+
+            <Button onClick={saveGallery} disabled={loading || !galleryForm.title || !galleryForm.date} className="w-full">
+              <Save size={16} /> {loading ? "Spremanje..." : editingGallery ? "Spremi promjene" : "Objavi galeriju"}
             </Button>
           </div>
         )}
 
-        {/* News list */}
-        <div className="space-y-3">
-          {loading && news.length === 0 && <p className="text-muted-foreground text-center py-8">Učitavanje...</p>}
-          {!loading && news.length === 0 && <p className="text-muted-foreground text-center py-8">Nema vijesti u bazi. Dodajte prvu!</p>}
-          {news.map(item => (
-            <div key={item.id} className="flex items-center gap-4 bg-card p-4 rounded-xl border border-border">
-              {item.image_url && (
-                <img src={item.image_url} alt={item.title} className="w-16 h-16 rounded-lg object-cover flex-shrink-0" />
-              )}
-              <div className="flex-1 min-w-0">
-                <div className="flex items-center gap-2">
-                  <h3 className="text-foreground font-medium truncate">{item.title}</h3>
-                  {item.pinned && <Pin size={14} className="text-primary rotate-45 flex-shrink-0" />}
-                </div>
-                <p className="text-muted-foreground text-sm">
-                  {item.date} • {item.category}
-                  {item.gallery_images?.length > 0 && <span className="ml-2 text-primary">📸 {item.gallery_images.length} slika</span>}
-                </p>
-              </div>
-              <div className="flex gap-2 flex-shrink-0">
-                <Button variant="outline" size="icon" onClick={() => startEdit(item)}>
-                  <Edit size={16} />
-                </Button>
-                <Button variant="destructive" size="icon" onClick={() => deleteNews(item.id)}>
-                  <Trash2 size={16} />
-                </Button>
+        {/* Main view - buttons and lists */}
+        {view === "main" && (
+          <>
+            <div className="flex items-center justify-center gap-4 mb-8">
+              <Button onClick={startCreateNews} variant="outline" size="lg" className="border-primary bg-background text-foreground hover:bg-primary/10 px-6 py-3 text-base">
+                <Newspaper size={20} /> Nova vijest
+              </Button>
+              <Button onClick={startCreateGallery} variant="outline" size="lg" className="border-primary bg-background text-foreground hover:bg-primary/10 px-6 py-3 text-base">
+                <ImagePlus size={20} /> Nova galerija
+              </Button>
+            </div>
+
+            {/* News section */}
+            <div className="mb-10">
+              <h2 className="font-display text-xl text-primary mb-4">Vijesti</h2>
+              <div className="space-y-3">
+                {loading && news.length === 0 && <p className="text-muted-foreground text-center py-4">Učitavanje...</p>}
+                {!loading && news.length === 0 && <p className="text-muted-foreground text-center py-4">Nema vijesti u bazi. Dodajte prvu!</p>}
+                {news.map(item => (
+                  <div key={item.id} className="flex items-center gap-4 bg-card p-4 rounded-xl border border-border">
+                    {item.image_url && (
+                      <img src={item.image_url} alt={item.title} className="w-16 h-16 rounded-lg object-cover flex-shrink-0" />
+                    )}
+                    <div className="flex-1 min-w-0">
+                      <div className="flex items-center gap-2">
+                        <h3 className="text-foreground font-medium truncate">{item.title}</h3>
+                        {item.pinned && <Pin size={14} className="text-primary rotate-45 flex-shrink-0" />}
+                      </div>
+                      <p className="text-muted-foreground text-sm">
+                        {item.date} • {item.category}
+                        {item.gallery_images?.length > 0 && <span className="ml-2 text-primary">📸 {item.gallery_images.length} slika</span>}
+                      </p>
+                    </div>
+                    <div className="flex gap-2 flex-shrink-0">
+                      <Button variant="outline" size="icon" onClick={() => startEditNews(item)}>
+                        <Edit size={16} />
+                      </Button>
+                      <Button variant="destructive" size="icon" onClick={() => deleteNews(item.id)}>
+                        <Trash2 size={16} />
+                      </Button>
+                    </div>
+                  </div>
+                ))}
               </div>
             </div>
-          ))}
-        </div>
+
+            {/* Galleries section */}
+            <div>
+              <h2 className="font-display text-xl text-primary mb-4">Galerije</h2>
+              <div className="space-y-3">
+                {!loading && galleries.length === 0 && <p className="text-muted-foreground text-center py-4">Nema galerija u bazi. Dodajte prvu!</p>}
+                {galleries.map(item => (
+                  <div key={item.id} className="flex items-center gap-4 bg-card p-4 rounded-xl border border-border">
+                    {item.images?.[0] && (
+                      <img src={item.images[0]} alt={item.title} className="w-16 h-16 rounded-lg object-cover flex-shrink-0" />
+                    )}
+                    <div className="flex-1 min-w-0">
+                      <h3 className="text-foreground font-medium truncate">{item.title}</h3>
+                      <p className="text-muted-foreground text-sm">
+                        {item.date}
+                        {item.images?.length > 0 && <span className="ml-2 text-primary">📸 {item.images.length} slika</span>}
+                      </p>
+                    </div>
+                    <div className="flex gap-2 flex-shrink-0">
+                      <Button variant="outline" size="icon" onClick={() => startEditGallery(item)}>
+                        <Edit size={16} />
+                      </Button>
+                      <Button variant="destructive" size="icon" onClick={() => deleteGallery(item.id)}>
+                        <Trash2 size={16} />
+                      </Button>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </>
+        )}
       </div>
       </div>
     </div>
