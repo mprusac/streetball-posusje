@@ -377,6 +377,7 @@ const AdminPanel = () => {
               <h2 className="font-display text-xl text-primary">{editing ? "Uredi vijest" : "Nova vijest"}</h2>
             </div>
             <Input placeholder="Naslov *" value={form.title} onChange={e => setForm(f => ({ ...f, title: e.target.value }))} />
+            <Input placeholder="Datum (npr. 03. 04. 2026.)" value={form.date} onChange={e => setForm(f => ({ ...f, date: e.target.value }))} />
             <textarea
               ref={el => { if (el) { el.style.height = 'auto'; el.style.height = el.scrollHeight + 'px'; } }}
               placeholder="Tekst vijesti / članka"
