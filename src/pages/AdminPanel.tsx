@@ -307,7 +307,7 @@ const AdminPanel = () => {
   const startCreateNews = () => {
     setEditing(null);
     setView("news-form");
-    setForm({ title: "", excerpt: "", image_url: "", image_position: "center", pinned: false, gallery_images: [], category: String(new Date().getFullYear()) });
+    setForm({ title: "", excerpt: "", date: getTodayFormatted(), image_url: "", image_position: "center", pinned: false, gallery_images: [], category: String(new Date().getFullYear()) });
   };
 
   const startCreateGallery = () => {
