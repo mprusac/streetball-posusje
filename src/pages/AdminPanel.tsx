@@ -57,6 +57,8 @@ const AdminPanel = () => {
   const [uploadingImage, setUploadingImage] = useState(false);
   const [uploadingGallery, setUploadingGallery] = useState(false);
   const [uploadingGalleryImages, setUploadingGalleryImages] = useState(false);
+  const [showCategoryModal, setShowCategoryModal] = useState(false);
+  const [customCategory, setCustomCategory] = useState("");
   const fileInputRef = useRef<HTMLInputElement>(null);
   const galleryInputRef = useRef<HTMLInputElement>(null);
   const galleryImagesInputRef = useRef<HTMLInputElement>(null);
