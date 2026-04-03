@@ -223,7 +223,7 @@ const AdminPanel = () => {
   return (
     <div className="min-h-screen bg-background">
       {/* Top Bar */}
-      <div className="sticky top-0 z-40 bg-[hsl(0,0%,12%)] shadow-md">
+      <div className="sticky top-0 z-40 bg-[hsl(0,0%,7%)] shadow-md">
         <div className="max-w-4xl mx-auto flex items-center justify-between px-4 md:px-8 h-14">
           <button
             onClick={() => navigate("/")}
@@ -231,8 +231,8 @@ const AdminPanel = () => {
           >
             <ArrowLeft size={22} />
           </button>
-          <h1 className="font-display text-lg md:text-xl text-foreground tracking-wide">
-            Admin Panel <span className="text-muted-foreground">|</span> Vijesti & Galerija
+          <h1 className="font-display text-lg md:text-xl text-primary tracking-wide">
+            Admin Panel <span className="text-primary/60">|</span> Vijesti & Galerija
           </h1>
           <Button variant="outline" onClick={logout} size="sm" className="border-muted-foreground/30">
             <LogOut size={16} /> Odjava
