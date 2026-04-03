@@ -554,7 +554,7 @@ const AdminPanel = () => {
                 <div className="grid grid-cols-4 md:grid-cols-6 gap-2">
                   {galleryForm.images.map((url, i) => (
                     <div key={i} className="relative group">
-                      <img src={url} alt={`Slika ${i + 1}`} className="w-full h-24 rounded-lg object-cover" />
+                      <img src={url} alt={`Slika ${i + 1}`} className="w-full h-16 rounded-lg object-cover" />
                       <button
                         onClick={() => removeGalleryFormImage(i)}
                         className="absolute top-1 right-1 bg-background/80 rounded-full p-1 hover:bg-destructive hover:text-destructive-foreground transition-colors opacity-0 group-hover:opacity-100"
