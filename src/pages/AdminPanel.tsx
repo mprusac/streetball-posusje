@@ -46,7 +46,7 @@ const AdminPanel = () => {
   const navigate = useNavigate();
 
   const [form, setForm] = useState({
-    title: "", excerpt: "", image_url: "", image_position: "center", pinned: false, gallery_images: [] as string[]
+    title: "", excerpt: "", image_url: "", image_position: "center", pinned: false, gallery_images: [] as string[], category: String(new Date().getFullYear())
   });
 
   const headers = { Authorization: `Bearer ${token}`, "Content-Type": "application/json" };
@@ -142,17 +142,16 @@ const AdminPanel = () => {
         toast({ title: "Vijest ažurirana!" });
       } else {
         const now = getTodayFormatted();
-        const year = String(new Date().getFullYear());
         const res = await fetch(`${FUNCTION_URL}/create`, {
           method: "POST", headers,
-          body: JSON.stringify({ ...form, date: now, category: year }),
+          body: JSON.stringify({ ...form, date: now }),
         });
         if (!res.ok) throw new Error((await res.json()).error);
         toast({ title: "Vijest objavljena!" });
       }
       setEditing(null);
       setCreating(false);
-      setForm({ title: "", excerpt: "", image_url: "", image_position: "center", pinned: false, gallery_images: [] });
+      setForm({ title: "", excerpt: "", image_url: "", image_position: "center", pinned: false, gallery_images: [], category: String(new Date().getFullYear()) });
       fetchNews();
     } catch (err: any) {
       toast({ title: "Greška", description: err.message, variant: "destructive" });
@@ -185,13 +184,14 @@ const AdminPanel = () => {
       image_position: item.image_position,
       pinned: item.pinned,
       gallery_images: item.gallery_images || [],
+      category: item.category || String(new Date().getFullYear()),
     });
   };
 
   const startCreate = () => {
     setEditing(null);
     setCreating(true);
-    setForm({ title: "", excerpt: "", image_url: "", image_position: "center", pinned: false, gallery_images: [] });
+    setForm({ title: "", excerpt: "", image_url: "", image_position: "center", pinned: false, gallery_images: [], category: String(new Date().getFullYear()) });
   };
 
   // Login screen
@@ -260,11 +260,23 @@ const AdminPanel = () => {
               value={form.excerpt}
               onChange={e => setForm(f => ({ ...f, excerpt: e.target.value }))}
             />
-            <div className="flex gap-3 items-center">
+            <div className="flex gap-4 items-center flex-wrap">
               <label className="flex items-center gap-2 text-sm text-foreground cursor-pointer">
                 <input type="checkbox" checked={form.pinned} onChange={e => setForm(f => ({ ...f, pinned: e.target.checked }))} />
                 <Pin size={14} /> Prikvači
               </label>
+              <div className="flex items-center gap-2">
+                <span className="text-sm text-muted-foreground">Kategorija:</span>
+                <select
+                  value={form.category}
+                  onChange={e => setForm(f => ({ ...f, category: e.target.value }))}
+                  className="rounded-md border border-input bg-background px-3 py-1.5 text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                >
+                  <option value="2026">2026</option>
+                  <option value="2025">2025</option>
+                  <option value="najava">Najava</option>
+                </select>
+              </div>
             </div>
             
             {/* Thumbnail upload */}
@@ -313,7 +325,7 @@ const AdminPanel = () => {
                   ))}
                 </div>
               )}
-              <p className="text-xs text-muted-foreground">Ove slike će se prikazati u masonry layoutu na dnu članka.</p>
+              
             </div>
 
             <Button onClick={saveNews} disabled={loading || !form.title} className="w-full">
