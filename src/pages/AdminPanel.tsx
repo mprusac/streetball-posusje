@@ -587,67 +587,69 @@ const AdminPanel = () => {
               </Button>
             </div>
 
-            {/* News section */}
-            <div className="mb-10">
-              <h2 className="font-display text-xl text-primary mb-4 text-center">Vijesti</h2>
-              <div className="space-y-3">
-                {loading && news.length === 0 && <p className="text-muted-foreground text-center py-4">Učitavanje...</p>}
-                {!loading && news.length === 0 && <p className="text-muted-foreground text-center py-4">Nema vijesti u bazi. Dodajte prvu!</p>}
-                {news.map(item => (
-                  <div key={item.id} className="flex items-center gap-4 bg-card p-4 rounded-xl border border-border">
-                    {item.image_url && (
-                      <img src={item.image_url} alt={item.title} className="w-16 h-16 rounded-lg object-cover flex-shrink-0" />
-                    )}
-                    <div className="flex-1 min-w-0">
-                      <div className="flex items-center gap-2">
-                        <h3 className="text-foreground font-medium truncate">{item.title}</h3>
-                        {item.pinned && <Pin size={14} className="text-primary rotate-45 flex-shrink-0" />}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {/* News section */}
+              <div>
+                <h2 className="font-display text-xl text-primary mb-4 text-center">Vijesti</h2>
+                <div className="space-y-3">
+                  {loading && news.length === 0 && <p className="text-muted-foreground text-center py-4">Učitavanje...</p>}
+                  {!loading && news.length === 0 && <p className="text-muted-foreground text-center py-4">Nema vijesti. Dodajte prvu!</p>}
+                  {news.map(item => (
+                    <div key={item.id} className="flex items-center gap-3 bg-card p-3 rounded-xl border border-border">
+                      {item.image_url && (
+                        <img src={item.image_url} alt={item.title} className="w-12 h-12 rounded-lg object-cover flex-shrink-0" />
+                      )}
+                      <div className="flex-1 min-w-0">
+                        <div className="flex items-center gap-2">
+                          <h3 className="text-foreground font-medium truncate text-sm">{item.title}</h3>
+                          {item.pinned && <Pin size={12} className="text-primary rotate-45 flex-shrink-0" />}
+                        </div>
+                        <p className="text-muted-foreground text-xs">
+                          {item.date} • {item.category}
+                          {item.gallery_images?.length > 0 && <span className="ml-1 text-primary">📸 {item.gallery_images.length}</span>}
+                        </p>
                       </div>
-                      <p className="text-muted-foreground text-sm">
-                        {item.date} • {item.category}
-                        {item.gallery_images?.length > 0 && <span className="ml-2 text-primary">📸 {item.gallery_images.length} slika</span>}
-                      </p>
+                      <div className="flex gap-1 flex-shrink-0">
+                        <Button variant="outline" size="icon" className="h-8 w-8" onClick={() => startEditNews(item)}>
+                          <Edit size={14} />
+                        </Button>
+                        <Button variant="destructive" size="icon" className="h-8 w-8" onClick={() => deleteNews(item.id)}>
+                          <Trash2 size={14} />
+                        </Button>
+                      </div>
                     </div>
-                    <div className="flex gap-2 flex-shrink-0">
-                      <Button variant="outline" size="icon" onClick={() => startEditNews(item)}>
-                        <Edit size={16} />
-                      </Button>
-                      <Button variant="destructive" size="icon" onClick={() => deleteNews(item.id)}>
-                        <Trash2 size={16} />
-                      </Button>
-                    </div>
-                  </div>
-                ))}
+                  ))}
+                </div>
               </div>
-            </div>
 
-            {/* Galleries section */}
-            <div>
-              <h2 className="font-display text-xl text-primary mb-4 text-center">Galerije</h2>
-              <div className="space-y-3">
-                {!loading && galleries.length === 0 && <p className="text-muted-foreground text-center py-4">Nema galerija u bazi. Dodajte prvu!</p>}
-                {galleries.map(item => (
-                  <div key={item.id} className="flex items-center gap-4 bg-card p-4 rounded-xl border border-border">
-                    {item.images?.[0] && (
-                      <img src={item.images[0]} alt={item.title} className="w-16 h-16 rounded-lg object-cover flex-shrink-0" />
-                    )}
-                    <div className="flex-1 min-w-0">
-                      <h3 className="text-foreground font-medium truncate">{item.title}</h3>
-                      <p className="text-muted-foreground text-sm">
-                        {item.date}
-                        {item.images?.length > 0 && <span className="ml-2 text-primary">📸 {item.images.length} slika</span>}
-                      </p>
+              {/* Galleries section */}
+              <div>
+                <h2 className="font-display text-xl text-primary mb-4 text-center">Galerije</h2>
+                <div className="space-y-3">
+                  {!loading && galleries.length === 0 && <p className="text-muted-foreground text-center py-4">Nema galerija. Dodajte prvu!</p>}
+                  {galleries.map(item => (
+                    <div key={item.id} className="flex items-center gap-3 bg-card p-3 rounded-xl border border-border">
+                      {item.images?.[0] && (
+                        <img src={item.images[0]} alt={item.title} className="w-12 h-12 rounded-lg object-cover flex-shrink-0" />
+                      )}
+                      <div className="flex-1 min-w-0">
+                        <h3 className="text-foreground font-medium truncate text-sm">{item.title}</h3>
+                        <p className="text-muted-foreground text-xs">
+                          {item.date}
+                          {item.images?.length > 0 && <span className="ml-1 text-primary">📸 {item.images.length}</span>}
+                        </p>
+                      </div>
+                      <div className="flex gap-1 flex-shrink-0">
+                        <Button variant="outline" size="icon" className="h-8 w-8" onClick={() => startEditGallery(item)}>
+                          <Edit size={14} />
+                        </Button>
+                        <Button variant="destructive" size="icon" className="h-8 w-8" onClick={() => deleteGallery(item.id)}>
+                          <Trash2 size={14} />
+                        </Button>
+                      </div>
                     </div>
-                    <div className="flex gap-2 flex-shrink-0">
-                      <Button variant="outline" size="icon" onClick={() => startEditGallery(item)}>
-                        <Edit size={16} />
-                      </Button>
-                      <Button variant="destructive" size="icon" onClick={() => deleteGallery(item.id)}>
-                        <Trash2 size={16} />
-                      </Button>
-                    </div>
-                  </div>
-                ))}
+                  ))}
+                </div>
               </div>
             </div>
           </>
