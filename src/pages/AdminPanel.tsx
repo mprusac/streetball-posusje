@@ -184,6 +184,7 @@ const AdminPanel = () => {
       image_position: item.image_position,
       pinned: item.pinned,
       gallery_images: item.gallery_images || [],
+      category: item.category || String(new Date().getFullYear()),
     });
   };
 
