@@ -373,6 +373,7 @@ const AdminPanel = () => {
             </div>
             <Input placeholder="Naslov *" value={form.title} onChange={e => setForm(f => ({ ...f, title: e.target.value }))} />
             <textarea
+              ref={el => { if (el) { el.style.height = 'auto'; el.style.height = el.scrollHeight + 'px'; } }}
               placeholder="Tekst vijesti / članka"
               className="w-full rounded-md border border-input bg-background px-3 py-2 text-sm min-h-[80px] resize-none overflow-hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
               value={form.excerpt}
