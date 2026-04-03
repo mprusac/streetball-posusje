@@ -1,6 +1,6 @@
 
 import { useState, useEffect, useRef } from "react";
-import { Trash2, Edit, Plus, LogOut, Save, X, Upload, Pin, ArrowLeft, ImagePlus } from "lucide-react";
+import { Trash2, Edit, Plus, LogOut, Save, X, Upload, Pin, ArrowLeft, ImagePlus, Newspaper } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
