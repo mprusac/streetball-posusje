@@ -116,13 +116,13 @@
   }
 
   h1, h2, h3, h4, h5, h6 {
-    @apply font-display font-bold;
+    @apply font-display font-extrabold italic;
   }
 }
 
 @layer components {
   .section-title {
-    @apply text-[2.15rem] sm:text-[3.45rem] md:text-[4.3rem] lg:text-[5.2rem] font-display font-bold tracking-wide uppercase;
+    @apply text-[2.15rem] sm:text-[3.45rem] md:text-[4.3rem] lg:text-[5.2rem] font-display font-extrabold italic tracking-wide uppercase;
   }
 
   .section-title-white {
@@ -142,7 +142,7 @@
   }
 
   .stat-number {
-    @apply text-5xl md:text-6xl lg:text-7xl font-display font-bold text-primary;
+    @apply text-5xl md:text-6xl lg:text-7xl font-display font-extrabold italic text-primary;
   }
 
   .stat-label {
