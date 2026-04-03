@@ -345,7 +345,7 @@ const AdminPanel = () => {
   const startCreateGallery = () => {
     setEditingGallery(null);
     setView("gallery-form");
-    setGalleryForm({ title: "", date: getTodayFormatted(), images: [] });
+    setGalleryForm({ title: "", date: getTodayFormatted(), images: [], cover_image: "" });
   };
 
   // Login screen
