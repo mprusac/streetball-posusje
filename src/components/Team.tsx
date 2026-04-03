@@ -255,7 +255,7 @@ const Team = () => {
           <span className="section-title-gold">TIM</span>
         </h2>
 
-        <p className="text-muted-foreground text-center mb-8">
+        <p className="text-muted-foreground text-center mb-8 text-base md:text-lg">
           Prvotimci koji daju sve za boje HKK Posušja
         </p>
 

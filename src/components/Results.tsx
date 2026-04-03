@@ -315,7 +315,7 @@ const Results = () => {
           <span className="section-title-white">ZADNJE </span>
           <span className="section-title-gold">UTAKMICE</span>
         </h2>
-        <p className="text-muted-foreground text-sm md:text-base text-center mb-12 md:mb-16">
+        <p className="text-muted-foreground text-base md:text-lg text-center mb-12 md:mb-16">
           Pregled posljednjih susreta našeg tima
         </p>
 

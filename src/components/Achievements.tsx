@@ -43,7 +43,7 @@ const Achievements = () => {
           <span className="section-title-gold">POSTIGNUĆA</span>
         </h2>
 
-        <p className="text-muted-foreground text-center mb-12 max-w-2xl mx-auto text-sm md:text-base">
+        <p className="text-muted-foreground text-center mb-12 max-w-2xl mx-auto text-base md:text-lg">
           Rezultati koji govore sami za sebe
         </p>
 
