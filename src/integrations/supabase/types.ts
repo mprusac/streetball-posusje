@@ -16,6 +16,7 @@ export type Database = {
     Tables: {
       galleries: {
         Row: {
+          cover_image: string | null
           created_at: string
           date: string
           id: string
@@ -24,6 +25,7 @@ export type Database = {
           updated_at: string
         }
         Insert: {
+          cover_image?: string | null
           created_at?: string
           date: string
           id?: string
@@ -32,6 +34,7 @@ export type Database = {
           updated_at?: string
         }
         Update: {
+          cover_image?: string | null
           created_at?: string
           date?: string
           id?: string
