@@ -119,7 +119,7 @@ const Hero = () => {
 
       <div className="relative z-10 container mx-auto px-4 text-center -mt-20 md:mt-0">
         <div className="max-w-4xl mx-auto">
-          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-display font-extrabold italic tracking-wider mb-4 mt-32 md:mt-10">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-display font-extrabold italic tracking-wider mb-4 mt-44 md:mt-10">
             <span className="block text-foreground">
               <WordReveal text="STREETBALL" delay={0.2} />
             </span>
@@ -128,7 +128,7 @@ const Hero = () => {
             </span>
           </h1>
 
-          <p className="text-base sm:text-lg md:text-xl text-muted-foreground uppercase tracking-[0.2em] sm:tracking-[0.3em] mb-6 sm:mb-8 animate-fade-in-up delay-200">
+          <p className="text-base sm:text-lg md:text-xl text-muted-foreground uppercase tracking-[0.2em] sm:tracking-[0.3em] mb-4 sm:mb-6 animate-fade-in-up delay-200">
             {displayedText}
             {showCursor && <span className="inline-block w-[2px] h-[1em] bg-primary ml-1 animate-pulse align-middle" />}
           </p>
@@ -144,7 +144,7 @@ const Hero = () => {
             </Button>
           </div>
 
-          <div className="mt-8 sm:mt-10 animate-fade-in-up delay-400">
+          <div className="mt-5 sm:mt-10 animate-fade-in-up delay-400">
             <p className="font-display text-sm sm:text-base tracking-[0.2em] text-foreground/80 mb-3 uppercase">Turnir počinje za:</p>
             <div className="flex justify-center gap-3 sm:gap-6">
               {[
