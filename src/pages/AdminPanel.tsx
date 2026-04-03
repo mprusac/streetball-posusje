@@ -374,9 +374,10 @@ const AdminPanel = () => {
             <Input placeholder="Naslov *" value={form.title} onChange={e => setForm(f => ({ ...f, title: e.target.value }))} />
             <textarea
               placeholder="Tekst vijesti / članka"
-              className="w-full rounded-md border border-input bg-background px-3 py-2 text-sm min-h-[80px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+              className="w-full rounded-md border border-input bg-background px-3 py-2 text-sm min-h-[80px] resize-none overflow-hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
               value={form.excerpt}
               onChange={e => setForm(f => ({ ...f, excerpt: e.target.value }))}
+              onInput={e => { const t = e.currentTarget; t.style.height = 'auto'; t.style.height = t.scrollHeight + 'px'; }}
             />
             <div className="flex gap-4 items-center flex-wrap">
               <label className="flex items-center gap-2 text-sm text-foreground cursor-pointer">
