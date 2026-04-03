@@ -451,3 +451,24 @@ textarea:-webkit-autofill:focus {
   -webkit-text-fill-color: hsl(var(--foreground)) !important;
   transition: background-color 5000s ease-in-out 0s;
 }
+
+/* Always show scrollbar on mobile sponsor tiers */
+@media (max-width: 1023px) {
+  .scrollbar-thin {
+    overflow-x: auto !important;
+    scrollbar-width: thin;
+    scrollbar-color: hsl(var(--primary) / 0.4) hsl(var(--background));
+  }
+  .scrollbar-thin::-webkit-scrollbar {
+    height: 6px;
+    display: block !important;
+  }
+  .scrollbar-thin::-webkit-scrollbar-track {
+    background: hsl(var(--background));
+    border-radius: 3px;
+  }
+  .scrollbar-thin::-webkit-scrollbar-thumb {
+    background: hsl(var(--primary) / 0.4);
+    border-radius: 3px;
+  }
+}

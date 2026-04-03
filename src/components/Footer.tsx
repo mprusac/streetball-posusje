@@ -6,6 +6,7 @@ const footerLinks = [
   { label: "Vijesti", href: "#vijesti" },
   { label: "Galerija", href: "#galerija" },
   { label: "Kontakt", href: "#kontakt" },
+  { label: "Admin", href: "/admin" },
 ];
 
 const socialLinks = [
@@ -24,6 +25,7 @@ const Footer = () => {
         element.scrollIntoView({ behavior: "smooth", block: "start" });
       }
     }
+    // /admin link handled natively by browser
   };
 
   return (

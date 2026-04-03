@@ -222,7 +222,7 @@ const NewsPage = () => {
               <span className="text-white">NAJNOVIJE </span>
               <span className="text-primary">VIJESTI</span>
             </h1>
-            <p className="text-muted-foreground text-lg">Ostani u toku sa svim događanjima iz kluba</p>
+            <p className="text-muted-foreground text-lg">Ostani u toku sa svim događanjima s turnira</p>
           </motion.div>
 
           <div className="flex justify-center gap-1 md:gap-2 mb-12">

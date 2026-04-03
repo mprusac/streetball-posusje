@@ -119,7 +119,7 @@ const Sponsors = () => {
         </h2>
 
         <p className="text-muted-foreground text-center mb-8 md:mb-16 max-w-2xl mx-auto text-sm md:text-base">
-          Naši partneri koji podržavaju razvoj kluba i omogućavaju ostvarivanje naših ciljeva
+          Naši partneri koji podržavaju razvoj turnira i omogućavaju ostvarivanje naših ciljeva
         </p>
 
         {/* Sponsor Logos */}
@@ -181,7 +181,7 @@ const Sponsors = () => {
             >
               <div className="px-3 pb-4 md:px-6 md:pb-6">
                 {/* Horizontal scrollable tiers */}
-                <div className="flex gap-3 md:gap-4 mb-4 md:mb-6 mt-2 md:mt-4 overflow-x-auto pb-3 snap-x snap-mandatory scrollbar-thin">
+                <div className="flex gap-3 md:gap-4 mb-4 md:mb-6 mt-2 md:mt-4 overflow-x-auto pb-3 snap-x snap-mandatory scrollbar-thin" style={{ overflowX: 'auto', WebkitOverflowScrolling: 'touch' }}>
                   {sponsorTiers.map((tier, index) => {
                     const shadowColor = tier.name === "ZLATNI" 
                       ? "hover:[box-shadow:0_0_20px_6px_hsl(48,96%,53%,0.3)]" 
@@ -194,7 +194,7 @@ const Sponsors = () => {
                     return (
                       <div
                         key={tier.name}
-                        className={`group bg-secondary/40 border border-border rounded-lg p-3 md:p-4 animate-fade-in-up transition-all duration-300 hover:scale-[1.02] hover:border-primary/50 ${shadowColor} snap-start shrink-0 w-[200px] md:w-[220px] lg:w-auto lg:flex-1`}
+                        className={`group bg-secondary/40 border border-border rounded-lg p-3 md:p-4 animate-fade-in-up transition-all duration-300 hover:scale-[1.02] hover:border-primary/50 ${shadowColor} snap-start shrink-0 w-[calc(50%-6px)] md:w-[220px] lg:w-auto lg:flex-1`}
                         style={{ animationDelay: `${index * 80}ms` }}
                       >
                         <div className="flex items-center gap-2 mb-2">
