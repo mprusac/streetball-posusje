@@ -159,9 +159,17 @@ const Sponsors = () => {
                 <ChevronDown size={24} />
               </div>
               <div className="text-center flex-1">
-                <h3 className="text-2xl md:text-3xl font-display">
-                  <span className="text-foreground">POSTANI </span>
-                  <span className="text-foreground">SPONZOR</span>
+                <h3 className="text-2xl md:text-3xl font-display relative inline-block">
+                  <span className="text-primary relative">
+                    POSTANI SPONZOR
+                    <span 
+                      className="absolute inset-0 bg-gradient-to-r from-transparent via-white/40 to-transparent pointer-events-none"
+                      style={{
+                        animation: 'shimmer 3s ease-in-out infinite',
+                        backgroundSize: '200% 100%',
+                      }}
+                    />
+                  </span>
                 </h3>
                 <p className="text-muted-foreground text-base mt-1">
                   <span className="md:hidden">Pogledaj sponzorske pakete<br />i podrži turnir</span>
@@ -197,20 +205,20 @@ const Sponsors = () => {
                         className={`group bg-secondary/40 border border-border rounded-lg p-3 md:p-4 animate-fade-in-up transition-all duration-300 hover:scale-[1.02] hover:border-primary/50 ${shadowColor} snap-start shrink-0 w-[calc(50%-6px)] md:w-[220px] lg:w-auto lg:flex-1`}
                         style={{ animationDelay: `${index * 80}ms` }}
                       >
-                        <div className="flex items-center gap-2 mb-2 min-h-[48px] md:min-h-[56px]">
+                        <div className="flex items-center gap-2 mb-1 min-h-[44px] md:min-h-[52px]">
                           <div className={`${tier.color} transition-transform duration-300 group-hover:scale-110 w-4 md:w-8 flex items-center justify-center shrink-0`}>{tier.icon}</div>
-                          <div>
-                            <h4 className={`font-semibold text-xs md:text-sm ${tier.color} leading-none`}>{tier.name}</h4>
-                            <p className="text-primary text-sm md:text-base font-display leading-none mt-0.5">{tier.price}</p>
+                          <div className="leading-[1.1]">
+                            <h4 className={`font-semibold text-xs md:text-sm ${tier.color}`}>{tier.name}</h4>
+                            <p className="text-primary text-sm md:text-base font-display">{tier.price}</p>
                           </div>
                         </div>
                         <ul className="space-y-1">
                           {tier.benefits.map((benefit) => (
                             <li
                               key={benefit}
-                              className="text-muted-foreground text-[11px] md:text-xs flex items-start gap-1.5 leading-snug"
+                              className="text-muted-foreground text-[11px] md:text-xs flex items-center gap-1.5 leading-snug"
                             >
-                              <span className="text-primary mt-0.5 shrink-0">•</span>
+                              <span className="text-primary shrink-0">•</span>
                               <span>{benefit}</span>
                             </li>
                           ))}
