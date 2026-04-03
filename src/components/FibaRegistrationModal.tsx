@@ -16,7 +16,7 @@ const FibaRegistrationModal = ({ isOpen, onClose }: FibaRegistrationModalProps) 
 
     const script = document.createElement("script");
     script.setAttribute("data-fiba-embedtype", "registration");
-    script.setAttribute("data-fiba-eventid", "3eab0fdf-75f7-48a3-a788-51e5cccf0021");
+    script.setAttribute("data-fiba-eventid", "06f6d620-d5d0-4be1-8cad-1adfeeba8301");
     script.src = "https://play.fiba3x3.com/embed.js";
     script.async = true;
     containerRef.current.appendChild(script);
