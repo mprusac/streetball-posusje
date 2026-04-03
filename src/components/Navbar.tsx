@@ -47,7 +47,7 @@ const Navbar = () => {
       }`}
     >
       <div className="container mx-auto px-4">
-        <div className="flex items-center justify-between h-20">
+        <div className="flex items-center justify-between h-16 lg:h-20">
           {/* Logo with yellow glow on hover */}
           <Link to="/" className="flex items-center gap-3 group">
             <img 
