@@ -191,7 +191,7 @@ const AdminPanel = () => {
   const startCreate = () => {
     setEditing(null);
     setCreating(true);
-    setForm({ title: "", excerpt: "", image_url: "", image_position: "center", pinned: false, gallery_images: [] });
+    setForm({ title: "", excerpt: "", image_url: "", image_position: "center", pinned: false, gallery_images: [], category: String(new Date().getFullYear()) });
   };
 
   // Login screen
