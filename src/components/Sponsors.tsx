@@ -161,7 +161,7 @@ const Sponsors = () => {
               <div className="text-center flex-1">
                 <h3 className="text-2xl md:text-3xl font-display">
                   <span className="text-foreground">POSTANI </span>
-                  <span className="text-primary">SPONZOR</span>
+                  <span className="text-foreground">SPONZOR</span>
                 </h3>
                 <p className="text-muted-foreground text-base mt-1">
                   <span className="md:hidden">Pogledaj sponzorske pakete<br />i podrži turnir</span>
