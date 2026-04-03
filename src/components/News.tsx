@@ -75,7 +75,7 @@ const News = () => {
     fetchDbNews();
   }, []);
 
-  const allNews = [...dbNews, ...hardcodedNews];
+  const allNews = [...dbNews, ...hardcodedNews].sort((a, b) => parseNewsDate(b.date).getTime() - parseNewsDate(a.date).getTime());
 
   useEffect(() => {
     const handleResize = () => setIsMobile(window.innerWidth < 768);
