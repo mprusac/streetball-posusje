@@ -29,7 +29,7 @@ const Footer = () => {
   };
 
   return (
-    <footer className="bg-card py-16 border-t border-border">
+    <footer className="bg-card py-16 border-t border-border" role="contentinfo">
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-40 max-w-none mx-auto pl-0 lg:pl-36 text-center md:text-left">
           {/* Logo & Description */}
@@ -46,7 +46,7 @@ const Footer = () => {
             <h4 className="font-display text-lg text-primary mb-4 uppercase tracking-wider">
               Kontakt
             </h4>
-            <div className="space-y-2 text-sm text-muted-foreground">
+            <address className="space-y-2 text-sm text-muted-foreground not-italic">
               <p>Trg Hrvatskih branitelja<br />88240 Posušje, BiH</p>
               <a
                 href="mailto:petarsusnjar@streetball-posusje.com"
@@ -55,7 +55,7 @@ const Footer = () => {
                 petarsusnjar@streetball-posusje.com
               </a>
               <p>+387 63 290 237<br />+385 91 608 2969</p>
-            </div>
+            </address>
           </div>
 
           {/* Quick Links */}
