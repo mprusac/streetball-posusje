@@ -36,7 +36,18 @@ function getTodayFormatted(): string {
   const dd = String(now.getDate()).padStart(2, '0');
   const mm = String(now.getMonth() + 1).padStart(2, '0');
   const yyyy = now.getFullYear();
-  return `${dd}. ${mm}. ${yyyy}.`;
+  return `${dd}.${mm}.${yyyy}`;
+}
+
+function handleDateInput(value: string, setter: (fn: (prev: any) => any) => void) {
+  // Strip everything except digits
+  const digits = value.replace(/\D/g, '').slice(0, 8);
+  let formatted = '';
+  for (let i = 0; i < digits.length; i++) {
+    formatted += digits[i];
+    if (i === 1 || i === 3) formatted += '.';
+  }
+  setter((f: any) => ({ ...f, date: formatted }));
 }
 
 type AdminView = "main" | "news-form" | "gallery-form";
@@ -377,7 +388,7 @@ const AdminPanel = () => {
               <h2 className="font-display text-xl text-primary">{editing ? "Uredi vijest" : "Nova vijest"}</h2>
             </div>
             <Input placeholder="Naslov *" value={form.title} onChange={e => setForm(f => ({ ...f, title: e.target.value }))} />
-            <Input placeholder="Datum (npr. 03. 04. 2026.)" value={form.date} onChange={e => setForm(f => ({ ...f, date: e.target.value }))} />
+            <Input placeholder="dd.mm.yyyy" value={form.date} onChange={e => handleDateInput(e.target.value, setForm)} maxLength={10} />
             <textarea
               ref={el => { if (el) { el.style.height = 'auto'; el.style.height = el.scrollHeight + 'px'; } }}
               placeholder="Tekst vijesti / članka"
@@ -535,7 +546,7 @@ const AdminPanel = () => {
               <h2 className="font-display text-xl text-primary">{editingGallery ? "Uredi galeriju" : "Nova galerija"}</h2>
             </div>
             <Input placeholder="Naslov galerije *" value={galleryForm.title} onChange={e => setGalleryForm(f => ({ ...f, title: e.target.value }))} />
-            <Input placeholder="Datum (npr. 19.07.2025.)" value={galleryForm.date} onChange={e => setGalleryForm(f => ({ ...f, date: e.target.value }))} />
+            <Input placeholder="dd.mm.yyyy" value={galleryForm.date} onChange={e => handleDateInput(e.target.value, setGalleryForm)} maxLength={10} />
             
             {/* Gallery images upload */}
             <div className="space-y-2">
