@@ -16,6 +16,16 @@ import hydraLogo from "@/assets/sponsors/hydra-logo.png";
 import jvstudioLogo from "@/assets/sponsors/jvstudio-logo.png";
 import markotaLogo from "@/assets/sponsors/markota-logo.png";
 import meggleLogo from "@/assets/sponsors/meggle-logo.png";
+import oliLogo from "@/assets/sponsors/oli-logo.png";
+import opcinaPosuskeLogo from "@/assets/sponsors/opcina-posusje-logo.png";
+import ozujskoLogo from "@/assets/sponsors/ozujsko-logo.png";
+import penavaLogo from "@/assets/sponsors/penava-logo.png";
+import pepsiLogo from "@/assets/sponsors/pepsi-logo.png";
+import sportsartLogo from "@/assets/sponsors/sportsart-logo.png";
+import vivaLogo from "@/assets/sponsors/viva-logo.png";
+import winecoLogo from "@/assets/sponsors/wineco-logo.png";
+import barbershopLogo from "@/assets/sponsors/barbershop-logo.png";
+import pulseLogo from "@/assets/sponsors/pulse-logo.png";
 
 interface SponsorTier {
   name: string;
@@ -87,27 +97,37 @@ const goldBorder = "border-[hsl(48,96%,53%)]";
 const goldGlow = "hover:[box-shadow:0_0_25px_8px_hsl(48,96%,53%,0.35)]";
 
 const sponsors = [
+  { name: "Općina Posušje", image: opcinaPosuskeLogo, imgClass: "!object-contain scale-[1.1]", url: null },
   { name: "Vokel d.o.o.", image: vokelLogo, imgClass: "scale-[1.3]", url: "https://vokel.com/" },
+  { name: "Ožujsko Pivo", image: ozujskoLogo, imgClass: "!object-contain scale-[1.1]", url: null },
   { name: "Meggle", image: meggleLogo, imgClass: "!object-contain scale-[0.85]", url: null },
+  { name: "Pepsi", image: pepsiLogo, imgClass: "!object-contain scale-[1.1]", url: null },
   { name: "Bin Vest", image: binvestLogo, imgClass: "!object-contain scale-[1.6]", url: "https://binvest-po.com/" },
   { name: "Adeo Sports", image: adeoLogo, imgClass: "!object-contain scale-[1.1]", url: null },
-  { name: "Miviko", image: null, imgClass: "", url: null },
+  { name: "Pulse Udruga", image: pulseLogo, imgClass: "!object-contain scale-[1.1]", url: null },
   { name: "Planet", image: planetLogo, imgClass: "scale-[1.6]", url: "https://www.facebook.com/planetbih/" },
+  { name: "OLI Prodajni Centar", image: oliLogo, imgClass: "!object-contain scale-[1.1]", url: null },
   { name: "Gaudeamus", image: gaudeamusLogo, imgClass: "!object-contain scale-[1.1]", url: null },
-  { name: "WWin", image: null, imgClass: "", url: null },
+  { name: "Penava Weddings", image: penavaLogo, imgClass: "!object-contain scale-[1.1]", url: null },
   { name: "Grill Kong", image: grillkongLogo, imgClass: "!object-contain scale-[1.1]", url: null },
-  { name: "Agencija Laguna", image: null, imgClass: "", url: null },
+  { name: "SportsArt", image: sportsartLogo, imgClass: "!object-contain scale-[1.1]", url: null },
   { name: "Dravel", image: dravelLogo, imgClass: "!object-contain scale-[1.1]", url: null },
   { name: "Šišović Rakitno", image: sisovicLogo, imgClass: "!object-contain scale-[2.5]", url: "https://www.sisovic.com/" },
+  { name: "Viva Caffe", image: vivaLogo, imgClass: "!object-contain scale-[1.1]", url: null },
   { name: "Antik", image: antikLogo, imgClass: "!object-contain scale-[1.1]", url: null },
-  { name: "Mrvelji d.o.o.", image: null, imgClass: "", url: null },
+  { name: "Wine&Co", image: winecoLogo, imgClass: "!object-contain scale-[1.1]", url: null },
   { name: "Astoria Restoran", image: astoriaLogo, imgClass: "!object-contain scale-[1.1]", url: null },
+  { name: "Ž Barber Shop", image: barbershopLogo, imgClass: "!object-contain scale-[1.1]", url: null },
   { name: "Leda", image: ledaLogo, imgClass: "", url: "http://www.leda.ba/" },
   { name: "JV Studio", image: jvstudioLogo, imgClass: "!object-contain scale-[1.1]", url: null },
-  { name: "Weltplast", image: null, imgClass: "", url: null },
-  { name: "Markota", image: markotaLogo, imgClass: "!object-contain scale-[1.1]", url: null },
-  { name: "Croatia Osiguranje", image: null, imgClass: "", url: null },
   { name: "Hydra Iso", image: hydraLogo, imgClass: "!object-contain scale-[1.1]", url: null },
+  { name: "Markota", image: markotaLogo, imgClass: "!object-contain scale-[1.1]", url: null },
+  { name: "Miviko", image: null, imgClass: "", url: null },
+  { name: "WWin", image: null, imgClass: "", url: null },
+  { name: "Agencija Laguna", image: null, imgClass: "", url: null },
+  { name: "Mrvelji d.o.o.", image: null, imgClass: "", url: null },
+  { name: "Weltplast", image: null, imgClass: "", url: null },
+  { name: "Croatia Osiguranje", image: null, imgClass: "", url: null },
   { name: "Ljekarna Blanka", image: null, imgClass: "", url: null },
   { name: "Winners", image: null, imgClass: "", url: null },
   { name: "Restoran Bosiljna", image: null, imgClass: "", url: null },
