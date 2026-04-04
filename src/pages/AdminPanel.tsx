@@ -666,19 +666,7 @@ const AdminPanel = () => {
                 <p className="text-sm text-muted-foreground">{uploadingGalleryImages ? `Učitavanje${uploadProgress ? ` (${uploadProgress})` : ""}...` : "Klikni ili povuci slike ovdje"}</p>
               </div>
               {galleryForm.images.length > 0 && (
-                <div className="grid grid-cols-4 md:grid-cols-6 gap-2">
-                  {galleryForm.images.map((url, i) => (
-                    <div key={i} className="relative group">
-                      <img src={url} alt={`Slika ${i + 1}`} className="w-full h-16 rounded-lg object-cover" />
-                      <button
-                        onClick={() => removeGalleryFormImage(i)}
-                        className="absolute top-1 right-1 bg-background/80 rounded-full p-1 hover:bg-destructive hover:text-destructive-foreground transition-colors opacity-0 group-hover:opacity-100"
-                      >
-                        <X size={12} />
-                      </button>
-                    </div>
-                  ))}
-                </div>
+                <PaginatedImageGrid images={galleryForm.images} onRemove={removeGalleryFormImage} />
               )}
               <p className="text-xs text-muted-foreground">{galleryForm.images.length} slika dodano</p>
             </div>
