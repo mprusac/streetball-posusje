@@ -136,6 +136,8 @@ const PaginatedImageGrid = memo(({ images, onRemove }: { images: string[]; onRem
 });
 PaginatedImageGrid.displayName = 'PaginatedImageGrid';
 
+const DEFAULT_CATEGORIES = ["2026", "2025", "Najava"];
+
 const AdminPanel = () => {
   const [token, setToken] = useState<string | null>(sessionStorage.getItem("admin_token"));
   const [username, setUsername] = useState("");
@@ -151,6 +153,7 @@ const AdminPanel = () => {
   const [uploadingGalleryImages, setUploadingGalleryImages] = useState(false);
   const [uploadProgress, setUploadProgress] = useState("");
   const [showCategoryModal, setShowCategoryModal] = useState(false);
+  const [showDeleteCategoryModal, setShowDeleteCategoryModal] = useState(false);
   const [customCategory, setCustomCategory] = useState("");
   const fileInputRef = useRef<HTMLInputElement>(null);
   const galleryInputRef = useRef<HTMLInputElement>(null);
