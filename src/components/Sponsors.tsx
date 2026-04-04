@@ -132,29 +132,31 @@ const Sponsors = () => {
 
         {/* Sponsor Logos */}
         <div className="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-4 gap-2 md:gap-5 max-w-4xl mx-auto mb-8 md:mb-16">
-          {sponsors.map((sponsor, index) => (
-            <a
-              key={sponsor.name}
-              href={sponsor.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className={`bg-secondary/50 border-2 ${sponsor.borderColor} rounded-2xl overflow-hidden hover:scale-[1.05] ${sponsor.glowColor} transition-all duration-300 animate-fade-in-up aspect-[2/1] ${sponsor.name === "Ardu" ? "hidden md:block" : ""}`}
-              style={{ animationDelay: `${index * 100}ms` }}
-            >
-              {sponsor.image ? (
-                <img 
-                  src={sponsor.image} 
-                  alt={sponsor.name} 
-                  loading="lazy"
-                  className={`w-full h-full object-cover ${sponsor.imgClass}`}
-                />
-              ) : (
-                <div className="w-full h-full flex items-center justify-center bg-secondary/80">
-                  <span className="text-muted-foreground text-xs md:text-sm font-semibold text-center px-2">{sponsor.name}</span>
-                </div>
-              )}
-            </a>
-          ))}
+          {sponsors.map((sponsor, index) => {
+            const Wrapper = sponsor.url ? 'a' : 'div';
+            const linkProps = sponsor.url ? { href: sponsor.url, target: "_blank", rel: "noopener noreferrer" } : {};
+            return (
+              <Wrapper
+                key={sponsor.name}
+                {...linkProps as any}
+                className={`bg-secondary/50 border-2 ${goldBorder} rounded-2xl overflow-hidden hover:scale-[1.05] ${goldGlow} transition-all duration-300 animate-fade-in-up aspect-[2/1] flex items-center justify-center ${sponsor.name === "Ardu" ? "hidden md:block" : ""}`}
+                style={{ animationDelay: `${index * 100}ms` }}
+              >
+                {sponsor.image ? (
+                  <img 
+                    src={sponsor.image} 
+                    alt={sponsor.name} 
+                    loading="lazy"
+                    className={`w-full h-full object-cover ${sponsor.imgClass}`}
+                  />
+                ) : (
+                  <div className="w-full h-full flex items-center justify-center bg-secondary/80">
+                    <span className="text-muted-foreground text-xs md:text-sm font-semibold text-center px-2">{sponsor.name}</span>
+                  </div>
+                )}
+              </Wrapper>
+            );
+          })}
         </div>
 
         {/* Become a Sponsor */}
