@@ -91,20 +91,20 @@ const goldGlow = "hover:[box-shadow:0_0_25px_8px_hsl(48,96%,53%,0.35)]";
 const sponsors = [
   { name: "Vokel d.o.o.", tier: "Gold", image: vokelLogo, borderColor: goldBorder, glowColor: goldGlow, imgClass: "scale-[1.3]", url: "https://vokel.com/" },
   { name: "Bin Vest", tier: "Gold", image: binvestLogo, borderColor: goldBorder, glowColor: goldGlow, imgClass: "!object-contain scale-[1.6]", url: "https://binvest-po.com/" },
-  { name: "Miviko", tier: "Silver", image: mivikoLogo, borderColor: goldBorder, glowColor: goldGlow, imgClass: "scale-[1.6]", url: "https://www.miviko-cables.com/" },
+  { name: "Miviko", tier: "Silver", image: null, borderColor: goldBorder, glowColor: goldGlow, imgClass: "scale-[1.6]", url: "https://www.miviko-cables.com/" },
   { name: "Planet", tier: "Silver", image: planetLogo, borderColor: goldBorder, glowColor: goldGlow, imgClass: "scale-[1.6]", url: "https://www.facebook.com/planetbih/" },
-  { name: "WWin", tier: "Bronze", image: wwinLogo, borderColor: goldBorder, glowColor: goldGlow, imgClass: "!object-contain scale-[1.65]", url: "https://wwin.ba/" },
-  { name: "Agencija Laguna", tier: "Silver", image: lagunaLogo, borderColor: goldBorder, glowColor: goldGlow, imgClass: "scale-[1.4]", url: "https://agencija-laguna.com/index.php/about" },
-  { name: "Mrvelji d.o.o.", tier: "Bronze", image: mrveljiLogo, borderColor: goldBorder, glowColor: goldGlow, imgClass: "!object-contain scale-[1.15]", url: "https://www.mrvelji.com/" },
+  { name: "WWin", tier: "Bronze", image: null, borderColor: goldBorder, glowColor: goldGlow, imgClass: "!object-contain scale-[1.65]", url: "https://wwin.ba/" },
+  { name: "Agencija Laguna", tier: "Silver", image: null, borderColor: goldBorder, glowColor: goldGlow, imgClass: "scale-[1.4]", url: "https://agencija-laguna.com/index.php/about" },
+  { name: "Mrvelji d.o.o.", tier: "Bronze", image: null, borderColor: goldBorder, glowColor: goldGlow, imgClass: "!object-contain scale-[1.15]", url: "https://www.mrvelji.com/" },
   { name: "Šišović Rakitno", tier: "Gold", image: sisovicLogo, borderColor: goldBorder, glowColor: goldGlow, imgClass: "!object-contain scale-[2.5]", url: "https://www.sisovic.com/" },
-  { name: "Weltplast", tier: "Bronze", image: weltplastLogo, borderColor: goldBorder, glowColor: goldGlow, imgClass: "scale-[1.2]", url: "https://weltplast.com/hr/" },
+  { name: "Weltplast", tier: "Bronze", image: null, borderColor: goldBorder, glowColor: goldGlow, imgClass: "scale-[1.2]", url: "https://weltplast.com/hr/" },
   { name: "Leda", tier: "Gold", image: ledaLogo, borderColor: goldBorder, glowColor: goldGlow, imgClass: "", url: "http://www.leda.ba/" },
-  { name: "Croatia Osiguranje", tier: "Gold", image: croatiaOsiguranjeLogo, borderColor: goldBorder, glowColor: goldGlow, imgClass: "scale-[1.25]", url: "https://crosig.ba/" },
-  { name: "Ljekarna Blanka", tier: "Gold", image: ljekarnaBlanka, borderColor: goldBorder, glowColor: goldGlow, imgClass: "", url: "https://www.facebook.com/ljekarna.blanka/" },
-  { name: "Winners", tier: "Bronze", image: winnersLogo, borderColor: goldBorder, glowColor: goldGlow, imgClass: "!object-contain scale-[1.65]", url: "https://www.facebook.com/pages/Caffe%20Winners%20Posusje/235220287284078/" },
-  { name: "Restoran Bosiljna", tier: "Bronze", image: bosiljnaLogo, borderColor: goldBorder, glowColor: goldGlow, imgClass: "!object-contain scale-[1.4]", url: "https://www.facebook.com/p/Restoran-Bosiljna-100088386104760/" },
-  { name: "KTM Brina", tier: "Silver", image: ktmBrinaLogo, borderColor: goldBorder, glowColor: goldGlow, imgClass: "scale-[1.35]", url: "https://ktm-brina.com/" },
-  { name: "Ardu", tier: "Bronze", image: arduLogo, borderColor: goldBorder, glowColor: goldGlow, imgClass: "!object-contain scale-[1.3]", url: "https://www.ardusport.com/" },
+  { name: "Croatia Osiguranje", tier: "Gold", image: null, borderColor: goldBorder, glowColor: goldGlow, imgClass: "scale-[1.25]", url: "https://crosig.ba/" },
+  { name: "Ljekarna Blanka", tier: "Gold", image: null, borderColor: goldBorder, glowColor: goldGlow, imgClass: "", url: "https://www.facebook.com/ljekarna.blanka/" },
+  { name: "Winners", tier: "Bronze", image: null, borderColor: goldBorder, glowColor: goldGlow, imgClass: "!object-contain scale-[1.65]", url: "https://www.facebook.com/pages/Caffe%20Winners%20Posusje/235220287284078/" },
+  { name: "Restoran Bosiljna", tier: "Bronze", image: null, borderColor: goldBorder, glowColor: goldGlow, imgClass: "!object-contain scale-[1.4]", url: "https://www.facebook.com/p/Restoran-Bosiljna-100088386104760/" },
+  { name: "KTM Brina", tier: "Silver", image: null, borderColor: goldBorder, glowColor: goldGlow, imgClass: "scale-[1.35]", url: "https://ktm-brina.com/" },
+  { name: "Ardu", tier: "Bronze", image: null, borderColor: goldBorder, glowColor: goldGlow, imgClass: "!object-contain scale-[1.3]", url: "https://www.ardusport.com/" },
 ];
 
 const Sponsors = () => {
@@ -133,12 +133,18 @@ const Sponsors = () => {
               className={`bg-secondary/50 border-2 ${sponsor.borderColor} rounded-2xl overflow-hidden hover:scale-[1.05] ${sponsor.glowColor} transition-all duration-300 animate-fade-in-up aspect-[2/1] ${sponsor.name === "Ardu" ? "hidden md:block" : ""}`}
               style={{ animationDelay: `${index * 100}ms` }}
             >
-              <img 
-                src={sponsor.image} 
-                alt={sponsor.name} 
-                loading="lazy"
-                className={`w-full h-full object-cover ${sponsor.imgClass}`}
-              />
+              {sponsor.image ? (
+                <img 
+                  src={sponsor.image} 
+                  alt={sponsor.name} 
+                  loading="lazy"
+                  className={`w-full h-full object-cover ${sponsor.imgClass}`}
+                />
+              ) : (
+                <div className="w-full h-full flex items-center justify-center bg-secondary/80">
+                  <span className="text-muted-foreground text-xs md:text-sm font-semibold text-center px-2">{sponsor.name}</span>
+                </div>
+              )}
             </a>
           ))}
         </div>
