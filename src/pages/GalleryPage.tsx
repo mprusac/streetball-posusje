@@ -199,6 +199,13 @@ const EventAlbum = ({ event }: { event: GalleryEvent }) => {
                   className="w-full h-auto object-cover transition-transform duration-500 group-hover:scale-110"
                 />
                 <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-all duration-300" />
+                <button
+                  onClick={(e) => { e.stopPropagation(); handleDownload(img, index); }}
+                  className="absolute top-2 right-2 p-1.5 rounded-full bg-background/70 hover:bg-background text-foreground opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10"
+                  title="Preuzmi sliku"
+                >
+                  <Download className="w-4 h-4" />
+                </button>
               </div>
             ))}
           </div>
