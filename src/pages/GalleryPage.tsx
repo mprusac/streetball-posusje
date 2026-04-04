@@ -230,15 +230,27 @@ const EventAlbum = ({ event }: { event: GalleryEvent }) => {
             className="fixed inset-0 z-50 bg-background/95 backdrop-blur-sm flex items-center justify-center"
             onClick={closeLightbox}
           >
-            <motion.button
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.1 }}
-              onClick={closeLightbox}
-              className="absolute top-4 right-4 p-2 rounded-full bg-muted/50 hover:bg-muted text-foreground transition-colors z-10"
-            >
-              <X className="w-6 h-6" />
-            </motion.button>
+            <div className="absolute top-4 right-4 flex items-center gap-2 z-10">
+              <motion.button
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.1 }}
+                onClick={(e) => { e.stopPropagation(); handleDownload(allImages[currentIndex], currentIndex); }}
+                className="p-2 rounded-full bg-muted/50 hover:bg-muted text-foreground transition-colors"
+                title="Preuzmi sliku"
+              >
+                <Download className="w-6 h-6" />
+              </motion.button>
+              <motion.button
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.1 }}
+                onClick={closeLightbox}
+                className="p-2 rounded-full bg-muted/50 hover:bg-muted text-foreground transition-colors"
+              >
+                <X className="w-6 h-6" />
+              </motion.button>
+            </div>
 
             <button
               onClick={(e) => { e.stopPropagation(); goToPrevious(); }}
