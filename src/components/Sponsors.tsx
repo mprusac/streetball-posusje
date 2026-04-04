@@ -106,7 +106,7 @@ const sponsors = [
   { name: "Adeo Sports", image: adeoLogo, imgClass: "!object-contain scale-[1.5]", url: null },
   { name: "Pulse Udruga", image: pulseLogo, imgClass: "!object-contain scale-[1.32] translate-y-[5px]", url: null },
   { name: "Planet", image: planetLogo, imgClass: "scale-[1.6]", url: "https://www.facebook.com/planetbih/" },
-  { name: "OLI Prodajni Centar", image: oliLogo, imgClass: "!object-contain scale-[1.5]", url: null },
+  { name: "OLI Prodajni Centar", image: oliLogo, imgClass: "!object-contain scale-[1.8]", url: null },
   { name: "Gaudeamus", image: gaudeamusLogo, imgClass: "!object-contain scale-[1.1]", url: null },
   { name: "Penava Weddings", image: penavaLogo, imgClass: "!object-contain scale-[1.5]", url: null },
   { name: "Grill Kong", image: grillkongLogo, imgClass: "!object-contain scale-[1.1]", url: null },
