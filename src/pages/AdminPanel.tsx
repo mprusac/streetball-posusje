@@ -171,6 +171,13 @@ const AdminPanel = () => {
   const [uploadingCoverImage, setUploadingCoverImage] = useState(false);
   const coverImageInputRef = useRef<HTMLInputElement>(null);
 
+  // Derive unique categories from existing news + defaults
+  const allCategories = useMemo(() => {
+    const fromNews = news.map(n => n.category).filter(Boolean);
+    const merged = new Set([...DEFAULT_CATEGORIES, ...fromNews]);
+    return Array.from(merged);
+  }, [news]);
+
   const headers = { Authorization: `Bearer ${token}`, "Content-Type": "application/json" };
 
   const login = async (e: React.FormEvent) => {
