@@ -1,7 +1,7 @@
 import { useState, useEffect, useCallback, useRef } from "react";
 import { Link, useParams, useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
-import { ArrowLeft, Camera, X, ChevronLeft, ChevronRight } from "lucide-react";
+import { ArrowLeft, Camera, X, ChevronLeft, ChevronRight, Download } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import Footer from "@/components/Footer";
 
