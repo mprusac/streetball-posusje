@@ -460,17 +460,17 @@ const AdminPanel = () => {
     <div className="min-h-screen bg-background">
       {/* Top Bar */}
       <div className="sticky top-0 z-40 bg-[hsl(0,0%,7%)] shadow-md">
-        <div className="container mx-auto relative flex items-center justify-between px-4 md:px-8 h-14">
+        <div className="container mx-auto flex items-center justify-between px-4 md:px-8 h-14 gap-2">
           <button
             onClick={() => navigate("/")}
-            className="flex items-center gap-2 text-primary hover:text-primary/80 transition-colors"
+            className="flex-shrink-0 flex items-center gap-2 text-primary hover:text-primary/80 transition-colors"
           >
             <ArrowLeft size={22} />
           </button>
-          <h1 className="absolute left-1/2 -translate-x-1/2 font-display text-lg md:text-xl text-primary tracking-wide whitespace-nowrap">
+          <h1 className="flex-1 min-w-0 text-center font-display text-sm md:text-xl text-primary tracking-wide truncate">
             Admin Panel <span className="text-foreground">|</span> <span className="text-foreground">Vijesti & Galerija</span>
           </h1>
-          <Button variant="outline" onClick={logout} size="sm" className="border-primary text-foreground hover:bg-primary hover:text-primary-foreground transition-colors">
+          <Button variant="outline" onClick={logout} size="sm" className="flex-shrink-0 border-primary text-foreground hover:bg-primary hover:text-primary-foreground transition-colors">
             <LogOut size={16} /> Odjava
           </Button>
         </div>
