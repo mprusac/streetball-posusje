@@ -294,9 +294,9 @@ const AdminPanel = () => {
     setForm(f => ({ ...f, gallery_images: f.gallery_images.filter((_, i) => i !== index) }));
   };
 
-  const removeGalleryFormImage = (index: number) => {
+  const removeGalleryFormImage = useCallback((index: number) => {
     setGalleryForm(f => ({ ...f, images: f.images.filter((_, i) => i !== index) }));
-  };
+  }, []);
 
   const saveNews = async () => {
     setLoading(true);
