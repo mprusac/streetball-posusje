@@ -58,8 +58,77 @@ function handleDateInput(value: string, setter: (fn: (prev: any) => any) => void
 
 type AdminView = "main" | "news-form" | "gallery-form";
 
-// Custom category modal state
+// Concurrent upload helper - uploads in batches of 5
+async function uploadFilesBatch(
+  files: File[],
+  bucket: string,
+  pathPrefix: string,
+  onProgress: (completed: number, total: number) => void
+): Promise<string[]> {
+  const CONCURRENCY = 5;
+  const urls: string[] = [];
+  let completed = 0;
+  const total = files.length;
 
+  for (let i = 0; i < files.length; i += CONCURRENCY) {
+    const batch = files.slice(i, i + CONCURRENCY);
+    const results = await Promise.all(
+      batch.map(async (file) => {
+        const filePath = `${pathPrefix}${Date.now()}-${Math.random().toString(36).slice(2, 6)}-${file.name}`;
+        const { error } = await supabase.storage.from(bucket).upload(filePath, file);
+        if (error) throw error;
+        const { data: { publicUrl } } = supabase.storage.from(bucket).getPublicUrl(filePath);
+        completed++;
+        onProgress(completed, total);
+        return publicUrl;
+      })
+    );
+    urls.push(...results);
+  }
+  return urls;
+}
+
+// Paginated image grid component for large galleries
+const PaginatedImageGrid = ({ images, onRemove }: { images: string[]; onRemove: (index: number) => void }) => {
+  const PAGE_SIZE = 30;
+  const [visibleCount, setVisibleCount] = useState(PAGE_SIZE);
+
+  // Reset visible count when images change significantly
+  useEffect(() => {
+    if (visibleCount > images.length + PAGE_SIZE) {
+      setVisibleCount(Math.max(PAGE_SIZE, images.length));
+    }
+  }, [images.length]);
+
+  const visible = images.slice(0, visibleCount);
+  const hasMore = visibleCount < images.length;
+
+  return (
+    <div>
+      <div className="grid grid-cols-4 md:grid-cols-6 gap-2">
+        {visible.map((url, i) => (
+          <div key={`${i}-${url.slice(-20)}`} className="relative group">
+            <img src={url} alt={`Slika ${i + 1}`} loading="lazy" decoding="async" className="w-full h-16 rounded-lg object-cover" />
+            <button
+              onClick={() => onRemove(i)}
+              className="absolute top-1 right-1 bg-background/80 rounded-full p-1 hover:bg-destructive hover:text-destructive-foreground transition-colors opacity-0 group-hover:opacity-100"
+            >
+              <X size={12} />
+            </button>
+          </div>
+        ))}
+      </div>
+      {hasMore && (
+        <button
+          onClick={() => setVisibleCount(prev => Math.min(prev + PAGE_SIZE, images.length))}
+          className="mt-2 w-full py-2 text-sm text-primary hover:text-primary/80 transition-colors border border-primary/20 rounded-lg"
+        >
+          Prikaži još ({images.length - visibleCount} preostalo)
+        </button>
+      )}
+    </div>
+  );
+};
 
 const AdminPanel = () => {
   const [token, setToken] = useState<string | null>(sessionStorage.getItem("admin_token"));
