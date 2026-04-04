@@ -13,7 +13,7 @@ const BRAND_TEXT = '#A6A6A6';
 const BRAND_WHITE = '#FFFFFF';
 
 function ownerEmailHtml(name: string, email: string, subject: string, message: string): string {
-  const LOGO_URL = 'https://tchaaceoqtjwpqjztijh.supabase.co/storage/v1/object/public/email-assets/logo.png';
+  const LOGO_URL = 'https://onixifzmfmmakvvnhrqs.supabase.co/storage/v1/object/public/email-assets/streetball-logo.png';
   const date = new Date().toLocaleDateString('hr-HR', { day: 'numeric', month: 'long', year: 'numeric', hour: '2-digit', minute: '2-digit' });
   return `
 <!DOCTYPE html>
@@ -33,7 +33,7 @@ function ownerEmailHtml(name: string, email: string, subject: string, message: s
                 <p style="margin:4px 0 0;font-size:13px;color:${BRAND_DARK};font-weight:700;">${date}</p>
               </td>
               <td align="right" style="vertical-align:middle;width:70px;">
-                <img src="${LOGO_URL}" alt="KK Posušje" width="65" height="65" style="display:block;border:none;outline:none;" />
+                <img src="${LOGO_URL}" alt="Streetball Posušje 2026" width="65" height="65" style="display:block;border:none;outline:none;border-radius:50%;" />
               </td>
             </tr>
           </table>
@@ -75,7 +75,7 @@ function ownerEmailHtml(name: string, email: string, subject: string, message: s
         </td></tr>
         <!-- Footer -->
         <tr><td style="padding:20px;text-align:center;">
-           <p style="margin:0;font-size:11px;color:${BRAND_TEXT};">Streetball Posušje 2026 · Trg Hrvatskih branitelja, Fra Grge Martića 35, 88240 Posušje</p>
+           <p style="margin:0;font-size:11px;color:${BRAND_TEXT};">Streetball Posušje 2026 · Trg Hrvatskih branitelja, 88240 Posušje, BiH</p>
           <p style="margin:4px 0 0;font-size:11px;color:${BRAND_TEXT};">Ova poruka je automatski generirana putem kontakt forme na web stranici.</p>
         </td></tr>
       </table>
@@ -86,7 +86,7 @@ function ownerEmailHtml(name: string, email: string, subject: string, message: s
 }
 
 function userConfirmationHtml(name: string, subject: string, message: string): string {
-  const LOGO_URL = 'https://tchaaceoqtjwpqjztijh.supabase.co/storage/v1/object/public/email-assets/logo.png';
+  const LOGO_URL = 'https://onixifzmfmmakvvnhrqs.supabase.co/storage/v1/object/public/email-assets/streetball-logo.png';
   return `
 <!DOCTYPE html>
 <html lang="hr">
@@ -98,7 +98,7 @@ function userConfirmationHtml(name: string, subject: string, message: string): s
         <!-- Header -->
         <tr><td style="background-color:${BRAND_GOLD};padding:28px 32px;border-radius:12px 12px 0 0;text-align:center;">
           <h1 style="margin:0 0 12px;font-size:24px;font-weight:800;color:${BRAND_DARK};letter-spacing:2px;text-transform:uppercase;">STREETBALL POSUŠJE 2026</h1>
-          <img src="${LOGO_URL}" alt="KK Posušje" width="60" height="60" style="display:inline-block;border:none;outline:none;" />
+          <img src="${LOGO_URL}" alt="Streetball Posušje 2026" width="60" height="60" style="display:inline-block;border:none;outline:none;border-radius:50%;" />
         </td></tr>
         <!-- Body -->
         <tr><td style="background-color:${BRAND_CARD};padding:32px;border-radius:0 0 12px 12px;text-align:center;">
@@ -120,13 +120,13 @@ function userConfirmationHtml(name: string, subject: string, message: string): s
           <!-- CTA -->
           <table width="100%" cellpadding="0" cellspacing="0" style="margin-top:24px;">
             <tr><td align="center">
-              <a href="https://kkposusje.ba/" style="display:inline-block;padding:12px 32px;background-color:${BRAND_GOLD};color:${BRAND_DARK};font-size:14px;font-weight:700;text-decoration:none;border-radius:8px;text-transform:uppercase;letter-spacing:1px;">Posjetite našu web stranicu</a>
+              <a href="https://streetball-posusje.lovable.app/" style="display:inline-block;padding:12px 32px;background-color:${BRAND_GOLD};color:${BRAND_DARK};font-size:14px;font-weight:700;text-decoration:none;border-radius:8px;text-transform:uppercase;letter-spacing:1px;">Posjetite našu web stranicu</a>
             </td></tr>
           </table>
         </td></tr>
         <!-- Footer -->
         <tr><td style="padding:20px;text-align:center;">
-          <p style="margin:0;font-size:11px;color:${BRAND_TEXT};">Streetball Posušje 2026 · Trg Hrvatskih branitelja, Fra Grge Martića 35, 88240 Posušje</p>
+          <p style="margin:0;font-size:11px;color:${BRAND_TEXT};">Streetball Posušje 2026 · Trg Hrvatskih branitelja, 88240 Posušje, BiH</p>
           <p style="margin:4px 0 0;font-size:11px;color:${BRAND_TEXT};">Ovo je automatska potvrda. Molimo ne odgovarajte na ovaj email.</p>
         </td></tr>
       </table>
