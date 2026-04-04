@@ -11,7 +11,7 @@ import antikLogo from "@/assets/sponsors/antik-logo.png";
 import astoriaLogo from "@/assets/sponsors/astoria-logo.png";
 import dravelLogo from "@/assets/sponsors/dravel-logo.png";
 import gaudeamusLogo from "@/assets/sponsors/gaudeamus.png";
-import grillkongLogo from "@/assets/sponsors/grillkong-logo.png";
+import grillkongLogo from "@/assets/sponsors/grillkong.png";
 import hydraLogo from "@/assets/sponsors/hydra-logo.png";
 import jvstudioLogo from "@/assets/sponsors/jvstudio-logo.png";
 import markotaLogo from "@/assets/sponsors/markota-logo.png";
