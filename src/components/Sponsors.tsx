@@ -3,21 +3,9 @@ import { ChevronUp, ChevronDown, Crown, Medal, Award, Heart, Star, Trophy } from
 
 import vokelLogo from "@/assets/sponsors/vokel-logo.png";
 import planetLogo from "@/assets/sponsors/planet-logo.png";
-import mivikoLogo from "@/assets/sponsors/miviko-logo.png";
-import mrveljiLogo from "@/assets/sponsors/mrvelji-logo.png";
-import weltplastLogo from "@/assets/sponsors/weltplast-logo.png";
-import ktmBrinaLogo from "@/assets/sponsors/ktm-brina-logo.png";
-import lagunaLogo from "@/assets/sponsors/laguna-logo.png";
 import binvestLogo from "@/assets/sponsors/binvest-logo.png";
 import sisovicLogo from "@/assets/sponsors/sisovic.png";
 import ledaLogo from "@/assets/sponsors/leda-logo.png";
-import croatiaOsiguranjeLogo from "@/assets/sponsors/croatia-osiguranje-logo.png";
-
-import ljekarnaBlanka from "@/assets/sponsors/ljekarna-blanka-logo.png";
-import winnersLogo from "@/assets/sponsors/winners-logo.png";
-import bosiljnaLogo from "@/assets/sponsors/bosiljna-logo.png";
-import wwinLogo from "@/assets/sponsors/wwin-logo.png";
-import arduLogo from "@/assets/sponsors/ardu-logo.png";
 
 interface SponsorTier {
   name: string;
