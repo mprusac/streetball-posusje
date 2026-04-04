@@ -1,5 +1,5 @@
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import { Trash2, Edit, Plus, LogOut, Save, X, Upload, Pin, ArrowLeft, ImagePlus, Newspaper } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
@@ -58,8 +58,77 @@ function handleDateInput(value: string, setter: (fn: (prev: any) => any) => void
 
 type AdminView = "main" | "news-form" | "gallery-form";
 
-// Custom category modal state
+// Concurrent upload helper - uploads in batches of 5
+async function uploadFilesBatch(
+  files: File[],
+  bucket: string,
+  pathPrefix: string,
+  onProgress: (completed: number, total: number) => void
+): Promise<string[]> {
+  const CONCURRENCY = 5;
+  const urls: string[] = [];
+  let completed = 0;
+  const total = files.length;
 
+  for (let i = 0; i < files.length; i += CONCURRENCY) {
+    const batch = files.slice(i, i + CONCURRENCY);
+    const results = await Promise.all(
+      batch.map(async (file) => {
+        const filePath = `${pathPrefix}${Date.now()}-${Math.random().toString(36).slice(2, 6)}-${file.name}`;
+        const { error } = await supabase.storage.from(bucket).upload(filePath, file);
+        if (error) throw error;
+        const { data: { publicUrl } } = supabase.storage.from(bucket).getPublicUrl(filePath);
+        completed++;
+        onProgress(completed, total);
+        return publicUrl;
+      })
+    );
+    urls.push(...results);
+  }
+  return urls;
+}
+
+// Paginated image grid component for large galleries
+const PaginatedImageGrid = ({ images, onRemove }: { images: string[]; onRemove: (index: number) => void }) => {
+  const PAGE_SIZE = 30;
+  const [visibleCount, setVisibleCount] = useState(PAGE_SIZE);
+
+  // Reset visible count when images change significantly
+  useEffect(() => {
+    if (visibleCount > images.length + PAGE_SIZE) {
+      setVisibleCount(Math.max(PAGE_SIZE, images.length));
+    }
+  }, [images.length]);
+
+  const visible = images.slice(0, visibleCount);
+  const hasMore = visibleCount < images.length;
+
+  return (
+    <div>
+      <div className="grid grid-cols-4 md:grid-cols-6 gap-2">
+        {visible.map((url, i) => (
+          <div key={`${i}-${url.slice(-20)}`} className="relative group">
+            <img src={url} alt={`Slika ${i + 1}`} loading="lazy" decoding="async" className="w-full h-16 rounded-lg object-cover" />
+            <button
+              onClick={() => onRemove(i)}
+              className="absolute top-1 right-1 bg-background/80 rounded-full p-1 hover:bg-destructive hover:text-destructive-foreground transition-colors opacity-0 group-hover:opacity-100"
+            >
+              <X size={12} />
+            </button>
+          </div>
+        ))}
+      </div>
+      {hasMore && (
+        <button
+          onClick={() => setVisibleCount(prev => Math.min(prev + PAGE_SIZE, images.length))}
+          className="mt-2 w-full py-2 text-sm text-primary hover:text-primary/80 transition-colors border border-primary/20 rounded-lg"
+        >
+          Prikaži još ({images.length - visibleCount} preostalo)
+        </button>
+      )}
+    </div>
+  );
+};
 
 const AdminPanel = () => {
   const [token, setToken] = useState<string | null>(sessionStorage.getItem("admin_token"));
@@ -74,6 +143,7 @@ const AdminPanel = () => {
   const [uploadingImage, setUploadingImage] = useState(false);
   const [uploadingGallery, setUploadingGallery] = useState(false);
   const [uploadingGalleryImages, setUploadingGalleryImages] = useState(false);
+  const [uploadProgress, setUploadProgress] = useState("");
   const [showCategoryModal, setShowCategoryModal] = useState(false);
   const [customCategory, setCustomCategory] = useState("");
   const fileInputRef = useRef<HTMLInputElement>(null);
@@ -167,21 +237,19 @@ const AdminPanel = () => {
 
   const uploadGalleryImagesForNews = async (files: FileList) => {
     setUploadingGallery(true);
-    const newUrls: string[] = [];
+    setUploadProgress("");
     try {
-      for (const file of Array.from(files)) {
-        const filePath = `gallery/${Date.now()}-${file.name}`;
-        const { error } = await supabase.storage.from("news-images").upload(filePath, file);
-        if (error) throw error;
-        const { data: { publicUrl } } = supabase.storage.from("news-images").getPublicUrl(filePath);
-        newUrls.push(publicUrl);
-      }
+      const newUrls = await uploadFilesBatch(
+        Array.from(files), "news-images", "gallery/",
+        (done, total) => setUploadProgress(`${done}/${total}`)
+      );
       setForm(f => ({ ...f, gallery_images: [...f.gallery_images, ...newUrls] }));
       toast({ title: `${newUrls.length} slika uploadano!` });
     } catch (err: any) {
       toast({ title: "Greška pri uploadu galerije", description: err.message, variant: "destructive" });
     }
     setUploadingGallery(false);
+    setUploadProgress("");
   };
 
   const uploadCoverImage = async (file: File) => {
@@ -201,21 +269,19 @@ const AdminPanel = () => {
 
   const uploadGalleryImages = async (files: FileList) => {
     setUploadingGalleryImages(true);
-    const newUrls: string[] = [];
+    setUploadProgress("");
     try {
-      for (const file of Array.from(files)) {
-        const filePath = `galleries/${Date.now()}-${file.name}`;
-        const { error } = await supabase.storage.from("news-images").upload(filePath, file);
-        if (error) throw error;
-        const { data: { publicUrl } } = supabase.storage.from("news-images").getPublicUrl(filePath);
-        newUrls.push(publicUrl);
-      }
+      const newUrls = await uploadFilesBatch(
+        Array.from(files), "news-images", "galleries/",
+        (done, total) => setUploadProgress(`${done}/${total}`)
+      );
       setGalleryForm(f => ({ ...f, images: [...f.images, ...newUrls] }));
       toast({ title: `${newUrls.length} slika uploadano!` });
     } catch (err: any) {
       toast({ title: "Greška pri uploadu", description: err.message, variant: "destructive" });
     }
     setUploadingGalleryImages(false);
+    setUploadProgress("");
   };
 
   const removeGalleryImage = (index: number) => {
@@ -530,22 +596,10 @@ const AdminPanel = () => {
               >
                 <input ref={galleryInputRef} type="file" accept="image/*" multiple className="hidden" onChange={e => { if (e.target.files?.length) uploadGalleryImagesForNews(e.target.files); }} />
                 <ImagePlus size={20} className="mx-auto mb-1 text-muted-foreground" />
-                <p className="text-sm text-muted-foreground">{uploadingGallery ? "Učitavanje..." : "Klikni ili povuci slike ovdje"}</p>
+                <p className="text-sm text-muted-foreground">{uploadingGallery ? `Učitavanje${uploadProgress ? ` (${uploadProgress})` : ""}...` : "Klikni ili povuci slike ovdje"}</p>
               </div>
               {form.gallery_images.length > 0 && (
-                <div className="grid grid-cols-4 md:grid-cols-6 gap-2">
-                  {form.gallery_images.map((url, i) => (
-                    <div key={i} className="relative group">
-                      <img src={url} alt={`Galerija ${i + 1}`} className="w-full h-16 rounded-lg object-cover" />
-                      <button
-                        onClick={() => removeGalleryImage(i)}
-                        className="absolute top-1 right-1 bg-background/80 rounded-full p-1 hover:bg-destructive hover:text-destructive-foreground transition-colors opacity-0 group-hover:opacity-100"
-                      >
-                        <X size={12} />
-                      </button>
-                    </div>
-                  ))}
-                </div>
+                <PaginatedImageGrid images={form.gallery_images} onRemove={removeGalleryImage} />
               )}
             </div>
 
@@ -609,22 +663,10 @@ const AdminPanel = () => {
               >
                 <input ref={galleryImagesInputRef} type="file" accept="image/*" multiple className="hidden" onChange={e => { if (e.target.files?.length) uploadGalleryImages(e.target.files); }} />
                 <ImagePlus size={20} className="mx-auto mb-1 text-muted-foreground" />
-                <p className="text-sm text-muted-foreground">{uploadingGalleryImages ? "Učitavanje..." : "Klikni ili povuci slike ovdje"}</p>
+                <p className="text-sm text-muted-foreground">{uploadingGalleryImages ? `Učitavanje${uploadProgress ? ` (${uploadProgress})` : ""}...` : "Klikni ili povuci slike ovdje"}</p>
               </div>
               {galleryForm.images.length > 0 && (
-                <div className="grid grid-cols-4 md:grid-cols-6 gap-2">
-                  {galleryForm.images.map((url, i) => (
-                    <div key={i} className="relative group">
-                      <img src={url} alt={`Slika ${i + 1}`} className="w-full h-16 rounded-lg object-cover" />
-                      <button
-                        onClick={() => removeGalleryFormImage(i)}
-                        className="absolute top-1 right-1 bg-background/80 rounded-full p-1 hover:bg-destructive hover:text-destructive-foreground transition-colors opacity-0 group-hover:opacity-100"
-                      >
-                        <X size={12} />
-                      </button>
-                    </div>
-                  ))}
-                </div>
+                <PaginatedImageGrid images={galleryForm.images} onRemove={removeGalleryFormImage} />
               )}
               <p className="text-xs text-muted-foreground">{galleryForm.images.length} slika dodano</p>
             </div>
