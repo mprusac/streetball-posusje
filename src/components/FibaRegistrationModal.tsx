@@ -79,12 +79,12 @@ const FibaRegistrationModal = ({ isOpen, onClose }: FibaRegistrationModalProps) 
 
   return (
     <div
-      className="fixed inset-0 z-[100] bg-background/90 backdrop-blur-sm flex items-center justify-center p-4"
+      className="fixed inset-0 z-[100] bg-background/90 backdrop-blur-sm flex items-start justify-center pt-8 pb-4 px-4 overflow-y-auto"
       onClick={onClose}
     >
       <div
         ref={modalRef}
-        className="relative rounded-2xl w-full max-w-lg h-[95vh] overflow-y-auto shadow-2xl scroll-smooth"
+        className="relative rounded-2xl w-full max-w-lg shadow-2xl flex flex-col"
         style={{
           background: 'linear-gradient(135deg, hsl(0 0% 5%) 0%, hsl(45 100% 51% / 0.08) 50%, hsl(0 0% 8%) 100%)',
           border: '2px solid transparent',
@@ -93,7 +93,8 @@ const FibaRegistrationModal = ({ isOpen, onClose }: FibaRegistrationModalProps) 
         }}
         onClick={(e) => e.stopPropagation()}
       >
-        <div className="sticky top-0 z-10 border-b border-primary/30 rounded-t-2xl px-6 py-4 flex items-center justify-center relative" style={{ background: 'hsl(0 0% 6%)' }}>
+        {/* Header - z-20 to stay above FIBA widget overlays */}
+        <div className="sticky top-0 z-20 border-b border-primary/30 rounded-t-2xl px-6 py-4 flex items-center justify-center relative" style={{ background: 'hsl(0 0% 6%)' }}>
           <h2 className="font-display text-xl md:text-2xl text-primary">
             PRIJAVA NA TURNIR
           </h2>
@@ -105,13 +106,15 @@ const FibaRegistrationModal = ({ isOpen, onClose }: FibaRegistrationModalProps) 
           </button>
         </div>
 
-        <div className="sticky bottom-0 z-10 border-t border-primary/20 px-4 py-2 text-center" style={{ background: 'hsl(0 0% 6% / 0.95)' }}>
+        {/* Widget container - no scale, natural height */}
+        <div ref={containerRef} className="p-2 md:p-4" />
+
+        {/* Hint footer */}
+        <div className="border-t border-primary/20 px-4 py-2 text-center rounded-b-2xl" style={{ background: 'hsl(0 0% 6% / 0.95)' }}>
           <p className="text-xs text-muted-foreground">
             💡 Nakon klika na <span className="text-primary font-medium">Add Player</span>, scrollaj prema vrhu za pretraživanje igrača
           </p>
         </div>
-
-        <div ref={containerRef} className="p-2 md:p-4 min-h-[300px]" style={{ transform: 'scale(0.70)', transformOrigin: 'top center' }} />
       </div>
     </div>
   );
