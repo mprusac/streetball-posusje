@@ -582,6 +582,49 @@ const AdminPanel = () => {
                     </div>
                   </div>
                 )}
+
+                {/* Delete category modal */}
+                {showDeleteCategoryModal && (
+                  <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60" onClick={() => setShowDeleteCategoryModal(false)}>
+                    <div className="bg-[hsl(0,0%,10%)] border border-destructive/30 rounded-xl p-6 w-full max-w-sm mx-4 shadow-2xl" onClick={e => e.stopPropagation()}>
+                      <h3 className="font-display text-lg text-destructive text-center mb-4">Obriši kategoriju</h3>
+                      <p className="text-sm text-muted-foreground text-center mb-4">
+                        Jeste li sigurni da želite obrisati kategoriju <span className="text-foreground font-medium">"{form.category}"</span>? Vijesti s ovom kategorijom će biti prebačene u "{DEFAULT_CATEGORIES[0]}".
+                      </p>
+                      <div className="flex gap-2">
+                        <button
+                          onClick={() => setShowDeleteCategoryModal(false)}
+                          className="flex-1 px-4 py-2 rounded-md border border-border text-sm text-muted-foreground hover:text-foreground transition-colors"
+                        >
+                          Odustani
+                        </button>
+                        <button
+                          onClick={async () => {
+                            const catToDelete = form.category;
+                            try {
+                              // Update all news with this category to default
+                              const res = await fetch(NEWS_URL, { method: "PUT", headers, body: JSON.stringify({ category: catToDelete, newCategory: DEFAULT_CATEGORIES[0] }) });
+                              if (!res.ok) {
+                                // Fallback: just reset form category
+                              }
+                            } catch {}
+                            setForm(f => ({ ...f, category: DEFAULT_CATEGORIES[0] }));
+                            setShowDeleteCategoryModal(false);
+                            toast({ title: "Kategorija obrisana", description: `"${catToDelete}" je uklonjena.` });
+                            // Refresh news list
+                            try {
+                              const r = await fetch(NEWS_URL, { headers });
+                              if (r.ok) setNews(await r.json());
+                            } catch {}
+                          }}
+                          className="flex-1 px-4 py-2 rounded-md bg-destructive text-destructive-foreground text-sm font-medium hover:bg-destructive/90 transition-colors"
+                        >
+                          Obriši
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                )}
               </div>
             </div>
             
