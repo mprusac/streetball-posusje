@@ -116,7 +116,7 @@ const Navbar = () => {
                 ? location.pathname === link.href 
                 : activeSection === link.href.slice(1);
 
-              const className = `font-display font-bold text-base uppercase tracking-widest transition-all duration-300 px-3 py-1 rounded-md ${
+              const className = `font-display font-bold text-base uppercase tracking-widest transition-all duration-300 px-3 py-0.5 rounded-md ${
                 isActive
                   ? "text-primary bg-gradient-to-r from-primary/20 to-transparent"
                   : "text-foreground hover:text-primary hover:bg-gradient-to-r hover:from-primary/15 hover:to-transparent"
