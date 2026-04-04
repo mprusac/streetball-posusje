@@ -165,7 +165,7 @@ serve(async (req) => {
       },
       body: JSON.stringify({
         from: 'Streetball Posušje <onboarding@resend.dev>',
-        to: ['petarsus33@gmail.com'],
+        to: ['tonidujic19@gmail.com'],
         subject: `[Kontakt forma] ${subject}`,
         reply_to: email,
         html: ownerEmailHtml(name, email, subject, message),
