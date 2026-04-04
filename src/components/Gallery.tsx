@@ -5,12 +5,12 @@ import { X, ChevronLeft, ChevronRight } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const images = [
-  { id: 1, src: "https://onixifzmfmmakvvnhrqs.supabase.co/storage/v1/object/public/news-images/galleries/1775308982036-37w3-20250719-_PW17375.webp", title: "Streetball Posušje 2025", objectPosition: "center" },
-  { id: 2, src: "https://onixifzmfmmakvvnhrqs.supabase.co/storage/v1/object/public/news-images/galleries/1775308984648-uc4b-20250719-_PW17382.webp", title: "Streetball Posušje 2025", objectPosition: "center" },
-  { id: 3, src: "https://onixifzmfmmakvvnhrqs.supabase.co/storage/v1/object/public/news-images/galleries/1775308987243-c42n-20250719-_PW17390.webp", title: "Streetball Posušje 2025", objectPosition: "center" },
-  { id: 4, src: "https://onixifzmfmmakvvnhrqs.supabase.co/storage/v1/object/public/news-images/galleries/1775308992564-9tlp-20250719-_PW17408.webp", title: "Streetball Posušje 2025", objectPosition: "center" },
-  { id: 5, src: "https://onixifzmfmmakvvnhrqs.supabase.co/storage/v1/object/public/news-images/galleries/1775308994653-8m23-20250719-_PW17413.webp", title: "Streetball Posušje 2025", objectPosition: "center" },
-  { id: 6, src: "https://onixifzmfmmakvvnhrqs.supabase.co/storage/v1/object/public/news-images/galleries/1775308996637-rfwm-20250719-_PW17416.webp", title: "Streetball Posušje 2025", objectPosition: "center" },
+  { id: 1, src: "https://onixifzmfmmakvvnhrqs.supabase.co/storage/v1/object/public/news-images/galleries/1775248347558-20250717-DSC03713.webp", title: "Streetball Posušje 2025", objectPosition: "center" },
+  { id: 2, src: "https://onixifzmfmmakvvnhrqs.supabase.co/storage/v1/object/public/news-images/galleries/1775306914047-20250718-DSC04081.webp", title: "Streetball Posušje 2025", objectPosition: "center" },
+  { id: 3, src: "https://onixifzmfmmakvvnhrqs.supabase.co/storage/v1/object/public/news-images/galleries/1775306951834-20250718-_PW21485.webp", title: "Streetball Posušje 2025", objectPosition: "center" },
+  { id: 4, src: "https://onixifzmfmmakvvnhrqs.supabase.co/storage/v1/object/public/news-images/galleries/1775306981686-20250718-DSC04088.webp", title: "Streetball Posušje 2025", objectPosition: "center" },
+  { id: 5, src: "https://onixifzmfmmakvvnhrqs.supabase.co/storage/v1/object/public/news-images/galleries/1775309004179-d0b5-20250719-_PW17443.webp", title: "Streetball Posušje 2025", objectPosition: "center" },
+  { id: 6, src: "https://onixifzmfmmakvvnhrqs.supabase.co/storage/v1/object/public/news-images/galleries/1775248436061-20250723-WhatsApp%20Image%202025-07-23%20at%2022.53.49.webp", title: "Streetball Posušje 2025", objectPosition: "center" },
 ];
 
 const Gallery = () => {
