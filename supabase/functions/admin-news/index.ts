@@ -124,6 +124,27 @@ Deno.serve(async (req) => {
       })
     }
 
+    // Bulk update category (for deleting a category)
+    if (path === 'update-category' && req.method === 'PUT') {
+      const { category, newCategory } = await req.json()
+
+      if (!category || !newCategory) {
+        return new Response(JSON.stringify({ error: 'category and newCategory required' }), {
+          status: 400, headers: { ...corsHeaders, 'Content-Type': 'application/json' }
+        })
+      }
+
+      const { error } = await supabase
+        .from('news')
+        .update({ category: newCategory })
+        .eq('category', category)
+
+      if (error) throw error
+      return new Response(JSON.stringify({ success: true }), {
+        headers: { ...corsHeaders, 'Content-Type': 'application/json' }
+      })
+    }
+
     // Delete news
     if (path === 'delete' && (req.method === 'DELETE' || req.method === 'POST')) {
       const { id } = await req.json()
