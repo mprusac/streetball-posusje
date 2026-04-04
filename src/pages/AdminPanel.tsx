@@ -136,6 +136,8 @@ const PaginatedImageGrid = memo(({ images, onRemove }: { images: string[]; onRem
 });
 PaginatedImageGrid.displayName = 'PaginatedImageGrid';
 
+const DEFAULT_CATEGORIES = ["2026", "2025", "Najava"];
+
 const AdminPanel = () => {
   const [token, setToken] = useState<string | null>(sessionStorage.getItem("admin_token"));
   const [username, setUsername] = useState("");
@@ -151,6 +153,7 @@ const AdminPanel = () => {
   const [uploadingGalleryImages, setUploadingGalleryImages] = useState(false);
   const [uploadProgress, setUploadProgress] = useState("");
   const [showCategoryModal, setShowCategoryModal] = useState(false);
+  const [showDeleteCategoryModal, setShowDeleteCategoryModal] = useState(false);
   const [customCategory, setCustomCategory] = useState("");
   const fileInputRef = useRef<HTMLInputElement>(null);
   const galleryInputRef = useRef<HTMLInputElement>(null);
@@ -167,6 +170,13 @@ const AdminPanel = () => {
   });
   const [uploadingCoverImage, setUploadingCoverImage] = useState(false);
   const coverImageInputRef = useRef<HTMLInputElement>(null);
+
+  // Derive unique categories from existing news + defaults
+  const allCategories = useMemo(() => {
+    const fromNews = news.map(n => n.category).filter(Boolean);
+    const merged = new Set([...DEFAULT_CATEGORIES, ...fromNews]);
+    return Array.from(merged);
+  }, [news]);
 
   const headers = { Authorization: `Bearer ${token}`, "Content-Type": "application/json" };
 
@@ -498,26 +508,38 @@ const AdminPanel = () => {
               </label>
               <div className="flex items-center gap-2">
                 <span className="text-sm text-muted-foreground">Kategorija:</span>
-                <select
-                  value={form.category}
-                  onChange={e => {
-                    if (e.target.value === '__custom__') {
-                      setCustomCategory("");
-                      setShowCategoryModal(true);
-                    } else {
-                      setForm(f => ({ ...f, category: e.target.value }));
-                    }
-                  }}
-                  className="rounded-md border border-input bg-background px-3 py-1.5 text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
-                >
-                  <option value="2026">2026</option>
-                  <option value="2025">2025</option>
-                  <option value="najava">Najava</option>
-                  {form.category && !["2026", "2025", "najava"].includes(form.category) && (
-                    <option value={form.category}>{form.category}</option>
+                <div className="relative flex items-center gap-1">
+                  <select
+                    value={form.category}
+                    onChange={e => {
+                      if (e.target.value === '__custom__') {
+                        setCustomCategory("");
+                        setShowCategoryModal(true);
+                      } else {
+                        setForm(f => ({ ...f, category: e.target.value }));
+                      }
+                    }}
+                    className="rounded-md border border-input bg-background px-3 py-1.5 text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                  >
+                    {allCategories.map(cat => (
+                      <option key={cat} value={cat}>{cat}</option>
+                    ))}
+                    {form.category && !allCategories.includes(form.category) && (
+                      <option value={form.category}>{form.category}</option>
+                    )}
+                    <option value="__custom__">+ nova</option>
+                  </select>
+                  {!DEFAULT_CATEGORIES.includes(form.category) && form.category && (
+                    <button
+                      type="button"
+                      title="Obriši kategoriju"
+                      onClick={() => setShowDeleteCategoryModal(true)}
+                      className="p-1 rounded hover:bg-destructive/20 text-muted-foreground hover:text-destructive transition-colors"
+                    >
+                      <Trash2 size={14} />
+                    </button>
                   )}
-                  <option value="__custom__">+ nova kategorija...</option>
-                </select>
+                </div>
 
                 {/* Custom category modal */}
                 {showCategoryModal && (
@@ -555,6 +577,49 @@ const AdminPanel = () => {
                           className="flex-1 px-4 py-2 rounded-md bg-primary text-primary-foreground text-sm font-medium hover:bg-primary/90 transition-colors disabled:opacity-50"
                         >
                           Dodaj
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                )}
+
+                {/* Delete category modal */}
+                {showDeleteCategoryModal && (
+                  <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60" onClick={() => setShowDeleteCategoryModal(false)}>
+                    <div className="bg-[hsl(0,0%,10%)] border border-destructive/30 rounded-xl p-6 w-full max-w-sm mx-4 shadow-2xl" onClick={e => e.stopPropagation()}>
+                      <h3 className="font-display text-lg text-destructive text-center mb-4">Obriši kategoriju</h3>
+                      <p className="text-sm text-muted-foreground text-center mb-4">
+                        Jeste li sigurni da želite obrisati kategoriju <span className="text-foreground font-medium">"{form.category}"</span>? Vijesti s ovom kategorijom će biti prebačene u "{DEFAULT_CATEGORIES[0]}".
+                      </p>
+                      <div className="flex gap-2">
+                        <button
+                          onClick={() => setShowDeleteCategoryModal(false)}
+                          className="flex-1 px-4 py-2 rounded-md border border-border text-sm text-muted-foreground hover:text-foreground transition-colors"
+                        >
+                          Odustani
+                        </button>
+                        <button
+                          onClick={async () => {
+                            const catToDelete = form.category;
+                            try {
+                              await fetch(`${NEWS_URL}/update-category`, { 
+                                method: "PUT", 
+                                headers, 
+                                body: JSON.stringify({ category: catToDelete, newCategory: DEFAULT_CATEGORIES[0] }) 
+                              });
+                            } catch {}
+                            setForm(f => ({ ...f, category: DEFAULT_CATEGORIES[0] }));
+                            setShowDeleteCategoryModal(false);
+                            toast({ title: "Kategorija obrisana", description: `"${catToDelete}" je uklonjena.` });
+                            // Refresh news list
+                            try {
+                              const r = await fetch(`${NEWS_URL}/list`, { headers });
+                              if (r.ok) setNews(await r.json());
+                            } catch {}
+                          }}
+                          className="flex-1 px-4 py-2 rounded-md bg-destructive text-destructive-foreground text-sm font-medium hover:bg-destructive/90 transition-colors"
+                        >
+                          Obriši
                         </button>
                       </div>
                     </div>
