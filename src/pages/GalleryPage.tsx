@@ -23,7 +23,7 @@ const LazyImage = ({ src, alt, className, onClick, style }: { src: string; alt: 
   }, []);
 
   return (
-    <div className="relative" style={style} onClick={onClick}>
+    <div className="relative w-full h-full" style={style} onClick={onClick}>
       {!loaded && (
         <div className="absolute inset-0 bg-muted/30 animate-pulse" />
       )}
