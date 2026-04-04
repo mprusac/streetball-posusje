@@ -102,6 +102,12 @@ const FibaRegistrationModal = ({ isOpen, onClose }: FibaRegistrationModalProps) 
           </button>
         </div>
 
+        <div className="sticky bottom-0 z-10 border-t border-primary/20 px-4 py-2 text-center" style={{ background: 'hsl(0 0% 6% / 0.95)' }}>
+          <p className="text-xs text-muted-foreground">
+            💡 Nakon klika na <span className="text-primary font-medium">Add Player</span>, scrollaj prema vrhu za pretraživanje igrača
+          </p>
+        </div>
+
         <div ref={containerRef} className="p-4 md:p-6 min-h-[300px]" />
       </div>
     </div>
