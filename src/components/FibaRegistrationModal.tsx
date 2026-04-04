@@ -8,24 +8,24 @@ interface FibaRegistrationModalProps {
 
 const FibaRegistrationModal = ({ isOpen, onClose }: FibaRegistrationModalProps) => {
   const containerRef = useRef<HTMLDivElement>(null);
-  const modalRef = useRef<HTMLDivElement>(null);
+  const scrollAreaRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (!isOpen || !containerRef.current || !modalRef.current) return;
+    if (!isOpen || !containerRef.current || !scrollAreaRef.current) return;
 
     const container = containerRef.current;
-    const modal = modalRef.current;
+    const scrollArea = scrollAreaRef.current;
 
     container.innerHTML = "";
 
-    const scrollModalToTop = (behavior: ScrollBehavior = "smooth") => {
-      modal.scrollTo({ top: 0, behavior });
+    const scrollToTop = (behavior: ScrollBehavior = "smooth") => {
+      scrollArea.scrollTo({ top: 0, behavior });
     };
 
     const revealAddPlayerModal = () => {
-      scrollModalToTop("auto");
-      requestAnimationFrame(() => scrollModalToTop("smooth"));
-      window.setTimeout(() => scrollModalToTop("smooth"), 180);
+      scrollToTop("auto");
+      requestAnimationFrame(() => scrollToTop("smooth"));
+      window.setTimeout(() => scrollToTop("smooth"), 180);
     };
 
     const handleEmbedClick = (event: MouseEvent) => {
@@ -79,12 +79,11 @@ const FibaRegistrationModal = ({ isOpen, onClose }: FibaRegistrationModalProps) 
 
   return (
     <div
-      className="fixed inset-0 z-[100] bg-background/90 backdrop-blur-sm flex items-start justify-center pt-8 pb-4 px-4 overflow-y-auto"
+      className="fixed inset-0 z-[100] bg-background/90 backdrop-blur-sm flex items-center justify-center p-4"
       onClick={onClose}
     >
       <div
-        ref={modalRef}
-        className="relative rounded-2xl w-full max-w-lg shadow-2xl flex flex-col"
+        className="relative rounded-2xl w-full max-w-lg h-[95vh] flex flex-col shadow-2xl overflow-hidden"
         style={{
           background: 'linear-gradient(135deg, hsl(0 0% 5%) 0%, hsl(45 100% 51% / 0.08) 50%, hsl(0 0% 8%) 100%)',
           border: '2px solid transparent',
@@ -93,8 +92,8 @@ const FibaRegistrationModal = ({ isOpen, onClose }: FibaRegistrationModalProps) 
         }}
         onClick={(e) => e.stopPropagation()}
       >
-        {/* Header - z-20 to stay above FIBA widget overlays */}
-        <div className="sticky top-0 z-20 border-b border-primary/30 rounded-t-2xl px-6 py-4 flex items-center justify-center relative" style={{ background: 'hsl(0 0% 6%)' }}>
+        {/* Fixed header - always on top, NOT inside scroll area */}
+        <div className="shrink-0 z-30 border-b border-primary/30 rounded-t-2xl px-6 py-4 flex items-center justify-center relative" style={{ background: 'hsl(0 0% 6%)' }}>
           <h2 className="font-display text-xl md:text-2xl text-primary">
             PRIJAVA NA TURNIR
           </h2>
@@ -106,11 +105,17 @@ const FibaRegistrationModal = ({ isOpen, onClose }: FibaRegistrationModalProps) 
           </button>
         </div>
 
-        {/* Widget container - no scale, natural height */}
-        <div ref={containerRef} className="p-2 md:p-4" />
+        {/* Scrollable widget area - isolated so FIBA overlays stay contained */}
+        <div
+          ref={scrollAreaRef}
+          className="flex-1 overflow-y-auto overflow-x-hidden scroll-smooth"
+          style={{ position: 'relative' }}
+        >
+          <div ref={containerRef} className="p-2 md:p-4" />
+        </div>
 
-        {/* Hint footer */}
-        <div className="border-t border-primary/20 px-4 py-2 text-center rounded-b-2xl" style={{ background: 'hsl(0 0% 6% / 0.95)' }}>
+        {/* Hint footer - fixed at bottom, not inside scroll */}
+        <div className="shrink-0 border-t border-primary/20 px-4 py-2 text-center rounded-b-2xl" style={{ background: 'hsl(0 0% 6% / 0.95)' }}>
           <p className="text-xs text-muted-foreground">
             💡 Nakon klika na <span className="text-primary font-medium">Add Player</span>, scrollaj prema vrhu za pretraživanje igrača
           </p>
