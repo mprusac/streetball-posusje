@@ -87,6 +87,23 @@ const EventCard = ({ event, index }: { event: GalleryEvent; index: number }) => 
   );
 };
 
+const handleDownload = async (url: string, index: number) => {
+  try {
+    const response = await fetch(url);
+    const blob = await response.blob();
+    const blobUrl = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = blobUrl;
+    a.download = `slika-${index + 1}.jpg`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(blobUrl);
+  } catch {
+    window.open(url, '_blank');
+  }
+};
+
 const BATCH_SIZE = 12;
 
 const EventAlbum = ({ event }: { event: GalleryEvent }) => {
