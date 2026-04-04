@@ -663,7 +663,7 @@ const AdminPanel = () => {
               >
                 <input ref={galleryImagesInputRef} type="file" accept="image/*" multiple className="hidden" onChange={e => { if (e.target.files?.length) uploadGalleryImages(e.target.files); }} />
                 <ImagePlus size={20} className="mx-auto mb-1 text-muted-foreground" />
-                <p className="text-sm text-muted-foreground">{uploadingGalleryImages ? "Učitavanje..." : "Klikni ili povuci slike ovdje"}</p>
+                <p className="text-sm text-muted-foreground">{uploadingGalleryImages ? `Učitavanje${uploadProgress ? ` (${uploadProgress})` : ""}...` : "Klikni ili povuci slike ovdje"}</p>
               </div>
               {galleryForm.images.length > 0 && (
                 <div className="grid grid-cols-4 md:grid-cols-6 gap-2">
