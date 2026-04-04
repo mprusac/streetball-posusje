@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 import { Link, useParams, useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowLeft, Camera, X, ChevronLeft, ChevronRight } from "lucide-react";
@@ -14,6 +14,32 @@ interface GalleryEvent {
   created_at: string;
 }
 
+const LazyImage = ({ src, alt, className, onClick, style }: { src: string; alt: string; className?: string; onClick?: () => void; style?: React.CSSProperties }) => {
+  const [loaded, setLoaded] = useState(false);
+  const imgRef = useRef<HTMLImageElement>(null);
+
+  useEffect(() => {
+    if (imgRef.current?.complete) setLoaded(true);
+  }, []);
+
+  return (
+    <div className="relative" style={style} onClick={onClick}>
+      {!loaded && (
+        <div className="absolute inset-0 bg-muted/30 animate-pulse" />
+      )}
+      <img
+        ref={imgRef}
+        src={src}
+        alt={alt}
+        loading="lazy"
+        decoding="async"
+        onLoad={() => setLoaded(true)}
+        className={`${className} transition-opacity duration-300 ${loaded ? 'opacity-100' : 'opacity-0'}`}
+      />
+    </div>
+  );
+};
+
 const EventCard = ({ event, index }: { event: GalleryEvent; index: number }) => {
   const coverImage = event.cover_image || event.images?.[0];
   
@@ -21,12 +47,12 @@ const EventCard = ({ event, index }: { event: GalleryEvent; index: number }) => 
     <motion.div
       initial={{ opacity: 0, y: 30 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5, delay: index * 0.15 }}
+      transition={{ duration: 0.5, delay: Math.min(index * 0.1, 0.4) }}
     >
       <Link to={`/galerija/${event.id}`} className="group block">
         <div className="relative overflow-hidden rounded-lg aspect-[4/3] shadow-[0_0_20px_rgba(234,179,8,0.15)] hover:shadow-[0_0_30px_rgba(234,179,8,0.25)] transition-shadow duration-300">
           {coverImage ? (
-            <img
+            <LazyImage
               src={coverImage}
               alt={event.title}
               className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
@@ -61,15 +87,34 @@ const EventCard = ({ event, index }: { event: GalleryEvent; index: number }) => 
   );
 };
 
+const BATCH_SIZE = 12;
+
 const EventAlbum = ({ event }: { event: GalleryEvent }) => {
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [visibleCount, setVisibleCount] = useState(BATCH_SIZE);
+  const loaderRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "instant" as ScrollBehavior });
   }, []);
 
   const allImages = event.images || [];
+
+  // Infinite scroll - load more images as user scrolls
+  useEffect(() => {
+    if (visibleCount >= allImages.length) return;
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting) {
+          setVisibleCount(prev => Math.min(prev + BATCH_SIZE, allImages.length));
+        }
+      },
+      { rootMargin: '400px' }
+    );
+    if (loaderRef.current) observer.observe(loaderRef.current);
+    return () => observer.disconnect();
+  }, [visibleCount, allImages.length]);
 
   const openLightbox = (index: number) => {
     setCurrentIndex(index);
@@ -89,6 +134,8 @@ const EventAlbum = ({ event }: { event: GalleryEvent }) => {
   const goToNext = () => {
     setCurrentIndex((prev) => (prev === allImages.length - 1 ? 0 : prev + 1));
   };
+
+  const visibleImages = allImages.slice(0, visibleCount);
 
   return (
     <div className="min-h-screen bg-background">
@@ -121,26 +168,30 @@ const EventAlbum = ({ event }: { event: GalleryEvent }) => {
             <p className="text-muted-foreground mt-4">{allImages.length} fotografija</p>
           </motion.div>
 
-          {/* Masonry Gallery */}
+          {/* Masonry Gallery with progressive loading */}
           <div className="columns-2 md:columns-3 gap-1.5 max-w-5xl mx-auto">
-            {allImages.map((img, index) => (
-              <motion.div
+            {visibleImages.map((img, index) => (
+              <div
                 key={index}
-                initial={{ opacity: 0, scale: 0.95 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.4, delay: index * 0.05 }}
                 className="group relative overflow-hidden cursor-pointer mb-1.5 break-inside-avoid"
                 onClick={() => openLightbox(index)}
               >
-                <img
+                <LazyImage
                   src={img}
                   alt={`Slika ${index + 1}`}
                   className="w-full h-auto object-cover transition-transform duration-500 group-hover:scale-110"
                 />
                 <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-all duration-300" />
-              </motion.div>
+              </div>
             ))}
           </div>
+
+          {/* Infinite scroll trigger */}
+          {visibleCount < allImages.length && (
+            <div ref={loaderRef} className="flex justify-center py-8">
+              <div className="w-8 h-8 border-2 border-primary border-t-transparent rounded-full animate-spin" />
+            </div>
+          )}
         </div>
       </div>
 
@@ -218,7 +269,6 @@ const GalleryPage = () => {
         .order('date', { ascending: false });
       
       if (!error && data) {
-        // Sort chronologically by parsing date (DD.MM.YYYY. format)
         const sorted = [...data].sort((a, b) => {
           const parseDate = (d: string) => {
             const parts = d.replace(/\./g, '').trim().split(' ').filter(Boolean);
@@ -236,7 +286,6 @@ const GalleryPage = () => {
     fetchGalleries();
   }, []);
 
-  // Find gallery by ID
   useEffect(() => {
     if (eventId && galleries.length > 0) {
       const found = galleries.find(g => g.id === eventId);
@@ -284,7 +333,11 @@ const GalleryPage = () => {
           </motion.div>
 
           {loading ? (
-            <p className="text-muted-foreground text-center py-8">Učitavanje galerija...</p>
+            <div className="grid grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8 max-w-6xl mx-auto">
+              {[...Array(3)].map((_, i) => (
+                <div key={i} className="aspect-[4/3] rounded-lg bg-muted/30 animate-pulse" />
+              ))}
+            </div>
           ) : galleries.length === 0 ? (
             <p className="text-muted-foreground text-center py-8">Nema galerija za prikaz.</p>
           ) : (
