@@ -87,6 +87,23 @@ const EventCard = ({ event, index }: { event: GalleryEvent; index: number }) => 
   );
 };
 
+const handleDownload = async (url: string, index: number) => {
+  try {
+    const response = await fetch(url);
+    const blob = await response.blob();
+    const blobUrl = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = blobUrl;
+    a.download = `slika-${index + 1}.jpg`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(blobUrl);
+  } catch {
+    window.open(url, '_blank');
+  }
+};
+
 const BATCH_SIZE = 12;
 
 const EventAlbum = ({ event }: { event: GalleryEvent }) => {
@@ -182,6 +199,13 @@ const EventAlbum = ({ event }: { event: GalleryEvent }) => {
                   className="w-full h-auto object-cover transition-transform duration-500 group-hover:scale-110"
                 />
                 <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-all duration-300" />
+                <button
+                  onClick={(e) => { e.stopPropagation(); handleDownload(img, index); }}
+                  className="absolute top-2 right-2 p-1.5 rounded-full bg-background/70 hover:bg-background text-foreground opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10"
+                  title="Preuzmi sliku"
+                >
+                  <Download className="w-4 h-4" />
+                </button>
               </div>
             ))}
           </div>
@@ -206,15 +230,27 @@ const EventAlbum = ({ event }: { event: GalleryEvent }) => {
             className="fixed inset-0 z-50 bg-background/95 backdrop-blur-sm flex items-center justify-center"
             onClick={closeLightbox}
           >
-            <motion.button
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.1 }}
-              onClick={closeLightbox}
-              className="absolute top-4 right-4 p-2 rounded-full bg-muted/50 hover:bg-muted text-foreground transition-colors z-10"
-            >
-              <X className="w-6 h-6" />
-            </motion.button>
+            <div className="absolute top-4 right-4 flex items-center gap-2 z-10">
+              <motion.button
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.1 }}
+                onClick={(e) => { e.stopPropagation(); handleDownload(allImages[currentIndex], currentIndex); }}
+                className="p-2 rounded-full bg-muted/50 hover:bg-muted text-foreground transition-colors"
+                title="Preuzmi sliku"
+              >
+                <Download className="w-6 h-6" />
+              </motion.button>
+              <motion.button
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.1 }}
+                onClick={closeLightbox}
+                className="p-2 rounded-full bg-muted/50 hover:bg-muted text-foreground transition-colors"
+              >
+                <X className="w-6 h-6" />
+              </motion.button>
+            </div>
 
             <button
               onClick={(e) => { e.stopPropagation(); goToPrevious(); }}
