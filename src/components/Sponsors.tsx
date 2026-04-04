@@ -6,6 +6,16 @@ import planetLogo from "@/assets/sponsors/planet-logo.png";
 import binvestLogo from "@/assets/sponsors/binvest-logo.png";
 import sisovicLogo from "@/assets/sponsors/sisovic.png";
 import ledaLogo from "@/assets/sponsors/leda-logo.png";
+import adeoLogo from "@/assets/sponsors/adeo-logo.png";
+import antikLogo from "@/assets/sponsors/antik-logo.png";
+import astoriaLogo from "@/assets/sponsors/astoria-logo.png";
+import dravelLogo from "@/assets/sponsors/dravel-logo.png";
+import gaudeamusLogo from "@/assets/sponsors/gaudeamus-logo.png";
+import grillkongLogo from "@/assets/sponsors/grillkong-logo.png";
+import hydraLogo from "@/assets/sponsors/hydra-logo.png";
+import jvstudioLogo from "@/assets/sponsors/jvstudio-logo.png";
+import markotaLogo from "@/assets/sponsors/markota-logo.png";
+import meggleLogo from "@/assets/sponsors/meggle-logo.png";
 
 interface SponsorTier {
   name: string;
@@ -77,22 +87,32 @@ const goldBorder = "border-[hsl(48,96%,53%)]";
 const goldGlow = "hover:[box-shadow:0_0_25px_8px_hsl(48,96%,53%,0.35)]";
 
 const sponsors = [
-  { name: "Vokel d.o.o.", tier: "Gold", image: vokelLogo, borderColor: goldBorder, glowColor: goldGlow, imgClass: "scale-[1.3]", url: "https://vokel.com/" },
-  { name: "Bin Vest", tier: "Gold", image: binvestLogo, borderColor: goldBorder, glowColor: goldGlow, imgClass: "!object-contain scale-[1.6]", url: "https://binvest-po.com/" },
-  { name: "Miviko", tier: "Silver", image: null, borderColor: goldBorder, glowColor: goldGlow, imgClass: "scale-[1.6]", url: "https://www.miviko-cables.com/" },
-  { name: "Planet", tier: "Silver", image: planetLogo, borderColor: goldBorder, glowColor: goldGlow, imgClass: "scale-[1.6]", url: "https://www.facebook.com/planetbih/" },
-  { name: "WWin", tier: "Bronze", image: null, borderColor: goldBorder, glowColor: goldGlow, imgClass: "!object-contain scale-[1.65]", url: "https://wwin.ba/" },
-  { name: "Agencija Laguna", tier: "Silver", image: null, borderColor: goldBorder, glowColor: goldGlow, imgClass: "scale-[1.4]", url: "https://agencija-laguna.com/index.php/about" },
-  { name: "Mrvelji d.o.o.", tier: "Bronze", image: null, borderColor: goldBorder, glowColor: goldGlow, imgClass: "!object-contain scale-[1.15]", url: "https://www.mrvelji.com/" },
-  { name: "Šišović Rakitno", tier: "Gold", image: sisovicLogo, borderColor: goldBorder, glowColor: goldGlow, imgClass: "!object-contain scale-[2.5]", url: "https://www.sisovic.com/" },
-  { name: "Weltplast", tier: "Bronze", image: null, borderColor: goldBorder, glowColor: goldGlow, imgClass: "scale-[1.2]", url: "https://weltplast.com/hr/" },
-  { name: "Leda", tier: "Gold", image: ledaLogo, borderColor: goldBorder, glowColor: goldGlow, imgClass: "", url: "http://www.leda.ba/" },
-  { name: "Croatia Osiguranje", tier: "Gold", image: null, borderColor: goldBorder, glowColor: goldGlow, imgClass: "scale-[1.25]", url: "https://crosig.ba/" },
-  { name: "Ljekarna Blanka", tier: "Gold", image: null, borderColor: goldBorder, glowColor: goldGlow, imgClass: "", url: "https://www.facebook.com/ljekarna.blanka/" },
-  { name: "Winners", tier: "Bronze", image: null, borderColor: goldBorder, glowColor: goldGlow, imgClass: "!object-contain scale-[1.65]", url: "https://www.facebook.com/pages/Caffe%20Winners%20Posusje/235220287284078/" },
-  { name: "Restoran Bosiljna", tier: "Bronze", image: null, borderColor: goldBorder, glowColor: goldGlow, imgClass: "!object-contain scale-[1.4]", url: "https://www.facebook.com/p/Restoran-Bosiljna-100088386104760/" },
-  { name: "KTM Brina", tier: "Silver", image: null, borderColor: goldBorder, glowColor: goldGlow, imgClass: "scale-[1.35]", url: "https://ktm-brina.com/" },
-  { name: "Ardu", tier: "Bronze", image: null, borderColor: goldBorder, glowColor: goldGlow, imgClass: "!object-contain scale-[1.3]", url: "https://www.ardusport.com/" },
+  { name: "Vokel d.o.o.", image: vokelLogo, imgClass: "scale-[1.3]", url: "https://vokel.com/" },
+  { name: "Meggle", image: meggleLogo, imgClass: "!object-contain scale-[0.85]", url: null },
+  { name: "Bin Vest", image: binvestLogo, imgClass: "!object-contain scale-[1.6]", url: "https://binvest-po.com/" },
+  { name: "Adeo Sports", image: adeoLogo, imgClass: "!object-contain scale-[1.1]", url: null },
+  { name: "Miviko", image: null, imgClass: "", url: null },
+  { name: "Planet", image: planetLogo, imgClass: "scale-[1.6]", url: "https://www.facebook.com/planetbih/" },
+  { name: "Gaudeamus", image: gaudeamusLogo, imgClass: "!object-contain scale-[1.1]", url: null },
+  { name: "WWin", image: null, imgClass: "", url: null },
+  { name: "Grill Kong", image: grillkongLogo, imgClass: "!object-contain scale-[1.1]", url: null },
+  { name: "Agencija Laguna", image: null, imgClass: "", url: null },
+  { name: "Dravel", image: dravelLogo, imgClass: "!object-contain scale-[1.1]", url: null },
+  { name: "Šišović Rakitno", image: sisovicLogo, imgClass: "!object-contain scale-[2.5]", url: "https://www.sisovic.com/" },
+  { name: "Antik", image: antikLogo, imgClass: "!object-contain scale-[1.1]", url: null },
+  { name: "Mrvelji d.o.o.", image: null, imgClass: "", url: null },
+  { name: "Astoria Restoran", image: astoriaLogo, imgClass: "!object-contain scale-[1.1]", url: null },
+  { name: "Leda", image: ledaLogo, imgClass: "", url: "http://www.leda.ba/" },
+  { name: "JV Studio", image: jvstudioLogo, imgClass: "!object-contain scale-[1.1]", url: null },
+  { name: "Weltplast", image: null, imgClass: "", url: null },
+  { name: "Markota", image: markotaLogo, imgClass: "!object-contain scale-[1.1]", url: null },
+  { name: "Croatia Osiguranje", image: null, imgClass: "", url: null },
+  { name: "Hydra Iso", image: hydraLogo, imgClass: "!object-contain scale-[1.1]", url: null },
+  { name: "Ljekarna Blanka", image: null, imgClass: "", url: null },
+  { name: "Winners", image: null, imgClass: "", url: null },
+  { name: "Restoran Bosiljna", image: null, imgClass: "", url: null },
+  { name: "KTM Brina", image: null, imgClass: "", url: null },
+  { name: "Ardu", image: null, imgClass: "", url: null },
 ];
 
 const Sponsors = () => {
@@ -112,29 +132,31 @@ const Sponsors = () => {
 
         {/* Sponsor Logos */}
         <div className="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-4 gap-2 md:gap-5 max-w-4xl mx-auto mb-8 md:mb-16">
-          {sponsors.map((sponsor, index) => (
-            <a
-              key={sponsor.name}
-              href={sponsor.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className={`bg-secondary/50 border-2 ${sponsor.borderColor} rounded-2xl overflow-hidden hover:scale-[1.05] ${sponsor.glowColor} transition-all duration-300 animate-fade-in-up aspect-[2/1] ${sponsor.name === "Ardu" ? "hidden md:block" : ""}`}
-              style={{ animationDelay: `${index * 100}ms` }}
-            >
-              {sponsor.image ? (
-                <img 
-                  src={sponsor.image} 
-                  alt={sponsor.name} 
-                  loading="lazy"
-                  className={`w-full h-full object-cover ${sponsor.imgClass}`}
-                />
-              ) : (
-                <div className="w-full h-full flex items-center justify-center bg-secondary/80">
-                  <span className="text-muted-foreground text-xs md:text-sm font-semibold text-center px-2">{sponsor.name}</span>
-                </div>
-              )}
-            </a>
-          ))}
+          {sponsors.map((sponsor, index) => {
+            const Wrapper = sponsor.url ? 'a' : 'div';
+            const linkProps = sponsor.url ? { href: sponsor.url, target: "_blank", rel: "noopener noreferrer" } : {};
+            return (
+              <Wrapper
+                key={sponsor.name}
+                {...linkProps as any}
+                className={`bg-secondary/50 border-2 ${goldBorder} rounded-2xl overflow-hidden hover:scale-[1.05] ${goldGlow} transition-all duration-300 animate-fade-in-up aspect-[2/1] flex items-center justify-center ${sponsor.name === "Ardu" ? "hidden md:block" : ""}`}
+                style={{ animationDelay: `${index * 100}ms` }}
+              >
+                {sponsor.image ? (
+                  <img 
+                    src={sponsor.image} 
+                    alt={sponsor.name} 
+                    loading="lazy"
+                    className={`w-full h-full object-cover ${sponsor.imgClass}`}
+                  />
+                ) : (
+                  <div className="w-full h-full flex items-center justify-center bg-secondary/80">
+                    <span className="text-muted-foreground text-xs md:text-sm font-semibold text-center px-2">{sponsor.name}</span>
+                  </div>
+                )}
+              </Wrapper>
+            );
+          })}
         </div>
 
         {/* Become a Sponsor */}
