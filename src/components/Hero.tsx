@@ -119,7 +119,7 @@ const Hero = () => {
 
       <div className="relative z-10 container mx-auto px-4 text-center -mt-20 md:mt-0">
         <div className="max-w-4xl mx-auto">
-          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-display font-extrabold italic tracking-wider mb-4 mt-44 md:mt-10">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-display font-extrabold italic tracking-wider mb-4 mt-16 md:mt-10">
             <span className="block text-foreground">
               <WordReveal text="STREETBALL" delay={0.2} />
             </span>
