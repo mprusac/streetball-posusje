@@ -1,5 +1,5 @@
 
-import { useState, useEffect, useRef, useCallback } from "react";
+import { useState, useEffect, useRef, useCallback, memo, useMemo } from "react";
 import { Trash2, Edit, Plus, LogOut, Save, X, Upload, Pin, ArrowLeft, ImagePlus, Newspaper } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
@@ -88,34 +88,39 @@ async function uploadFilesBatch(
   return urls;
 }
 
+// Single image thumbnail - memoized to prevent re-renders
+const ImageThumb = memo(({ url, index, onRemove }: { url: string; index: number; onRemove: (i: number) => void }) => (
+  <div className="relative group" style={{ contentVisibility: 'auto', containIntrinsicSize: '0 64px' }}>
+    <img src={url} alt="" loading="lazy" decoding="async" className="w-full h-16 rounded-lg object-cover" />
+    <button
+      onClick={() => onRemove(index)}
+      className="absolute top-1 right-1 bg-background/80 rounded-full p-1 hover:bg-destructive hover:text-destructive-foreground transition-colors opacity-0 group-hover:opacity-100"
+    >
+      <X size={12} />
+    </button>
+  </div>
+));
+ImageThumb.displayName = 'ImageThumb';
+
 // Paginated image grid component for large galleries
-const PaginatedImageGrid = ({ images, onRemove }: { images: string[]; onRemove: (index: number) => void }) => {
+const PaginatedImageGrid = memo(({ images, onRemove }: { images: string[]; onRemove: (index: number) => void }) => {
   const PAGE_SIZE = 30;
   const [visibleCount, setVisibleCount] = useState(PAGE_SIZE);
 
-  // Reset visible count when images change significantly
   useEffect(() => {
     if (visibleCount > images.length + PAGE_SIZE) {
       setVisibleCount(Math.max(PAGE_SIZE, images.length));
     }
   }, [images.length]);
 
-  const visible = images.slice(0, visibleCount);
+  const visible = useMemo(() => images.slice(0, visibleCount), [images, visibleCount]);
   const hasMore = visibleCount < images.length;
 
   return (
     <div>
       <div className="grid grid-cols-4 md:grid-cols-6 gap-2">
         {visible.map((url, i) => (
-          <div key={`${i}-${url.slice(-20)}`} className="relative group">
-            <img src={url} alt={`Slika ${i + 1}`} loading="lazy" decoding="async" className="w-full h-16 rounded-lg object-cover" />
-            <button
-              onClick={() => onRemove(i)}
-              className="absolute top-1 right-1 bg-background/80 rounded-full p-1 hover:bg-destructive hover:text-destructive-foreground transition-colors opacity-0 group-hover:opacity-100"
-            >
-              <X size={12} />
-            </button>
-          </div>
+          <ImageThumb key={url} url={url} index={i} onRemove={onRemove} />
         ))}
       </div>
       {hasMore && (
@@ -128,7 +133,8 @@ const PaginatedImageGrid = ({ images, onRemove }: { images: string[]; onRemove: 
       )}
     </div>
   );
-};
+});
+PaginatedImageGrid.displayName = 'PaginatedImageGrid';
 
 const AdminPanel = () => {
   const [token, setToken] = useState<string | null>(sessionStorage.getItem("admin_token"));
@@ -288,9 +294,9 @@ const AdminPanel = () => {
     setForm(f => ({ ...f, gallery_images: f.gallery_images.filter((_, i) => i !== index) }));
   };
 
-  const removeGalleryFormImage = (index: number) => {
+  const removeGalleryFormImage = useCallback((index: number) => {
     setGalleryForm(f => ({ ...f, images: f.images.filter((_, i) => i !== index) }));
-  };
+  }, []);
 
   const saveNews = async () => {
     setLoading(true);
