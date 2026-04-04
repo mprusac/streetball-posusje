@@ -84,7 +84,7 @@ const FibaRegistrationModal = ({ isOpen, onClose }: FibaRegistrationModalProps) 
     >
       <div
         ref={modalRef}
-        className="relative rounded-2xl w-full max-w-2xl h-[95vh] overflow-y-auto shadow-2xl scroll-smooth"
+        className="relative rounded-2xl w-full max-w-lg h-[95vh] overflow-y-auto shadow-2xl scroll-smooth"
         style={{
           background: 'linear-gradient(135deg, hsl(0 0% 5%) 0%, hsl(45 100% 51% / 0.08) 50%, hsl(0 0% 8%) 100%)',
           border: '2px solid transparent',
