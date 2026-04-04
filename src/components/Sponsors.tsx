@@ -16,6 +16,16 @@ import hydraLogo from "@/assets/sponsors/hydra-logo.png";
 import jvstudioLogo from "@/assets/sponsors/jvstudio-logo.png";
 import markotaLogo from "@/assets/sponsors/markota-logo.png";
 import meggleLogo from "@/assets/sponsors/meggle-logo.png";
+import oliLogo from "@/assets/sponsors/oli-logo.png";
+import opcinaPosuskeLogo from "@/assets/sponsors/opcina-posusje-logo.png";
+import ozujskoLogo from "@/assets/sponsors/ozujsko-logo.png";
+import penavaLogo from "@/assets/sponsors/penava-logo.png";
+import pepsiLogo from "@/assets/sponsors/pepsi-logo.png";
+import sportsartLogo from "@/assets/sponsors/sportsart-logo.png";
+import vivaLogo from "@/assets/sponsors/viva-logo.png";
+import winecoLogo from "@/assets/sponsors/wineco-logo.png";
+import barbershopLogo from "@/assets/sponsors/barbershop-logo.png";
+import pulseLogo from "@/assets/sponsors/pulse-logo.png";
 
 interface SponsorTier {
   name: string;
