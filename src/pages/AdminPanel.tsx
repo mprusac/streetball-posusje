@@ -498,26 +498,38 @@ const AdminPanel = () => {
               </label>
               <div className="flex items-center gap-2">
                 <span className="text-sm text-muted-foreground">Kategorija:</span>
-                <select
-                  value={form.category}
-                  onChange={e => {
-                    if (e.target.value === '__custom__') {
-                      setCustomCategory("");
-                      setShowCategoryModal(true);
-                    } else {
-                      setForm(f => ({ ...f, category: e.target.value }));
-                    }
-                  }}
-                  className="rounded-md border border-input bg-background px-3 py-1.5 text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
-                >
-                  <option value="2026">2026</option>
-                  <option value="2025">2025</option>
-                  <option value="najava">Najava</option>
-                  {form.category && !["2026", "2025", "najava"].includes(form.category) && (
-                    <option value={form.category}>{form.category}</option>
+                <div className="relative flex items-center gap-1">
+                  <select
+                    value={form.category}
+                    onChange={e => {
+                      if (e.target.value === '__custom__') {
+                        setCustomCategory("");
+                        setShowCategoryModal(true);
+                      } else {
+                        setForm(f => ({ ...f, category: e.target.value }));
+                      }
+                    }}
+                    className="rounded-md border border-input bg-background px-3 py-1.5 text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                  >
+                    {allCategories.map(cat => (
+                      <option key={cat} value={cat}>{cat}</option>
+                    ))}
+                    {form.category && !allCategories.includes(form.category) && (
+                      <option value={form.category}>{form.category}</option>
+                    )}
+                    <option value="__custom__">+ nova</option>
+                  </select>
+                  {!DEFAULT_CATEGORIES.includes(form.category) && form.category && (
+                    <button
+                      type="button"
+                      title="Obriši kategoriju"
+                      onClick={() => setShowDeleteCategoryModal(true)}
+                      className="p-1 rounded hover:bg-destructive/20 text-muted-foreground hover:text-destructive transition-colors"
+                    >
+                      <Trash2 size={14} />
+                    </button>
                   )}
-                  <option value="__custom__">+ nova kategorija...</option>
-                </select>
+                </div>
 
                 {/* Custom category modal */}
                 {showCategoryModal && (
