@@ -613,7 +613,7 @@ const AdminPanel = () => {
                             toast({ title: "Kategorija obrisana", description: `"${catToDelete}" je uklonjena.` });
                             // Refresh news list
                             try {
-                              const r = await fetch(NEWS_URL, { headers });
+                              const r = await fetch(`${NEWS_URL}/list`, { headers });
                               if (r.ok) setNews(await r.json());
                             } catch {}
                           }}
