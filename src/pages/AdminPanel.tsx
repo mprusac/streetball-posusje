@@ -237,21 +237,19 @@ const AdminPanel = () => {
 
   const uploadGalleryImagesForNews = async (files: FileList) => {
     setUploadingGallery(true);
-    const newUrls: string[] = [];
+    setUploadProgress("");
     try {
-      for (const file of Array.from(files)) {
-        const filePath = `gallery/${Date.now()}-${file.name}`;
-        const { error } = await supabase.storage.from("news-images").upload(filePath, file);
-        if (error) throw error;
-        const { data: { publicUrl } } = supabase.storage.from("news-images").getPublicUrl(filePath);
-        newUrls.push(publicUrl);
-      }
+      const newUrls = await uploadFilesBatch(
+        Array.from(files), "news-images", "gallery/",
+        (done, total) => setUploadProgress(`${done}/${total}`)
+      );
       setForm(f => ({ ...f, gallery_images: [...f.gallery_images, ...newUrls] }));
       toast({ title: `${newUrls.length} slika uploadano!` });
     } catch (err: any) {
       toast({ title: "Greška pri uploadu galerije", description: err.message, variant: "destructive" });
     }
     setUploadingGallery(false);
+    setUploadProgress("");
   };
 
   const uploadCoverImage = async (file: File) => {
@@ -271,21 +269,19 @@ const AdminPanel = () => {
 
   const uploadGalleryImages = async (files: FileList) => {
     setUploadingGalleryImages(true);
-    const newUrls: string[] = [];
+    setUploadProgress("");
     try {
-      for (const file of Array.from(files)) {
-        const filePath = `galleries/${Date.now()}-${file.name}`;
-        const { error } = await supabase.storage.from("news-images").upload(filePath, file);
-        if (error) throw error;
-        const { data: { publicUrl } } = supabase.storage.from("news-images").getPublicUrl(filePath);
-        newUrls.push(publicUrl);
-      }
+      const newUrls = await uploadFilesBatch(
+        Array.from(files), "news-images", "galleries/",
+        (done, total) => setUploadProgress(`${done}/${total}`)
+      );
       setGalleryForm(f => ({ ...f, images: [...f.images, ...newUrls] }));
       toast({ title: `${newUrls.length} slika uploadano!` });
     } catch (err: any) {
       toast({ title: "Greška pri uploadu", description: err.message, variant: "destructive" });
     }
     setUploadingGalleryImages(false);
+    setUploadProgress("");
   };
 
   const removeGalleryImage = (index: number) => {
