@@ -261,10 +261,10 @@ const AdminPanel = () => {
   const uploadCoverImage = async (file: File) => {
     setUploadingCoverImage(true);
     try {
-      const filePath = `galleries/cover-${Date.now()}-${file.name}`;
-      const { error } = await supabase.storage.from("news-images").upload(filePath, file);
+      const filePath = `cover-${Date.now()}-${file.name}`;
+      const { error } = await supabase.storage.from("gallery-images").upload(filePath, file);
       if (error) throw error;
-      const { data: { publicUrl } } = supabase.storage.from("news-images").getPublicUrl(filePath);
+      const { data: { publicUrl } } = supabase.storage.from("gallery-images").getPublicUrl(filePath);
       setGalleryForm(f => ({ ...f, cover_image: publicUrl }));
       toast({ title: "Naslovna slika uploadana!" });
     } catch (err: any) {
