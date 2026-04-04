@@ -6,6 +6,16 @@ import planetLogo from "@/assets/sponsors/planet-logo.png";
 import binvestLogo from "@/assets/sponsors/binvest-logo.png";
 import sisovicLogo from "@/assets/sponsors/sisovic.png";
 import ledaLogo from "@/assets/sponsors/leda-logo.png";
+import adeoLogo from "@/assets/sponsors/adeo-logo.png";
+import antikLogo from "@/assets/sponsors/antik-logo.png";
+import astoriaLogo from "@/assets/sponsors/astoria-logo.png";
+import dravelLogo from "@/assets/sponsors/dravel-logo.png";
+import gaudeamusLogo from "@/assets/sponsors/gaudeamus-logo.png";
+import grillkongLogo from "@/assets/sponsors/grillkong-logo.png";
+import hydraLogo from "@/assets/sponsors/hydra-logo.png";
+import jvstudioLogo from "@/assets/sponsors/jvstudio-logo.png";
+import markotaLogo from "@/assets/sponsors/markota-logo.png";
+import meggleLogo from "@/assets/sponsors/meggle-logo.png";
 
 interface SponsorTier {
   name: string;
