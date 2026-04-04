@@ -1,22 +1,21 @@
-import { Suspense, lazy, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { Instagram, Facebook } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import ScrollProgressBar from "@/components/ScrollProgressBar";
-
-const About = lazy(() => import("@/components/About"));
-const Achievements = lazy(() => import("@/components/Achievements"));
-const News = lazy(() => import("@/components/News"));
-const Schedule = lazy(() => import("@/components/Schedule"));
-const Prizes = lazy(() => import("@/components/Prizes"));
-const Gallery = lazy(() => import("@/components/Gallery"));
-const Sponsors = lazy(() => import("@/components/Sponsors"));
-const Contact = lazy(() => import("@/components/Contact"));
-const Footer = lazy(() => import("@/components/Footer"));
+import About from "@/components/About";
+import Achievements from "@/components/Achievements";
+import News from "@/components/News";
+import Schedule from "@/components/Schedule";
+import Prizes from "@/components/Prizes";
+import Gallery from "@/components/Gallery";
+import Sponsors from "@/components/Sponsors";
+import Contact from "@/components/Contact";
+import Footer from "@/components/Footer";
 
 const DeferredHomeSections = () => (
-  <Suspense fallback={null}>
+  <>
     <hr className="section-divider" />
     <News />
     <hr className="section-divider" />
@@ -34,7 +33,7 @@ const DeferredHomeSections = () => (
     <hr className="section-divider" />
     <Contact />
     <Footer />
-  </Suspense>
+  </>
 );
 
 const Index = () => {
