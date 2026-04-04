@@ -13,7 +13,7 @@ const BRAND_TEXT = '#A6A6A6';
 const BRAND_WHITE = '#FFFFFF';
 
 function ownerEmailHtml(name: string, email: string, subject: string, message: string): string {
-  const LOGO_URL = 'https://tchaaceoqtjwpqjztijh.supabase.co/storage/v1/object/public/email-assets/logo.png';
+  const LOGO_URL = 'https://onixifzmfmmakvvnhrqs.supabase.co/storage/v1/object/public/email-assets/streetball-logo.png';
   const date = new Date().toLocaleDateString('hr-HR', { day: 'numeric', month: 'long', year: 'numeric', hour: '2-digit', minute: '2-digit' });
   return `
 <!DOCTYPE html>
@@ -33,7 +33,7 @@ function ownerEmailHtml(name: string, email: string, subject: string, message: s
                 <p style="margin:4px 0 0;font-size:13px;color:${BRAND_DARK};font-weight:700;">${date}</p>
               </td>
               <td align="right" style="vertical-align:middle;width:70px;">
-                <img src="${LOGO_URL}" alt="KK Posušje" width="65" height="65" style="display:block;border:none;outline:none;" />
+                <img src="${LOGO_URL}" alt="Streetball Posušje 2026" width="65" height="65" style="display:block;border:none;outline:none;border-radius:50%;" />
               </td>
             </tr>
           </table>
@@ -75,7 +75,7 @@ function ownerEmailHtml(name: string, email: string, subject: string, message: s
         </td></tr>
         <!-- Footer -->
         <tr><td style="padding:20px;text-align:center;">
-           <p style="margin:0;font-size:11px;color:${BRAND_TEXT};">Streetball Posušje 2026 · Trg Hrvatskih branitelja, Fra Grge Martića 35, 88240 Posušje</p>
+           <p style="margin:0;font-size:11px;color:${BRAND_TEXT};">Streetball Posušje 2026 · Trg Hrvatskih branitelja, 88240 Posušje, BiH</p>
           <p style="margin:4px 0 0;font-size:11px;color:${BRAND_TEXT};">Ova poruka je automatski generirana putem kontakt forme na web stranici.</p>
         </td></tr>
       </table>
