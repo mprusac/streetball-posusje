@@ -97,10 +97,10 @@ const goldBorder = "border-[hsl(48,96%,53%)]";
 const goldGlow = "hover:[box-shadow:0_0_25px_8px_hsl(48,96%,53%,0.35)]";
 
 const sponsors = [
-  { name: "Općina Posušje", image: opcinaPosuskeLogo, imgClass: "!object-contain scale-[1.5]", url: null },
-  { name: "Vokel d.o.o.", image: vokelLogo, imgClass: "scale-[1.3]", url: "https://vokel.com/" },
-  { name: "Ožujsko Pivo", image: ozujskoLogo, imgClass: "!object-contain scale-[1.5]", url: null },
-  { name: "Meggle", image: meggleLogo, imgClass: "!object-contain scale-[1.5]", url: null },
+  { name: "Općina Posušje", image: opcinaPosuskeLogo, imgClass: "!object-contain !object-center scale-[1.5]", url: null },
+  { name: "Vokel d.o.o.", image: vokelLogo, imgClass: "!object-contain !object-center scale-[1.1]", url: "https://vokel.com/" },
+  { name: "Ožujsko Pivo", image: ozujskoLogo, imgClass: "!object-contain !object-center scale-[1.5]", url: null },
+  { name: "Meggle", image: meggleLogo, imgClass: "!object-contain !object-center scale-[1.275]", url: null },
   { name: "Pepsi", image: pepsiLogo, imgClass: "!object-contain scale-[1.5]", url: null },
   { name: "Bin Vest", image: binvestLogo, imgClass: "!object-contain scale-[1.6]", url: "https://binvest-po.com/" },
   { name: "Adeo Sports", image: adeoLogo, imgClass: "!object-contain scale-[1.5]", url: null },
