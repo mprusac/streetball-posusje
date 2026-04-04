@@ -133,12 +133,18 @@ const Sponsors = () => {
               className={`bg-secondary/50 border-2 ${sponsor.borderColor} rounded-2xl overflow-hidden hover:scale-[1.05] ${sponsor.glowColor} transition-all duration-300 animate-fade-in-up aspect-[2/1] ${sponsor.name === "Ardu" ? "hidden md:block" : ""}`}
               style={{ animationDelay: `${index * 100}ms` }}
             >
-              <img 
-                src={sponsor.image} 
-                alt={sponsor.name} 
-                loading="lazy"
-                className={`w-full h-full object-cover ${sponsor.imgClass}`}
-              />
+              {sponsor.image ? (
+                <img 
+                  src={sponsor.image} 
+                  alt={sponsor.name} 
+                  loading="lazy"
+                  className={`w-full h-full object-cover ${sponsor.imgClass}`}
+                />
+              ) : (
+                <div className="w-full h-full flex items-center justify-center bg-secondary/80">
+                  <span className="text-muted-foreground text-xs md:text-sm font-semibold text-center px-2">{sponsor.name}</span>
+                </div>
+              )}
             </a>
           ))}
         </div>
