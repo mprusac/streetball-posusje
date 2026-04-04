@@ -332,6 +332,12 @@ const GalleryPage = () => {
             </p>
           </motion.div>
 
+          <div className="flex items-center justify-center gap-4 mb-12">
+            <div className="h-[1px] w-16 md:w-24 bg-gradient-to-r from-transparent to-primary" />
+            <span className="text-white font-display text-2xl md:text-3xl font-bold tracking-wider">2025</span>
+            <div className="h-[1px] w-16 md:w-24 bg-gradient-to-l from-transparent to-primary" />
+          </div>
+
           {loading ? (
             <div className="grid grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8 max-w-6xl mx-auto">
               {[...Array(3)].map((_, i) => (
