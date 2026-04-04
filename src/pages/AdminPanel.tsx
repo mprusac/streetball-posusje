@@ -602,11 +602,11 @@ const AdminPanel = () => {
                           onClick={async () => {
                             const catToDelete = form.category;
                             try {
-                              // Update all news with this category to default
-                              const res = await fetch(NEWS_URL, { method: "PUT", headers, body: JSON.stringify({ category: catToDelete, newCategory: DEFAULT_CATEGORIES[0] }) });
-                              if (!res.ok) {
-                                // Fallback: just reset form category
-                              }
+                              await fetch(`${NEWS_URL}/update-category`, { 
+                                method: "PUT", 
+                                headers, 
+                                body: JSON.stringify({ category: catToDelete, newCategory: DEFAULT_CATEGORIES[0] }) 
+                              });
                             } catch {}
                             setForm(f => ({ ...f, category: DEFAULT_CATEGORIES[0] }));
                             setShowDeleteCategoryModal(false);
