@@ -11,7 +11,7 @@ import antikLogo from "@/assets/sponsors/antik-logo.png";
 import astoriaLogo from "@/assets/sponsors/astoria-logo.png";
 import dravelLogo from "@/assets/sponsors/dravel-logo.png";
 import gaudeamusLogo from "@/assets/sponsors/gaudeamus.png";
-import grillkongLogo from "@/assets/sponsors/grillkong-logo.png";
+import grillkongLogo from "@/assets/sponsors/grillkong.png";
 import hydraLogo from "@/assets/sponsors/hydra-logo.png";
 import jvstudioLogo from "@/assets/sponsors/jvstudio-logo.png";
 import markotaLogo from "@/assets/sponsors/markota-logo.png";
@@ -110,9 +110,9 @@ const sponsors = [
   { name: "Gaudeamus", image: gaudeamusLogo, imgClass: "!object-contain scale-[1.1]", url: null },
   { name: "Penava Weddings", image: penavaLogo, imgClass: "!object-contain scale-[1.725]", url: null },
   { name: "Grill Kong", image: grillkongLogo, imgClass: "!object-contain scale-[1.1]", url: null },
-  { name: "SportsArt", image: sportsartLogo, imgClass: "!object-contain scale-[1.1]", url: null },
-  { name: "Dravel", image: dravelLogo, imgClass: "!object-contain scale-[1.5]", url: null },
-  { name: "Šišović Rakitno", image: sisovicLogo, imgClass: "!object-contain scale-[2.5]", url: "https://www.sisovic.com/" },
+  { name: "SportsArt", image: sportsartLogo, imgClass: "!object-contain scale-[1.43]", url: null },
+  { name: "Dravel", image: dravelLogo, imgClass: "!object-contain scale-[1.725]", url: null },
+  { name: "Šišović Rakitno", image: sisovicLogo, imgClass: "!object-contain scale-[2.25]", url: "https://www.sisovic.com/" },
   { name: "Viva Caffe", image: vivaLogo, imgClass: "!object-contain scale-[1.5]", url: null },
   { name: "Antik", image: antikLogo, imgClass: "!object-contain scale-[1.1]", url: null },
   { name: "Wine&Co", image: winecoLogo, imgClass: "!object-contain scale-[1.5]", url: null },
