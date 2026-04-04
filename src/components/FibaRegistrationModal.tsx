@@ -84,7 +84,7 @@ const FibaRegistrationModal = ({ isOpen, onClose }: FibaRegistrationModalProps) 
     >
       <div
         ref={modalRef}
-        className="relative border-2 border-primary rounded-2xl w-full max-w-4xl h-[95vh] overflow-y-auto shadow-2xl scroll-smooth"
+        className="relative border-2 border-primary rounded-2xl w-full max-w-3xl h-[85vh] overflow-y-auto shadow-2xl scroll-smooth"
         style={{
           background: 'linear-gradient(135deg, hsl(0 0% 5%) 0%, hsl(45 100% 51% / 0.08) 50%, hsl(0 0% 8%) 100%)',
         }}
@@ -108,7 +108,7 @@ const FibaRegistrationModal = ({ isOpen, onClose }: FibaRegistrationModalProps) 
           </p>
         </div>
 
-        <div ref={containerRef} className="p-4 md:p-6 min-h-[300px]" style={{ transform: 'scale(0.85)', transformOrigin: 'top center' }} />
+        <div ref={containerRef} className="p-2 md:p-4 min-h-[300px]" style={{ transform: 'scale(0.70)', transformOrigin: 'top center' }} />
       </div>
     </div>
   );
