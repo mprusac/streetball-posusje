@@ -12,12 +12,12 @@ import gallery5 from "@/assets/gallery-5.png";
 import gallery6 from "@/assets/gallery-6.png";
 
 const images = [
-  { id: 1, src: gallery1, title: "Streetball Posušje 2025", objectPosition: "center 0%" },
-  { id: 2, src: gallery2, title: "Streetball Posušje 2025", objectPosition: "center 10%" },
-  { id: 3, src: gallery3, title: "Streetball Posušje 2025", objectPosition: "center 20%" },
-  { id: 4, src: gallery4, title: "Streetball Posušje 2025", objectPosition: "center 10%" },
-  { id: 5, src: gallery5, title: "Streetball Posušje 2025", objectPosition: "center 5%" },
-  { id: 6, src: gallery6, title: "Streetball Posušje 2025", objectPosition: "center 0%" },
+  { id: 1, src: gallery1, title: "Streetball Posušje 2025", objectPosition: "center center" },
+  { id: 2, src: gallery2, title: "Streetball Posušje 2025", objectPosition: "center center" },
+  { id: 3, src: gallery3, title: "Streetball Posušje 2025", objectPosition: "center center" },
+  { id: 4, src: gallery4, title: "Streetball Posušje 2025", objectPosition: "center center" },
+  { id: 5, src: gallery5, title: "Streetball Posušje 2025", objectPosition: "center center" },
+  { id: 6, src: gallery6, title: "Streetball Posušje 2025", objectPosition: "center center" },
 ];
 
 const Gallery = () => {
