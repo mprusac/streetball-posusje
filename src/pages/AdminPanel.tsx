@@ -468,7 +468,7 @@ const AdminPanel = () => {
             <ArrowLeft size={22} />
           </button>
           <h1 className="flex-1 min-w-0 text-center font-display text-sm md:text-xl text-primary tracking-wide truncate">
-            Admin Panel <span className="text-foreground">|</span> <span className="text-foreground">Vijesti & Galerija</span>
+            Admin Panel
           </h1>
           <Button variant="outline" onClick={logout} size="sm" className="flex-shrink-0 border-primary text-foreground hover:bg-primary hover:text-primary-foreground transition-colors">
             <LogOut size={16} /> Odjava
