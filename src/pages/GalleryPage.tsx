@@ -161,8 +161,8 @@ const EventAlbum = ({ event }: { event: GalleryEvent }) => {
             transition={{ duration: 0.5, delay: 0.1 }}
             className="text-center mb-12"
           >
-            <h1 className="font-display text-4xl md:text-5xl lg:text-6xl mb-2">
-              <span className="text-primary">{event.title}</span>
+            <h1 className="font-display text-3xl md:text-4xl lg:text-5xl mb-2">
+              <span className="text-foreground">{event.title}</span>
             </h1>
             <p className="text-primary font-display text-2xl md:text-3xl mt-2">{event.date}</p>
             <p className="text-muted-foreground mt-4">{allImages.length} fotografija</p>
