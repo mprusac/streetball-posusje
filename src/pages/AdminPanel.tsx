@@ -470,8 +470,8 @@ const AdminPanel = () => {
           <h1 className="flex-1 min-w-0 text-center font-display text-sm md:text-xl text-primary tracking-wide truncate">
             Admin Panel
           </h1>
-          <Button variant="outline" onClick={logout} size="sm" className="flex-shrink-0 border-primary text-foreground hover:bg-primary hover:text-primary-foreground transition-colors">
-            <LogOut size={16} /> Odjava
+          <Button variant="outline" onClick={logout} size="icon" className="flex-shrink-0 h-8 w-8 border-primary text-foreground hover:bg-primary hover:text-primary-foreground transition-colors">
+            <LogOut size={16} />
           </Button>
         </div>
       </div>
