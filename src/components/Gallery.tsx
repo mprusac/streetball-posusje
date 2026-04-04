@@ -4,13 +4,20 @@ import { Button } from "@/components/ui/button";
 import { X, ChevronLeft, ChevronRight } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
+import gallery1 from "@/assets/gallery-1.png";
+import gallery2 from "@/assets/gallery-2.png";
+import gallery3 from "@/assets/gallery-3.png";
+import gallery4 from "@/assets/gallery-4.png";
+import gallery5 from "@/assets/gallery-5.png";
+import gallery6 from "@/assets/gallery-6.png";
+
 const images = [
-  { id: 1, src: "https://onixifzmfmmakvvnhrqs.supabase.co/storage/v1/object/public/news-images/galleries/1775248347558-20250717-DSC03713.webp", title: "Streetball Posušje 2025", objectPosition: "center" },
-  { id: 2, src: "https://onixifzmfmmakvvnhrqs.supabase.co/storage/v1/object/public/news-images/galleries/1775306914047-20250718-DSC04081.webp", title: "Streetball Posušje 2025", objectPosition: "center" },
-  { id: 3, src: "https://onixifzmfmmakvvnhrqs.supabase.co/storage/v1/object/public/news-images/galleries/1775306951834-20250718-_PW21485.webp", title: "Streetball Posušje 2025", objectPosition: "center" },
-  { id: 4, src: "https://onixifzmfmmakvvnhrqs.supabase.co/storage/v1/object/public/news-images/galleries/1775306981686-20250718-DSC04088.webp", title: "Streetball Posušje 2025", objectPosition: "center" },
-  { id: 5, src: "https://onixifzmfmmakvvnhrqs.supabase.co/storage/v1/object/public/news-images/galleries/1775309004179-d0b5-20250719-_PW17443.webp", title: "Streetball Posušje 2025", objectPosition: "center" },
-  { id: 6, src: "https://onixifzmfmmakvvnhrqs.supabase.co/storage/v1/object/public/news-images/galleries/1775248436061-20250723-WhatsApp%20Image%202025-07-23%20at%2022.53.49.webp", title: "Streetball Posušje 2025", objectPosition: "center" },
+  { id: 1, src: gallery1, title: "Streetball Posušje 2025", objectPosition: "center top" },
+  { id: 2, src: gallery2, title: "Streetball Posušje 2025", objectPosition: "center 30%" },
+  { id: 3, src: gallery3, title: "Streetball Posušje 2025", objectPosition: "center 40%" },
+  { id: 4, src: gallery4, title: "Streetball Posušje 2025", objectPosition: "center 30%" },
+  { id: 5, src: gallery5, title: "Streetball Posušje 2025", objectPosition: "center 20%" },
+  { id: 6, src: gallery6, title: "Streetball Posušje 2025", objectPosition: "center top" },
 ];
 
 const Gallery = () => {
