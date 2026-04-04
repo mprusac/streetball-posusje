@@ -108,7 +108,7 @@ const FibaRegistrationModal = ({ isOpen, onClose }: FibaRegistrationModalProps) 
           </p>
         </div>
 
-        <div ref={containerRef} className="p-4 md:p-6 min-h-[300px]" style={{ transform: 'scale(0.85)', transformOrigin: 'top center' }} />
+        <div ref={containerRef} className="p-2 md:p-4 min-h-[300px]" style={{ transform: 'scale(0.70)', transformOrigin: 'top center' }} />
       </div>
     </div>
   );
