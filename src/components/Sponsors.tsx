@@ -26,6 +26,7 @@ import vivaLogo from "@/assets/sponsors/viva-logo.png";
 import winecoLogo from "@/assets/sponsors/wineco-logo.png";
 import barbershopLogo from "@/assets/sponsors/barbershop-logo.png";
 import pulseLogo from "@/assets/sponsors/pulse-logo.png";
+import posuskoLitoLogo from "@/assets/sponsors/posusko-lito.png";
 
 interface SponsorTier {
   name: string;
