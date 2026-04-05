@@ -121,7 +121,7 @@ const sponsors = [
   // Row 5: C-W-C-W
   { name: "Grill Kong", image: grillkongLogo, imgClass: "!object-contain scale-[1.67]", url: null },
   { name: "Astoria Restoran", image: astoriaLogo, imgClass: "!object-contain scale-[1.32]", url: "https://www.facebook.com/astoriaposusje/?locale=hr_HR" },
-  { name: "Leda", image: ledaLogo, imgClass: "", url: "http://www.leda.ba/" },
+  { name: "Posuško Lito 2025", image: posuskoLitoLogo, imgClass: "!object-contain scale-[2.34]", url: "https://www.facebook.com/p/Posu%C5%A1ko-lito-100068174922651/" },
   { name: "Ž Barber Shop", image: barbershopLogo, imgClass: "!object-contain scale-[1.725]", url: "https://www.facebook.com/zeljohairstyle/?locale=hr_HR" },
   // Row 6: W-C-W-C
   { name: "Hydra Iso", image: hydraLogo, imgClass: "!object-contain scale-[1.328]", url: "https://hidra.hr/" },
