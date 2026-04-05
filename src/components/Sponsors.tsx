@@ -26,6 +26,7 @@ import vivaLogo from "@/assets/sponsors/viva-logo.png";
 import winecoLogo from "@/assets/sponsors/wineco-logo.png";
 import barbershopLogo from "@/assets/sponsors/barbershop-logo.png";
 import pulseLogo from "@/assets/sponsors/pulse-logo.png";
+import posuskoLitoLogo from "@/assets/sponsors/posusko-lito.png";
 
 interface SponsorTier {
   name: string;
@@ -122,6 +123,7 @@ const sponsors = [
   { name: "JV Studio", image: jvstudioLogo, imgClass: "!object-contain scale-[1.5]", url: null },
   { name: "Hydra Iso", image: hydraLogo, imgClass: "!object-contain scale-[1.328]", url: null },
   { name: "Markota", image: markotaLogo, imgClass: "!object-contain scale-[1.65]", url: null },
+  { name: "Posuško Lito 2025", image: posuskoLitoLogo, imgClass: "!object-contain scale-[1.5]", url: null },
 ];
 
 
