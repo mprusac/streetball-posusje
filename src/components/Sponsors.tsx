@@ -124,7 +124,7 @@ const sponsors = [
   { name: "Posuško Lito 2025", image: posuskoLitoLogo, imgClass: "!object-contain scale-[2.34]", url: "https://www.facebook.com/p/Posu%C5%A1ko-lito-100068174922651/" },
   { name: "Ž Barber Shop", image: barbershopLogo, imgClass: "!object-contain scale-[1.725]", url: "https://www.facebook.com/zeljohairstyle/?locale=hr_HR" },
   // Row 6: W-C-W-C
-  { name: "Hydra Iso", image: hydraLogo, imgClass: "!object-contain scale-[1.328]", url: "https://hidra.hr/" },
+  { name: "Viva Caffe", image: vivaLogo, imgClass: "!object-contain scale-[2.088]", url: "https://vivacaffe.ba/" },
   { name: "Pulse Udruga", image: pulseLogo, imgClass: "!object-contain scale-[1.32] translate-y-[5px]", url: "https://www.companywall.ba/firma/udruga-pulse/MMxPpGOUR" },
   { name: "Viva Caffe", image: vivaLogo, imgClass: "!object-contain scale-[2.088]", url: "https://vivacaffe.ba/" },
   { name: "JV Studio", image: jvstudioLogo, imgClass: "!object-contain scale-[1.5]", url: null },
