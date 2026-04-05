@@ -76,9 +76,9 @@ const sponsorTiers: SponsorTier[] = [
   },
   {
     name: "ROBNO PARTNERSTVO",
-    price: "Kompenzacija",
+    price: "Robna razmjena",
     benefits: [
-      "Ostvarite sponzorski paket kompenzacijom proizvoda/usluga",
+      "Ostvarite sponzorski paket razmjenom proizvoda/usluga",
       "Ekskluzivna \"Timeout\" minuta – vaš brend na svim ekranima",
       "Nagradni izazovi na terenu s vašim proizvodom",
     ],
