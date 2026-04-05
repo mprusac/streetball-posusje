@@ -104,7 +104,7 @@ const sponsors = [
   { name: "Ožujsko Pivo", image: ozujskoLogo, imgClass: "!object-contain !object-center scale-[1.5] translate-y-[8px]", url: "https://www.ozujsko.com/" },
   { name: "OLI Prodajni Centar", image: oliLogo, imgClass: "!object-contain scale-[1.8]", url: "https://www.oli.ba/" },
   // Row 2: W-C-W-C
-  { name: "Vokel d.o.o.", image: vokelLogo, imgClass: "!object-contain !object-center scale-[1.32]", url: "https://vokel.com/" },
+  { name: "Pepsi", image: pepsiLogo, imgClass: "!object-contain scale-[1.8]", url: "https://www.pepsi.com/" },
   { name: "Gaudeamus", image: gaudeamusLogo, imgClass: "!object-contain scale-[1.746]", url: "https://gaudeamus-disco.com/" },
   { name: "Meggle", image: meggleLogo, imgClass: "!object-contain !object-center scale-[1.275] -translate-y-[3px]", url: "https://meggle.ba/" },
   { name: "Bin Vest", image: binvestLogo, imgClass: "!object-contain scale-[1.6]", url: "https://binvest-po.com/" },
