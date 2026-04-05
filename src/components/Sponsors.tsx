@@ -122,18 +122,8 @@ const sponsors = [
   { name: "JV Studio", image: jvstudioLogo, imgClass: "!object-contain scale-[1.5]", url: null },
   { name: "Hydra Iso", image: hydraLogo, imgClass: "!object-contain scale-[1.328]", url: null },
   { name: "Markota", image: markotaLogo, imgClass: "!object-contain scale-[1.65]", url: null },
-  { name: "Miviko", image: null, imgClass: "", url: null },
-  { name: "WWin", image: null, imgClass: "", url: null },
-  { name: "Agencija Laguna", image: null, imgClass: "", url: null },
-  { name: "Mrvelji d.o.o.", image: null, imgClass: "", url: null },
-  { name: "Weltplast", image: null, imgClass: "", url: null },
-  { name: "Croatia Osiguranje", image: null, imgClass: "", url: null },
-  { name: "Ljekarna Blanka", image: null, imgClass: "", url: null },
-  { name: "Winners", image: null, imgClass: "", url: null },
-  { name: "Restoran Bosiljna", image: null, imgClass: "", url: null },
-  { name: "KTM Brina", image: null, imgClass: "", url: null },
-  { name: "Ardu", image: null, imgClass: "", url: null },
 ];
+
 
 const Sponsors = () => {
   const [isExpanded, setIsExpanded] = useState(false);
