@@ -109,7 +109,7 @@ const sponsors = [
   { name: "Meggle", image: meggleLogo, imgClass: "!object-contain !object-center scale-[1.275] -translate-y-[3px]", url: "https://meggle.ba/" },
   { name: "Bin Vest", image: binvestLogo, imgClass: "!object-contain scale-[1.6]", url: "https://binvest-po.com/" },
   // Row 3: C-W-C-W
-  { name: "Pepsi", image: pepsiLogo, imgClass: "!object-contain scale-[1.8]", url: "https://www.pepsi.com/" },
+  { name: "Vokel d.o.o.", image: vokelLogo, imgClass: "!object-contain !object-center scale-[1.32]", url: "https://vokel.com/" },
   { name: "SportsArt", image: sportsartLogo, imgClass: "!object-contain scale-[2.269]", url: "https://www.facebook.com/sportsart.posusje/?locale=hr_HR" },
   { name: "Adeo Sports", image: adeoLogo, imgClass: "!object-contain !object-center scale-[2.16] translate-y-[4px]", url: "https://www.facebook.com/adeosp/?locale=hr_HR" },
   { name: "Dravel", image: dravelLogo, imgClass: "!object-contain scale-[1.725]", url: null },
