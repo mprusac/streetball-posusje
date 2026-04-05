@@ -103,7 +103,7 @@ const sponsors = [
   { name: "Meggle", image: meggleLogo, imgClass: "!object-contain !object-center scale-[1.275] -translate-y-[3px]", url: null },
   { name: "Pepsi", image: pepsiLogo, imgClass: "!object-contain scale-[1.8]", url: null },
   { name: "Bin Vest", image: binvestLogo, imgClass: "!object-contain scale-[1.6]", url: "https://binvest-po.com/" },
-  { name: "Adeo Sports", image: adeoLogo, imgClass: "!object-contain !object-center scale-[1.8]", url: null },
+  { name: "Adeo Sports", image: adeoLogo, imgClass: "!object-contain !object-center scale-[1.8] translate-y-[4px]", url: null },
   { name: "Pulse Udruga", image: pulseLogo, imgClass: "!object-contain scale-[1.32] translate-y-[5px]", url: null },
   { name: "Planet", image: planetLogo, imgClass: "scale-[1.6]", url: "https://www.facebook.com/planetbih/" },
   { name: "OLI Prodajni Centar", image: oliLogo, imgClass: "!object-contain scale-[1.8]", url: null },
