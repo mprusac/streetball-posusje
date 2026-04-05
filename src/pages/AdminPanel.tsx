@@ -529,10 +529,10 @@ const AdminPanel = () => {
                     )}
                     <option value="__custom__">+ nova</option>
                   </select>
-                  {!DEFAULT_CATEGORIES.includes(form.category) && form.category && (
+                  {allCategories.length > 1 && (
                     <button
                       type="button"
-                      title="Obriši kategoriju"
+                      title="Upravljaj kategorijama"
                       onClick={() => setShowDeleteCategoryModal(true)}
                       className="p-1 rounded hover:bg-destructive/20 text-muted-foreground hover:text-destructive transition-colors"
                     >
