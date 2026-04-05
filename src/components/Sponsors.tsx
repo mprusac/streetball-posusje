@@ -130,7 +130,7 @@ const sponsors = [
   { name: "JV Studio", image: jvstudioLogo, imgClass: "!object-contain scale-[1.5]", url: null },
   // Row 7: C-C
   { name: "Markota", image: markotaLogo, imgClass: "!object-contain scale-[1.65]", url: "https://markota-doo.com/" },
-  { name: "Posuško Lito 2025", image: posuskoLitoLogo, imgClass: "!object-contain scale-[2.34]", url: "https://www.facebook.com/p/Posu%C5%A1ko-lito-100068174922651/" },
+  { name: "Leda", image: ledaLogo, imgClass: "", url: "http://www.leda.ba/" },
 ];
 
 
