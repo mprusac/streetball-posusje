@@ -171,12 +171,13 @@ const AdminPanel = () => {
   const [uploadingCoverImage, setUploadingCoverImage] = useState(false);
   const coverImageInputRef = useRef<HTMLInputElement>(null);
 
-  // Derive unique categories from existing news + defaults
+  // Derive unique categories from existing news + defaults + current form category
   const allCategories = useMemo(() => {
     const fromNews = news.map(n => n.category).filter(Boolean);
-    const merged = new Set([...DEFAULT_CATEGORIES, ...fromNews]);
+    const extras = form.category ? [form.category] : [];
+    const merged = new Set([...DEFAULT_CATEGORIES, ...fromNews, ...extras]);
     return Array.from(merged);
-  }, [news]);
+  }, [news, form.category]);
 
   const headers = { Authorization: `Bearer ${token}`, "Content-Type": "application/json" };
 
