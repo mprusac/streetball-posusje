@@ -126,7 +126,7 @@ const sponsors = [
   // Row 6: W-C-W-C
   { name: "Viva Caffe", image: vivaLogo, imgClass: "!object-contain scale-[2.088]", url: "https://vivacaffe.ba/" },
   { name: "Pulse Udruga", image: pulseLogo, imgClass: "!object-contain scale-[1.32] translate-y-[5px]", url: "https://www.companywall.ba/firma/udruga-pulse/MMxPpGOUR" },
-  { name: "Viva Caffe", image: vivaLogo, imgClass: "!object-contain scale-[2.088]", url: "https://vivacaffe.ba/" },
+  { name: "Hydra Iso", image: hydraLogo, imgClass: "!object-contain scale-[1.328]", url: "https://hidra.hr/" },
   { name: "JV Studio", image: jvstudioLogo, imgClass: "!object-contain scale-[1.5]", url: null },
   // Row 7: C-C
   { name: "Markota", image: markotaLogo, imgClass: "!object-contain scale-[1.65]", url: "https://markota-doo.com/" },
