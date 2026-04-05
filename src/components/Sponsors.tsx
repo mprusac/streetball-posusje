@@ -100,9 +100,9 @@ const goldGlow = "hover:[box-shadow:0_0_25px_8px_hsl(48,96%,53%,0.35)]";
 const sponsors = [
   // Row 1: C-W-C-W
   { name: "Općina Posušje", image: opcinaPosuskeLogo, imgClass: "!object-contain !object-center scale-[1.5] translate-y-[6px]", url: "https://www.opcina-posusje.ba/" },
-  { name: "Penava Weddings", image: penavaLogo, imgClass: "!object-contain scale-[1.725]", url: "https://www.facebook.com/fvpenava/?locale=hr_HR" },
+  { name: "Penava Weddings", image: penavaLogo, imgClass: "!object-contain scale-[1.984]", url: "https://www.facebook.com/fvpenava/?locale=hr_HR" },
   { name: "Ožujsko Pivo", image: ozujskoLogo, imgClass: "!object-contain !object-center scale-[1.5] translate-y-[8px]", url: "https://www.ozujsko.com/" },
-  { name: "OLI Prodajni Centar", image: oliLogo, imgClass: "!object-contain scale-[1.8]", url: "https://www.oli.ba/" },
+  { name: "OLI Prodajni Centar", image: oliLogo, imgClass: "!object-contain scale-[2.07]", url: "https://www.oli.ba/" },
   // Row 2: W-C-W-C
   { name: "Pepsi", image: pepsiLogo, imgClass: "!object-contain scale-[1.8]", url: "https://www.pepsi.com/" },
   { name: "Gaudeamus", image: gaudeamusLogo, imgClass: "!object-contain scale-[1.746]", url: "https://gaudeamus-disco.com/" },
