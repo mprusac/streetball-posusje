@@ -1,20 +1,27 @@
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
 
 const corsHeaders = {
-  'Access-Control-Allow-Origin': '*',
-  'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type, x-supabase-client-platform, x-supabase-client-platform-version, x-supabase-client-runtime, x-supabase-client-runtime-version',
+  "Access-Control-Allow-Origin": "*",
+  "Access-Control-Allow-Headers":
+    "authorization, x-client-info, apikey, content-type, x-supabase-client-platform, x-supabase-client-platform-version, x-supabase-client-runtime, x-supabase-client-runtime-version",
 };
 
-const BRAND_GOLD = '#EAB308';
-const BRAND_DARK = '#121212';
-const BRAND_CARD = '#1A1A1A';
-const BRAND_MUTED = '#2E2E2E';
-const BRAND_TEXT = '#A6A6A6';
-const BRAND_WHITE = '#FFFFFF';
+const BRAND_GOLD = "#EAB308";
+const BRAND_DARK = "#121212";
+const BRAND_CARD = "#1A1A1A";
+const BRAND_MUTED = "#2E2E2E";
+const BRAND_TEXT = "#A6A6A6";
+const BRAND_WHITE = "#FFFFFF";
 
 function ownerEmailHtml(name: string, email: string, subject: string, message: string): string {
-  const LOGO_URL = 'https://onixifzmfmmakvvnhrqs.supabase.co/storage/v1/object/public/email-assets/streetball-logo.png';
-  const date = new Date().toLocaleDateString('hr-HR', { day: 'numeric', month: 'long', year: 'numeric', hour: '2-digit', minute: '2-digit' });
+  const LOGO_URL = "https://onixifzmfmmakvvnhrqs.supabase.co/storage/v1/object/public/email-assets/streetball-logo.png";
+  const date = new Date().toLocaleDateString("hr-HR", {
+    day: "numeric",
+    month: "long",
+    year: "numeric",
+    hour: "2-digit",
+    minute: "2-digit",
+  });
   return `
 <!DOCTYPE html>
 <html lang="hr">
@@ -64,7 +71,7 @@ function ownerEmailHtml(name: string, email: string, subject: string, message: s
           <!-- Message -->
           <div style="background-color:${BRAND_MUTED};border-radius:8px;padding:20px;border-left:3px solid ${BRAND_GOLD};">
             <span style="font-size:11px;text-transform:uppercase;letter-spacing:1px;color:${BRAND_GOLD};font-weight:700;">Poruka</span>
-            <p style="margin:8px 0 0;font-size:14px;line-height:1.7;color:${BRAND_WHITE};">${message.replace(/\n/g, '<br />')}</p>
+            <p style="margin:8px 0 0;font-size:14px;line-height:1.7;color:${BRAND_WHITE};">${message.replace(/\n/g, "<br />")}</p>
           </div>
           <!-- Reply button -->
           <table width="100%" cellpadding="0" cellspacing="0" style="margin-top:24px;">
@@ -86,7 +93,7 @@ function ownerEmailHtml(name: string, email: string, subject: string, message: s
 }
 
 function userConfirmationHtml(name: string, subject: string, message: string): string {
-  const LOGO_URL = 'https://onixifzmfmmakvvnhrqs.supabase.co/storage/v1/object/public/email-assets/streetball-logo.png';
+  const LOGO_URL = "https://onixifzmfmmakvvnhrqs.supabase.co/storage/v1/object/public/email-assets/streetball-logo.png";
   return `
 <!DOCTYPE html>
 <html lang="hr">
@@ -115,7 +122,7 @@ function userConfirmationHtml(name: string, subject: string, message: string): s
             <p style="margin:8px 0 4px;font-size:13px;color:${BRAND_TEXT};">
               <strong style="color:${BRAND_WHITE};">Predmet:</strong> <span style="color:${BRAND_TEXT};">${subject}</span>
             </p>
-            <p style="margin:0;font-size:13px;line-height:1.6;color:${BRAND_WHITE};">${message.replace(/\n/g, '<br />')}</p>
+            <p style="margin:0;font-size:13px;line-height:1.6;color:${BRAND_WHITE};">${message.replace(/\n/g, "<br />")}</p>
           </div>
           <!-- CTA -->
           <table width="100%" cellpadding="0" cellspacing="0" style="margin-top:24px;">
@@ -137,35 +144,35 @@ function userConfirmationHtml(name: string, subject: string, message: string): s
 }
 
 serve(async (req) => {
-  if (req.method === 'OPTIONS') {
+  if (req.method === "OPTIONS") {
     return new Response(null, { headers: corsHeaders });
   }
 
   try {
-    const RESEND_API_KEY = Deno.env.get('RESEND_API_KEY');
+    const RESEND_API_KEY = Deno.env.get("RESEND_API_KEY");
     if (!RESEND_API_KEY) {
-      throw new Error('RESEND_API_KEY is not configured');
+      throw new Error("RESEND_API_KEY is not configured");
     }
 
     const { name, email, subject, message } = await req.json();
 
     if (!name || !email || !subject || !message) {
-      return new Response(
-        JSON.stringify({ error: 'Sva polja su obavezna' }),
-        { status: 400, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
-      );
+      return new Response(JSON.stringify({ error: "Sva polja su obavezna" }), {
+        status: 400,
+        headers: { ...corsHeaders, "Content-Type": "application/json" },
+      });
     }
 
     // Send to owner
-    const ownerRes = await fetch('https://api.resend.com/emails', {
-      method: 'POST',
+    const ownerRes = await fetch("https://api.resend.com/emails", {
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${RESEND_API_KEY}`,
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${RESEND_API_KEY}`,
       },
       body: JSON.stringify({
-        from: 'Streetball Posušje <onboarding@resend.dev>',
-        to: ['petarsusnjar@streetball-posusje.com'],
+        from: "Streetball Posušje noreply@streetball-posusje.com",
+        to: ["petarsusnjar@streetball-posusje.com"],
         subject: `[Kontakt forma] ${subject}`,
         reply_to: email,
         html: ownerEmailHtml(name, email, subject, message),
@@ -174,19 +181,19 @@ serve(async (req) => {
 
     const ownerData = await ownerRes.json();
     if (!ownerRes.ok) {
-      console.error('Resend API error (owner):', JSON.stringify(ownerData));
+      console.error("Resend API error (owner):", JSON.stringify(ownerData));
       throw new Error(`Resend API error [${ownerRes.status}]: ${JSON.stringify(ownerData)}`);
     }
 
     // Send confirmation to user
-    const userRes = await fetch('https://api.resend.com/emails', {
-      method: 'POST',
+    const userRes = await fetch("https://api.resend.com/emails", {
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${RESEND_API_KEY}`,
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${RESEND_API_KEY}`,
       },
       body: JSON.stringify({
-        from: 'Streetball Posušje <onboarding@resend.dev>',
+        from: "Streetball Posušje <onboarding@resend.dev>",
         to: [email],
         subject: `Potvrda poruke - Streetball Posušje 2026`,
         html: userConfirmationHtml(name, subject, message),
@@ -196,19 +203,19 @@ serve(async (req) => {
     const userData = await userRes.json();
     if (!userRes.ok) {
       // Log but don't fail - owner email was sent successfully
-      console.error('Resend API error (user confirmation):', JSON.stringify(userData));
+      console.error("Resend API error (user confirmation):", JSON.stringify(userData));
     }
 
-    return new Response(
-      JSON.stringify({ success: true }),
-      { status: 200, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
-    );
+    return new Response(JSON.stringify({ success: true }), {
+      status: 200,
+      headers: { ...corsHeaders, "Content-Type": "application/json" },
+    });
   } catch (error) {
-    console.error('Error sending email:', error);
-    const errorMessage = error instanceof Error ? error.message : 'Unknown error';
-    return new Response(
-      JSON.stringify({ error: errorMessage }),
-      { status: 500, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
-    );
+    console.error("Error sending email:", error);
+    const errorMessage = error instanceof Error ? error.message : "Unknown error";
+    return new Response(JSON.stringify({ error: errorMessage }), {
+      status: 500,
+      headers: { ...corsHeaders, "Content-Type": "application/json" },
+    });
   }
 });
