@@ -83,6 +83,10 @@ const Hero = () => {
     return () => clearInterval(timer);
   }, []);
 
+  const videoSrc = typeof window !== "undefined" && window.innerWidth < 768
+    ? "/hero-video-mobile.mp4"
+    : "/hero-video-optimized.mp4";
+
   const ensurePlayback = () => {
     const video = videoRef.current;
 
@@ -107,13 +111,11 @@ const Hero = () => {
           muted
           playsInline
           preload="auto"
+          src={videoSrc}
           onLoadedData={ensurePlayback}
           onCanPlay={ensurePlayback}
           className="w-full h-full object-cover grayscale"
-        >
-          <source media="(max-width: 767px)" src="/hero-video-mobile.mp4" type="video/mp4" />
-          <source media="(min-width: 768px)" src="/hero-video-optimized.mp4" type="video/mp4" />
-        </video>
+        />
         <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-background" />
       </div>
 
