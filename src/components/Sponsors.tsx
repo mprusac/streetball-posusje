@@ -98,37 +98,37 @@ const goldBorder = "border-[hsl(48,96%,53%)]";
 const goldGlow = "hover:[box-shadow:0_0_25px_8px_hsl(48,96%,53%,0.35)]";
 
 const sponsors = [
-  // Row 1: C-W-C-W
+  // Row 1: Binvest, Pepsi, Ožujsko, Hydra
+  { name: "Bin Vest", image: binvestLogo, imgClass: "!object-contain scale-[1.6]", url: "https://binvest-po.com/" },
+  { name: "Pepsi", image: pepsiLogo, imgClass: "!object-contain scale-[1.8]", url: "https://www.pepsi.com/" },
+  { name: "Ožujsko Pivo", image: ozujskoLogo, imgClass: "!object-contain !object-center scale-[1.725] translate-y-[8px]", url: "https://www.ozujsko.com/" },
+  { name: "Hydra Iso", image: hydraLogo, imgClass: "!object-contain scale-[1.328]", url: "https://hidra.hr/" },
+  // Row 2: Općina, then rest
   { name: "Općina Posušje", image: opcinaPosuskeLogo, imgClass: "!object-contain !object-center scale-[1.5] translate-y-[6px]", url: "https://www.opcina-posusje.ba/" },
   { name: "Penava Weddings", image: penavaLogo, imgClass: "!object-contain scale-[1.984]", url: "https://www.facebook.com/fvpenava/?locale=hr_HR" },
-  { name: "Ožujsko Pivo", image: ozujskoLogo, imgClass: "!object-contain !object-center scale-[1.725] translate-y-[8px]", url: "https://www.ozujsko.com/" },
   { name: "OLI Prodajni Centar", image: oliLogo, imgClass: "!object-contain scale-[2.07]", url: "https://www.oli.ba/" },
-  // Row 2: W-C-W-C
-  { name: "Pepsi", image: pepsiLogo, imgClass: "!object-contain scale-[1.8]", url: "https://www.pepsi.com/" },
   { name: "Gaudeamus", image: gaudeamusLogo, imgClass: "!object-contain scale-[1.746]", url: "https://gaudeamus-disco.com/" },
+  // Row 3
   { name: "Meggle", image: meggleLogo, imgClass: "!object-contain !object-center scale-[1.275] -translate-y-[3px]", url: "https://meggle.ba/" },
-  { name: "Bin Vest", image: binvestLogo, imgClass: "!object-contain scale-[1.6]", url: "https://binvest-po.com/" },
-  // Row 3: C-W-C-W
   { name: "Vokel d.o.o.", image: vokelLogo, imgClass: "!object-contain !object-center scale-[1.32]", url: "https://vokel.com/" },
   { name: "SportsArt", image: sportsartLogo, imgClass: "!object-contain scale-[2.269]", url: "https://www.facebook.com/sportsart.posusje/?locale=hr_HR" },
   { name: "Adeo Sports", image: adeoLogo, imgClass: "!object-contain !object-center scale-[2.16] translate-y-[4px]", url: "https://www.facebook.com/adeosp/?locale=hr_HR" },
+  // Row 4
   { name: "Dravel", image: dravelLogo, imgClass: "!object-contain scale-[1.725]", url: null },
-  // Row 4: W-C-W-C
   { name: "Planet", image: planetLogo, imgClass: "scale-[1.6]", url: "https://www.facebook.com/planetbih/" },
   { name: "Antik", image: antikLogo, imgClass: "!object-contain scale-[1.597]", url: "https://www.facebook.com/ANTIKPosusje/" },
   { name: "Šišović Rakitno", image: sisovicLogo, imgClass: "!object-contain scale-[2.25]", url: "https://www.sisovic.com/" },
+  // Row 5
   { name: "Wine&Co", image: winecoLogo, imgClass: "!object-contain scale-[2.178]", url: "https://wineco.ba/" },
-  // Row 5: C-W-C-W
   { name: "Grill Kong", image: grillkongLogo, imgClass: "!object-contain scale-[1.67]", url: null },
   { name: "Astoria Restoran", image: astoriaLogo, imgClass: "!object-contain scale-[1.32]", url: "https://www.facebook.com/astoriaposusje/?locale=hr_HR" },
   { name: "Posuško Lito 2025", image: posuskoLitoLogo, imgClass: "!object-contain scale-[2.34]", url: "https://www.facebook.com/p/Posu%C5%A1ko-lito-100068174922651/" },
+  // Row 6
   { name: "Ž Barber Shop", image: barbershopLogo, imgClass: "!object-contain scale-[1.725]", url: "https://www.facebook.com/zeljohairstyle/?locale=hr_HR" },
-  // Row 6: W-C-W-C
   { name: "Viva Caffe", image: vivaLogo, imgClass: "!object-contain scale-[2.088]", url: "https://vivacaffe.ba/" },
   { name: "Pulse Udruga", image: pulseLogo, imgClass: "!object-contain scale-[1.32] translate-y-[5px]", url: "https://www.companywall.ba/firma/udruga-pulse/MMxPpGOUR" },
-  { name: "Hydra Iso", image: hydraLogo, imgClass: "!object-contain scale-[1.328]", url: "https://hidra.hr/" },
   { name: "JV Studio", image: jvstudioLogo, imgClass: "!object-contain scale-[1.5]", url: null },
-  // Row 7: C-C
+  // Row 7
   { name: "Markota", image: markotaLogo, imgClass: "!object-contain scale-[1.65]", url: "https://markota-doo.com/" },
   { name: "Leda", image: ledaLogo, imgClass: "", url: "http://www.leda.ba/" },
 ];
