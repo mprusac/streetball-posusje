@@ -171,7 +171,7 @@ serve(async (req) => {
         Authorization: `Bearer ${RESEND_API_KEY}`,
       },
       body: JSON.stringify({
-        from: "Streetball Posušje <noreply@streetball-posusje.com>ß",
+        from: "Streetball Posušje <noreply@streetball-posusje.com>",
         to: ["petarsusnjar@streetball-posusje.com"],
         subject: `[Kontakt forma] ${subject}`,
         reply_to: email,
