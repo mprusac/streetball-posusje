@@ -193,7 +193,7 @@ serve(async (req) => {
         Authorization: `Bearer ${RESEND_API_KEY}`,
       },
       body: JSON.stringify({
-        from: "Streetball Posušje <onboarding@resend.dev>",
+        from: "Streetball Posušje <noreply@streetball-posusje.com>",
         to: [email],
         subject: `Potvrda poruke - Streetball Posušje 2026`,
         html: userConfirmationHtml(name, subject, message),
