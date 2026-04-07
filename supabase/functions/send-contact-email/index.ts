@@ -127,7 +127,7 @@ function userConfirmationHtml(name: string, subject: string, message: string): s
           <!-- CTA -->
           <table width="100%" cellpadding="0" cellspacing="0" style="margin-top:24px;">
             <tr><td align="center">
-              <a href="https://streetball-posusje.lovable.app/" style="display:inline-block;padding:12px 32px;background-color:${BRAND_GOLD};color:${BRAND_DARK};font-size:14px;font-weight:700;text-decoration:none;border-radius:8px;text-transform:uppercase;letter-spacing:1px;">Posjetite našu web stranicu</a>
+              <a href="https://streetball-posusje.com/" style="display:inline-block;padding:12px 32px;background-color:${BRAND_GOLD};color:${BRAND_DARK};font-size:14px;font-weight:700;text-decoration:none;border-radius:8px;text-transform:uppercase;letter-spacing:1px;">Posjetite našu web stranicu</a>
             </td></tr>
           </table>
         </td></tr>
