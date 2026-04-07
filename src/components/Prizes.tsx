@@ -138,11 +138,25 @@ const Prizes = () => {
                 </h3>
               </div>
             </div>
-            <div className="flex justify-between items-center p-2 rounded-lg bg-background/50 border border-border/50">
-              <span className="text-sm font-medium text-foreground flex items-center gap-2">
-                <Medal className="w-4 h-4 text-primary" /> 1. mjesto
-              </span>
-              <span className="text-sm font-bold text-primary">300 KM x3</span>
+            <div className="space-y-2">
+              <div className="flex justify-between items-center p-2 rounded-lg bg-background/50 border border-border/50">
+                <span className="text-sm font-medium text-foreground flex items-center gap-2">
+                  <Medal className="w-4 h-4 text-primary" /> Amateri - 1. mjesto
+                </span>
+                <span className="text-sm font-bold text-primary">300 KM</span>
+              </div>
+              <div className="flex justify-between items-center p-2 rounded-lg bg-background/50 border border-border/50">
+                <span className="text-sm font-medium text-foreground flex items-center gap-2">
+                  <Medal className="w-4 h-4 text-primary" /> Juniori - 1. mjesto
+                </span>
+                <span className="text-sm font-bold text-primary">300 KM</span>
+              </div>
+              <div className="flex justify-between items-center p-2 rounded-lg bg-background/50 border border-border/50">
+                <span className="text-sm font-medium text-foreground flex items-center gap-2">
+                  <Medal className="w-4 h-4 text-primary" /> Seniorke - 1. mjesto
+                </span>
+                <span className="text-sm font-bold text-primary">300 KM</span>
+              </div>
             </div>
           </div>
         </div>
