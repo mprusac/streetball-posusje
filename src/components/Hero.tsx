@@ -109,7 +109,7 @@ const Hero = () => {
           preload="auto"
           onLoadedData={ensurePlayback}
           onCanPlay={ensurePlayback}
-          className="w-full h-full object-cover"
+          className="w-full h-full object-cover grayscale"
         >
           <source media="(max-width: 767px)" src="/hero-video-mobile.mp4" type="video/mp4" />
           <source media="(min-width: 768px)" src="/hero-video-optimized.mp4" type="video/mp4" />
