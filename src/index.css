@@ -472,3 +472,11 @@ textarea:-webkit-autofill:focus {
     border-radius: 3px;
   }
 }
+
+@media (hover: hover) and (pointer: fine) {
+  .sponsor-tier-card:hover {
+    transform: scale(1.02);
+    border-color: hsl(var(--primary) / 0.5);
+    box-shadow: 0 0 20px 6px hsl(var(--primary) / 0.2);
+  }
+}
