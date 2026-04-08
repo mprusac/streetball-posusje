@@ -75,7 +75,7 @@ const About = () => {
                 <span className="text-primary font-bold">Udruga Pulse</span> ponosni je organizator turnira Streetball Posušje.
               </p>
               <p className="text-sm md:text-base text-muted-foreground mb-3 md:mb-4 leading-relaxed">
-                Naša udruga okuplja entuzijaste s ciljem promicanja sporta, poticanja mladih na stvaranje novih sportskih događaja i ulaganja energije u razvoj sporta u našem gradu.
+                Naša udruga okuplja entuzijaste s ciljem promicanja sporta, poticanja mladih na stvaranje novih sportskih događaja i ulaganja energije u razvoj sporta.
               </p>
             </div>
           </div>

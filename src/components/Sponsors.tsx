@@ -42,7 +42,7 @@ const sponsorTiers: SponsorTier[] = [
     price: "1.000 KM",
     benefits: [
       "Logo na terenu, zaštitnim spužvama ili tabli koša",
-      "\"Naming rights\" – natjecanje nosi ime sponzora",
+      "\"Naming rights\" – natjecateljska igra (natjecanje u tricama) nosi ime sponzora",
       "Najviša rotacija logotipa na LED ekranima",
       "Zasebna PR objava/intervju na društvenim mrežama",
       "Predstavnik dodjeljuje pehar/nagrade pobjednicima",
