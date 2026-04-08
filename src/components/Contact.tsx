@@ -213,10 +213,10 @@ className="bg-background/50 border-border focus:border-primary focus-visible:rin
               <div>
                 <h4 className="font-display text-sm md:text-base text-foreground mb-0.5 tracking-wide">Telefon</h4>
                 <a
-                  href="tel:+38763290237"
+                  href="tel:+38763390237"
                   className="text-muted-foreground text-xs md:text-sm hover:text-primary transition-colors"
                 >
-                  +387 63 290 237
+                  +387 63 390 237
                 </a>
                 <br />
                 <a
