@@ -13,4 +13,4 @@ Allow: /
 User-agent: *
 Allow: /
 
-Sitemap: https://streetball-posusje.lovable.app/sitemap.xml
+Sitemap: https://streetball-posusje.com/sitemap.xml
