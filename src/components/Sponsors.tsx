@@ -164,7 +164,7 @@ const Sponsors = () => {
               <Wrapper
                 key={sponsor.name}
                 {...linkProps as any}
-                className={`bg-secondary/50 border-2 border-border rounded-2xl overflow-hidden hover:scale-[1.05] hover:border-[hsl(48,96%,53%)] ${goldGlow} transition-all duration-300 animate-fade-in-up aspect-[2/1] flex items-center justify-center ${sponsor.name === "Ardu" ? "hidden md:block" : ""}`}
+                className={`bg-secondary/50 border-2 ${goldBorder} rounded-2xl overflow-hidden hover:scale-[1.05] ${goldGlow} transition-all duration-300 animate-fade-in-up aspect-[2/1] flex items-center justify-center ${sponsor.name === "Ardu" ? "hidden md:block" : ""}`}
                 style={{ animationDelay: `${index * 100}ms` }}
               >
                 {sponsor.image ? (
