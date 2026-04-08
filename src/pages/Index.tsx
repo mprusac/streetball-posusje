@@ -16,6 +16,32 @@ import Footer from "@/components/Footer";
 
 const DeferredHomeSections = () => (
   <>
+    {/* Partner CTA */}
+    <div className="py-8 md:py-12">
+      <div className="container mx-auto px-4 text-center">
+        <a
+          href="#sponzori"
+          className="inline-block group"
+          onClick={(e) => {
+            e.preventDefault();
+            const el = document.getElementById('sponzori');
+            if (el) el.scrollIntoView({ behavior: 'smooth' });
+          }}
+        >
+          <div className="relative overflow-hidden rounded-xl border-2 border-primary px-8 py-5 md:px-12 md:py-6 transition-all duration-500 hover:shadow-[0_0_30px_hsl(48,96%,53%,0.3)] hover:scale-[1.02]"
+            style={{ background: 'linear-gradient(135deg, hsl(0 0% 5%) 0%, hsl(48 96% 53% / 0.1) 50%, hsl(0 0% 8%) 100%)' }}
+          >
+            <span className="absolute inset-0 bg-primary transform -translate-x-full group-hover:translate-x-0 transition-transform duration-500 ease-out" />
+            <span className="relative z-10 block font-display font-bold text-lg md:text-2xl text-primary group-hover:text-primary-foreground tracking-wider uppercase transition-colors duration-500">
+              ŽELIŠ POSTATI NAŠ PARTNER?
+            </span>
+            <span className="relative z-10 block text-sm md:text-base text-muted-foreground group-hover:text-primary-foreground/80 mt-1 tracking-widest uppercase transition-colors duration-500">
+              POSTANI DIO POBJEDNIČKE EKIPE
+            </span>
+          </div>
+        </a>
+      </div>
+    </div>
     <hr className="section-divider" />
     <News />
     <hr className="section-divider" />

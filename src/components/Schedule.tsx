@@ -12,33 +12,35 @@ const schedule: ScheduleDay[] = [
     day: "Četvrtak",
     date: "16.7.2026.",
     events: [
-      "Muški U-14 (2012. i mlađi)",
-      "Ženske U-14 (2012. i mlađi)",
-      "Muški U-16 (2010. i mlađi)",
-      "Cure U-16 (2010. i mlađi)",
-      "Amateri - Posuške Ekipe",
+      "Muški U-14 (Grupe + Završnica)",
+      "Cure U-14 (Grupe + Završnica)",
+      "Muški U-16 (Grupe + Završnica)",
+      "Cure U-16 (Grupe + Završnica)",
+      "Amateri (Grupe)",
     ],
   },
   {
     day: "Petak",
     date: "17.7.2026.",
     events: [
-      "Seniorke",
-      "Juniori (U-19)",
+      "Seniorke (Grupe + Završnica)",
+      "Juniori U-19 (Grupe)",
+      "Amateri (Završnica)",
     ],
   },
   {
     day: "Subota",
     date: "18.7.2026.",
     events: [
-      "Seniori - Grupe",
+      "Seniori (Grupe)",
+      "Juniori U-19 (Završnica)",
     ],
   },
   {
     day: "Nedjelja",
     date: "19.7.2026.",
     events: [
-      "Seniori - Play-Off",
+      "Seniori (Završnica)",
     ],
   },
 ];
