@@ -4,6 +4,7 @@ import { Calendar, Clock } from "lucide-react";
 interface ScheduleDay {
   day: string;
   date: string;
+  surface: string;
   events: string[];
 }
 
@@ -11,6 +12,7 @@ const schedule: ScheduleDay[] = [
   {
     day: "Četvrtak",
     date: "16.7.2026.",
+    surface: "Beton, 2 koša - 2 terena",
     events: [
       "Muški U-14 (Grupe + Završnica)",
       "Cure U-14 (Grupe + Završnica)",
@@ -22,6 +24,7 @@ const schedule: ScheduleDay[] = [
   {
     day: "Petak",
     date: "17.7.2026.",
+    surface: "Podloga",
     events: [
       "Seniorke (Grupe + Završnica)",
       "Juniori U-19 (Grupe)",
@@ -31,6 +34,7 @@ const schedule: ScheduleDay[] = [
   {
     day: "Subota",
     date: "18.7.2026.",
+    surface: "Podloga",
     events: [
       "Seniori (Grupe)",
       "Juniori U-19 (Završnica)",
@@ -39,6 +43,7 @@ const schedule: ScheduleDay[] = [
   {
     day: "Nedjelja",
     date: "19.7.2026.",
+    surface: "Podloga",
     events: [
       "Seniori (Završnica)",
     ],
@@ -84,8 +89,11 @@ const Schedule = () => {
                   <h3 className="font-display text-base md:text-lg text-foreground tracking-wide leading-tight">
                     {day.day}
                   </h3>
-                  <p className="text-primary text-xs md:text-sm font-semibold">
+                   <p className="text-primary text-xs md:text-sm font-semibold">
                     {day.date}
+                  </p>
+                  <p className="text-muted-foreground text-[10px] md:text-xs">
+                    {day.surface}
                   </p>
                 </div>
               </div>
