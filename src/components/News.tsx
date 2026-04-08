@@ -148,80 +148,119 @@ const News = () => {
           Prati sve aktualnosti i novosti o turniru
         </p>
 
-        {/* News Slider */}
-        <div className="relative max-w-[1100px] mx-auto px-12 md:px-16">
-          <button
-            onClick={() => scroll("left")}
-            disabled={isMobile && activeIndex === 0}
-            className={`flex absolute -left-2 md:left-0 top-[40%] md:top-1/2 -translate-y-1/2 z-10 w-8 h-8 md:w-12 md:h-12 rounded-full bg-primary items-center justify-center text-primary-foreground transition-all duration-300 shadow-lg ${
-              isMobile && activeIndex === 0
-                ? "opacity-40 cursor-not-allowed"
-                : "hover:bg-primary/90 hover:scale-110"
-            }`}
-          >
-            <ChevronLeft size={16} className="md:hidden" />
-            <ChevronLeft size={24} className="hidden md:block" />
-          </button>
-          <button
-            onClick={() => scroll("right")}
-            disabled={isMobile && activeIndex === allNews.length - 1}
-            className={`flex absolute -right-2 md:right-0 top-[40%] md:top-1/2 -translate-y-1/2 z-10 w-8 h-8 md:w-12 md:h-12 rounded-full bg-primary items-center justify-center text-primary-foreground transition-all duration-300 shadow-lg ${
-              isMobile && activeIndex === allNews.length - 1
-                ? "opacity-40 cursor-not-allowed"
-                : "hover:bg-primary/90 hover:scale-110"
-            }`}
-          >
-            <ChevronRight size={16} className="md:hidden" />
-            <ChevronRight size={24} className="hidden md:block" />
-          </button>
-
-          <div ref={scrollRef} className="flex gap-0 md:gap-6 overflow-x-auto scrollbar-hide scroll-smooth pb-4 snap-x snap-mandatory md:justify-start" style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}>
-            {allNews.map((item, index) => (
-              <Link
-                to={`/vijesti/${item.id}`}
-                key={item.id}
-                ref={(el) => { cardRefs.current[index] = el as unknown as HTMLAnchorElement; }}
-                className="group flex-shrink-0 bg-background rounded-lg overflow-hidden transition-all duration-300 hover-lift border border-transparent hover:border-primary/30 snap-start flex flex-col"
-                style={{
-                  width: isMobile ? '100%' : 'calc((100% - 3rem) / 3)',
-                  minWidth: isMobile ? '100%' : '260px',
-                  maxWidth: isMobile ? '100%' : 'none',
-                  flexShrink: 0,
-                  opacity: isVisible ? 1 : 0,
-                  transform: isVisible ? "translateX(0)" : "translateX(30px)",
-                  transition: `all 0.5s ease ${index * 0.1}s`
-                }}
-              >
-                <div className="relative h-36 md:h-48 overflow-hidden">
-                  <img src={item.image} alt={item.title} loading="lazy" className={`w-full h-full object-cover transition-transform duration-500 ${item.imageScale ? 'scale-[1.1] group-hover:scale-[1.2]' : 'group-hover:scale-110'} ${item.imagePosition === 'center' ? 'object-center' : item.imagePosition === 'upper' ? 'object-[center_5%]' : item.imagePosition === 'top' ? 'object-top' : item.imagePosition === 'lower' ? 'object-[center_35%]' : item.imagePosition === 'bottom' ? 'object-bottom' : 'object-[center_25%]'}`} />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
-                  <span className="absolute top-3 left-3 px-2 py-1 bg-primary/90 text-primary-foreground text-[10px] md:text-xs rounded flex items-center gap-1 font-bold">
-                    {(() => { const cfg = categoryConfig[item.category]; const Icon = cfg.icon; return <><Icon size={12} strokeWidth={3} />{cfg.label}</>; })()}
+        {/* News Display */}
+        {allNews.length === 1 ? (
+          <div className="max-w-md mx-auto">
+            <Link
+              to={`/vijesti/${allNews[0].id}`}
+              className="group block bg-background rounded-lg overflow-hidden transition-all duration-300 hover-lift border border-transparent hover:border-primary/30"
+              style={{
+                opacity: isVisible ? 1 : 0,
+                transform: isVisible ? "translateY(0)" : "translateY(30px)",
+                transition: `all 0.5s ease`
+              }}
+            >
+              <div className="relative h-48 md:h-56 overflow-hidden">
+                <img src={allNews[0].image} alt={allNews[0].title} loading="lazy" className={`w-full h-full object-cover transition-transform duration-500 group-hover:scale-110 ${allNews[0].imagePosition === 'center' ? 'object-center' : allNews[0].imagePosition === 'top' ? 'object-top' : 'object-[center_25%]'}`} />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
+                <span className="absolute top-3 left-3 px-2 py-1 bg-primary/90 text-primary-foreground text-xs rounded flex items-center gap-1 font-bold">
+                  {(() => { const cfg = categoryConfig[allNews[0].category]; if (!cfg) return null; const Icon = cfg.icon; return <><Icon size={12} strokeWidth={3} />{cfg.label}</>; })()}
+                </span>
+                {allNews[0].pinned && (
+                  <span className="absolute top-3 right-3 p-1.5 bg-primary/90 text-primary-foreground rounded-full shadow-lg">
+                    <Pin size={14} strokeWidth={2.5} className="rotate-45" />
                   </span>
-                  {item.pinned && (
-                    <span className="absolute top-3 right-3 p-1.5 bg-primary/90 text-primary-foreground rounded-full shadow-lg">
-                      <Pin size={14} strokeWidth={2.5} className="rotate-45" />
-                    </span>
-                  )}
+                )}
+              </div>
+              <div className="p-5 md:p-6">
+                <div className="flex items-center gap-2 text-muted-foreground text-sm mb-3">
+                  <Calendar size={14} />
+                  {allNews[0].date}
                 </div>
-                <div className="p-4 md:p-6 flex flex-col flex-1">
-                  <div className="flex items-center gap-2 text-muted-foreground text-xs md:text-sm mb-2 md:mb-3">
-                    <Calendar size={12} className="md:hidden" />
-                    <Calendar size={14} className="hidden md:block" />
-                    {item.date}
-                  </div>
-                  <h3 className="text-lg md:text-xl font-display text-foreground mb-2 md:mb-3 line-clamp-2 group-hover:text-primary transition-colors">{item.title}{item.flagImage && <img src={item.flagImage} alt="flag" className="inline-block h-4 md:h-5 ml-1.5 align-middle object-contain" />}</h3>
-                  <p className="text-muted-foreground text-xs md:text-sm mb-3 md:mb-4 line-clamp-2 md:line-clamp-3">{item.excerpt}</p>
-                  <div className="mt-auto inline-flex items-center gap-2 text-primary text-xs md:text-sm font-medium group-hover:gap-3 transition-all">
-                    Pročitaj više
-                    <ArrowRight size={14} className="md:hidden" />
-                    <ArrowRight size={16} className="hidden md:block" />
-                  </div>
+                <h3 className="text-xl md:text-2xl font-display text-foreground mb-3 group-hover:text-primary transition-colors">{allNews[0].title}</h3>
+                <p className="text-muted-foreground text-sm mb-4 line-clamp-3">{allNews[0].excerpt}</p>
+                <div className="inline-flex items-center gap-2 text-primary text-sm font-medium group-hover:gap-3 transition-all">
+                  Pročitaj više
+                  <ArrowRight size={16} />
                 </div>
-              </Link>
-            ))}
+              </div>
+            </Link>
           </div>
-        </div>
+        ) : (
+          <div className="relative max-w-[1100px] mx-auto px-12 md:px-16">
+            <button
+              onClick={() => scroll("left")}
+              disabled={isMobile && activeIndex === 0}
+              className={`flex absolute -left-2 md:left-0 top-[40%] md:top-1/2 -translate-y-1/2 z-10 w-8 h-8 md:w-12 md:h-12 rounded-full bg-primary items-center justify-center text-primary-foreground transition-all duration-300 shadow-lg ${
+                isMobile && activeIndex === 0
+                  ? "opacity-40 cursor-not-allowed"
+                  : "hover:bg-primary/90 hover:scale-110"
+              }`}
+            >
+              <ChevronLeft size={16} className="md:hidden" />
+              <ChevronLeft size={24} className="hidden md:block" />
+            </button>
+            <button
+              onClick={() => scroll("right")}
+              disabled={isMobile && activeIndex === allNews.length - 1}
+              className={`flex absolute -right-2 md:right-0 top-[40%] md:top-1/2 -translate-y-1/2 z-10 w-8 h-8 md:w-12 md:h-12 rounded-full bg-primary items-center justify-center text-primary-foreground transition-all duration-300 shadow-lg ${
+                isMobile && activeIndex === allNews.length - 1
+                  ? "opacity-40 cursor-not-allowed"
+                  : "hover:bg-primary/90 hover:scale-110"
+              }`}
+            >
+              <ChevronRight size={16} className="md:hidden" />
+              <ChevronRight size={24} className="hidden md:block" />
+            </button>
+
+            <div ref={scrollRef} className="flex gap-0 md:gap-6 overflow-x-auto scrollbar-hide scroll-smooth pb-4 snap-x snap-mandatory md:justify-start" style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}>
+              {allNews.map((item, index) => (
+                <Link
+                  to={`/vijesti/${item.id}`}
+                  key={item.id}
+                  ref={(el) => { cardRefs.current[index] = el as unknown as HTMLAnchorElement; }}
+                  className="group flex-shrink-0 bg-background rounded-lg overflow-hidden transition-all duration-300 hover-lift border border-transparent hover:border-primary/30 snap-start flex flex-col"
+                  style={{
+                    width: isMobile ? '100%' : 'calc((100% - 3rem) / 3)',
+                    minWidth: isMobile ? '100%' : '260px',
+                    maxWidth: isMobile ? '100%' : 'none',
+                    flexShrink: 0,
+                    opacity: isVisible ? 1 : 0,
+                    transform: isVisible ? "translateX(0)" : "translateX(30px)",
+                    transition: `all 0.5s ease ${index * 0.1}s`
+                  }}
+                >
+                  <div className="relative h-36 md:h-48 overflow-hidden">
+                    <img src={item.image} alt={item.title} loading="lazy" className={`w-full h-full object-cover transition-transform duration-500 ${item.imageScale ? 'scale-[1.1] group-hover:scale-[1.2]' : 'group-hover:scale-110'} ${item.imagePosition === 'center' ? 'object-center' : item.imagePosition === 'upper' ? 'object-[center_5%]' : item.imagePosition === 'top' ? 'object-top' : item.imagePosition === 'lower' ? 'object-[center_35%]' : item.imagePosition === 'bottom' ? 'object-bottom' : 'object-[center_25%]'}`} />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
+                    <span className="absolute top-3 left-3 px-2 py-1 bg-primary/90 text-primary-foreground text-[10px] md:text-xs rounded flex items-center gap-1 font-bold">
+                      {(() => { const cfg = categoryConfig[item.category]; if (!cfg) return null; const Icon = cfg.icon; return <><Icon size={12} strokeWidth={3} />{cfg.label}</>; })()}
+                    </span>
+                    {item.pinned && (
+                      <span className="absolute top-3 right-3 p-1.5 bg-primary/90 text-primary-foreground rounded-full shadow-lg">
+                        <Pin size={14} strokeWidth={2.5} className="rotate-45" />
+                      </span>
+                    )}
+                  </div>
+                  <div className="p-4 md:p-6 flex flex-col flex-1">
+                    <div className="flex items-center gap-2 text-muted-foreground text-xs md:text-sm mb-2 md:mb-3">
+                      <Calendar size={12} className="md:hidden" />
+                      <Calendar size={14} className="hidden md:block" />
+                      {item.date}
+                    </div>
+                    <h3 className="text-lg md:text-xl font-display text-foreground mb-2 md:mb-3 line-clamp-2 group-hover:text-primary transition-colors">{item.title}{item.flagImage && <img src={item.flagImage} alt="flag" className="inline-block h-4 md:h-5 ml-1.5 align-middle object-contain" />}</h3>
+                    <p className="text-muted-foreground text-xs md:text-sm mb-3 md:mb-4 line-clamp-2 md:line-clamp-3">{item.excerpt}</p>
+                    <div className="mt-auto inline-flex items-center gap-2 text-primary text-xs md:text-sm font-medium group-hover:gap-3 transition-all">
+                      Pročitaj više
+                      <ArrowRight size={14} className="md:hidden" />
+                      <ArrowRight size={16} className="hidden md:block" />
+                    </div>
+                  </div>
+                </Link>
+              ))}
+            </div>
+          </div>
+        )}
 
         {/* Sve vijesti button */}
         <div id="home-return-news-btn" className="flex justify-center mt-10">
