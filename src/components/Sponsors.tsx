@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { ChevronUp, ChevronDown, Crown, Medal, Award, Heart, Star, Trophy } from "lucide-react";
 
 import vokelLogo from "@/assets/sponsors/vokel-logo.png";
@@ -42,7 +42,7 @@ const sponsorTiers: SponsorTier[] = [
     price: "1.000 KM",
     benefits: [
       "Logo na terenu, zaštitnim spužvama ili tabli koša",
-      "\"Naming rights\" – natjecanje nosi ime sponzora",
+      "\"Naming rights\" – natjecateljska igra (natjecanje u tricama) nosi ime sponzora",
       "Najviša rotacija logotipa na LED ekranima",
       "Zasebna PR objava/intervju na društvenim mrežama",
       "Predstavnik dodjeljuje pehar/nagrade pobjednicima",
@@ -137,6 +137,12 @@ const sponsors = [
 const Sponsors = () => {
   const [isExpanded, setIsExpanded] = useState(false);
 
+  useEffect(() => {
+    const handler = () => setIsExpanded(true);
+    window.addEventListener('open-sponsor-form', handler);
+    return () => window.removeEventListener('open-sponsor-form', handler);
+  }, []);
+
   return (
     <section id="sponzori" className="py-12 md:py-20">
       <div className="container mx-auto px-4">
@@ -181,6 +187,7 @@ const Sponsors = () => {
         {/* Become a Sponsor */}
         <div className="max-w-4xl mx-auto">
           <div 
+            id="sponzori-cta"
             className="rounded-xl overflow-hidden border-2 border-primary shadow-[0_0_30px_hsl(48,96%,53%,0.2)]"
             style={{
               background: 'linear-gradient(135deg, hsl(0 0% 5%) 0%, hsl(48 96% 53% / 0.1) 50%, hsl(0 0% 8%) 100%)',

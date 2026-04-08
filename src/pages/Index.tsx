@@ -24,8 +24,12 @@ const DeferredHomeSections = () => (
           className="inline-block group"
           onClick={(e) => {
             e.preventDefault();
-            const el = document.getElementById('sponzori');
-            if (el) el.scrollIntoView({ behavior: 'smooth' });
+            // Dispatch event to open sponsor accordion
+            window.dispatchEvent(new CustomEvent('open-sponsor-form'));
+            setTimeout(() => {
+              const el = document.getElementById('sponzori-cta');
+              if (el) el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }, 400);
           }}
         >
           <div className="relative overflow-hidden rounded-xl border-2 border-primary px-8 py-5 md:px-12 md:py-6 transition-all duration-500 hover:shadow-[0_0_30px_hsl(48,96%,53%,0.3)] hover:scale-[1.02]"
