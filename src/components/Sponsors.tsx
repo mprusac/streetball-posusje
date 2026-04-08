@@ -164,7 +164,7 @@ const Sponsors = () => {
               <Wrapper
                 key={sponsor.name}
                 {...linkProps as any}
-                className={`bg-secondary/50 border-2 border-border rounded-2xl overflow-hidden hover:scale-[1.05] hover:border-[hsl(48,96%,53%)] ${goldGlow} transition-all duration-300 animate-fade-in-up aspect-[2/1] flex items-center justify-center ${sponsor.name === "Ardu" ? "hidden md:block" : ""}`}
+                className={`bg-secondary/50 border-2 ${goldBorder} rounded-2xl overflow-hidden hover:scale-[1.05] ${goldGlow} transition-all duration-300 animate-fade-in-up aspect-[2/1] flex items-center justify-center ${sponsor.name === "Ardu" ? "hidden md:block" : ""}`}
                 style={{ animationDelay: `${index * 100}ms` }}
               >
                 {sponsor.image ? (
@@ -246,7 +246,7 @@ const Sponsors = () => {
                     return (
                       <div
                         key={tier.name}
-                        className={`group bg-secondary/40 border border-border rounded-lg p-3 md:p-4 animate-fade-in-up transition-all duration-300 hover:scale-[1.02] hover:border-primary/50 ${shadowColor} snap-start shrink-0 w-[calc(50%-6px)] md:w-[220px] lg:w-auto lg:flex-1 cursor-default select-none flex flex-col justify-start`}
+                        className="group bg-secondary/40 border border-border rounded-lg p-3 md:p-4 animate-fade-in-up transition-all duration-300 snap-start shrink-0 w-[calc(50%-6px)] md:w-[220px] lg:w-auto lg:flex-1 cursor-default select-none flex flex-col justify-start sponsor-tier-card"
                         style={{ animationDelay: `${index * 80}ms` }}
                       >
                         <div className="flex items-center gap-2 mb-1 min-h-[44px] md:min-h-[56px]">
