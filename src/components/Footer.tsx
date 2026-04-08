@@ -53,7 +53,7 @@ const Footer = () => {
                >
                  info@streetball-posusje.com
                </a>
-              <p>+387 63 290 237<br />+385 91 608 2969</p>
+              <p>+387 63 390 237<br />+385 91 608 2969</p>
             </address>
           </div>
 
