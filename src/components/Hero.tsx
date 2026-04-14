@@ -139,8 +139,7 @@ const Hero = () => {
               size="lg"
               className="group relative overflow-hidden bg-transparent border-2 border-primary text-primary hover:text-primary-foreground font-display font-bold uppercase tracking-widest px-6 sm:px-10 py-5 sm:py-7 text-base sm:text-lg transition-all duration-500 hover:shadow-[0_0_30px_hsl(48,96%,53%,0.4)]"
               onClick={() => {
-                const kontakt = document.getElementById('kontakt');
-                if (kontakt) kontakt.scrollIntoView({ behavior: 'smooth' });
+                window.history.replaceState(null, '', '/#kontakt');
                 window.dispatchEvent(new CustomEvent('open-fiba-modal'));
               }}
             >
