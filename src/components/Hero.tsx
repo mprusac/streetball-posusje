@@ -136,13 +136,14 @@ const Hero = () => {
           </p>
 
           <div className="animate-fade-in-up delay-400">
-            <a
-              href="#kontakt"
-              className="group relative overflow-hidden bg-transparent border-2 border-primary text-primary hover:text-primary-foreground font-display font-bold uppercase tracking-widest px-6 sm:px-10 py-5 sm:py-7 text-base sm:text-lg transition-all duration-500 hover:shadow-[0_0_30px_hsl(48,96%,53%,0.4)] inline-flex items-center justify-center rounded-md"
+            <Button
+              size="lg"
+              className="group relative overflow-hidden bg-transparent border-2 border-primary text-primary hover:text-primary-foreground font-display font-bold uppercase tracking-widest px-6 sm:px-10 py-5 sm:py-7 text-base sm:text-lg transition-all duration-500 hover:shadow-[0_0_30px_hsl(48,96%,53%,0.4)]"
+              onClick={() => setRegistrationOpen(true)}
             >
               <span className="absolute inset-0 bg-primary transform -translate-x-full group-hover:translate-x-0 transition-transform duration-500 ease-out" />
               <span className="relative z-10">Prijavi se</span>
-            </a>
+            </Button>
           </div>
 
           <div className="mt-5 sm:mt-10 animate-fade-in-up delay-400">
