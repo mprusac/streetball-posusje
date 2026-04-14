@@ -12,6 +12,7 @@ import NewsPage from "./pages/NewsPage";
 import ResultsPage from "./pages/ResultsPage";
 import AdminPanel from "./pages/AdminPanel";
 import NotFound from "./pages/NotFound";
+import KontaktPage from "./pages/KontaktPage";
 
 const queryClient = new QueryClient();
 
@@ -27,6 +28,7 @@ const AnimatedRoutes = () => {
         <Route path="/vijesti" element={<PageTransition><NewsPage /></PageTransition>} />
         <Route path="/vijesti/:articleId" element={<PageTransition><NewsPage /></PageTransition>} />
         <Route path="/rezultati" element={<PageTransition><ResultsPage /></PageTransition>} />
+        <Route path="/kontakt" element={<KontaktPage />} />
         <Route path="/admin" element={<AdminPanel />} />
         <Route path="*" element={<PageTransition><NotFound /></PageTransition>} />
       </Routes>
