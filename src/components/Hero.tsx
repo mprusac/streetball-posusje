@@ -1,7 +1,7 @@
 import { ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useEffect, useState, useRef } from "react";
-import FibaRegistrationModal from "@/components/FibaRegistrationModal";
+
 
 const TOURNAMENT_DATE = new Date("2026-07-18T18:00:00");
 const useCountdown = (targetDate: Date) => {
@@ -62,7 +62,7 @@ const Hero = () => {
   const countdown = useCountdown(TOURNAMENT_DATE);
   const [displayedText, setDisplayedText] = useState("");
   const [showCursor, setShowCursor] = useState(true);
-  const [registrationOpen, setRegistrationOpen] = useState(false);
+  
   const typewriterStarted = useRef(false);
   const videoRef = useRef<HTMLVideoElement | null>(null);
 
