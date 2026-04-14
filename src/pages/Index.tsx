@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import FibaRegistrationModal from "@/components/FibaRegistrationModal";
 import { useLocation } from "react-router-dom";
 import { Instagram, Facebook } from "lucide-react";
 import Navbar from "@/components/Navbar";
@@ -71,6 +72,13 @@ const Index = () => {
   const [showDeferredContent, setShowDeferredContent] = useState(() =>
     typeof window !== "undefined" && sessionStorage.getItem("restoreHomeScroll") === "true"
   );
+  const [registrationOpen, setRegistrationOpen] = useState(false);
+
+  useEffect(() => {
+    const handleOpenModal = () => setRegistrationOpen(true);
+    window.addEventListener('open-fiba-modal', handleOpenModal);
+    return () => window.removeEventListener('open-fiba-modal', handleOpenModal);
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -140,6 +148,7 @@ const Index = () => {
         <Hero />
         {showDeferredContent && <DeferredHomeSections />}
       </main>
+      <FibaRegistrationModal isOpen={registrationOpen} onClose={() => setRegistrationOpen(false)} />
 
       <div className="fixed bottom-6 right-6 z-50 flex flex-col gap-3">
         <a
