@@ -12,6 +12,7 @@ import NewsPage from "./pages/NewsPage";
 import ResultsPage from "./pages/ResultsPage";
 import AdminPanel from "./pages/AdminPanel";
 import NotFound from "./pages/NotFound";
+import KontaktPage from "./pages/KontaktPage";
 
 const queryClient = new QueryClient();
 
