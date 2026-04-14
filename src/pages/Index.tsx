@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import FibaRegistrationModal from "@/components/FibaRegistrationModal";
 import { useLocation } from "react-router-dom";
 import { Instagram, Facebook } from "lucide-react";
 import Navbar from "@/components/Navbar";
