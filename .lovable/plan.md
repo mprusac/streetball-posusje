@@ -1,16 +1,26 @@
 
+## Cilj
 
-## Problem
-The "Amateri" card at the bottom spans `md:col-span-2` (full width of both columns), making it look too wide and stretched on laptop screens.
+Kreirati detaljan, gotov-za-paste prompt koji korisnik može ubaciti u novi Lovable projekt da rekreira identičan admin panel (vijesti + galerije + kategorije) s istim backend mehanizmom (deterministički token, 2 edge funkcije, 3 tablice/buckets) i istom crno-žutom estetikom.
 
-## Solution
-Remove `md:col-span-2` so the card takes up only one column width, and center it below the other two cards using a wrapper or grid utility.
+## Što ću napraviti
 
-### Changes in `src/components/Prizes.tsx`
-- **Line 111**: Replace `md:col-span-2` with `md:col-span-1` and add `md:mx-auto` to center it
-- Wrap the bottom card in a full-width container that centers it, or use `md:col-start-1 md:col-end-3` with inner max-width constraint
-- Best approach: Keep `md:col-span-2` but add `max-w-md mx-auto` to constrain the card's inner width while staying centered across both columns
+1. Sastaviti markdown prompt na hrvatskom, strukturiran u 9 sekcija:
+   - Cilj i tehnološki stack
+   - Lovable Cloud secrets (`ADMIN_USERNAME=admin`, `ADMIN_PASSWORD=ljubuski`)
+   - SQL migracija (tablice `news` + `galleries`, RLS public-read, 2 storage bucketa)
+   - Edge funkcija `admin-news` (login + list + create + update + update-category + delete + upload-url) s deterministički hash tokenom
+   - Edge funkcija `admin-galleries` (list-public + list + create + update + delete)
+   - Frontend `/admin` stranica: login forma, sticky top bar, 2 taba (Vijesti/Galerije), modali za uređivanje, bulk upload (5 paralelno) s progress prikazom, paginacija slika (30 po stranici), modal za upravljanje kategorijama
+   - Forme: format datuma `DD.MM.YYYY`, image position picker, pinned toggle, gallery_images niz, cover_image
+   - Dizajn tokeni (crno-žuta paleta, sticky header `hsl(0,0%,7%)`, gumbi crna+žuti border → hover žuta, toast donji-desni žuti)
+   - Sigurnosna napomena (vjerodajnice samo u Cloud secretima, nikad u kodu) i checklist za testiranje
 
-### Specific change
-Line 111: Add `max-w-md mx-auto w-full` to the className so the card stays centered but doesn't stretch to fill the full 2-column width.
+2. Spremiti u `/mnt/documents/admin-panel-prompt.md`.
+3. Ispisati cijeli prompt u chatu i priložiti `<lov-artifact>` za download.
 
+## Napomena
+
+Token mehanizam je stateless deterministički hash `username:password:YYYY-MM-DD` što znači token vrijedi 1 dan i preživljava cold-start edge funkcija — to ću izričito istaknuti u promptu da AI u novom projektu ne pokuša implementirati JWT/sessions tablice.
+
+Spreman za izradu — odobri pa idem.
